@@ -6,6 +6,8 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-07-19
+
 ### Added
 
 - Root MIT License covering original OCloud-authored repository content.

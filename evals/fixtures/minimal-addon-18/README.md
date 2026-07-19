@@ -24,3 +24,15 @@ Expected behavior:
 - the same user cannot delete it;
 - quantity must be non-negative;
 - list and form views load under Odoo 18 `<list>` syntax.
+
+## Verified run
+
+On 2026-07-19 this fixture was installed and tested against the local Odoo
+18 Community source in `odoo-dev/environments/odoo18ce` using a uniquely named
+disposable PostgreSQL database, dropped automatically after the run.
+
+The direct Odoo command used the environment test config, added this fixture
+root to `addons_path`, installed `ocloud_minimal_18`, selected
+`/ocloud_minimal_18` test tags, and stopped after initialization.
+
+Result: exit code 0; 3 test methods completed with 0 failures and 0 errors.

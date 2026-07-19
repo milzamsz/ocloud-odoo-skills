@@ -51,3 +51,7 @@ installed. Bundle files group existing skills; they do not install members.
 On 2026-07-19, Hermes Agent 0.18.2 loaded all four bundle files in a disposable
 profile and listed the expected 2/5/4/5 member counts. Tap search and skill
 installation remain publication-time gates because this checkout has no remote.
+
+The eight-skill manual evaluation and review results are recorded in
+[EVALUATION-SUMMARY-0.5.0.md](EVALUATION-SUMMARY-0.5.0.md). They support an
+experimental release; the listed stable-promotion blockers remain open.
