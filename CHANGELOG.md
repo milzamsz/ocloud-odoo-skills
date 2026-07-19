@@ -6,6 +6,8 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-07-19
+
 ### Fixed
 
 - Rephrased context-discovery repository-guidance examples so Hermes' community
