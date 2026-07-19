@@ -1,0 +1,14 @@
+schema_version: "1.0"
+organization: ocloud-staging-example
+compatible_skills_release: unreleased
+environment: staging
+restrictions:
+  production_writes: false
+  allowed_companies: []
+  allowed_read_models: []
+  denied_fields: []
+  named_write_capabilities: []
+review:
+  required_roles:
+  - odoo-functional-reviewer
+  - security-reviewer

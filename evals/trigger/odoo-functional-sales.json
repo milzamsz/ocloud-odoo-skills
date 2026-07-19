@@ -1,0 +1,18 @@
+[
+  {"query":"Design our Odoo 18 Community flow from CRM opportunity through quotation, sales order, delivery handoff, and invoice readiness.","should_trigger":true,"notes":"Full order-to-cash design."},
+  {"query":"Map sales teams, quotation states, pricelists, and approval exceptions for Odoo CE.","should_trigger":true,"notes":"Sales configuration and process."},
+  {"query":"Our service products invoice ordered quantities while stock products invoice delivered quantities; document the sales process and acceptance criteria.","should_trigger":true,"notes":"Invoice policy boundary."},
+  {"query":"Define how partial deliveries, backorders, cancellations, and returns affect an Odoo sales order runbook.","should_trigger":true,"notes":"Sales exception paths."},
+  {"query":"Validate whether our lead-to-order process fits standard Odoo 18 Community before we customize it.","should_trigger":true,"notes":"Functional fit with composition."},
+  {"query":"Produce a multi-company quotation-to-invoice-readiness design with actors, permissions, currencies, and unknowns.","should_trigger":true,"notes":"Company-aware sales design."},
+  {"query":"What master data and configuration must be ready before our sales team can quote and confirm orders?","should_trigger":true,"notes":"Sales readiness."},
+  {"query":"Create acceptance criteria for quotation expiry, sales order confirmation, fulfillment handoff, and invoice eligibility.","should_trigger":true,"notes":"Outcome evidence."},
+  {"query":"Design warehouse routes, putaway, picking waves, and replenishment rules.","should_trigger":false,"notes":"Inventory-only sibling."},
+  {"query":"Define RFQ approvals, purchase orders, receipts, and vendor bill matching.","should_trigger":false,"notes":"Purchase sibling."},
+  {"query":"Choose accounts, tax grids, journal posting, and customer payment reconciliation.","should_trigger":false,"notes":"Accounting boundary."},
+  {"query":"Implement the approved sale_order extension with models, views, ACLs, and tests.","should_trigger":false,"notes":"Addon implementation boundary."},
+  {"query":"Audit the sales addon for record-rule and unsafe sudo defects.","should_trigger":false,"notes":"Security audit boundary."},
+  {"query":"Review this sales pull request for ORM performance and upgradeability.","should_trigger":false,"notes":"Code review boundary."},
+  {"query":"Discover which Odoo version, edition, and addons paths this repository uses.","should_trigger":false,"notes":"Context discovery boundary."},
+  {"query":"Compare OCA, custom addon, and middleware options for a new generic approval requirement.","should_trigger":false,"notes":"Solution design without sales process intent."}
+]

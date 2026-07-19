@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Design an Odoo 18 Community integration with our warehouse system, including ownership, idempotency, retries, and reconciliation.",
+    "should_trigger": true,
+    "notes": "Full integration contract."
+  },
+  {
+    "query": "Should Odoo push paid orders by webhook or should middleware poll, and how do we prevent duplicates?",
+    "should_trigger": true,
+    "notes": "Boundary and delivery choice."
+  },
+  {
+    "query": "Map customer and invoice identifiers between Odoo and a finance platform for three companies.",
+    "should_trigger": true,
+    "notes": "Mapping and multi-company scope."
+  },
+  {
+    "query": "Define authentication, ACL, record-rule, and field-exposure controls for an Odoo partner API.",
+    "should_trigger": true,
+    "notes": "Integration security design."
+  },
+  {
+    "query": "Compare an OCA connector, custom controller, and external worker for this Odoo sync before coding.",
+    "should_trigger": true,
+    "notes": "Option analysis."
+  },
+  {
+    "query": "Our carrier API times out and sends callbacks twice; design Odoo retry and duplicate semantics.",
+    "should_trigger": true,
+    "notes": "Failure behavior."
+  },
+  {
+    "query": "Create a contract for importing 500,000 products into Odoo with batches, rate limits, observability, and replay.",
+    "should_trigger": true,
+    "notes": "Performance and operations."
+  },
+  {
+    "query": "Design read-only validation and an approval-gated rollout for Odoo webhooks to a payment provider.",
+    "should_trigger": true,
+    "notes": "Safe rollout."
+  },
+  {
+    "query": "Write a generic FastAPI endpoint that returns hello world.",
+    "should_trigger": false,
+    "notes": "Generic API coding."
+  },
+  {
+    "query": "Implement this already approved Odoo controller and its tests.",
+    "should_trigger": false,
+    "notes": "Addon implementation boundary."
+  },
+  {
+    "query": "Audit these existing controller routes for authorization bypass and unsafe sudo.",
+    "should_trigger": false,
+    "notes": "Security audit boundary."
+  },
+  {
+    "query": "Design a printable sales invoice PDF with our logo.",
+    "should_trigger": false,
+    "notes": "Reporting boundary."
+  },
+  {
+    "query": "Build an OWL dashboard for current stock.",
+    "should_trigger": false,
+    "notes": "Frontend-only near miss."
+  },
+  {
+    "query": "Discover which Odoo version and edition this repository runs.",
+    "should_trigger": false,
+    "notes": "Context discovery boundary."
+  },
+  {
+    "query": "Compare standard configuration and a custom addon for an internal approval workflow.",
+    "should_trigger": false,
+    "notes": "Solution design without external system."
+  },
+  {
+    "query": "Run the Odoo test suite on a disposable database.",
+    "should_trigger": false,
+    "notes": "Testing boundary."
+  }
+]

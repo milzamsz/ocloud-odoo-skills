@@ -1,0 +1,14 @@
+name: odoo-functional
+description: Design Odoo sales, purchase, inventory, POS, and manufacturing
+  processes with explicit cross-domain handoffs.
+skills:
+- odoo-context-discovery
+- odoo-solution-design
+- odoo-functional-sales
+- odoo-functional-purchase
+- odoo-functional-inventory
+- odoo-functional-pos
+- odoo-functional-manufacturing
+instruction: Confirm Odoo 18 Community context, map operational documents and
+  state transitions, and hand accounting, implementation, and testing to their
+  owning skills.

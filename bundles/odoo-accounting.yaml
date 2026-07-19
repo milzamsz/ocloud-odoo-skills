@@ -1,0 +1,11 @@
+name: odoo-accounting
+description: Design Odoo accounting controls and assumption-bound Indonesian
+  localization workflows.
+skills:
+- odoo-context-discovery
+- odoo-solution-design
+- odoo-functional-accounting
+- odoo-indonesia-accounting
+instruction: Separate operational documents from journal entries and state
+  debit, credit, posting, reconciliation, currency, tax assumptions, and
+  required human validation.

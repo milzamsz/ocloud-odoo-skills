@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Design an Odoo 18 Community sales report and choose between pivot, QWeb PDF, export, and external analytics.",
+    "should_trigger": true,
+    "notes": "Mechanism decision."
+  },
+  {
+    "query": "Define data sources, filters, access rules, and a performance budget for a monthly Odoo margin report.",
+    "should_trigger": true,
+    "notes": "Full reporting contract."
+  },
+  {
+    "query": "Should this customer statement be a QWeb PDF or a spreadsheet-compatible export in Community?",
+    "should_trigger": true,
+    "notes": "Format and edition boundary."
+  },
+  {
+    "query": "Redesign this Odoo report so users cannot see another company's records or hidden salary fields.",
+    "should_trigger": true,
+    "notes": "Reporting access design."
+  },
+  {
+    "query": "Specify posted versus draft entries, currency rate date, reconciliation, and totals for an accounting report.",
+    "should_trigger": true,
+    "notes": "Accounting reporting semantics."
+  },
+  {
+    "query": "Our 40,000-page Odoo PDF times out; select a safer reporting mechanism and measurable limits.",
+    "should_trigger": true,
+    "notes": "Performance and mechanism redesign."
+  },
+  {
+    "query": "Create a QWeb invoice report design with localization, paper format, page breaks, attachment caching, and test evidence.",
+    "should_trigger": true,
+    "notes": "Printable document design."
+  },
+  {
+    "query": "Define expected totals and denied-access fixtures for a multi-company, multi-currency Odoo dashboard dataset.",
+    "should_trigger": true,
+    "notes": "Verification and company boundaries."
+  },
+  {
+    "query": "Implement this approved QWeb template and report action.",
+    "should_trigger": false,
+    "notes": "Addon implementation boundary."
+  },
+  {
+    "query": "Build a generic React chart from this JSON array.",
+    "should_trigger": false,
+    "notes": "Generic frontend."
+  },
+  {
+    "query": "Audit this report model for unsafe sudo and missing record rules.",
+    "should_trigger": false,
+    "notes": "Security audit boundary."
+  },
+  {
+    "query": "Design webhook retries between Odoo and our warehouse.",
+    "should_trigger": false,
+    "notes": "Integration design boundary."
+  },
+  {
+    "query": "Discover the Odoo version, edition, and addons paths.",
+    "should_trigger": false,
+    "notes": "Context discovery boundary."
+  },
+  {
+    "query": "Run all existing report tests on a disposable database.",
+    "should_trigger": false,
+    "notes": "Testing boundary."
+  },
+  {
+    "query": "Fix the CSS alignment in this already approved invoice PDF.",
+    "should_trigger": false,
+    "notes": "Narrow implementation fix."
+  },
+  {
+    "query": "Design a sales approval workflow before deciding whether customization is necessary.",
+    "should_trigger": false,
+    "notes": "General solution design."
+  }
+]

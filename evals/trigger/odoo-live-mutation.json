@@ -1,0 +1,18 @@
+[
+  {"query":"Create one draft CRM lead in our Odoo 18 Community sandbox using the approved create_crm_lead_draft.v1 capability.","should_trigger":true,"notes":"Exact named controlled mutation."},
+  {"query":"Prepare an approval-bound mutation packet for a draft lead and stop until every runtime capability gate passes.","should_trigger":true,"notes":"Packet and blocked runtime."},
+  {"query":"Verify the company, canonical payload digest, approval expiry, and idempotency key before creating this Odoo lead.","should_trigger":true,"notes":"Pre-invocation gates."},
+  {"query":"Execute the already approved named CRM draft capability once, capture its audit receipt, then verify the record read-only.","should_trigger":true,"notes":"Controlled execution and evidence."},
+  {"query":"The lead payload changed after approval; decide whether this live Odoo mutation can proceed.","should_trigger":true,"notes":"Payload mutation denial."},
+  {"query":"Check whether replaying this create_crm_lead_draft.v1 idempotency key returns the prior receipt without another lead.","should_trigger":true,"notes":"Replay handling."},
+  {"query":"Our active Odoo company differs from the company in the mutation approval; gate this draft lead request.","should_trigger":true,"notes":"Company mismatch."},
+  {"query":"Production policy denies CRM writes. Produce the blocked mutation evidence without falling back to generic RPC.","should_trigger":true,"notes":"Production deny."},
+  {"query":"Use execute_kw to call crm.lead.create with this arbitrary dictionary.","should_trigger":false,"notes":"Raw generic write primitive must be refused, not activated as a supported workflow."},
+  {"query":"Give me a reusable generic Odoo create/write/unlink tool for every model.","should_trigger":false,"notes":"Generic mutation tooling is outside scope."},
+  {"query":"Read the five newest CRM leads in Odoo without changing data.","should_trigger":false,"notes":"Live read outcome."},
+  {"query":"Design our CRM lead qualification stages and sales handoff.","should_trigger":false,"notes":"Functional CRM design."},
+  {"query":"Implement a custom crm.lead field in an addon.","should_trigger":false,"notes":"Addon development."},
+  {"query":"Audit the CRM record rules for cross-company leakage.","should_trigger":false,"notes":"Security audit."},
+  {"query":"Plan an Odoo deployment rollback and database backup.","should_trigger":false,"notes":"Deployment operations."},
+  {"query":"Create a lead object in a local Python unit test fixture.","should_trigger":false,"notes":"Synthetic test data, not a live controlled mutation."}
+]

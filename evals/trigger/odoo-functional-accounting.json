@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Design our Odoo 18 Community month-end close, including bank, AR, AP, tax, suspense, FX, and lock-date checks.",
+    "should_trigger": true,
+    "notes": "Accounting close runbook."
+  },
+  {
+    "query": "Explain which operational documents create journal entries from customer invoice through payment and reconciliation.",
+    "should_trigger": true,
+    "notes": "Operational-to-ledger boundary."
+  },
+  {
+    "query": "Map debit, credit, posting timing, and partial reconciliation for an Odoo vendor bill and payment.",
+    "should_trigger": true,
+    "notes": "AP journal impact."
+  },
+  {
+    "query": "Prepare a chart of accounts and journals configuration checklist without inventing account codes.",
+    "should_trigger": true,
+    "notes": "Generic accounting configuration."
+  },
+  {
+    "query": "Design multi-company accounting controls so each Odoo company has separate journals, taxes, lock dates, and posting permissions.",
+    "should_trigger": true,
+    "notes": "Multi-company accounting."
+  },
+  {
+    "query": "How should foreign-currency invoices, payments, residuals, exchange differences, and reconciliation be documented in Odoo?",
+    "should_trigger": true,
+    "notes": "Multi-currency accounting."
+  },
+  {
+    "query": "Create acceptance evidence for customer credit notes, reversals, overpayments, and write-off approval.",
+    "should_trigger": true,
+    "notes": "Accounting exceptions."
+  },
+  {
+    "query": "Assess generic sales and purchase tax posting and fiscal-position assumptions in Odoo 18 CE.",
+    "should_trigger": true,
+    "notes": "Non-jurisdiction-specific tax."
+  },
+  {
+    "query": "Implement a custom account.move module with Python, XML views, ACLs, and tests.",
+    "should_trigger": false,
+    "notes": "Addon implementation boundary."
+  },
+  {
+    "query": "Audit this payment controller for unsafe sudo and missing authorization.",
+    "should_trigger": false,
+    "notes": "Security audit boundary."
+  },
+  {
+    "query": "Review this reconciliation code for N+1 queries and upgrade risks.",
+    "should_trigger": false,
+    "notes": "Code review boundary."
+  },
+  {
+    "query": "Should this workflow use standard Odoo, OCA, a custom addon, or middleware?",
+    "should_trigger": false,
+    "notes": "General solution design."
+  },
+  {
+    "query": "Design warehouse routes and replenishment rules; only flag that valuation may be affected.",
+    "should_trigger": false,
+    "notes": "Inventory sibling domain."
+  },
+  {
+    "query": "Design quotation, sales order, delivery, and invoicing responsibilities.",
+    "should_trigger": false,
+    "notes": "Sales sibling domain."
+  },
+  {
+    "query": "Give the current Indonesian withholding tax rate and guarantee this setup is legally compliant.",
+    "should_trigger": false,
+    "notes": "Indonesia-specific and improper certainty."
+  },
+  {
+    "query": "Upgrade our Odoo accounting addon from 17 to 18 and migrate its data.",
+    "should_trigger": false,
+    "notes": "Version upgrade boundary."
+  }
+]

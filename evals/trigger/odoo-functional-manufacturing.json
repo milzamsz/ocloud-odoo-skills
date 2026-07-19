@@ -1,0 +1,18 @@
+[
+  {"query":"Design our Odoo 18 CE BoM-to-manufacturing-order process.","should_trigger":true,"notes":"Core manufacturing flow."},
+  {"query":"Map component reservation, actual consumption, finished quantities, and MO completion.","should_trigger":true,"notes":"Quantity controls."},
+  {"query":"Define work centers, operations, operator responsibilities, and production evidence.","should_trigger":true,"notes":"Execution design."},
+  {"query":"How should partial production and manufacturing backorders work in Odoo?","should_trigger":true,"notes":"Exception path."},
+  {"query":"Design lot traceability from raw components to serialized finished goods.","should_trigger":true,"notes":"Traceability."},
+  {"query":"Create acceptance criteria for scrap, substitutions, by-products, and MO cancellation.","should_trigger":true,"notes":"Manufacturing exceptions."},
+  {"query":"We produce variants with different BoMs; document the Odoo functional setup and risks.","should_trigger":true,"notes":"Master-data design."},
+  {"query":"Produce an Odoo 18 Community manufacturing process design and identify stock and accounting handoffs.","should_trigger":true,"notes":"Detailed domain artifact."},
+  {"query":"Design warehouse routes, putaway, replenishment, and cycle counts.","should_trigger":false,"notes":"Inventory domain."},
+  {"query":"Explain stock valuation journal entries for finished goods.","should_trigger":false,"notes":"Accounting depth."},
+  {"query":"Implement an mrp.production customization with views and tests.","should_trigger":false,"notes":"Implementation boundary."},
+  {"query":"Audit manufacturing record rules for cross-company access.","should_trigger":false,"notes":"Security audit."},
+  {"query":"Compare standard Odoo, OCA, and a custom scheduler.","should_trigger":false,"notes":"Solution design."},
+  {"query":"Plan POS sessions and offline card payment recovery.","should_trigger":false,"notes":"POS domain."},
+  {"query":"Prepare a zero-downtime Odoo deployment runbook.","should_trigger":false,"notes":"Operations domain."},
+  {"query":"Upgrade this manufacturing addon from Odoo 17 to 18.","should_trigger":false,"notes":"Version-upgrade workflow."}
+]

@@ -6,7 +6,8 @@ The repository teaches agents how to analyze, design, implement, review, test, s
 
 ## Project status
 
-- Stage: Phase 1 stable
+- Stage: Phase 1 stable; Phase 2 domain skills experimental; Phase 3 controlled
+  live integration in progress
 - Stable target: Odoo 18.0 Community
 - Advisory targets: Odoo 17.0, Odoo 19.0, and Enterprise
 - Runtime priority: Hermes Agent
@@ -45,6 +46,43 @@ OCloud Odoo Skills creates a controlled layer that is:
 | `odoo-testing` | Select and implement the appropriate Python, JavaScript, tour, access, migration, and performance tests. |
 | `odoo-oca-development` | Apply OCA-oriented module structure, tooling, documentation, and contribution conventions. |
 | `odoo-version-upgrade` | Plan and verify module and database migration between major Odoo versions. |
+
+## Phase 2 domain skills
+
+| Skill | Purpose |
+|---|---|
+| `odoo-functional-sales` | Design CRM and sales order-to-cash processes through invoice readiness. |
+| `odoo-functional-purchase` | Design procure-to-pay processes through vendor bill matching readiness. |
+| `odoo-functional-inventory` | Design warehouses, routes, stock documents, and valuation impact flags. |
+| `odoo-functional-accounting` | Design accounting controls, posting, reconciliation, and closing. |
+| `odoo-indonesia-accounting` | Assess Indonesian localization with assumption-bound tax and PSAK analysis. |
+| `odoo-integration-design` | Design external-system boundaries, idempotency, and recovery contracts. |
+| `odoo-reporting` | Choose and design Odoo report mechanisms with access and performance controls. |
+| `odoo-functional-pos` | Design POS sessions, payments, offline recovery, and stock handoff. |
+| `odoo-functional-manufacturing` | Design BoM-to-production processes, exceptions, and inventory handoff. |
+| `odoo-deployment-operations` | Produce read-only-first deployment, backup, rollback, and monitoring runbooks. |
+
+These skills are experimental. They support an Odoo 18 Community evidence
+baseline and compose the Phase 1 workflows rather than duplicating discovery,
+solution design, implementation, testing, assurance, or migration. See
+[Phase 2 skill boundaries](docs/PHASE-2-SKILL-BOUNDARIES.md).
+
+## Phase 3 controlled live integration
+
+Phase 3 adds read-only live context and query procedures, followed by
+capability-specific approval-gated mutation. Skills remain procedural:
+`hermes-plugin-odoo` owns Hermes context, guards, and metadata-only audit;
+`odoo-rust-mcp-agent` owns typed execution and policy.
+
+Production remains read-only. Generic write tools are not agent-facing
+capabilities. See [Phase 3 skill boundaries](docs/PHASE-3-SKILL-BOUNDARIES.md)
+and [interface contract](docs/PHASE-3-INTERFACE-CONTRACT.md).
+
+| Skill | Purpose |
+|---|---|
+| `odoo-live-context` | Verify configured instance, company, model metadata, and effective read access. |
+| `odoo-live-read` | Execute bounded least-data record reads with domain interpretation handoffs. |
+| `odoo-live-mutation` | Prepare capability-specific approval packets; runtime remains blocked when capability gates are incomplete. |
 
 ## Repository structure
 

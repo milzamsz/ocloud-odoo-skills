@@ -1,0 +1,18 @@
+[
+  {"query":"Design our Odoo 18 Community warehouse flow for receipts, internal transfers, deliveries, returns, and stock counts.","should_trigger":true,"notes":"Full inventory flow."},
+  {"query":"Map warehouses, locations, operation types, routes, push/pull rules, and replenishment for Odoo CE.","should_trigger":true,"notes":"Inventory topology and configuration."},
+  {"query":"Define reservation, partial picking, backorder, cancellation, and return exceptions for our stock team.","should_trigger":true,"notes":"Inventory exception paths."},
+  {"query":"Produce a lot and serial traceability runbook covering receipts through customer delivery.","should_trigger":true,"notes":"Traceability design."},
+  {"query":"Validate whether our two-step receipt and three-step delivery process fits standard Odoo 18 Community.","should_trigger":true,"notes":"Functional fit with composition."},
+  {"query":"Create a multi-company inventory design with warehouse ownership, shared-location risks, roles, and evidence.","should_trigger":true,"notes":"Company-aware inventory design."},
+  {"query":"What product, unit, route, reorder rule, and lead-time data must be ready for replenishment?","should_trigger":true,"notes":"Inventory readiness."},
+  {"query":"Document stock valuation impact flags for these movements without choosing accounting entries or accounts.","should_trigger":true,"notes":"Inventory-owned impact flags."},
+  {"query":"Design quotations, sales orders, pricelists, and customer invoice readiness.","should_trigger":false,"notes":"Sales sibling."},
+  {"query":"Define RFQs, purchase approvals, vendor terms, and vendor bill matching.","should_trigger":false,"notes":"Purchase sibling."},
+  {"query":"Design bills of materials, work centers, manufacturing orders, and production costing.","should_trigger":false,"notes":"Manufacturing boundary."},
+  {"query":"Choose inventory valuation accounts, costing method, journal entries, posting, and reconciliation.","should_trigger":false,"notes":"Accounting deep-dive boundary."},
+  {"query":"Implement the approved stock route addon with models, views, ACLs, and tests.","should_trigger":false,"notes":"Addon implementation boundary."},
+  {"query":"Audit stock locations and quants for cross-company record-rule defects.","should_trigger":false,"notes":"Security audit boundary."},
+  {"query":"Review this stock pull request for ORM performance and upgradeability.","should_trigger":false,"notes":"Code review boundary."},
+  {"query":"Discover which Odoo version, edition, and addons paths this repository uses.","should_trigger":false,"notes":"Context discovery boundary."}
+]

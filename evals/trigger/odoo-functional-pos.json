@@ -1,0 +1,18 @@
+[
+  {"query":"Design our Odoo 18 Community POS flow from cashier opening through session closing.","should_trigger":true,"notes":"Core session flow."},
+  {"query":"Define POS cash control, manager approvals, refunds, and closing differences.","should_trigger":true,"notes":"POS controls."},
+  {"query":"How should an Odoo shop recover offline orders after the connection returns?","should_trigger":true,"notes":"Offline recovery."},
+  {"query":"Map card, cash, and split payments to POS order states and back-office handoffs.","should_trigger":true,"notes":"Payment process."},
+  {"query":"Create acceptance criteria for POS refunds, receipts, and failed terminal payments.","should_trigger":true,"notes":"Exception design."},
+  {"query":"Plan two Odoo POS shops with separate stock locations and cashier permissions.","should_trigger":true,"notes":"Multi-shop process."},
+  {"query":"Document the operational difference between payment acceptance, order sync, and session close.","should_trigger":true,"notes":"Indirect POS intent."},
+  {"query":"We are rolling out Odoo 18 CE at retail counters; produce the POS process design and risks.","should_trigger":true,"notes":"Detailed rollout design."},
+  {"query":"Design quotation to sales order, delivery, and customer invoice.","should_trigger":false,"notes":"Sales domain."},
+  {"query":"Configure warehouse routes and replenishment for three stores.","should_trigger":false,"notes":"Inventory depth."},
+  {"query":"Explain the debit and credit entries for customer payments.","should_trigger":false,"notes":"Accounting policy."},
+  {"query":"Implement a custom POS OWL button and add tests.","should_trigger":false,"notes":"Implementation boundary."},
+  {"query":"Audit this POS controller for authorization defects.","should_trigger":false,"notes":"Security audit."},
+  {"query":"Compare standard, OCA, and custom options for a loyalty requirement.","should_trigger":false,"notes":"Solution design."},
+  {"query":"Prepare a production backup and deployment rollback runbook.","should_trigger":false,"notes":"Operations domain."},
+  {"query":"Design BoMs and manufacturing orders for finished goods.","should_trigger":false,"notes":"Manufacturing domain."}
+]

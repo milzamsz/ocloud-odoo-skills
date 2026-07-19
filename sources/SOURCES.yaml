@@ -1,5 +1,45 @@
 review_date: '2026-07-19'
 sources:
+- id: odoo-agent-platform-local-contracts
+  name: OCloud Odoo Agent Platform Local Contracts
+  url: https://github.com/ocloudpro/odoo-rust-mcp-agent
+  authority_tier: 2
+  usage: project-approved-phase-3-interface-contract
+  license_status: project-reference; no source copied
+  odoo_versions:
+  - '18.0'
+  last_reviewed: '2026-07-20'
+  notes: Local sibling repositories provide the reconciled MCP manifest, generated policy, plugin guard, metadata-only audit, and blocked create_crm_lead_draft.v1 contract used for Phase 3 procedural boundaries.
+- id: odoo-18-functional-source
+  name: Odoo 18 Community Functional Application Source
+  url: https://github.com/odoo/odoo/tree/18.0/addons
+  authority_tier: 3
+  usage: authoritative-odoo-functional-source
+  license_status: LGPL-3.0 repository reference; no source copied
+  odoo_versions:
+  - '18.0'
+  last_reviewed: '2026-07-20'
+  notes: Read-only evidence for CRM, sales, purchase, inventory, accounting, POS, manufacturing, integration, reporting, localization, and operations workflows.
+- id: odoo-18-applications
+  name: Odoo 18 Applications Documentation
+  url: https://www.odoo.com/documentation/18.0/applications.html
+  authority_tier: 3
+  usage: authoritative-odoo-functional-documentation
+  license_status: documentation-reference
+  odoo_versions:
+  - '18.0'
+  last_reviewed: '2026-07-20'
+  notes: Functional process terminology and configuration reference; target source and installed modules remain decisive.
+- id: odoo-18-indonesia-localization
+  name: Odoo 18 Indonesia Fiscal Localization Source
+  url: https://github.com/odoo/odoo/tree/18.0/addons/l10n_id
+  authority_tier: 3
+  usage: authoritative-odoo-localization-source
+  license_status: LGPL-3.0 repository reference; no source copied
+  odoo_versions:
+  - '18.0'
+  last_reviewed: '2026-07-20'
+  notes: Technical localization evidence only; current law, tax treatment, mappings, and filings require qualified human validation.
 - id: odoo-18-accounting-vendor-bills
   name: Odoo 18 Vendor Bills Documentation
   url: https://www.odoo.com/documentation/18.0/applications/finance/accounting/vendor_bills.html

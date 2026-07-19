@@ -6,10 +6,45 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ## [Unreleased]
 
+### Added
+
+- Added Phase 3 controlled-live scaffolding: skill boundaries, cross-repo
+  interface contract, risk classification, plugin-skill migration policy,
+  private overlay guidance/template, and a foundation-only `odoo-live` bundle.
+- Added experimental `odoo-live-context`, `odoo-live-read`, and
+  `odoo-live-mutation` skills with synthetic fixtures, trigger datasets,
+  outcome cases, and the completed live bundle.
+- Hardened the sibling plugin/MCP capability path for cross-instance guard
+  scoping, prefixed-tool auditing, multi-candidate duplicate conflicts,
+  returned-record verification failures, approval evidence metadata, and
+  crash-durable approval storage.
+- Added ten experimental Odoo 18 Community domain skills for Sales, Purchase,
+  Inventory, Accounting, Indonesian accounting, integration design, reporting,
+  POS, Manufacturing, and deployment operations.
+- Added Phase 2 skill boundaries, three domain bundles, output templates,
+  Odoo 18 references, clean-room fixtures, trigger datasets, and outcome cases.
+- Registered Odoo 18 functional application and Indonesian localization source
+  references without redistributing Odoo or Enterprise code.
+- Recorded automated Phase 2 evaluation evidence and the remaining human,
+  regression, and clean-profile gates for a future `v1.1.0` promotion.
+
+### Changed
+
+- Extended the tap manifest, README, and package manifest for experimental
+  Phase 2 distribution while retaining the Phase 1 stable baseline.
+
 ### Fixed
 
+- Phase 3 review: aligned `create_crm_lead_draft.v1` skill/fixture field names
+  with the closed runtime schema; clarified metadata vs business-read ownership
+  in risk classification; narrowed plugin-local CRM routing notes.
 - Corrected Hermes tap identifiers in the experimental 0.5.0 release notes to
   `milzamsz/ocloud-odoo-skills`.
+- Phase 2 audit: aligned boundary artifact names, corrected
+  `odoo-deployment-operations` risk metadata to `read-only`, and grounded
+  Sales/Purchase/Inventory/POS/Manufacturing/Indonesia references in verified
+  CE bridge modules and packaging boundaries without claiming statutory or
+  Enterprise support.
 
 ## [1.0.0] - 2026-07-20
 

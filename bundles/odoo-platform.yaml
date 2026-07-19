@@ -1,0 +1,11 @@
+name: odoo-platform
+description: Design Odoo integrations, reporting, and read-only-first
+  deployment operations.
+skills:
+- odoo-context-discovery
+- odoo-solution-design
+- odoo-integration-design
+- odoo-reporting
+- odoo-deployment-operations
+instruction: Define trust boundaries, access controls, failure recovery, and
+  completion evidence. Require exact authorization before live mutation.

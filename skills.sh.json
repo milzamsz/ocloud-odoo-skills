@@ -30,6 +30,29 @@
       "skills": [
         "odoo-version-upgrade"
       ]
+    },
+    {
+      "title": "Domain",
+      "skills": [
+        "odoo-functional-sales",
+        "odoo-functional-purchase",
+        "odoo-functional-inventory",
+        "odoo-functional-accounting",
+        "odoo-indonesia-accounting",
+        "odoo-integration-design",
+        "odoo-reporting",
+        "odoo-functional-pos",
+        "odoo-functional-manufacturing",
+        "odoo-deployment-operations"
+      ]
+    },
+    {
+      "title": "Live",
+      "skills": [
+        "odoo-live-context",
+        "odoo-live-read",
+        "odoo-live-mutation"
+      ]
     }
   ]
 }

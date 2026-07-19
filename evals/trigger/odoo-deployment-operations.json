@@ -1,0 +1,18 @@
+[
+  {"query":"Prepare a read-only-first deployment runbook for our self-hosted Odoo 18 Community instance.","should_trigger":true,"notes":"Core deployment runbook."},
+  {"query":"Design Odoo database and filestore backup, isolated restore testing, and retention evidence.","should_trigger":true,"notes":"Backup and restore."},
+  {"query":"Create go/no-go gates and rollback triggers for a same-version Odoo addon release.","should_trigger":true,"notes":"Release controls."},
+  {"query":"Triage an Odoo production outage without changing anything until the exact remediation is approved.","should_trigger":true,"notes":"Read-only incident triage."},
+  {"query":"Define health checks, smoke tests, logs, and alerts after an Odoo deployment.","should_trigger":true,"notes":"Monitoring."},
+  {"query":"Write a recovery runbook that keeps PostgreSQL and the filestore at one recovery point.","should_trigger":true,"notes":"Consistency control."},
+  {"query":"Review our containerized Odoo topology and identify backup and rollback gaps; do not execute commands.","should_trigger":true,"notes":"Deployment review."},
+  {"query":"Specify the exact authorization evidence required before restarting Odoo and upgrading modules in production.","should_trigger":true,"notes":"Mutation authorization."},
+  {"query":"Upgrade our addon code from Odoo 17 to Odoo 18.","should_trigger":false,"notes":"Major-version workflow."},
+  {"query":"Implement a custom deployment API in Python.","should_trigger":false,"notes":"Generic implementation."},
+  {"query":"Audit this Odoo controller for authentication bugs.","should_trigger":false,"notes":"Security audit."},
+  {"query":"Design POS sessions, refunds, and offline payments.","should_trigger":false,"notes":"POS domain."},
+  {"query":"Design BoMs, work centers, and manufacturing backorders.","should_trigger":false,"notes":"Manufacturing domain."},
+  {"query":"Compare Kubernetes, Docker Compose, and managed hosting before choosing infrastructure.","should_trigger":false,"notes":"Solution design first."},
+  {"query":"Run the test suite for this Odoo addon.","should_trigger":false,"notes":"Testing workflow."},
+  {"query":"Explain how to create a PostgreSQL role for a generic application.","should_trigger":false,"notes":"Not Odoo operations outcome."}
+]

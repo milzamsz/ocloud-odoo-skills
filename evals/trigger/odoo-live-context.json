@@ -1,0 +1,18 @@
+[
+  {"query":"Verify which Odoo 18 Community instance, profile, and company are selected before any live query.","should_trigger":true,"notes":"Live context envelope."},
+  {"query":"Use the configured Odoo MCP metadata tools to confirm whether sale.order exists and whether I have read access; do not fetch orders.","should_trigger":true,"notes":"Model metadata and access."},
+  {"query":"Check the live model catalog for the named inventory models without reading business records.","should_trigger":true,"notes":"Bounded model discovery."},
+  {"query":"Confirm that this production connection is the expected Odoo 18 CE environment and report context conflicts only.","should_trigger":true,"notes":"Live identity verification."},
+  {"query":"Before investigating accounting, establish the selected company and effective read permissions on account.move.","should_trigger":true,"notes":"Company and access context."},
+  {"query":"The repository says Odoo 18 but the live integration may differ; verify metadata and stop if evidence conflicts.","should_trigger":true,"notes":"Repository/live reconciliation."},
+  {"query":"Tell me whether the current read-only profile exposes metadata and access checks for res.partner.","should_trigger":true,"notes":"Profile capability check."},
+  {"query":"Create a live-context evidence packet listing instance, environment, profile, version, company scope, named models, and unknowns.","should_trigger":true,"notes":"Required artifact."},
+  {"query":"Inspect this repository to determine its Odoo version, edition, addons paths, and runtime.","should_trigger":false,"notes":"Repository context discovery only."},
+  {"query":"Fetch the last 20 confirmed sales orders and customer names.","should_trigger":false,"notes":"Business record read."},
+  {"query":"Design our Odoo sales approval process.","should_trigger":false,"notes":"Phase 2 sales design."},
+  {"query":"Audit an Odoo record rule for a cross-company leak.","should_trigger":false,"notes":"Security audit."},
+  {"query":"Implement a custom model and views for Odoo 18.","should_trigger":false,"notes":"Addon development."},
+  {"query":"Create a CRM lead in staging after approval.","should_trigger":false,"notes":"Mutation request."},
+  {"query":"Count posted invoices by month for the current company.","should_trigger":false,"notes":"Bounded live read."},
+  {"query":"Explain Odoo ORM fields_get from the source code without connecting to an instance.","should_trigger":false,"notes":"Static technical explanation."}
+]

@@ -1,0 +1,18 @@
+[
+  {"query":"Read the 20 newest confirmed sales orders for company 1 with only id, name, date_order, and amount_total; redact customer details.","should_trigger":true,"notes":"Bounded business read."},
+  {"query":"Count posted customer invoices in this company for July 2026 without returning invoice records.","should_trigger":true,"notes":"Least-data count."},
+  {"query":"Aggregate posted invoice totals by currency for the current company with the accounting skill interpreting the result.","should_trigger":true,"notes":"Bounded financial aggregation."},
+  {"query":"Search this live Odoo instance for up to 10 overdue pickings and return only identifiers and scheduled dates.","should_trigger":true,"notes":"Bounded inventory evidence."},
+  {"query":"Read names and states for these five known purchase order IDs from production; make no changes.","should_trigger":true,"notes":"Known-ID read."},
+  {"query":"Find at most five customer labels matching Acme for a sales user lookup.","should_trigger":true,"notes":"Bounded name search."},
+  {"query":"Prepare and execute a read-only plan for the last 25 POS sessions, with exact fields, order, company scope, and redaction.","should_trigger":true,"notes":"Explicit read plan."},
+  {"query":"Use live Odoo evidence to answer whether any manufacturing orders are late, but return only a count and state the domain.","should_trigger":true,"notes":"Minimal live evidence."},
+  {"query":"Verify the selected live instance, profile, version, company, and whether stock.picking is readable; do not fetch records.","should_trigger":false,"notes":"Live context only."},
+  {"query":"Inspect this addon repository and identify its Odoo version and dependencies.","should_trigger":false,"notes":"Repository discovery."},
+  {"query":"Design an order-to-cash process for Odoo 18 Community.","should_trigger":false,"notes":"Phase 2 sales design."},
+  {"query":"Create a draft CRM lead in staging.","should_trigger":false,"notes":"Mutation."},
+  {"query":"Export every partner and all fields from every company.","should_trigger":false,"notes":"Unrestricted extraction must be refused, not activated as valid read workflow."},
+  {"query":"Audit why a user can see another company's invoices.","should_trigger":false,"notes":"Security audit primary."},
+  {"query":"Build a QWeb invoice report.","should_trigger":false,"notes":"Reporting implementation/design."},
+  {"query":"Explain how search_read works in the Odoo ORM without connecting to a live instance.","should_trigger":false,"notes":"Static explanation."}
+]

@@ -1,0 +1,18 @@
+[
+  {"query":"Design our Odoo 18 Community process from purchasing demand through RFQ, purchase order, receipt, and vendor bill matching readiness.","should_trigger":true,"notes":"Full procure-to-pay operational design."},
+  {"query":"Map buyer roles, RFQ states, approval thresholds, vendor terms, and exceptions for Odoo CE.","should_trigger":true,"notes":"Purchase configuration and process."},
+  {"query":"Document how ordered versus received quantity bill control should work for our purchasing team.","should_trigger":true,"notes":"Bill control boundary."},
+  {"query":"Define partial receipts, backorders, purchase returns, cancellations, and price or quantity variance handling.","should_trigger":true,"notes":"Purchase exception paths."},
+  {"query":"Validate whether our request-for-quotation to vendor-bill process fits standard Odoo 18 Community.","should_trigger":true,"notes":"Functional fit with composition."},
+  {"query":"Produce a multi-company purchasing runbook with buyers, vendors, currencies, warehouses, permissions, and unknowns.","should_trigger":true,"notes":"Company-aware purchasing design."},
+  {"query":"What vendor and product master data must be ready before buyers issue purchase orders?","should_trigger":true,"notes":"Purchase readiness."},
+  {"query":"Create acceptance criteria for RFQ approval, PO confirmation, receipt handoff, and bill matching eligibility.","should_trigger":true,"notes":"Outcome evidence."},
+  {"query":"Design quotations, sales orders, pricelists, and customer invoice readiness.","should_trigger":false,"notes":"Sales sibling."},
+  {"query":"Design warehouse routes, putaway, lots, picking waves, and replenishment.","should_trigger":false,"notes":"Inventory-only sibling."},
+  {"query":"Choose payable accounts, tax grids, bill posting, and vendor payment reconciliation.","should_trigger":false,"notes":"Accounting boundary."},
+  {"query":"Implement the approved purchase_order extension with models, views, ACLs, and tests.","should_trigger":false,"notes":"Addon implementation boundary."},
+  {"query":"Audit purchase approvals for record-rule and unsafe sudo defects.","should_trigger":false,"notes":"Security audit boundary."},
+  {"query":"Review this purchase pull request for ORM correctness and upgradeability.","should_trigger":false,"notes":"Code review boundary."},
+  {"query":"Discover which Odoo version, edition, and addons paths this repository uses.","should_trigger":false,"notes":"Context discovery boundary."},
+  {"query":"Compare OCA, custom addon, and external workflow options for a generic approval requirement.","should_trigger":false,"notes":"Solution design without purchase process intent."}
+]

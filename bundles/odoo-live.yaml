@@ -1,0 +1,11 @@
+name: odoo-live
+description: Establish controlled live Odoo context before read or mutation
+  operations.
+skills:
+- odoo-context-discovery
+- odoo-security-audit
+- odoo-live-context
+- odoo-live-read
+- odoo-live-mutation
+instruction: Default production to read-only. Use only reconciled MCP tools and
+  require a named capability plus exact approval for any write.

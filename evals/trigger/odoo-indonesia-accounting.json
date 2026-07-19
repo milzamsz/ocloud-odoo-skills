@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Assess what Odoo 18 Community l10n_id provides and identify gaps for our Indonesian company with explicit assumptions.",
+    "should_trigger": true,
+    "notes": "Localization inventory and gaps."
+  },
+  {
+    "query": "Design an Indonesian withholding workflow in Odoo, showing debit, credit, posting, payment, and reconciliation without inventing rates.",
+    "should_trigger": true,
+    "notes": "Assumption-bound withholding."
+  },
+  {
+    "query": "Prepare a PSAK-oriented Odoo reporting gap assessment and list every item requiring accountant review.",
+    "should_trigger": true,
+    "notes": "PSAK-oriented, no compliance claim."
+  },
+  {
+    "query": "Compare our Indonesian tax requirements with installed l10n_id taxes and fiscal positions as of the transaction date.",
+    "should_trigger": true,
+    "notes": "Effective-dated localization validation."
+  },
+  {
+    "query": "Map Indonesian invoice and withholding evidence separately from the Odoo journal entry and reconciliation.",
+    "should_trigger": true,
+    "notes": "Document-ledger distinction."
+  },
+  {
+    "query": "Design multi-company controls for two Indonesian legal entities with separate charts, taxes, journals, sequences, and access.",
+    "should_trigger": true,
+    "notes": "Indonesian multi-company case."
+  },
+  {
+    "query": "Create a clean-room acceptance runbook for Indonesian localization, amendments, reversals, rounding, and reviewer sign-off.",
+    "should_trigger": true,
+    "notes": "Localization outcome evidence."
+  },
+  {
+    "query": "Decide whether an Indonesian accounting gap should be configured, covered by reviewed OCA, custom-built, or external.",
+    "should_trigger": true,
+    "notes": "Localization-specific option analysis."
+  },
+  {
+    "query": "Explain generic debit and credit for a customer invoice in Odoo.",
+    "should_trigger": false,
+    "notes": "Generic accounting boundary."
+  },
+  {
+    "query": "Implement Python models for a custom withholding addon.",
+    "should_trigger": false,
+    "notes": "Implementation boundary."
+  },
+  {
+    "query": "Tell me today's legally correct Indonesian tax rates with absolute certainty.",
+    "should_trigger": false,
+    "notes": "Requires current authoritative legal research, not an Odoo design."
+  },
+  {
+    "query": "Audit this l10n_id extension for ACL and record-rule defects.",
+    "should_trigger": false,
+    "notes": "Security audit boundary."
+  },
+  {
+    "query": "Review this Indonesian report's QWeb template and Python for correctness.",
+    "should_trigger": false,
+    "notes": "Code/report review boundary."
+  },
+  {
+    "query": "Design purchase RFQ, PO approval, receipt, and three-way matching.",
+    "should_trigger": false,
+    "notes": "Purchase sibling domain."
+  },
+  {
+    "query": "Migrate l10n_id customizations from Odoo 17 to 18.",
+    "should_trigger": false,
+    "notes": "Upgrade boundary."
+  },
+  {
+    "query": "Discover whether this repository is Community or Enterprise and list installed addons.",
+    "should_trigger": false,
+    "notes": "Context discovery boundary."
+  }
+]
