@@ -1,16 +1,16 @@
 ---
 name: odoo-indonesia-accounting
-description: Use this skill when analyzing or designing Odoo 18 Community accounting for Indonesian localization, PSAK-oriented reporting assumptions, Indonesian tax configuration, withholding patterns, localization gaps, and multi-company controls. Require current authoritative validation; never present the result as legal or tax certainty.
+description: Use this skill when analyzing or designing Odoo 17, 18, or 19 Community or Enterprise accounting for Indonesian localization, PSAK-oriented reporting assumptions, Indonesian tax configuration, withholding patterns, localization gaps, and multi-company controls. Require current authoritative validation; never present the result as legal or tax certainty.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Stable guidance targets Odoo 18.0 Community; Enterprise features are advisory.
+compatibility: Hermes Agent and Agent Skills compatible clients. Stable guidance targets Odoo 17.0, 18.0, or 19.0 Community or Enterprise; Enterprise features are advisory.
 metadata:
   version: "0.1.0"
   author: OCloud
   status: experimental
   risk: advisory
   odoo:
-    versions: ["18.0"]
-    editions: [community]
+    versions: ["17.0", "18.0", "19.0"]
+    editions: [community, enterprise]
   hermes:
     tags: [odoo, indonesia, accounting, localization]
 ---
@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-Produce an assumption-bound Indonesian accounting localization assessment and implementation runbook. Identify what Odoo 18 Community provides, what configuration or extension may be needed, and which conclusions require a qualified Indonesian accountant or tax adviser.
+Produce an assumption-bound Indonesian accounting localization assessment and implementation runbook. Identify what Odoo 17, 18, or 19 Community or Enterprise provides, what configuration or extension may be needed, and which conclusions require a qualified Indonesian accountant or tax adviser.
 
 ## Required inputs
 
@@ -34,7 +34,7 @@ Label every claim **Confirmed**, **Inferred**, **Assumed**, or **Unknown**. Load
 ## Workflow
 
 1. Create an assumptions register with entity, transaction, tax type, counterparty, effective date, currency, source, owner, and expiry/revalidation date.
-2. Inspect the exact Odoo 18 Community localization modules and installed data. Treat module presence as evidence of packaged configuration, not proof of statutory completeness.
+2. Inspect the exact Odoo 17, 18, or 19 Community or Enterprise localization modules and installed data. Treat module presence as evidence of packaged configuration, not proof of statutory completeness.
 3. Map operational documents separately from journal entries. For each invoice, bill, payment, withholding evidence, adjustment, or filing/export, state the posting trigger, debit, credit, tax base, currency, partner, and reconciliation behavior.
 4. Explain debit and credit effects. For example, a withholding pattern may split settlement between cash/bank and a withholding receivable or payable, but direction and accounts depend on the taxpayer's role and approved policy. Never invent account codes or rates.
 5. Define posting versus reconciliation. Posting creates ledger impact; reconciliation matches receivable/payable, liquidity, or withholding-related items. State residual, partial, exchange-difference, and correction handling.
@@ -58,7 +58,7 @@ Use `assets/indonesia-accounting-assessment.md`. Include the assumptions registe
 
 ## Verification
 
-- Odoo 18 Community facts are separated from Enterprise advisory notes.
+- Odoo 17, 18, or 19 Community or Enterprise facts are separated from Enterprise advisory notes.
 - Every regulatory statement has jurisdiction, effective date, source, and confidence.
 - Illustrative entries balance and avoid invented accounts or rates.
 - Operational documents, journal entries, posting, and reconciliation remain distinct.
@@ -66,5 +66,7 @@ Use `assets/indonesia-accounting-assessment.md`. Include the assumptions registe
 - Indonesian accounting/tax human review is required before stable or production use.
 
 ## References to load
+
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 - Read `references/odoo-18.md` for the clean-room Community localization baseline.

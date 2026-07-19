@@ -1,16 +1,16 @@
 ---
 name: odoo-functional-sales
-description: Use this skill when designing or validating an Odoo 18 Community sales and CRM order-to-cash process, including leads, opportunities, quotations, sales orders, delivery handoff, invoicing policy, pricelists, sales teams, exceptions, and completion evidence. Do not use it for inventory-only execution, accounting policy, or addon implementation.
+description: Use this skill when designing or validating an Odoo 17, 18, or 19 Community or Enterprise sales and CRM order-to-cash process, including leads, opportunities, quotations, sales orders, delivery handoff, invoicing policy, pricelists, sales teams, exceptions, and completion evidence. Do not use it for inventory-only execution, accounting policy, or addon implementation.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Requires confirmed Odoo 18 Community context for version-sensitive decisions.
+compatibility: Hermes Agent and Agent Skills compatible clients. Requires confirmed Odoo 17, 18, or 19 Community or Enterprise context for version-sensitive decisions.
 metadata:
   version: "0.1.0"
   author: OCloud
   status: experimental
   risk: advisory
   odoo:
-    versions: ["18.0"]
-    editions: [community]
+    versions: ["17.0", "18.0", "19.0"]
+    editions: [community, enterprise]
   hermes:
     tags: [odoo, sales, crm, functional]
 ---
@@ -19,13 +19,13 @@ metadata:
 
 ## Purpose
 
-Produce an evidence-backed Odoo 18 Community order-to-cash design and configuration runbook from lead or quotation through sales order, delivery handoff, and invoice readiness.
+Produce an evidence-backed Odoo 17, 18, or 19 Community or Enterprise order-to-cash design and configuration runbook from lead or quotation through sales order, delivery handoff, and invoice readiness.
 
 ## Use when
 
 - mapping CRM qualification, quotations, sales orders, pricelists, sales teams, or invoice policy;
 - defining sales actors, document states, exceptions, permissions, and acceptance criteria;
-- validating whether a proposed order-to-cash process fits Odoo 18 Community.
+- validating whether a proposed order-to-cash process fits Odoo 17, 18, or 19 Community or Enterprise.
 
 ## Do not use when
 
@@ -42,7 +42,7 @@ Produce an evidence-backed Odoo 18 Community order-to-cash design and configurat
 
 ## Workflow
 
-1. Confirm Odoo 18.0 Community and identify installed `crm`, `sale`, and `sale_management` capabilities from evidence.
+1. Confirm Odoo 17.0, 18.0, or 19.0 Community or Enterprise and identify installed `crm`, `sale`, and `sale_management` capabilities from evidence.
 2. Map actors and operational documents: lead/opportunity when used, quotation, sales order, delivery handoff, and customer invoice readiness.
 3. Define state transitions, ownership, approvals, cancellation, returns, partial delivery, backorder, and invoice exceptions.
 4. Specify master data and configuration: customers, products, units, pricelists, payment terms, fiscal assumptions, sales teams, warehouses, and invoicing policy.
@@ -53,7 +53,7 @@ Produce an evidence-backed Odoo 18 Community order-to-cash design and configurat
 ## Safety and decision rules
 
 - Treat live systems as read-only unless the user explicitly authorizes the exact mutation.
-- Do not claim Enterprise behavior or compatibility; this skill supports Odoo 18 Community only.
+- Do not claim behavior from another edition; use only the confirmed target cell and installed-module evidence.
 - Do not treat quotation, sales order, delivery, or invoice as the same document.
 - Do not invent tax, account, fiscal-position, or legal conclusions.
 - Label facts as Confirmed, Inferred, Assumed, or Unknown and cite source paths.
@@ -64,7 +64,7 @@ Use `assets/sales-process-runbook.md`. Include context, evidence, actors, docume
 
 ## Verification
 
-- Version and Community edition are confirmed.
+- Version and edition are confirmed independently.
 - Quotation, order, fulfillment handoff, and invoice readiness are distinct.
 - Pricelist, invoice policy, partial/cancel/return paths, permissions, and multi-company behavior are addressed.
 - No implementation or accounting policy is silently designed.
@@ -72,7 +72,7 @@ Use `assets/sales-process-runbook.md`. Include context, evidence, actors, docume
 
 ## Reference to load
 
-Read `references/odoo-18-community.md` only after Odoo 18.0 Community is confirmed.
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 ## Failure and escalation
 

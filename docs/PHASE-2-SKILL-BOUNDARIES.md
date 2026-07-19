@@ -30,8 +30,10 @@ or upgrade procedures.
   changes to `odoo-version-upgrade`.
 - State Odoo version and edition, evidence labels, assumptions, unknowns,
   safety constraints, and completion evidence in every artifact.
-- Treat Odoo 18 Community as the stable evidence baseline. Enterprise and
-  other major versions remain advisory until separately verified.
+- Treat Odoo 18 Community as the stable evidence baseline. Odoo 17/19
+  Community/Enterprise and Odoo 18 Enterprise are verified-experimental
+  source cells; target installation, configuration, and behavior still need
+  case-specific evidence.
 
 ## Cross-domain handoffs
 

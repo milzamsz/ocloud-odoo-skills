@@ -12,7 +12,7 @@ Date: 2026-07-20
 
 ## Evidence
 
-- Skills repository: 21 skills, 0 validation warnings/errors; lint passed; 4
+- Skills repository: 21 skills, 0 validation warnings/errors; lint passed; 5
   tests passed; package check passed.
 - All Phase 3 trigger datasets contain 8 positive and 8 negative cases.
 - Plugin: 39 tests passed, including cross-instance MCP guard denial,
@@ -22,9 +22,10 @@ Date: 2026-07-20
 - Staging configuration validates and release artifacts are current after
   vendoring the capability schema into the self-contained staging bundle and
   removing undeclared quotation/vendor-bill capabilities from its policy.
-- Existing read-only staging evidence remains based on Odoo 19 Community. The
-  public skills support claim remains Odoo 18 Community; this cross-version
-  smoke proves interface behavior, not Odoo 19 skill compatibility.
+- Read-only source/profile smoke now covers Odoo 17/18/19 Community and
+  Enterprise. The Odoo 19 Community staging path remains the only existing
+  end-to-end live-interface smoke; other cells are verified-experimental and
+  still require disposable live ACL/record-rule scenarios.
 
 ## Review fixes (2026-07-20)
 
@@ -41,6 +42,9 @@ Date: 2026-07-20
 execution remains **blocked** pending fresh staging credentials, reviewed
 write-enabled compatibility lock, live Odoo ACL/company negative cases, and
 rollback/replay evidence. Production remains read-only.
+
+The mutation skill and capability remain explicitly limited to Odoo 18
+Community. Multi-version read coverage does not widen that mutation contract.
 
 The local capability path now rejects multiple duplicate candidates, preserves
 post-write verification failures as conflicts requiring manual review, binds

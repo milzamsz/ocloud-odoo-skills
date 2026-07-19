@@ -9,8 +9,8 @@ metadata:
   status: stable
   risk: controlled-write
   odoo:
-    versions: ["18.0"]
-    editions: [community]
+    versions: ["17.0", "18.0", "19.0"]
+    editions: [community, enterprise]
   hermes:
     tags: [odoo, testing, quality, verification]
 ---
@@ -109,6 +109,8 @@ Use `assets/test-evidence.md` and provide:
 A passing test that does not assert the business requirement is not completion. A screenshot of a green terminal is especially not accounting reconciliation, despite its soothing color.
 
 ## References to load
+
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 - Read `references/test-seams.md` when selecting frameworks and test types.
 - Read `references/security-test-matrix.md` for ACL, record-rule, and company tests.

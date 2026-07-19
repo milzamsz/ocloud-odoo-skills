@@ -9,6 +9,10 @@ store credentials, implement an Odoo client, or grant permission.
 | `odoo-live-read` | Bounded read plan and evidence | `assets/live-read-evidence.md` | Read-only; no mutation or unrestricted extraction. |
 | `odoo-live-mutation` | Approval-bound mutation packet and verification evidence | `assets/mutation-packet.md` | Named capability only; no raw generic write tools. |
 
+Live context and bounded-read procedures have source/profile evidence for
+Odoo 17/18/19 Community and Enterprise. The initial mutation capability
+remains Odoo 18 Community only; read coverage never implies write support.
+
 ## Composition
 
 - Use `odoo-context-discovery` for repository and runtime discovery; add

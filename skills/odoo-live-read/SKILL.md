@@ -1,16 +1,16 @@
 ---
 name: odoo-live-read
-description: Use this skill when reading bounded business evidence from a configured Odoo 18 Community instance with an exact model, domain, fields, company scope, limit, order, purpose, sensitivity, and redaction plan. Do not use it for metadata-only context, unrestricted export, interpretation without a Phase 2 skill, or mutation.
+description: Use this skill when reading bounded business evidence from a configured Odoo 17, 18, or 19 Community or Enterprise instance with an exact model, domain, fields, company scope, limit, order, purpose, sensitivity, and redaction plan. Do not use it for metadata-only context, unrestricted export, interpretation without a Phase 2 skill, or mutation.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Verified for Odoo 18.0 Community with the reconciled Odoo MCP read contract.
+compatibility: Hermes Agent and Agent Skills compatible clients. Verified for Odoo 17.0, 18.0, or 19.0 Community or Enterprise with the reconciled Odoo MCP read contract.
 metadata:
   version: "0.1.0"
   author: OCloud
   status: experimental
   risk: read-only
   odoo:
-    versions: ["18.0"]
-    editions: [community]
+    versions: ["17.0", "18.0", "19.0"]
+    editions: [community, enterprise]
   hermes:
     tags: [odoo, live, read, evidence]
 ---
@@ -23,7 +23,7 @@ Produce and execute a bounded, least-data live read plan and return evidence wit
 
 ## Preconditions and composition
 
-- Require `odoo-context-discovery` and `odoo-live-context`; do not query records until instance, Odoo 18 Community, profile, company, model, and read access are verified.
+- Require `odoo-context-discovery` and `odoo-live-context`; do not query records until instance, Odoo 17, 18, or 19 Community or Enterprise, profile, company, model, and read access are verified.
 - Load the relevant Phase 2 domain skill before choosing fields or interpreting business meaning. Use `odoo-functional-accounting` for posting, reconciliation, tax, or financial meaning and `odoo-security-audit` for access concerns.
 - Use `odoo-solution-design` for design recommendations and delegate implementation, testing, review, OCA, and upgrade work to their Phase 1 owners.
 - Never request, store, display, or infer credentials.
@@ -60,6 +60,8 @@ Copy `assets/live-read-evidence.md`. Include context, domain owner, bounded requ
 - No credentials, mutation, unrestricted export, or raw business data entered audit metadata.
 
 ## Reference to load
+
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 Read `references/bounded-read.md` before invoking a record tool.
 

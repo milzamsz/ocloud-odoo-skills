@@ -1,38 +1,66 @@
 policy:
-  tier_1:
-  - '18.0'
-  tier_2:
-  - '17.0'
-  - '19.0'
-  tier_3:
-  - '16.0'
-  rule: Stable support is Odoo 18.0 Community. Other versions and Enterprise are advisory until version-specific sources and regression fixtures pass.
-versions:
-- version: '16.0'
-  status: migration-context
-  editions:
-  - community
-  - enterprise
-  notes: No broad new feature development claim without explicit testing.
-- version: '17.0'
-  status: secondary
-  editions:
-  - community
-  - enterprise
-  notes: Primary source side for initial 17 to 18 migration fixtures.
-- version: '18.0'
+  primary_baseline: 18.0-community
+  rule: A skill may claim a cell only when the cell is not blocked or advisory and
+    skill-specific reference and outcome evidence are present.
+  statuses:
+  - stable
+  - verified-experimental
+  - advisory
+  - blocked
+cells:
+- id: 17.0-community
+  version: '17.0'
+  edition: community
+  status: verified-experimental
+  source_ids:
+  - odoo-17-ce-source
+  fixture: evals/fixtures/version-matrix-17-community
+  notes: Source/module evidence verified; stable promotion still requires named human
+    review and clean-profile regression.
+- id: 17.0-enterprise
+  version: '17.0'
+  edition: enterprise
+  status: verified-experimental
+  source_ids:
+  - odoo-17-ce-source
+  - odoo-17-ee-local-evidence
+  fixture: evals/fixtures/version-matrix-17-enterprise
+  notes: Source/module evidence verified; stable promotion still requires named human
+    review and clean-profile regression.
+- id: 18.0-community
+  version: '18.0'
+  edition: community
   status: stable
-  editions:
-  - community
-  notes: Executable OCloud Phase 1 baseline.
-- version: '18.0'
-  status: advisory
-  editions:
-  - enterprise
-  notes: Inspect licensed source and installed modules; no stable Enterprise claim.
-- version: '19.0'
-  status: secondary
-  editions:
-  - community
-  - enterprise
-  notes: Validate changed APIs and behavior; never assume forward compatibility.
+  source_ids:
+  - odoo-18-ce-source
+  fixture: evals/fixtures/version-matrix-18-community
+  notes: Primary executable baseline.
+- id: 18.0-enterprise
+  version: '18.0'
+  edition: enterprise
+  status: verified-experimental
+  source_ids:
+  - odoo-18-ce-source
+  - odoo-18-ee-local-evidence
+  fixture: evals/fixtures/version-matrix-18-enterprise
+  notes: Source/module evidence verified; stable promotion still requires named human
+    review and clean-profile regression.
+- id: 19.0-community
+  version: '19.0'
+  edition: community
+  status: verified-experimental
+  source_ids:
+  - odoo-19-ce-source
+  fixture: evals/fixtures/version-matrix-19-community
+  notes: Source/module evidence verified; stable promotion still requires named human
+    review and clean-profile regression.
+- id: 19.0-enterprise
+  version: '19.0'
+  edition: enterprise
+  status: verified-experimental
+  source_ids:
+  - odoo-19-ce-source
+  - odoo-19-ee-local-evidence
+  fixture: evals/fixtures/version-matrix-19-enterprise
+  notes: Source/module evidence verified; stable promotion still requires named human
+    review and clean-profile regression.

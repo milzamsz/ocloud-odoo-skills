@@ -1,16 +1,16 @@
 ---
 name: odoo-reporting
-description: Use this skill when designing an Odoo 18 Community report and choosing among list or pivot analysis, QWeb HTML/PDF, export, spreadsheet-compatible output, or an external analytics boundary while defining data sources, filters, ACLs, multi-company behavior, rendering, and performance. Do not use it for generic frontend work, report implementation, or security audit alone.
+description: Use this skill when designing an Odoo 17, 18, or 19 Community or Enterprise report and choosing among list or pivot analysis, QWeb HTML/PDF, export, spreadsheet-compatible output, or an external analytics boundary while defining data sources, filters, ACLs, multi-company behavior, rendering, and performance. Do not use it for generic frontend work, report implementation, or security audit alone.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Odoo 18 Community is the verified baseline.
+compatibility: Hermes Agent and Agent Skills compatible clients. Odoo 17, 18, or 19 Community or Enterprise is the verified baseline.
 metadata:
   version: "0.1.0"
   author: OCloud
   status: experimental
   risk: advisory
   odoo:
-    versions: ["18.0"]
-    editions: [community]
+    versions: ["17.0", "18.0", "19.0"]
+    editions: [community, enterprise]
   hermes:
     tags: [odoo, reporting, qweb, pdf, analytics]
 ---
@@ -52,7 +52,7 @@ defines trustworthy data, access, rendering, and performance behavior.
 
 ## Workflow
 
-1. Confirm Odoo 18 Community, business decision, audience, frequency, delivery
+1. Confirm Odoo 17, 18, or 19 Community or Enterprise, business decision, audience, frequency, delivery
    format, legal/audit needs, freshness, and acceptance criteria.
 2. Define data semantics: source models, record grain, date basis, states,
    inclusions/exclusions, currency conversion, units, totals, and provenance.
@@ -112,6 +112,8 @@ test matrix, acceptance criteria, prohibited actions, and blockers.
 - Rendering and performance completion evidence is measurable.
 
 ## Reference to load
+
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 Read `references/odoo-18-community.md` before making version-sensitive report,
 QWeb, PDF, analytics, or edition claims.

@@ -2,15 +2,15 @@
 name: odoo-functional-accounting
 description: Use this skill when designing or explaining Odoo accounting processes for chart of accounts, journals, receivables, payables, generic taxes, posting, reconciliation, period close, multi-company, or multi-currency, including explicit journal impact. Do not use it for jurisdiction-specific Indonesian conclusions or code implementation.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Stable guidance targets Odoo 18.0 Community; Enterprise features are advisory.
+compatibility: Hermes Agent and Agent Skills compatible clients. Stable guidance targets Odoo 17.0, 18.0, or 19.0 Community or Enterprise; Enterprise features are advisory.
 metadata:
   version: "0.1.0"
   author: OCloud
   status: experimental
   risk: advisory
   odoo:
-    versions: ["18.0"]
-    editions: [community]
+    versions: ["17.0", "18.0", "19.0"]
+    editions: [community, enterprise]
   hermes:
     tags: [odoo, accounting, reconciliation, closing]
 ---
@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-Produce an evidence-based accounting process design or runbook for Odoo 18 Community without inventing accounts, balances, tax treatment, or posting behavior.
+Produce an evidence-based accounting process design or runbook for Odoo 17, 18, or 19 Community or Enterprise without inventing accounts, balances, tax treatment, or posting behavior.
 
 ## Required inputs
 
@@ -66,5 +66,7 @@ Use `assets/accounting-runbook.md`. Include confirmed context, assumptions, oper
 - Human accounting review is recorded before stable or production use.
 
 ## References to load
+
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 - Read `references/odoo-18.md` for the supported Community baseline and Enterprise boundary.

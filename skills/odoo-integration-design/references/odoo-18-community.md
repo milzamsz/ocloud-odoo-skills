@@ -26,3 +26,6 @@ Relevant official source areas to inspect in a target checkout include
 `odoo/http.py`, `odoo/addons/base`, model access definitions, and the specific
 business addon's models/controllers. This reference is concise guidance, not a
 substitute for source inspection.
+## Matrix boundary
+
+This remains the rich Odoo 18 Community baseline. Community evidence excludes Enterprise-only behavior. Source presence does not prove installation, configuration, authorization, or end-to-end behavior. Record exact target evidence and unresolved deltas.

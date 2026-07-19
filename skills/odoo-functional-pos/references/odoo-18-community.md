@@ -26,3 +26,6 @@ Resolve paths relative to the verified Odoo source root:
 - `addons/point_of_sale/tests/test_frontend.py`
 
 Enterprise capabilities are outside this skill's support claim. Label them advisory until licensed target-source evidence is available.
+## Matrix boundary
+
+This remains the rich Odoo 18 Community baseline. Community evidence excludes Enterprise-only behavior. Source presence does not prove installation, configuration, authorization, or end-to-end behavior. Record exact target evidence and unresolved deltas.

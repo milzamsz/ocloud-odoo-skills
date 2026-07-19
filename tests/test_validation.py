@@ -11,6 +11,7 @@ from scripts.validate_repository import (  # noqa: E402
     validate_outcome_cases,
     validate_sources,
     validate_trigger_files,
+    validate_version_claims,
 )
 
 
@@ -44,4 +45,10 @@ def test_evaluation_data_meets_release_contract():
 
 def test_source_registry_matches_policy():
     errors = validate_sources()
+    assert not errors, "\n".join(errors)
+
+
+def test_skill_version_claims_have_complete_evidence():
+    skill_dirs = sorted(path for path in (ROOT / "skills").iterdir() if path.is_dir())
+    errors = validate_version_claims(skill_dirs)
     assert not errors, "\n".join(errors)

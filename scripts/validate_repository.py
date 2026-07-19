@@ -13,6 +13,8 @@ from jsonschema import Draft202012Validator
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS_DIR = ROOT / "skills"
+VERSION_MATRIX = ROOT / "sources" / "VERSION-MATRIX.yaml"
+OUTCOME_CASES = ROOT / "evals" / "outcome" / "cases.yaml"
 MIN_TRIGGER_CASES_PER_CLASS = 8
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
@@ -91,6 +93,55 @@ def validate_skill(skill_dir: Path) -> tuple[list[str], list[str]]:
     if not trigger.exists():
         warnings.append("missing trigger evaluation file")
     return errors, warnings
+
+
+def validate_version_claims(skill_dirs: list[Path]) -> list[str]:
+    """Require source, reference, fixture, and outcome evidence for claimed cells."""
+    errors: list[str] = []
+    matrix = yaml.safe_load(VERSION_MATRIX.read_text(encoding="utf-8")) or {}
+    cases_data = yaml.safe_load(OUTCOME_CASES.read_text(encoding="utf-8")) or {}
+    registry = yaml.safe_load(
+        (ROOT / "sources" / "SOURCES.yaml").read_text(encoding="utf-8")
+    ) or {}
+    source_ids = {item.get("id") for item in registry.get("sources", [])}
+    cells = {
+        (cell.get("version"), cell.get("edition")): cell
+        for cell in matrix.get("cells", [])
+        if isinstance(cell, dict)
+    }
+    allowed = {"stable", "verified-experimental"}
+    cases = cases_data.get("cases", [])
+
+    for skill_dir in skill_dirs:
+        meta, _ = parse_skill(skill_dir / "SKILL.md")
+        odoo = (meta.get("metadata") or {}).get("odoo") or {}
+        versions = odoo.get("versions") or []
+        editions = odoo.get("editions") or []
+        for version in versions:
+            for edition in editions:
+                cell = cells.get((version, edition))
+                label = f"{skill_dir.name}: {version}-{edition}"
+                if not cell or cell.get("status") not in allowed:
+                    errors.append(f"{label}: matrix cell is not claimable")
+                    continue
+                for source_id in cell.get("source_ids", []):
+                    if source_id not in source_ids:
+                        errors.append(f"{label}: missing registered source {source_id}")
+                fixture = ROOT / str(cell.get("fixture", ""))
+                if not fixture.exists():
+                    errors.append(f"{label}: missing matrix fixture {fixture.relative_to(ROOT)}")
+                ref = skill_dir / "references" / f"odoo-{version.split('.')[0]}-{edition}.md"
+                if not ref.exists():
+                    errors.append(f"{label}: missing reference {ref.relative_to(ROOT)}")
+                covered = any(
+                    case.get("skill") == skill_dir.name
+                    and str(case.get("odoo_version")) == version
+                    and case.get("odoo_edition", "community") == edition
+                    for case in cases
+                )
+                if not covered:
+                    errors.append(f"{label}: missing outcome evidence")
+    return errors
 
 
 def validate_trigger_files() -> list[str]:
@@ -201,6 +252,7 @@ def main() -> int:
         all_warnings.extend(f"{skill_dir.name}: {item}" for item in warnings)
     all_errors.extend(validate_trigger_files())
     all_errors.extend(validate_outcome_cases(names))
+    all_errors.extend(validate_version_claims(skill_dirs))
     all_errors.extend(validate_sources())
     all_errors.extend(validate_bundles(names))
     for item in all_warnings:

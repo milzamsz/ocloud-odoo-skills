@@ -9,7 +9,8 @@ The repository teaches agents how to analyze, design, implement, review, test, s
 - Stage: Phase 1 stable; Phase 2 domain skills experimental; Phase 3 controlled
   live integration in progress
 - Stable target: Odoo 18.0 Community
-- Advisory targets: Odoo 17.0, Odoo 19.0, and Enterprise
+- Verified-experimental targets: Odoo 17.0 Community/Enterprise, Odoo 18.0
+  Enterprise, and Odoo 19.0 Community/Enterprise
 - Runtime priority: Hermes Agent
 - Format: Agent Skills (`SKILL.md`)
 - Distribution: Hermes custom skill tap and external skill directory
@@ -62,9 +63,11 @@ OCloud Odoo Skills creates a controlled layer that is:
 | `odoo-functional-manufacturing` | Design BoM-to-production processes, exceptions, and inventory handoff. |
 | `odoo-deployment-operations` | Produce read-only-first deployment, backup, rollback, and monitoring runbooks. |
 
-These skills are experimental. They support an Odoo 18 Community evidence
-baseline and compose the Phase 1 workflows rather than duplicating discovery,
-solution design, implementation, testing, assurance, or migration. See
+These skills are experimental. They use a stable Odoo 18 Community baseline
+and verified-experimental source/module evidence for the other five 17/18/19
+Community/Enterprise cells. Target installation and behavior still require
+case-specific evidence. They compose the Phase 1 workflows rather than
+duplicating discovery, solution design, implementation, testing, assurance, or migration. See
 [Phase 2 skill boundaries](docs/PHASE-2-SKILL-BOUNDARIES.md).
 
 ## Phase 3 controlled live integration

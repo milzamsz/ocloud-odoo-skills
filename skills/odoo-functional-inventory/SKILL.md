@@ -1,16 +1,16 @@
 ---
 name: odoo-functional-inventory
-description: Use this skill when designing or validating an Odoo 18 Community inventory and warehouse process, including warehouses, locations, routes, replenishment, receipts, internal transfers, deliveries, returns, lots or serials, counts, exceptions, and stock valuation impact flags. Do not use it for sales, purchasing, manufacturing, accounting valuation policy, or addon implementation.
+description: Use this skill when designing or validating an Odoo 17, 18, or 19 Community or Enterprise inventory and warehouse process, including warehouses, locations, routes, replenishment, receipts, internal transfers, deliveries, returns, lots or serials, counts, exceptions, and stock valuation impact flags. Do not use it for sales, purchasing, manufacturing, accounting valuation policy, or addon implementation.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Requires confirmed Odoo 18 Community context for version-sensitive decisions.
+compatibility: Hermes Agent and Agent Skills compatible clients. Requires confirmed Odoo 17, 18, or 19 Community or Enterprise context for version-sensitive decisions.
 metadata:
   version: "0.1.0"
   author: OCloud
   status: experimental
   risk: advisory
   odoo:
-    versions: ["18.0"]
-    editions: [community]
+    versions: ["17.0", "18.0", "19.0"]
+    editions: [community, enterprise]
   hermes:
     tags: [odoo, inventory, stock, warehouse, functional]
 ---
@@ -19,13 +19,13 @@ metadata:
 
 ## Purpose
 
-Produce an evidence-backed Odoo 18 Community inventory and warehouse design and configuration runbook covering movement, replenishment, traceability, exceptions, controls, and accounting impact flags.
+Produce an evidence-backed Odoo 17, 18, or 19 Community or Enterprise inventory and warehouse design and configuration runbook covering movement, replenishment, traceability, exceptions, controls, and accounting impact flags.
 
 ## Use when
 
 - mapping warehouses, locations, operation types, routes, rules, replenishment, or stock moves;
 - defining receipts, internal transfers, deliveries, returns, lots/serials, packages, counts, and exceptions;
-- validating whether a proposed stock process fits Odoo 18 Community.
+- validating whether a proposed stock process fits Odoo 17, 18, or 19 Community or Enterprise.
 
 ## Do not use when
 
@@ -41,7 +41,7 @@ Produce an evidence-backed Odoo 18 Community inventory and warehouse design and 
 
 ## Workflow
 
-1. Confirm Odoo 18.0 Community and identify installed `stock` and integration capabilities from evidence.
+1. Confirm Odoo 17.0, 18.0, or 19.0 Community or Enterprise and identify installed `stock` and integration capabilities from evidence.
 2. Map physical and virtual locations, warehouses, operation types, routes, rules, and company ownership.
 3. Map operational documents and transitions for receipt, internal transfer, delivery, return, scrap, adjustment/count, and replenishment.
 4. Define reservation, partial processing, backorder, cancellation, traceability, package, ownership, and negative-stock exception behavior.
@@ -53,7 +53,7 @@ Produce an evidence-backed Odoo 18 Community inventory and warehouse design and 
 ## Safety and decision rules
 
 - Treat live systems as read-only unless the user explicitly authorizes the exact mutation.
-- Do not claim Enterprise behavior or compatibility; this skill supports Odoo 18 Community only.
+- Do not claim behavior from another edition; use only the confirmed target cell and installed-module evidence.
 - Keep picking, stock move, move line, quant, and accounting entry conceptually distinct.
 - Never recommend inventory adjustment as a shortcut around unresolved document flows.
 - Do not invent valuation, account, costing, tax, or legal conclusions.
@@ -65,7 +65,7 @@ Use `assets/inventory-process-runbook.md`. Include context, evidence, topology, 
 
 ## Verification
 
-- Version and Community edition are confirmed.
+- Version and edition are confirmed independently.
 - Warehouses, locations, routes/rules, operation types, and company ownership are coherent.
 - Partial/backorder/return/count/traceability paths and permissions are addressed.
 - Valuation is flagged without inventing accounting policy.
@@ -74,7 +74,7 @@ Use `assets/inventory-process-runbook.md`. Include context, evidence, topology, 
 
 ## Reference to load
 
-Read `references/odoo-18-community.md` only after Odoo 18.0 Community is confirmed.
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 ## Failure and escalation
 

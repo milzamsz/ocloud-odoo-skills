@@ -2,15 +2,15 @@
 name: odoo-functional-pos
 description: Use this skill when designing an Odoo Point of Sale process covering opening and closing sessions, orders, payments, cash control, refunds, offline operation, and stock handoff. Do not use it for generic sales order design, accounting policy, inventory route design, or POS addon implementation.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Verified for Odoo 18.0 Community.
+compatibility: Hermes Agent and Agent Skills compatible clients. Verified for Odoo 17.0, 18.0, or 19.0 Community or Enterprise.
 metadata:
   version: "0.1.0"
   author: OCloud
   status: experimental
   risk: advisory
   odoo:
-    versions: ["18.0"]
-    editions: [community]
+    versions: ["17.0", "18.0", "19.0"]
+    editions: [community, enterprise]
   hermes:
     tags: [odoo, pos, functional]
 ---
@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-Produce an evidence-based POS process design for Odoo 18 Community, from session opening through payment, stock handoff, reconciliation inputs, and session closing.
+Produce an evidence-based POS process design for Odoo 17, 18, or 19 Community or Enterprise, from session opening through payment, stock handoff, reconciliation inputs, and session closing.
 
 ## Preconditions and composition
 
@@ -55,9 +55,11 @@ Copy `assets/pos-process-design.md`. Include process states, role controls, paym
 - Opening-to-closing and refund paths are complete.
 - Payment success, Odoo order state, stock effect, and accounting handoff are distinguished.
 - Offline and reconnection cases have observable acceptance criteria.
-- Odoo 18 Community support is explicit.
+- Odoo 17, 18, or 19 Community or Enterprise support is explicit.
 
 ## Reference to load
+
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 Read `references/odoo-18-community.md` for the verified CE baseline and inspect target source when a detail affects implementation.
 

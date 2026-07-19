@@ -8,6 +8,13 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Added
 
+- Added a six-cell Odoo 17/18/19 Community/Enterprise support matrix,
+  licensed-source-safe evidence registry, 121 exact version/edition skill
+  references, six matrix fixtures, and 102 matrix outcome scenarios.
+- Added repository validation that rejects unsupported skill metadata claims
+  unless matrix, source, reference, fixture, and outcome evidence agree.
+- Added a complete local Odoo 17 Community environment and verified core
+  module/edition markers across all six development environments.
 - Added Phase 3 controlled-live scaffolding: skill boundaries, cross-repo
   interface contract, risk classification, plugin-skill migration policy,
   private overlay guidance/template, and a foundation-only `odoo-live` bundle.
@@ -30,6 +37,9 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Changed
 
+- Expanded all Phase 1 and Phase 2 skills plus Phase 3 live context/read to
+  Odoo 17/18/19 Community and Enterprise verified-experimental coverage.
+  `odoo-live-mutation` remains explicitly Odoo 18 Community only.
 - Extended the tap manifest, README, and package manifest for experimental
   Phase 2 distribution while retaining the Phase 1 stable baseline.
 

@@ -1,16 +1,16 @@
 ---
 name: odoo-live-context
-description: Use this skill when a configured live Odoo connection must verify the selected instance, environment, Odoo 18 Community version, profile, company scope, available models, metadata, or effective read access before querying business records. Do not use it for record extraction, repository-only discovery, or mutation.
+description: Use this skill when a configured live Odoo connection must verify the selected instance, environment, Odoo 17, 18, or 19 version and Community/Enterprise edition, profile, company scope, available models, metadata, or effective read access before querying business records. Do not use it for record extraction, repository-only discovery, or mutation.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Verified for Odoo 18.0 Community with the reconciled Odoo MCP read contract.
+compatibility: Hermes Agent and Agent Skills compatible clients. Verified for Odoo 17.0, 18.0, or 19.0 Community or Enterprise with the reconciled Odoo MCP read contract.
 metadata:
   version: "0.1.0"
   author: OCloud
   status: experimental
   risk: read-only
   odoo:
-    versions: ["18.0"]
-    editions: [community]
+    versions: ["17.0", "18.0", "19.0"]
+    editions: [community, enterprise]
   hermes:
     tags: [odoo, live, context, metadata]
 ---
@@ -35,7 +35,7 @@ Use only these reconciled metadata tools when present in the selected profile: `
 ## Workflow
 
 1. Record the selected `instance_id`, environment, profile, expected Odoo version and edition, freshness, and evidence source.
-2. Confirm Odoo 18 Community from configured and live evidence. Mark any conflict **Unknown** and stop version-sensitive conclusions.
+2. Confirm Odoo 17, 18, or 19 Community or Enterprise from configured and live evidence. Mark any conflict **Unknown** and stop version-sensitive conclusions.
 3. Establish the intended company scope from trusted configured context; do not discover companies by querying business records.
 4. Use `odoo_list_models` only with a bounded purpose, then `odoo_get_model_metadata` only for named models.
 5. Use `odoo_check_access` for the exact model and required read operation. Missing access is evidence, not a reason to elevate privileges.
@@ -54,12 +54,14 @@ Copy `assets/live-context.md`. Include context envelope, evidence labels, exact 
 
 ## Verification
 
-- Instance, environment, profile, Odoo 18 Community, and company scope are evidence-backed.
+- Instance, environment, profile, Odoo 17, 18, or 19 Community or Enterprise, and company scope are evidence-backed.
 - Every tool is in the exact allowlist and selected profile.
 - No business records or credentials were requested or returned.
 - Access denial remains denied and unresolved conflicts remain explicit.
 
 ## Reference to load
+
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 Read `references/read-only-context.md` before invoking a metadata tool.
 

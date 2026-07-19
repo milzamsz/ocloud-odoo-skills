@@ -14,3 +14,6 @@ This reference does not cover major-version migration. Compose
 `odoo-version-upgrade` for that outcome. Enterprise and managed-hosting
 features are advisory until verified against licensed source or provider
 documentation.
+## Matrix boundary
+
+This remains the rich Odoo 18 Community baseline. Community evidence excludes Enterprise-only behavior. Source presence does not prove installation, configuration, authorization, or end-to-end behavior. Record exact target evidence and unresolved deltas.

@@ -25,3 +25,6 @@ Resolve paths relative to the verified Odoo source root:
 - `addons/sale_stock/__manifest__.py`
 
 Inspect the target source before asserting field names, states, defaults, or installed capabilities. This reference does not claim Enterprise support.
+## Matrix boundary
+
+This remains the rich Odoo 18 Community baseline. Community evidence excludes Enterprise-only behavior. Source presence does not prove installation, configuration, authorization, or end-to-end behavior. Record exact target evidence and unresolved deltas.

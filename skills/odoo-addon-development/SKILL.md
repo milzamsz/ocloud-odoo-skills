@@ -9,8 +9,8 @@ metadata:
   status: stable
   risk: controlled-write
   odoo:
-    versions: ["18.0"]
-    editions: [community]
+    versions: ["17.0", "18.0", "19.0"]
+    editions: [community, enterprise]
   hermes:
     tags: [odoo, addon, development, python, xml]
 ---
@@ -166,6 +166,8 @@ Use `assets/implementation-report.md` and provide:
 Code creation is not completion. Completion requires executable evidence aligned to acceptance criteria.
 
 ## References to load
+
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 - Read `references/model-and-orm.md` for model-heavy changes.
 - Read `references/views-and-assets.md` for XML, OWL, or asset changes.

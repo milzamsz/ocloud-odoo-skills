@@ -31,3 +31,6 @@ features are not implied by this baseline.
 Relevant official source areas include `odoo/addons/base`, `odoo/addons/web`,
 `odoo/addons/base/models/ir_actions_report.py`, and the target business addon's
 views/reports. This reference does not replace source inspection.
+## Matrix boundary
+
+This remains the rich Odoo 18 Community baseline. Community evidence excludes Enterprise-only behavior. Source presence does not prove installation, configuration, authorization, or end-to-end behavior. Record exact target evidence and unresolved deltas.

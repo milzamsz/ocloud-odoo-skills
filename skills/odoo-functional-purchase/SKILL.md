@@ -1,16 +1,16 @@
 ---
 name: odoo-functional-purchase
-description: Use this skill when designing or validating an Odoo 18 Community procure-to-pay operational process, including requisition inputs, requests for quotation, purchase orders, receipt handoff, vendor bill matching readiness, vendor terms, approvals, exceptions, and completion evidence. Do not use it for sales, warehouse-only execution, accounting policy, or addon implementation.
+description: Use this skill when designing or validating an Odoo 17, 18, or 19 Community or Enterprise procure-to-pay operational process, including requisition inputs, requests for quotation, purchase orders, receipt handoff, vendor bill matching readiness, vendor terms, approvals, exceptions, and completion evidence. Do not use it for sales, warehouse-only execution, accounting policy, or addon implementation.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Requires confirmed Odoo 18 Community context for version-sensitive decisions.
+compatibility: Hermes Agent and Agent Skills compatible clients. Requires confirmed Odoo 17, 18, or 19 Community or Enterprise context for version-sensitive decisions.
 metadata:
   version: "0.1.0"
   author: OCloud
   status: experimental
   risk: advisory
   odoo:
-    versions: ["18.0"]
-    editions: [community]
+    versions: ["17.0", "18.0", "19.0"]
+    editions: [community, enterprise]
   hermes:
     tags: [odoo, purchase, procurement, functional]
 ---
@@ -19,13 +19,13 @@ metadata:
 
 ## Purpose
 
-Produce an evidence-backed Odoo 18 Community procure-to-pay operational design and configuration runbook from purchasing demand through RFQ, purchase order, receipt handoff, and vendor bill matching readiness.
+Produce an evidence-backed Odoo 17, 18, or 19 Community or Enterprise procure-to-pay operational design and configuration runbook from purchasing demand through RFQ, purchase order, receipt handoff, and vendor bill matching readiness.
 
 ## Use when
 
 - mapping RFQs, purchase orders, vendor terms, approvals, receipts, or bill control;
 - defining procurement actors, document states, exceptions, permissions, and acceptance criteria;
-- validating whether a proposed purchasing process fits Odoo 18 Community.
+- validating whether a proposed purchasing process fits Odoo 17, 18, or 19 Community or Enterprise.
 
 ## Do not use when
 
@@ -41,7 +41,7 @@ Produce an evidence-backed Odoo 18 Community procure-to-pay operational design a
 
 ## Workflow
 
-1. Confirm Odoo 18.0 Community and identify installed `purchase` and integration capabilities from evidence.
+1. Confirm Odoo 17.0, 18.0, or 19.0 Community or Enterprise and identify installed `purchase` and integration capabilities from evidence.
 2. Map actors and operational documents: demand input, RFQ, purchase order, receipt handoff, and vendor bill matching readiness.
 3. Define state transitions, ownership, approvals, cancellation, partial receipt, backorder, return, quantity/price variance, and bill exceptions.
 4. Specify master data and configuration: vendors, products, units, lead times, vendor prices, currencies, payment terms, taxes as assumptions, warehouses, and bill control policy.
@@ -52,7 +52,7 @@ Produce an evidence-backed Odoo 18 Community procure-to-pay operational design a
 ## Safety and decision rules
 
 - Treat live systems as read-only unless the user explicitly authorizes the exact mutation.
-- Do not claim Enterprise behavior or compatibility; this skill supports Odoo 18 Community only.
+- Do not claim behavior from another edition; use only the confirmed target cell and installed-module evidence.
 - Keep RFQ, purchase order, receipt, and vendor bill distinct.
 - Do not invent tax, account, fiscal-position, tolerance, or legal conclusions.
 - Label facts as Confirmed, Inferred, Assumed, or Unknown and cite source paths.
@@ -63,7 +63,7 @@ Use `assets/purchase-process-runbook.md`. Include context, evidence, actors, doc
 
 ## Verification
 
-- Version and Community edition are confirmed.
+- Version and edition are confirmed independently.
 - RFQ, purchase order, receipt handoff, and bill matching readiness are distinct.
 - Bill control, partial/cancel/return/variance paths, permissions, and multi-company behavior are addressed.
 - No implementation or accounting policy is silently designed.
@@ -71,7 +71,7 @@ Use `assets/purchase-process-runbook.md`. Include context, evidence, actors, doc
 
 ## Reference to load
 
-Read `references/odoo-18-community.md` only after Odoo 18.0 Community is confirmed.
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 ## Failure and escalation
 

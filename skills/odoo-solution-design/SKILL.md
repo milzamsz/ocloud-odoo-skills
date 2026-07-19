@@ -9,8 +9,8 @@ metadata:
   status: stable
   risk: advisory
   odoo:
-    versions: ["18.0"]
-    editions: [community]
+    versions: ["17.0", "18.0", "19.0"]
+    editions: [community, enterprise]
   hermes:
     tags: [odoo, solution-design, functional, architecture]
 ---
@@ -153,6 +153,8 @@ Use `assets/solution-design-template.md` and include:
 - Acceptance criteria are testable.
 
 ## References to load
+
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 - Read `references/component-classification.md` for classification examples.
 - Read `references/architecture-levels.md` when scale or availability drives architecture.

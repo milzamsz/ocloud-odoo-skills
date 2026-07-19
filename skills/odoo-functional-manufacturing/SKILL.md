@@ -2,15 +2,15 @@
 name: odoo-functional-manufacturing
 description: Use this skill when designing an Odoo manufacturing process covering bills of materials, manufacturing orders, component consumption, work centers and operations, by-products, lots or serials, scrap, and backorders. Do not use it for warehouse route depth, accounting policy, maintenance, PLM, or addon implementation.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Verified for Odoo 18.0 Community.
+compatibility: Hermes Agent and Agent Skills compatible clients. Verified for Odoo 17.0, 18.0, or 19.0 Community or Enterprise.
 metadata:
   version: "0.1.0"
   author: OCloud
   status: experimental
   risk: advisory
   odoo:
-    versions: ["18.0"]
-    editions: [community]
+    versions: ["17.0", "18.0", "19.0"]
+    editions: [community, enterprise]
   hermes:
     tags: [odoo, manufacturing, mrp, functional]
 ---
@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-Produce an evidence-based Odoo 18 Community design from bill of materials through production completion, exceptions, and inventory handoff.
+Produce an evidence-based Odoo 17, 18, or 19 Community or Enterprise design from bill of materials through production completion, exceptions, and inventory handoff.
 
 ## Preconditions and composition
 
@@ -56,9 +56,11 @@ Copy `assets/manufacturing-process-design.md`. Include master data, state flow, 
 - BoM-to-completion and partial/backorder paths are complete.
 - Quantity and traceability states are unambiguous.
 - Inventory route depth and accounting policy are delegated.
-- Odoo 18 Community support is explicit.
+- Odoo 17, 18, or 19 Community or Enterprise support is explicit.
 
 ## Reference to load
+
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 Read `references/odoo-18-community.md` for the verified CE baseline and inspect target source when a detail affects implementation.
 

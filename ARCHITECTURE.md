@@ -105,9 +105,15 @@ flowchart LR
 
 ### 6.1 Baseline
 
-- Tier 1: Odoo 18.0 Community and Enterprise.
-- Tier 2: Odoo 17.0 and 19.0.
+- Primary stable cell: Odoo 18.0 Community.
+- Verified-experimental cells: Odoo 17.0 Community/Enterprise, Odoo 18.0
+  Enterprise, and Odoo 19.0 Community/Enterprise.
 - Tier 3: Odoo 16.0, primarily for migration context.
+
+The machine-readable status is authoritative in
+`sources/VERSION-MATRIX.yaml`. Version and edition are separate support
+dimensions; an Enterprise source tree does not make Enterprise behavior
+available in Community or prove that an Enterprise module is installed.
 
 ### 6.2 Design
 

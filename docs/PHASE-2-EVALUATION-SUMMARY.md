@@ -4,7 +4,8 @@ Date: 2026-07-20
 
 ## Scope
 
-Ten experimental Odoo 18 Community domain skills:
+Ten experimental domain skills with version/edition references for Odoo
+17.0, 18.0, and 19.0 Community and Enterprise:
 
 - Sales, Purchase, Inventory, POS, and Manufacturing;
 - Accounting and Indonesian accounting;
@@ -12,13 +13,13 @@ Ten experimental Odoo 18 Community domain skills:
 
 ## Automated evidence
 
-- Structural validation: 18 skills, 0 warnings, 0 errors.
+- Structural validation: 21 skills, 0 warnings, 0 errors.
 - Trigger datasets: at least 8 positive and 8 near-miss negative prompts for
   every Phase 2 skill.
-- Outcome coverage: one clean-room fixture and one outcome case per Phase 2
-  skill, each with required findings and prohibited actions.
+- Outcome coverage: the original Odoo 18 Community domain scenarios plus one
+  source/edition boundary case per skill for each other matrix cell.
 - Lint: passed.
-- Unit tests: 4 passed.
+- Unit tests: 5 passed.
 - Package check: all tap and bundle members resolve.
 - Hermes CLI discovery smoke: command completed successfully. This public-hub
   search is runtime evidence only; it does not prove unpublished local Phase 2
@@ -41,9 +42,10 @@ No Phase 2 skill was promoted to stable.
 
 ## Support status
 
-Phase 2 remains **experimental**. Odoo 18 Community is the evidence baseline.
-Enterprise, Odoo 17/19, Indonesian regulatory conclusions, and production
-operations remain advisory.
+Phase 2 remains **experimental**. Odoo 18 Community is the stable evidence
+baseline. Odoo 17/19 Community/Enterprise and Odoo 18 Enterprise are
+verified-experimental at source/module-boundary level. Indonesian regulatory
+conclusions and production operations remain assumption-bound.
 
 ## Stable promotion gates
 

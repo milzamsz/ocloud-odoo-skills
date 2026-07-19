@@ -1,5 +1,58 @@
-review_date: '2026-07-19'
+review_date: '2026-07-20'
 sources:
+- id: odoo-17-ce-source
+  name: Odoo 17.0 Community Source
+  url: https://github.com/odoo/odoo/tree/17.0
+  authority_tier: 3
+  usage: authoritative-odoo-source-reference
+  license_status: LGPL-3.0 repository reference; no source copied
+  odoo_versions:
+  - '17.0'
+  last_reviewed: '2026-07-20'
+  notes: Read-only local checkout verified at environments/odoo17ce/odoo; release and module-presence evidence only.
+- id: odoo-17-ee-local-evidence
+  name: Odoo 17.0 Enterprise Licensed Local Evidence
+  url: https://www.odoo.com/documentation/17.0/
+  authority_tier: 3
+  usage: licensed-enterprise-behavioral-evidence
+  license_status: licensed local inspection only; no Enterprise source copied or redistributed
+  odoo_versions:
+  - '17.0'
+  last_reviewed: '2026-07-20'
+  notes: Read-only licensed tree at environments/odoo17ee/odoo confirms edition markers and module presence. Target
+    installation and configuration remain independently verifiable.
+- id: odoo-18-ee-local-evidence
+  name: Odoo 18.0 Enterprise Licensed Local Evidence
+  url: https://www.odoo.com/documentation/18.0/
+  authority_tier: 3
+  usage: licensed-enterprise-behavioral-evidence
+  license_status: licensed local inspection only; no Enterprise source copied or redistributed
+  odoo_versions:
+  - '18.0'
+  last_reviewed: '2026-07-20'
+  notes: Read-only licensed tree at environments/odoo18ee/odoo confirms edition markers and module presence. Target
+    installation and configuration remain independently verifiable.
+- id: odoo-19-ce-source
+  name: Odoo 19.0 Community Source
+  url: https://github.com/odoo/odoo/tree/19.0
+  authority_tier: 3
+  usage: authoritative-odoo-source-reference
+  license_status: LGPL-3.0 repository reference; no source copied
+  odoo_versions:
+  - '19.0'
+  last_reviewed: '2026-07-20'
+  notes: Read-only local checkout verified at environments/odoo19ce/odoo; release and module-presence evidence only.
+- id: odoo-19-ee-local-evidence
+  name: Odoo 19.0 Enterprise Licensed Local Evidence
+  url: https://www.odoo.com/documentation/19.0/
+  authority_tier: 3
+  usage: licensed-enterprise-behavioral-evidence
+  license_status: licensed local inspection only; no Enterprise source copied or redistributed
+  odoo_versions:
+  - '19.0'
+  last_reviewed: '2026-07-20'
+  notes: Read-only licensed tree at environments/odoo19ee/odoo confirms edition markers and module presence. Target
+    installation and configuration remain independently verifiable.
 - id: odoo-agent-platform-local-contracts
   name: OCloud Odoo Agent Platform Local Contracts
   url: https://github.com/ocloudpro/odoo-rust-mcp-agent
@@ -9,7 +62,8 @@ sources:
   odoo_versions:
   - '18.0'
   last_reviewed: '2026-07-20'
-  notes: Local sibling repositories provide the reconciled MCP manifest, generated policy, plugin guard, metadata-only audit, and blocked create_crm_lead_draft.v1 contract used for Phase 3 procedural boundaries.
+  notes: Local sibling repositories provide the reconciled MCP manifest, generated policy, plugin guard, metadata-only
+    audit, and blocked create_crm_lead_draft.v1 contract used for Phase 3 procedural boundaries.
 - id: odoo-18-functional-source
   name: Odoo 18 Community Functional Application Source
   url: https://github.com/odoo/odoo/tree/18.0/addons
@@ -19,7 +73,8 @@ sources:
   odoo_versions:
   - '18.0'
   last_reviewed: '2026-07-20'
-  notes: Read-only evidence for CRM, sales, purchase, inventory, accounting, POS, manufacturing, integration, reporting, localization, and operations workflows.
+  notes: Read-only evidence for CRM, sales, purchase, inventory, accounting, POS, manufacturing, integration, reporting,
+    localization, and operations workflows.
 - id: odoo-18-applications
   name: Odoo 18 Applications Documentation
   url: https://www.odoo.com/documentation/18.0/applications.html
@@ -29,7 +84,8 @@ sources:
   odoo_versions:
   - '18.0'
   last_reviewed: '2026-07-20'
-  notes: Functional process terminology and configuration reference; target source and installed modules remain decisive.
+  notes: Functional process terminology and configuration reference; target source and installed modules remain
+    decisive.
 - id: odoo-18-indonesia-localization
   name: Odoo 18 Indonesia Fiscal Localization Source
   url: https://github.com/odoo/odoo/tree/18.0/addons/l10n_id
@@ -39,7 +95,8 @@ sources:
   odoo_versions:
   - '18.0'
   last_reviewed: '2026-07-20'
-  notes: Technical localization evidence only; current law, tax treatment, mappings, and filings require qualified human validation.
+  notes: Technical localization evidence only; current law, tax treatment, mappings, and filings require qualified
+    human validation.
 - id: odoo-18-accounting-vendor-bills
   name: Odoo 18 Vendor Bills Documentation
   url: https://www.odoo.com/documentation/18.0/applications/finance/accounting/vendor_bills.html
@@ -61,7 +118,8 @@ sources:
   - '18.0'
   - '19.0'
   last_reviewed: '2026-07-19'
-  notes: Starting point for functional repository and target-branch candidate lookup; organization membership does not prove module fit.
+  notes: Starting point for functional repository and target-branch candidate lookup; organization membership does
+    not prove module fit.
 - id: oca-maintainer-tools
   name: OCA Maintainer Tools
   url: https://github.com/OCA/maintainer-tools
@@ -73,7 +131,8 @@ sources:
   - '18.0'
   - '19.0'
   last_reviewed: '2026-07-19'
-  notes: Official OCA contribution, repository, migration, and maintenance guidance; target repository and branch remain decisive.
+  notes: Official OCA contribution, repository, migration, and maintenance guidance; target repository and branch
+    remain decisive.
 - id: oca-server-tools-19
   name: OCA server-tools 19.0 branch
   url: https://github.com/OCA/server-tools/tree/19.0
@@ -83,7 +142,8 @@ sources:
   odoo_versions:
   - '19.0'
   last_reviewed: '2026-07-19'
-  notes: Corroborated against local checkout for generated README, 19.0 manifest versions, readme fragments, configured lint, module pyproject files, and migrations.
+  notes: Corroborated against local checkout for generated README, 19.0 manifest versions, readme fragments, configured
+    lint, module pyproject files, and migrations.
 - id: oca-account-financial-tools-18
   name: OCA account-financial-tools 18.0 branch
   url: https://github.com/OCA/account-financial-tools/tree/18.0
@@ -93,7 +153,8 @@ sources:
   odoo_versions:
   - '18.0'
   last_reviewed: '2026-07-19'
-  notes: Partial local checkout corroborates 18.0 badges, manifests, fragments, and tooling; complete canonical local OCA 18 checkout set is unavailable, so remote branch verification remains required.
+  notes: Partial local checkout corroborates 18.0 badges, manifests, fragments, and tooling; complete canonical
+    local OCA 18 checkout set is unavailable, so remote branch verification remains required.
 - id: hermes-skills
   name: Hermes Agent Skills System
   url: https://hermes-agent.nousresearch.com/docs/user-guide/features/skills
@@ -101,8 +162,7 @@ sources:
   usage: authoritative-runtime
   license_status: documentation-reference
   odoo_versions: []
-  notes: Progressive disclosure, external directories, bundles, taps, and skill lifecycle
-    behavior.
+  notes: Progressive disclosure, external directories, bundles, taps, and skill lifecycle behavior.
 - id: hermes-creating-skills
   name: Hermes Creating Skills
   url: https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills
@@ -136,7 +196,8 @@ sources:
   odoo_versions:
   - '18.0'
   last_reviewed: '2026-07-19'
-  notes: Primary Phase 1 Odoo baseline; cross-checked locally against the Odoo 18 CE source tree for ORM, views, manifests, and tests.
+  notes: Primary Phase 1 Odoo baseline; cross-checked locally against the Odoo 18 CE source tree for ORM, views,
+    manifests, and tests.
 - id: odoo-18-ce-source
   name: Odoo 18 Community Source
   url: https://github.com/odoo/odoo/tree/18.0
@@ -146,7 +207,8 @@ sources:
   odoo_versions:
   - '18.0'
   last_reviewed: '2026-07-19'
-  notes: Verified through the read-only local checkout at environments/odoo18ce/odoo; cited by official relative paths for ORM, view, manifest, and test behavior.
+  notes: Verified through the read-only local checkout at environments/odoo18ce/odoo; cited by official relative
+    paths for ORM, view, manifest, and test behavior.
 - id: odoo-19-developer
   name: Odoo 19 Developer Documentation
   url: https://www.odoo.com/documentation/19.0/developer.html
@@ -199,8 +261,7 @@ sources:
   usage: inspiration-coverage
   license_status: verify-before-use
   odoo_versions: []
-  notes: Broad Odoo skill and agent coverage; Claude/Doodba assumptions must not be
-    copied blindly.
+  notes: Broad Odoo skill and agent coverage; Claude/Doodba assumptions must not be copied blindly.
 - id: mart337i-odoo-skills
   name: mart337i/odoo-skills
   url: https://github.com/mart337i/odoo-skills
@@ -232,8 +293,7 @@ sources:
   usage: inspiration-oca
   license_status: verify-before-use
   odoo_versions: []
-  notes: OCA-oriented scaffold and validation ideas; verify against actual OCA branch
-    rules.
+  notes: OCA-oriented scaffold and validation ideas; verify against actual OCA branch rules.
 - id: ahmed-odoo-plugins
   name: ahmed-lakosha/odoo-plugins
   url: https://github.com/ahmed-lakosha/odoo-plugins
@@ -265,8 +325,7 @@ sources:
   usage: negative-and-inspiration
   license_status: verify-before-use
   odoo_versions: []
-  notes: Generic rules require careful version validation; do not inherit legacy API
-    patterns.
+  notes: Generic rules require careful version validation; do not inherit legacy API patterns.
 - id: prince-builder
   name: 19prince/claude-odoo-builder
   url: https://github.com/19prince/claude-odoo-builder
@@ -274,8 +333,7 @@ sources:
   usage: future-website-operator-inspiration
   license_status: verify-before-use
   odoo_versions: []
-  notes: Potential future website operations skill; state-changing patterns require
-    strict controls.
+  notes: Potential future website operations skill; state-changing patterns require strict controls.
 - id: openupgrade-enterprise
   name: DavidddM/openupgrade-enterprise
   url: https://github.com/DavidddM/openupgrade-enterprise
