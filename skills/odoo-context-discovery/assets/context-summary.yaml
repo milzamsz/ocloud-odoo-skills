@@ -1,0 +1,36 @@
+context_summary:
+  repository_revision: null
+  evidence_labels: [confirmed, inferred, assumed, unknown]
+  odoo:
+    version: null
+    edition: unknown
+    edition_dependencies: []
+    evidence: []
+    source_paths: []
+    addons_paths: []
+  project:
+    instructions: []
+    target_modules: []
+    dependencies: []
+    oca_repositories: []
+    layout_notes: []
+  runtime:
+    type: unknown
+    environment: unknown
+    database_target: unknown
+    database_mutation_authorized: false
+    safe_commands: []
+  business_flags:
+    multi_company: unknown
+    multi_currency: unknown
+    accounting_impact: unknown
+    stock_impact: unknown
+    portal_or_public_exposure: unknown
+  facts: []
+  inferences: []
+  assumptions: []
+  unknowns: []
+  risks: []
+  prohibited_actions: []
+  permitted_next_actions: []
+  recommended_next_skills: []

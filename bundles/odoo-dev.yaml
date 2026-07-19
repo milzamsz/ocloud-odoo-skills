@@ -1,0 +1,12 @@
+name: odoo-dev
+description: Design and implement a controlled Odoo addon change with security and
+  tests.
+skills:
+- odoo-context-discovery
+- odoo-solution-design
+- odoo-addon-development
+- odoo-security-audit
+- odoo-testing
+instruction: Confirm version and edition, inspect repository instructions, preserve
+  standard behavior, and do not execute database-changing commands without explicit
+  approval and a safe environment.

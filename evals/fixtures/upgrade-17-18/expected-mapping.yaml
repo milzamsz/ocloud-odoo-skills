@@ -1,0 +1,12 @@
+field_renames:
+  - model: oca.upgrade.sample
+    old: legacy_reference
+    new: external_reference
+xmlid_renames:
+  - old: oca_upgrade_sample.view_upgrade_sample_form
+    new: oca_upgrade_sample.upgrade_sample_form_view
+assertions:
+  - preserve every legacy_reference value by record identity
+  - preserve the existing view record while renaming its XML ID
+  - leave no target code or XML reference to the old field
+  - reconcile counts and values before accepting migration

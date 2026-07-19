@@ -1,0 +1,11 @@
+<odoo>
+    <record id="upgrade_sample_form_view" model="ir.ui.view">
+        <field name="name">oca.upgrade.sample.form</field>
+        <field name="model">oca.upgrade.sample</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet><group><field name="name"/><field name="external_reference"/></group></sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

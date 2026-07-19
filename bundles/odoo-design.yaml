@@ -1,0 +1,9 @@
+name: odoo-design
+description: Discover Odoo context and design the simplest viable solution before
+  implementation.
+skills:
+- odoo-context-discovery
+- odoo-solution-design
+instruction: Inspect evidence first. Separate business requirements from proposed
+  technology. Evaluate Standard, configuration, OCA, low-code, custom, and external
+  options in that order.

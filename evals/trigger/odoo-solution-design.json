@@ -1,0 +1,82 @@
+[
+  {
+    "query": "We want vendor invoices from email to become purchase orders or bills in Odoo. Design the simplest viable solution before coding.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Should this Odoo requirement use standard configuration, an OCA module, custom addon, or n8n?",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Turn this business process into an Odoo functional and technical scope with acceptance criteria.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "The client asked for a custom module, but assess whether Odoo 18 Enterprise already supports it.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Design a multi-company approval workflow and explain accounting and security impact.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Compare native Odoo automation against an external Rust middleware for this integration.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Design vendor bill email intake for two companies, including duplicate controls, posting boundaries, and OCA research before custom code.",
+    "should_trigger": true,
+    "notes": "Accounting and multi-company design."
+  },
+  {
+    "query": "We found an OCA addon with a similar name; assess its target branch, license, dependencies, gaps, and whether configuration is still simpler.",
+    "should_trigger": true,
+    "notes": "Evidence-based option selection."
+  },
+  {
+    "query": "Add a Char field to res.partner using this approved design.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Audit this addon for missing ACLs.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Explain how computed fields work.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Run the Odoo test suite.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Fix this XML syntax error.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Summarize my meeting notes.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "The approved design selects a custom addon; implement its models, ACLs, views, and tests.",
+    "should_trigger": false,
+    "notes": "Implementation boundary."
+  },
+  {
+    "query": "Review this existing vendor bill module for N+1 queries and unsafe sudo calls.",
+    "should_trigger": false,
+    "notes": "Review and security boundary."
+  }
+]

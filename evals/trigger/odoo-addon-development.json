@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Implement the approved Odoo 18 addon with models, views, ACLs, tests, and upgrade verification.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Extend sale.order with a controlled approval state and preserve standard transitions.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Fix this Odoo compute field and add a regression test.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Create a QWeb report and secure its action for the finance group.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Add an idempotent cron job to this Odoo module.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Port the approved controller change into the existing addon and test it.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Build a minimal installable Odoo 18 Community module with a manifest, model, ACL, list view, and TransactionCase.",
+    "should_trigger": true,
+    "notes": "Concrete Odoo addon implementation with version-specific artifacts."
+  },
+  {
+    "query": "Add a company-owned model to our Odoo addon, enforce access isolation, and implement negative tests.",
+    "should_trigger": true,
+    "notes": "Embedded security and tests remain part of addon implementation."
+  },
+  {
+    "query": "Should we use OCA or custom development for this requirement?",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Review this pull request but do not edit files.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Explain Odoo ORM at a high level.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Migrate the full database from Odoo 17 to 18.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Write a generic FastAPI endpoint.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Find the Odoo version in this repository.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Design a test matrix for an already implemented Odoo module without changing production code.",
+    "should_trigger": false,
+    "notes": "Primary outcome is testing, not addon implementation."
+  },
+  {
+    "query": "Audit whether this Odoo addon leaks records between companies; report only.",
+    "should_trigger": false,
+    "notes": "Primary outcome is a security audit."
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://skills.sh/schema.json",
+  "name": "OCloud Odoo Skills",
+  "description": "Version-aware Odoo engineering and ERP delivery skills for Hermes Agent and compatible clients.",
+  "groupings": [
+    {
+      "title": "Foundation",
+      "skills": [
+        "odoo-context-discovery",
+        "odoo-solution-design"
+      ]
+    },
+    {
+      "title": "Engineering",
+      "skills": [
+        "odoo-addon-development",
+        "odoo-testing",
+        "odoo-oca-development"
+      ]
+    },
+    {
+      "title": "Assurance",
+      "skills": [
+        "odoo-code-review",
+        "odoo-security-audit"
+      ]
+    },
+    {
+      "title": "Migration",
+      "skills": [
+        "odoo-version-upgrade"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ocloud_minimal_item_user,ocloud.minimal.item user,model_ocloud_minimal_item,base.group_user,1,1,1,0

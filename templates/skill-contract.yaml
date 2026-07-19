@@ -1,0 +1,7 @@
+name: odoo-example
+problem: Describe the recurring problem.
+primary_outcome: Describe the reusable result.
+should_trigger: []
+should_not_trigger: []
+risk_class: advisory
+owner: OCloud

@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Create Odoo tests for this approval workflow, including unauthorized and cross-company users.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Which Odoo test seam should we use for onchange, controllers, cron, and migration behavior?",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Add a regression test for this compute field bug.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Verify debit, credit, currency, and reconciliation results in the accounting test.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Build an Odoo 17 to 18 migration fixture and assertions.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Run focused tests, then installation and upgrade verification on a disposable database.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Write an Odoo 18 TransactionCase proving this SQL constraint and ACL denial.",
+    "should_trigger": true,
+    "notes": "Version-specific model and security test implementation."
+  },
+  {
+    "query": "Choose between Form, HttpCase, QUnit, and a tour for these Odoo acceptance criteria.",
+    "should_trigger": true,
+    "notes": "Explicit Odoo test-seam selection."
+  },
+  {
+    "query": "Implement the feature and its tests from scratch.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Review this addon for security issues.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Explain pytest fixtures generically.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Run tests against production to save setup time.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Design the business process first.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Write a unit test for a standalone Rust function.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Create the manifest, model, ACL, and views for a new Odoo addon.",
+    "should_trigger": false,
+    "notes": "Implementation is primary and no test outcome is requested."
+  },
+  {
+    "query": "Show me how Python unittest.TestCase works outside Odoo.",
+    "should_trigger": false,
+    "notes": "Generic Python testing is outside this skill."
+  }
+]

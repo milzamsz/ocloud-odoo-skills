@@ -1,0 +1,11 @@
+name: odoo-review
+description: Review an Odoo addon for correctness, security, performance, upgradeability,
+  and production readiness.
+skills:
+- odoo-context-discovery
+- odoo-code-review
+- odoo-security-audit
+- odoo-testing
+instruction: Keep the review read-only. Separate confirmed release blockers, bugs,
+  security risks, upgrade risks, refactoring, and missing tests. Cite evidence and
+  avoid generic style noise.

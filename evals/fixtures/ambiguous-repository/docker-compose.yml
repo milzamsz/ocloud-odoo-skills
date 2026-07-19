@@ -1,0 +1,4 @@
+services:
+  odoo:
+    image: odoo:17.0
+    env_file: .env

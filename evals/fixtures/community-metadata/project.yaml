@@ -1,0 +1,7 @@
+odoo:
+  version: "18.0"
+  edition: community
+runtime:
+  image: "odoo:18.0"
+addons_paths:
+  - addons/custom

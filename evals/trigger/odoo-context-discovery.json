@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Inspect this Odoo repo and tell me the exact version, edition, addons paths, and safe test command before we touch anything.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "We inherited an addon repository with Docker Compose and unknown Odoo version. Establish the environment first.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Before upgrading this module, check whether it is Odoo 17 Community or Enterprise and identify its dependencies.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Can you review the repository instructions and identify whether this database command would hit staging or production?",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Analyze this unfamiliar Odoo project and summarize multi-company, accounting, portal, and migration risks.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "I need to connect Hermes to an Odoo instance, but first determine server version and installed modules read-only.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "This repo has an Odoo 18 manifest but a 17.0 container image; report what is confirmed and unresolved before suggesting commands.",
+    "should_trigger": true,
+    "notes": "Conflicting version evidence."
+  },
+  {
+    "query": "Map the custom, Enterprise, and nested OCA addon roots in this Odood assembly without starting it.",
+    "should_trigger": true,
+    "notes": "Layout and edition evidence discovery."
+  },
+  {
+    "query": "Explain what an Odoo model is.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Write a Python script that parses YAML.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Implement the already approved field on sale.order; context summary is attached and current.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Review this specific Odoo controller for authorization issues.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Compare Odoo and ERPNext for a new ERP project.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "What is the weather in Jakarta?",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "The attached context summary confirms Odoo 18 Enterprise, the revision, addon paths, and disposable test command; implement the approved addon.",
+    "should_trigger": false,
+    "notes": "Current complete context delegates to addon development."
+  },
+  {
+    "query": "Design whether vendor bill ingestion should use standard Odoo, OCA, custom code, or middleware; the environment is already confirmed.",
+    "should_trigger": false,
+    "notes": "Solution selection, not discovery."
+  }
+]

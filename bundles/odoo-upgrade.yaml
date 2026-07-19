@@ -1,0 +1,11 @@
+name: odoo-upgrade
+description: Plan and validate a controlled Odoo major-version upgrade.
+skills:
+- odoo-context-discovery
+- odoo-version-upgrade
+- odoo-oca-development
+- odoo-security-audit
+- odoo-testing
+instruction: Never migrate the only database copy. Keep compatibility changes separate
+  from feature work and require technical, functional, accounting, and inventory reconciliation
+  as applicable.

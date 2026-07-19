@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OCloud Skill Contract",
+  "type": "object",
+  "required": [
+    "name",
+    "problem",
+    "primary_outcome",
+    "should_trigger",
+    "should_not_trigger",
+    "risk_class",
+    "owner"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "problem": {
+      "type": "string",
+      "minLength": 10
+    },
+    "primary_outcome": {
+      "type": "string",
+      "minLength": 10
+    },
+    "should_trigger": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "should_not_trigger": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "risk_class": {
+      "enum": [
+        "advisory",
+        "read-only",
+        "controlled-write",
+        "destructive"
+      ]
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

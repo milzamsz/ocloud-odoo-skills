@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "minItems": 8,
+  "items": {
+    "type": "object",
+    "required": [
+      "query",
+      "should_trigger"
+    ],
+    "properties": {
+      "query": {
+        "type": "string",
+        "minLength": 3
+      },
+      "should_trigger": {
+        "type": "boolean"
+      },
+      "notes": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  }
+}

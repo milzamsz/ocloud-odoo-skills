@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["review_date", "sources"],
+  "properties": {
+    "review_date": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "url",
+          "authority_tier",
+          "usage",
+          "license_status",
+          "odoo_versions",
+          "notes"
+        ],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "name": {"type": "string", "minLength": 1},
+          "url": {"type": "string", "pattern": "^https://"},
+          "authority_tier": {"type": "integer", "minimum": 1, "maximum": 8},
+          "usage": {"type": "string", "minLength": 1},
+          "license_status": {"type": "string", "minLength": 1},
+          "odoo_versions": {
+            "type": "array",
+            "items": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+$"},
+            "uniqueItems": true
+          },
+          "last_reviewed": {
+            "type": ["string", "null"],
+            "format": "date"
+          },
+          "notes": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

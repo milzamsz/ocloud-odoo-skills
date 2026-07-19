@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Prepare this addon for contribution to the OCA 18.0 branch.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Check the target OCA repository rules, license, README fragments, pre-commit, and pylint-odoo.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Port this OCA module from 17.0 to 18.0 without mixing feature changes.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Which OCA repository should contain this reusable addon?",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Review this OCA pull request for branch conventions and migration requirements.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Generate the module scaffold only after inspecting the actual repository template.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Check whether this 19.0 addon follows the branch's OCA readme fragments, manifest version, and configured lint tools.",
+    "should_trigger": true,
+    "notes": "Branch-aware OCA compliance review."
+  },
+  {
+    "query": "Prepare a focused OCA pull request and verify module license, dependencies, maintainers, tests, and changelog.",
+    "should_trigger": true,
+    "notes": "Contribution readiness."
+  },
+  {
+    "query": "Develop a private client-specific module with no intention to contribute upstream.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Explain what the OCA is.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Migrate an Enterprise database using proprietary scripts.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Review generic Python formatting.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Design standard versus custom solution options.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Install an OCA module on production now.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Use an OCA accounting module to configure taxes for this company.",
+    "should_trigger": false,
+    "notes": "Functional configuration, not addon contribution work."
+  },
+  {
+    "query": "Upgrade our Odoo 17 production database to 18 and reconcile balances.",
+    "should_trigger": false,
+    "notes": "Primary intent is major-version database migration."
+  }
+]

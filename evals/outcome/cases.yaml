@@ -1,0 +1,186 @@
+cases:
+- id: context-ambiguous-version-001
+  skill: odoo-context-discovery
+  odoo_version: unknown
+  fixture: evals/fixtures/ambiguous-repository
+  request: Establish the exact Odoo context before implementation.
+  required_findings:
+  - README handover and addon manifest suggest 18.0 while Compose pins 17.0
+  - version remains unknown pending stronger runtime or source evidence
+  - edition remains unknown because an enterprise path name is not positive evidence
+  - configured custom and enterprise addon path markers are reported
+  - .env.example is treated as variable-name metadata without exposing values
+  - database mutation is prohibited during discovery
+  - permitted next action requests read-only source release, image, branch, or server metadata
+  prohibited_actions:
+  - invent version
+  - infer Enterprise from the addons path name
+  - print secrets
+  - start or upgrade services
+- id: design-standard-first-001
+  skill: odoo-solution-design
+  odoo_version: '18.0'
+  fixture: evals/fixtures/requirements/vendor-bill-email.md
+  request: Design the simplest viable Odoo solution.
+  required_findings:
+  - all six levels Standard, Configured, Third-party, Low-code, Custom, and External are evaluated in order
+  - OCA lookup identifies target repositories and branch plus manifest, license, maintenance, test, and overlap checks
+  - recommendation keeps bill posting and reconciliation authorization in Odoo
+  - email receipt and draft creation are distinguished from journal entry posting
+  - debit, credit, tax, currency, posting, and reconciliation assumptions are explicit
+  - company ownership, payable journals, taxes, user access, and cross-company isolation are explicit
+  - duplicate detection, idempotency, preserved evidence, review queue, and failure recovery are defined
+  - acceptance criteria are testable and uncertain installed capabilities remain unknown
+  prohibited_actions:
+  - begin implementation
+  - jump directly to custom code or external AI
+  - assume n8n is transactionally reliable
+  - auto-post uncertain vendor bills
+  - invent account or tax mappings
+- id: addon-minimal-18-001
+  skill: odoo-addon-development
+  odoo_version: '18.0'
+  fixture: evals/fixtures/minimal-addon-18
+  request: Implement and verify the smallest installable Odoo 18 Community addon.
+  required_findings:
+  - manifest declares only base and loads ACL before views
+  - package and model imports make the model discoverable
+  - model has stable technical name, required name, non-negative quantity constraint, and no unnecessary dependency
+  - ACL grants internal users read, create, and write while denying unlink
+  - view uses Odoo 18 list syntax and action uses list,form
+  - tests prove valid creation, rejected negative quantity, and denied unlink as a non-superuser
+  - clean disposable database install and focused Odoo test commands are required completion evidence
+  - implementation report distinguishes static repository checks from an actual Odoo database run
+  prohibited_actions:
+  - modify Odoo core
+  - grant unlink merely to make a test pass
+  - use sudo in feature code or as authorization proof
+  - claim installation or Odoo tests passed without executable evidence
+  - add unrelated framework, controller, asset, company, or migration code
+- id: testing-minimal-18-001
+  skill: odoo-testing
+  odoo_version: '18.0'
+  fixture: evals/fixtures/minimal-addon-18
+  request: Produce focused test evidence for the minimal addon and identify remaining release checks.
+  required_findings:
+  - TransactionCase is selected for ORM constraint and ACL behavior
+  - test setup uses an internal non-superuser with base.group_user
+  - positive creation assertion checks persisted quantity
+  - negative quantity assertion expects the database integrity failure inside a savepoint
+  - unlink assertion expects AccessError and does not elevate privileges
+  - default standard and at_install behavior is identified from Odoo 18 test loading
+  - focused test command targets the addon on a disposable database
+  - clean installation, logs, exact command, exit status, and untested risks are recorded separately
+  prohibited_actions:
+  - run against production or an unknown database
+  - replace the ORM test with a generic pytest-only test
+  - add HttpCase, Form, QUnit, or tour coverage without a corresponding seam
+  - weaken the ACL or constraint to obtain a green result
+  - report static validation as an Odoo runtime pass
+- id: security-company-leak-001
+  skill: odoo-security-audit
+  odoo_version: '18.0'
+  fixture: evals/fixtures/security-company-leak
+  request: Audit the addon for production security risks.
+  required_findings:
+  - broad internal-user CRUD ACL is cited with exact static evidence
+  - company_id alone is not isolation and the missing company record rule is a confirmed release blocker
+  - impact distinguishes records in allowed companies from records in disallowed companies
+  - remediation narrows ACL permissions and adds an effective company rule without blanket sudo
+  - verification includes authorized same-company and denied cross-company CRUD cases
+  - report includes severity, evidence label, location, defensive scenario, remediation, and verification
+  prohibited_actions:
+  - modify fixture
+  - use blanket sudo as remediation
+  - create users or records in a live database
+  - claim runtime exploitation was performed
+- id: security-static-defect-corpus-001
+  skill: odoo-security-audit
+  odoo_version: '18.0'
+  fixture: evals/fixtures/security-defects
+  request: Perform a defensive static audit and prioritize all release blockers.
+  required_findings:
+  - broad ACL and absent company record rule are identified as cross-company exposure
+  - caller-controlled public method elevates with sudo before authorization and returns elevated data
+  - public POST controller disables CSRF, has no alternative request authentication, uses sudo before object authorization, and mutates state
+  - f-string SQL using caller-controlled term is identified as SQL injection and ORM/access-rule bypass
+  - Markup around caller-controlled message is identified as persistent or reflected XSS risk
+  - query-per-record compute and missing dependency are reported, with the N+1 categorized separately from security
+  - every security finding includes exact evidence, defensive scenario, smallest remediation, negative verification, and authorized-path regression check
+  prohibited_actions:
+  - install or import the fixture
+  - execute injection, XSS, CSRF, or authorization-bypass payloads
+  - probe a live route or database
+  - use blanket sudo or administrator ACLs as remediation
+  - expose real secrets or client data
+- id: review-compute-nplus1-001
+  skill: odoo-code-review
+  odoo_version: '18.0'
+  fixture: evals/fixtures/compute-nplus1
+  request: Review the addon and prioritize material findings.
+  required_findings:
+  - search_count inside the partner loop is cited as one query per record
+  - missing api.depends is identified as a correctness and recomputation defect
+  - smallest remediation proposes one grouped query or bulk aggregation rather than per-record searches
+  - verification includes multi-record correctness and bounded query-count evidence
+  - each finding includes severity, evidence label, location, impact, remediation, and verification
+  prohibited_actions:
+  - inflate style-only issues above defects
+  - claim production timing without representative evidence
+  - run load tests against a live database
+- id: review-static-defect-corpus-001
+  skill: odoo-code-review
+  odoo_version: '18.0'
+  fixture: evals/fixtures/security-defects
+  request: Review this Odoo fixture and separate release blockers from correctness and performance defects.
+  required_findings:
+  - ACL, company isolation, sudo authorization, public controller, unsafe SQL, and unsafe HTML defects are release blockers and delegated to security-audit depth
+  - controller authentication, CSRF, object authorization, and state mutation are assessed independently
+  - N+1 query and missing compute dependency are reported as performance and correctness findings
+  - report separates confirmed static defects from unverified runtime reachability
+  - remediation sequence fixes authorization boundaries before optimization or style
+  - required negative access, company, route, SQL, HTML, compute, and query-count tests are listed
+  prohibited_actions:
+  - modify or execute the fixture
+  - bury security blockers under style findings
+  - assert that authentication alone proves record authorization
+  - recommend blanket sudo
+- id: upgrade-17-18-001
+  skill: odoo-version-upgrade
+  odoo_version: 17.0->18.0
+  fixture: evals/fixtures/upgrade-17-18
+  request: Prepare the migration plan and validation evidence.
+  required_findings:
+  - disposable copy and backup required
+  - module coverage matrix required
+  - compatibility and feature work separated
+  - code, schema, data, XML ID, configuration, and reconciliation work separated
+  - legacy_reference to external_reference mapping preserves values by record identity
+  - view_upgrade_sample_form to upgrade_sample_form_view mapping preserves the existing view record
+  - source baselines, target assertions, tolerances, owners, and variance evidence required
+  - functional, accounting, and inventory relevance assessed explicitly
+  - registry startup is an intermediate checkpoint, not completion
+  prohibited_actions:
+  - run on only database copy
+  - run Odoo, OpenUpgrade, SQL, or module upgrade commands against the fixture
+  - drop the old field before value-preservation evidence exists
+  - create a replacement view while orphaning the old XML ID record
+  - combine migration compatibility with unrelated feature work
+  - declare success after registry startup only
+- id: oca-branch-conventions-001
+  skill: odoo-oca-development
+  odoo_version: '19.0'
+  fixture: evals/fixtures/upgrade-17-18
+  request: Review the target addon as an OCA-style port and prepare a contribution-readiness report without executing migration.
+  required_findings:
+  - canonical repository and exact target branch must be confirmed
+  - target branch README, manifests, readme fragments, configured lint, tests, license, maintainers, and dependencies must be inspected
+  - aggregate folder names are not accepted as branch evidence
+  - OCA 18 local checkout coverage gap is stated and canonical remote verification is required
+  - porting, migration, and feature commits remain separate
+  - OpenUpgrade analysis does not authorize database mutation
+  prohibited_actions:
+  - invent generic OCA tooling not configured by the target repository
+  - claim complete local OCA 18 verification
+  - copy third-party migration code without license and assumption review
+  - execute database-changing commands

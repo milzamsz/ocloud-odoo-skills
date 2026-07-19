@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Audit this Odoo addon for ACL, record-rule, sudo, controller, and multi-company vulnerabilities.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Can portal users access another customer’s attachments through this route?",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Review every public model method for unauthorized state changes over RPC.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Check whether these record rules leak records across companies.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Assess this webhook controller for authentication, CSRF, input validation, and replay risks.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Find SQL injection, unsafe Markup, or dynamic evaluation issues in this module.",
+    "should_trigger": true,
+    "notes": "Odoo module context is supplied by the evaluation."
+  },
+  {
+    "query": "Audit this Odoo website POST route: it is public, disables CSRF, and calls sudo before browsing an invoice.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Build an Odoo model-by-group CRUD matrix and verify other-company and other-owner denial cases.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Review the addon for general code quality and performance.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Implement new ACL files according to this approved matrix.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Explain the concept of least privilege.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Penetrate a live customer Odoo instance.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Write a generic cybersecurity policy.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Design a business workflow.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Audit this generic Flask endpoint for CSRF, SQL injection, and XSS.",
+    "should_trigger": false,
+    "notes": "Generic Python web-security near miss."
+  },
+  {
+    "query": "Review a Django queryset using select_related and object permissions.",
+    "should_trigger": false,
+    "notes": "ORM and permission terms without Odoo intent."
+  }
+]

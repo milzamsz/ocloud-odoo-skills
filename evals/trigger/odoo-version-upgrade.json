@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Plan the Odoo 17 to 18 database and custom addon migration with rollback and reconciliation.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Analyze module coverage and OpenUpgrade gaps for this major-version upgrade.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Port these custom addons to Odoo 19 and separate compatibility work from features.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Build migration scripts for renamed models, fields, and XML IDs.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Reconcile trial balance, stock valuation, open documents, and attachments after migration.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Prepare a repeatable migration rehearsal and cutover runbook.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Map a renamed custom field and changed XML ID from Odoo 17 to 18, preserving existing values and references.",
+    "should_trigger": true,
+    "notes": "Major-version code, schema, and data planning."
+  },
+  {
+    "query": "Assess an Enterprise-to-Community 18 migration path, module replacements, data retention, and rollback blockers.",
+    "should_trigger": true,
+    "notes": "Edition and major migration coverage."
+  },
+  {
+    "query": "Upgrade a module within the same Odoo version after a small field change.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Implement a new feature on Odoo 18.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Explain OpenUpgrade in one paragraph.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Run the migration directly against production because the backup is probably fine.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Review this addon for security only.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Compare Odoo and ERPNext.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Contribute a new addon to the OCA 18.0 branch.",
+    "should_trigger": false,
+    "notes": "OCA contribution without a major-version upgrade."
+  },
+  {
+    "query": "Rename a field in a new module that has never been installed.",
+    "should_trigger": false,
+    "notes": "No installed data or version migration."
+  }
+]

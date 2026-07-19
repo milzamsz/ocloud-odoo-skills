@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Review this Odoo 18 addon and separate blockers, bugs, security risks, performance issues, and missing tests.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Audit this pull request for ORM correctness, XML inheritance, and upgradeability.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Is this custom module production-ready? Inspect manifest, security, migrations, and tests.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Review this OCA addon port and identify compatibility versus feature changes.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Check this addon for N+1 queries and stored compute problems.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Review the diff without changing files.",
+    "should_trigger": true,
+    "notes": "Odoo repository context is supplied by the evaluation."
+  },
+  {
+    "query": "Inspect this Odoo controller patch for release blockers, record authorization, and regression tests.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Review this multi-company Odoo model change for stale computes, company leaks, and migration risk.",
+    "should_trigger": true,
+    "notes": ""
+  },
+  {
+    "query": "Implement the feature described in the issue.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Design a new purchase approval workflow.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Audit only the controller authentication and record authorization.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Run a database migration.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Review a generic Rust crate.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Explain the code to a beginner.",
+    "should_trigger": false,
+    "notes": ""
+  },
+  {
+    "query": "Review this generic Python FastAPI pull request for SQL injection and N+1 queries.",
+    "should_trigger": false,
+    "notes": "Security and performance vocabulary alone must not imply Odoo."
+  },
+  {
+    "query": "Check this Django model's permissions, HTML escaping, and query count.",
+    "should_trigger": false,
+    "notes": "Generic Python web-framework near miss."
+  }
+]

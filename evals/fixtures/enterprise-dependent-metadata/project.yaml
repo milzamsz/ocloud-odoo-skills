@@ -1,0 +1,10 @@
+odoo:
+  version: "18.0"
+  edition: enterprise
+runtime:
+  image: "odoo:18.0"
+addons_paths:
+  - addons/enterprise
+  - addons/custom
+source_markers:
+  enterprise_submodule: addons/enterprise

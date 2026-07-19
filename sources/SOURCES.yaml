@@ -1,0 +1,256 @@
+review_date: '2026-07-19'
+sources:
+- id: odoo-18-accounting-vendor-bills
+  name: Odoo 18 Vendor Bills Documentation
+  url: https://www.odoo.com/documentation/18.0/applications/finance/accounting/vendor_bills.html
+  authority_tier: 3
+  usage: authoritative-odoo-functional
+  license_status: documentation-reference
+  odoo_versions:
+  - '18.0'
+  last_reviewed: '2026-07-19'
+  notes: Standard vendor bill, purchase matching, posting, and payment workflow evidence.
+- id: oca-github
+  name: Odoo Community Association GitHub Organization
+  url: https://github.com/OCA
+  authority_tier: 4
+  usage: authoritative-oca-discovery
+  license_status: repository-index; verify candidate repository and file licenses
+  odoo_versions:
+  - '17.0'
+  - '18.0'
+  - '19.0'
+  last_reviewed: '2026-07-19'
+  notes: Starting point for functional repository and target-branch candidate lookup; organization membership does not prove module fit.
+- id: oca-maintainer-tools
+  name: OCA Maintainer Tools
+  url: https://github.com/OCA/maintainer-tools
+  authority_tier: 4
+  usage: authoritative-oca-contribution
+  license_status: AGPL-3.0 repository; documentation-reference and verify file licenses
+  odoo_versions:
+  - '17.0'
+  - '18.0'
+  - '19.0'
+  last_reviewed: '2026-07-19'
+  notes: Official OCA contribution, repository, migration, and maintenance guidance; target repository and branch remain decisive.
+- id: oca-server-tools-19
+  name: OCA server-tools 19.0 branch
+  url: https://github.com/OCA/server-tools/tree/19.0
+  authority_tier: 4
+  usage: branch-specific-oca-evidence
+  license_status: AGPL-3.0 repository; modules may declare different compatible licenses
+  odoo_versions:
+  - '19.0'
+  last_reviewed: '2026-07-19'
+  notes: Corroborated against local checkout for generated README, 19.0 manifest versions, readme fragments, configured lint, module pyproject files, and migrations.
+- id: oca-account-financial-tools-18
+  name: OCA account-financial-tools 18.0 branch
+  url: https://github.com/OCA/account-financial-tools/tree/18.0
+  authority_tier: 4
+  usage: branch-specific-oca-evidence
+  license_status: AGPL-3.0 repository; modules may declare different compatible licenses
+  odoo_versions:
+  - '18.0'
+  last_reviewed: '2026-07-19'
+  notes: Partial local checkout corroborates 18.0 badges, manifests, fragments, and tooling; complete canonical local OCA 18 checkout set is unavailable, so remote branch verification remains required.
+- id: hermes-skills
+  name: Hermes Agent Skills System
+  url: https://hermes-agent.nousresearch.com/docs/user-guide/features/skills
+  authority_tier: 3
+  usage: authoritative-runtime
+  license_status: documentation-reference
+  odoo_versions: []
+  notes: Progressive disclosure, external directories, bundles, taps, and skill lifecycle
+    behavior.
+- id: hermes-creating-skills
+  name: Hermes Creating Skills
+  url: https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills
+  authority_tier: 3
+  usage: authoritative-runtime
+  license_status: documentation-reference
+  odoo_versions: []
+  notes: Skill versus tool boundary and Hermes metadata.
+- id: agent-skills-spec
+  name: Agent Skills Specification
+  url: https://agentskills.io/specification
+  authority_tier: 3
+  usage: authoritative-format
+  license_status: documentation-reference
+  odoo_versions: []
+  notes: SKILL.md structure and metadata constraints.
+- id: agent-skills-best-practices
+  name: Agent Skills Best Practices
+  url: https://agentskills.io/skill-creation/best-practices
+  authority_tier: 3
+  usage: authoritative-format
+  license_status: documentation-reference
+  odoo_versions: []
+  notes: Scope, progressive disclosure, and control calibration.
+- id: odoo-18-developer
+  name: Odoo 18 Developer Documentation
+  url: https://www.odoo.com/documentation/18.0/developer.html
+  authority_tier: 3
+  usage: authoritative-odoo
+  license_status: documentation-reference
+  odoo_versions:
+  - '18.0'
+  last_reviewed: '2026-07-19'
+  notes: Primary Phase 1 Odoo baseline; cross-checked locally against the Odoo 18 CE source tree for ORM, views, manifests, and tests.
+- id: odoo-18-ce-source
+  name: Odoo 18 Community Source
+  url: https://github.com/odoo/odoo/tree/18.0
+  authority_tier: 3
+  usage: authoritative-odoo-source-reference
+  license_status: LGPL-3.0 repository reference; no source copied
+  odoo_versions:
+  - '18.0'
+  last_reviewed: '2026-07-19'
+  notes: Verified through the read-only local checkout at environments/odoo18ce/odoo; cited by official relative paths for ORM, view, manifest, and test behavior.
+- id: odoo-19-developer
+  name: Odoo 19 Developer Documentation
+  url: https://www.odoo.com/documentation/19.0/developer.html
+  authority_tier: 3
+  usage: authoritative-odoo
+  license_status: documentation-reference
+  odoo_versions:
+  - '19.0'
+  notes: Secondary target; do not backport guidance without verification.
+- id: oca-openupgrade
+  name: OCA OpenUpgrade
+  url: https://github.com/OCA/OpenUpgrade
+  authority_tier: 4
+  usage: authoritative-oca-migration
+  license_status: AGPL-3.0 repository; verify file licenses
+  odoo_versions:
+  - '16.0'
+  - '17.0'
+  - '18.0'
+  - '19.0'
+  notes: Migration framework, analysis, scripts, and coverage.
+- id: openupgrade-docs
+  name: OpenUpgrade Documentation
+  url: https://oca.github.io/OpenUpgrade/
+  authority_tier: 4
+  usage: authoritative-oca-migration
+  license_status: documentation-reference
+  odoo_versions:
+  - '16.0'
+  - '17.0'
+  - '18.0'
+  - '19.0'
+  notes: Migration workflow and script development.
+- id: unclecatvn-agent-skills
+  name: unclecatvn/agent-skills
+  url: https://github.com/unclecatvn/agent-skills
+  authority_tier: 6
+  usage: inspiration-version-aware
+  license_status: verify-before-use
+  odoo_versions:
+  - '16.0'
+  - '17.0'
+  - '18.0'
+  - '19.0'
+  notes: Useful version-separated organization and Odoo knowledge references.
+- id: letzdoo-marketplace
+  name: letzdoo/claude-marketplace
+  url: https://github.com/letzdoo/claude-marketplace
+  authority_tier: 6
+  usage: inspiration-coverage
+  license_status: verify-before-use
+  odoo_versions: []
+  notes: Broad Odoo skill and agent coverage; Claude/Doodba assumptions must not be
+    copied blindly.
+- id: mart337i-odoo-skills
+  name: mart337i/odoo-skills
+  url: https://github.com/mart337i/odoo-skills
+  authority_tier: 6
+  usage: inspiration-agent-behavior
+  license_status: verify-before-use
+  odoo_versions: []
+  notes: Inspect-first, safety, review, multi-company, and test behavior patterns.
+- id: fhidalgo-odoo-skill
+  name: fhidalgodev/odoo-development-skill
+  url: https://github.com/fhidalgodev/odoo-development-skill
+  authority_tier: 6
+  usage: inspiration-portability
+  license_status: verify-before-use
+  odoo_versions: []
+  notes: Portable skill packaging derived from broader Odoo material.
+- id: marcfargas-toolbox
+  name: marcfargas/odoo-toolbox
+  url: https://github.com/marcfargas/odoo-toolbox/tree/master/skills/odoo
+  authority_tier: 6
+  usage: inspiration-modularity
+  license_status: verify-before-use
+  odoo_versions: []
+  notes: Modular Odoo operational and development skill organization.
+- id: miquel-oca-skill
+  name: miquelalzanillas/odoo-oca-convention-skill
+  url: https://github.com/miquelalzanillas/odoo-oca-convention-skill
+  authority_tier: 6
+  usage: inspiration-oca
+  license_status: verify-before-use
+  odoo_versions: []
+  notes: OCA-oriented scaffold and validation ideas; verify against actual OCA branch
+    rules.
+- id: ahmed-odoo-plugins
+  name: ahmed-lakosha/odoo-plugins
+  url: https://github.com/ahmed-lakosha/odoo-plugins
+  authority_tier: 6
+  usage: inspiration-workflows
+  license_status: verify-before-use
+  odoo_versions: []
+  notes: Specialized upgrade, security, frontend, reporting, and testing workflows.
+- id: lagindaniel-playbook
+  name: lagindaniel/odoo-ai-playbook
+  url: https://github.com/lagindaniel/odoo-ai-playbook
+  authority_tier: 6
+  usage: inspiration-playbook
+  license_status: verify-before-use
+  odoo_versions: []
+  notes: Audit and AI-ready module workflow ideas.
+- id: nguyenhuy-skills
+  name: nguyenhuy158/skills
+  url: https://github.com/nguyenhuy158/skills
+  authority_tier: 6
+  usage: inspiration-review
+  license_status: verify-before-use
+  odoo_versions: []
+  notes: Lightweight review checks and idempotency patterns.
+- id: mindrally-odoo
+  name: Mindrally Odoo skills
+  url: https://github.com/Mindrally/skills/tree/main/odoo-development
+  authority_tier: 6
+  usage: negative-and-inspiration
+  license_status: verify-before-use
+  odoo_versions: []
+  notes: Generic rules require careful version validation; do not inherit legacy API
+    patterns.
+- id: prince-builder
+  name: 19prince/claude-odoo-builder
+  url: https://github.com/19prince/claude-odoo-builder
+  authority_tier: 6
+  usage: future-website-operator-inspiration
+  license_status: verify-before-use
+  odoo_versions: []
+  notes: Potential future website operations skill; state-changing patterns require
+    strict controls.
+- id: openupgrade-enterprise
+  name: DavidddM/openupgrade-enterprise
+  url: https://github.com/DavidddM/openupgrade-enterprise
+  authority_tier: 6
+  usage: migration-reference-and-test-corpus
+  license_status: verify-before-use; Enterprise access restrictions apply
+  odoo_versions:
+  - '17.0'
+  - '18.0'
+  notes: Enterprise migration examples; never redistribute Enterprise source.
+- id: agentic-awesome
+  name: sickn33/agentic-awesome-skills
+  url: https://github.com/sickn33/agentic-awesome-skills
+  authority_tier: 6
+  usage: inspiration-catalog-distribution
+  license_status: verify-before-use
+  odoo_versions: []
+  notes: Catalog, bundle, and distribution ideas rather than Odoo authority.
