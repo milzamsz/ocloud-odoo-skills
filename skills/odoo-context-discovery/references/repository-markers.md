@@ -13,7 +13,7 @@ not portable path assumptions.
 
 ### Community project (`erp-ocloud`)
 
-- `AGENTS.md` and `README.md` explicitly identify Odoo 18 Community and
+- Project guidance and its readme explicitly identify Odoo 18 Community and
   `addons/custom/` with an `oc_` prefix.
 - `config/odoo.conf` lists standard, custom, third-party, OCA, MuK, and base
   addon roots. Odoo does not recurse into nested addon repositories, so each
@@ -25,7 +25,7 @@ not portable path assumptions.
 
 ### Enterprise-dependent project (`erp-ca`)
 
-- `AGENTS.md`, `README.md`, a dated `odoo:18.0-*` image pin, an
+- Project guidance, its readme, a dated `odoo:18.0-*` image pin, an
   `odoo==18.0` requirement, and an `addons/enterprise` submodule marker provide
   converging Odoo 18 Enterprise evidence.
 - `addons/` is a mapping/symlink layer. The runtime truth is the

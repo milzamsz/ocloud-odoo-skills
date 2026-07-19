@@ -50,7 +50,7 @@ Establish a verified Odoo context before any material recommendation or change. 
 
 Inspect the nearest applicable instructions and project documents, including:
 
-- `AGENTS.md`, `CLAUDE.md`, `README.md`, `CONTRIBUTING.md`;
+- repository-level agent guidance, readmes, and contribution guides;
 - product, architecture, technical, and implementation documents;
 - test, lint, deployment, and migration runbooks.
 

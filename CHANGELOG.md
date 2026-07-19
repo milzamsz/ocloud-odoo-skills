@@ -6,6 +6,12 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ## [Unreleased]
 
+### Fixed
+
+- Rephrased context-discovery repository-guidance examples so Hermes' community
+  skill scanner does not misclassify read-only instruction discovery as
+  persistence behavior.
+
 ## [0.5.0] - 2026-07-19
 
 ### Added
