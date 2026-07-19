@@ -18,9 +18,9 @@ production operation.
 After publishing the repository, use a disposable Hermes profile:
 
 ```bash
-hermes skills tap add ocloudpro/ocloud-odoo-skills
+hermes skills tap add milzamsz/ocloud-odoo-skills
 hermes skills search odoo
-hermes skills install ocloudpro/ocloud-odoo-skills/odoo-context-discovery
+hermes skills install milzamsz/ocloud-odoo-skills/odoo-context-discovery
 ```
 
 Then copy or symlink one file from `bundles/` into

@@ -6,6 +6,11 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ## [Unreleased]
 
+### Fixed
+
+- Corrected Hermes tap identifiers in the experimental 0.5.0 release notes to
+  `milzamsz/ocloud-odoo-skills`.
+
 ## [1.0.0] - 2026-07-20
 
 ### Changed
