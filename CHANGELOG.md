@@ -6,6 +6,20 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-07-20
+
+### Changed
+
+- Promoted all eight Phase 1 skills to stable with an Odoo 18 Community
+  evidence baseline; Odoo 17/19 and Enterprise remain advisory.
+- Strengthened context evidence, OCA contribution, and 17 → 18 upgrade
+  reference contracts from release-review findings.
+
+### Added
+
+- Named maintainer approval and stable release evidence.
+- Three independent clean-session regression reviews across all eight skills.
+
 ## [0.5.1] - 2026-07-19
 
 ### Fixed

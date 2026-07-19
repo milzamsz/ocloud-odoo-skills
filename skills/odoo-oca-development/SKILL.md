@@ -4,12 +4,12 @@ description: Use this skill when creating, porting, reviewing, or contributing a
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with access to the target OCA or OCA-style repository.
 metadata:
-  version: "0.1.0"
+  version: "1.0.0"
   author: OCloud
-  status: experimental
+  status: stable
   risk: controlled-write
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
+    versions: ["18.0"]
     editions: [community]
   hermes:
     tags: [odoo, oca, community, contribution]

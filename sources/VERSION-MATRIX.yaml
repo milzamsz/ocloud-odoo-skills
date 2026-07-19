@@ -6,7 +6,7 @@ policy:
   - '19.0'
   tier_3:
   - '16.0'
-  rule: Support claims require version-specific sources and regression fixtures.
+  rule: Stable support is Odoo 18.0 Community. Other versions and Enterprise are advisory until version-specific sources and regression fixtures pass.
 versions:
 - version: '16.0'
   status: migration-context
@@ -21,11 +21,15 @@ versions:
   - enterprise
   notes: Primary source side for initial 17 to 18 migration fixtures.
 - version: '18.0'
-  status: primary
+  status: stable
   editions:
   - community
+  notes: Executable OCloud Phase 1 baseline.
+- version: '18.0'
+  status: advisory
+  editions:
   - enterprise
-  notes: Default OCloud Phase 1 development baseline.
+  notes: Inspect licensed source and installed modules; no stable Enterprise claim.
 - version: '19.0'
   status: secondary
   editions:

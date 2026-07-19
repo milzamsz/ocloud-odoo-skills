@@ -4,13 +4,13 @@ description: Use this skill when implementing or modifying an Odoo addon, includ
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with repository and development environment access. Version-sensitive implementation requires confirmed Odoo context.
 metadata:
-  version: "0.1.0"
+  version: "1.0.0"
   author: OCloud
-  status: experimental
+  status: stable
   risk: controlled-write
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
-    editions: [community, enterprise]
+    versions: ["18.0"]
+    editions: [community]
   hermes:
     tags: [odoo, addon, development, python, xml]
 ---

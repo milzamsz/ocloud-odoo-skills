@@ -26,6 +26,7 @@ context_summary:
     accounting_impact: unknown
     stock_impact: unknown
     portal_or_public_exposure: unknown
+  # Each fact records {claim, evidence, source, confidence}.
   facts: []
   inferences: []
   assumptions: []

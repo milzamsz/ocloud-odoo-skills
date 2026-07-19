@@ -4,13 +4,13 @@ description: Use this skill when translating an Odoo business requirement into a
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients. Requires a confirmed Odoo context for version-sensitive decisions.
 metadata:
-  version: "0.1.0"
+  version: "1.0.0"
   author: OCloud
-  status: experimental
+  status: stable
   risk: advisory
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
-    editions: [community, enterprise]
+    versions: ["18.0"]
+    editions: [community]
   hermes:
     tags: [odoo, solution-design, functional, architecture]
 ---

@@ -4,13 +4,13 @@ description: Use this skill when planning, analyzing, implementing, or validatin
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with source and target code plus a disposable migration environment.
 metadata:
-  version: "0.1.0"
+  version: "1.0.0"
   author: OCloud
-  status: experimental
+  status: stable
   risk: destructive
   odoo:
-    versions: ["16.0", "17.0", "18.0", "19.0"]
-    editions: [community, enterprise]
+    versions: ["18.0"]
+    editions: [community]
   hermes:
     tags: [odoo, upgrade, migration, openupgrade]
 ---

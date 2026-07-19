@@ -4,13 +4,13 @@ description: Use this skill when auditing an Odoo addon or integration for ACLs,
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with read access to the target repository. This skill performs defensive review and does not authorize exploitation of live systems.
 metadata:
-  version: "0.1.0"
+  version: "1.0.0"
   author: OCloud
-  status: experimental
+  status: stable
   risk: read-only
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
-    editions: [community, enterprise]
+    versions: ["18.0"]
+    editions: [community]
   hermes:
     tags: [odoo, security, acl, record-rules, controllers]
 ---

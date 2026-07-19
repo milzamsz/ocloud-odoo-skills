@@ -1,0 +1,15 @@
+repository: OCA/example
+branch: "18.0"
+odoo_version: "18.0"
+edition: community
+license: AGPL-3
+configured_tools:
+  - pre-commit
+  - ruff
+  - pytest
+module:
+  name: example_workflow
+  version: 18.0.1.0.0
+  dependencies: [base]
+  maintainers: [example-maintainer]
+  readme_fragments: [DESCRIPTION.rst, USAGE.rst]

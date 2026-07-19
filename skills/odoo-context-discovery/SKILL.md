@@ -4,13 +4,13 @@ description: Use this skill when an Odoo task requires discovering the exact ver
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with access to the target repository or environment evidence.
 metadata:
-  version: "0.1.0"
+  version: "1.0.0"
   author: OCloud
-  status: experimental
+  status: stable
   risk: read-only
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
-    editions: [community, enterprise]
+    versions: ["18.0"]
+    editions: [community]
   hermes:
     tags: [odoo, discovery, repository, environment]
 ---

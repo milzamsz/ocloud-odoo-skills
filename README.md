@@ -6,9 +6,9 @@ The repository teaches agents how to analyze, design, implement, review, test, s
 
 ## Project status
 
-- Stage: Development specification and Phase 1 scaffold
-- Primary target: Odoo 18.0 Community and Enterprise
-- Secondary targets: Odoo 17.0 and 19.0
+- Stage: Phase 1 stable
+- Stable target: Odoo 18.0 Community
+- Advisory targets: Odoo 17.0, Odoo 19.0, and Enterprise
 - Runtime priority: Hermes Agent
 - Format: Agent Skills (`SKILL.md`)
 - Distribution: Hermes custom skill tap and external skill directory

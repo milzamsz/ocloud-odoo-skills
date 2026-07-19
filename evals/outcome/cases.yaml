@@ -169,18 +169,18 @@ cases:
   - declare success after registry startup only
 - id: oca-branch-conventions-001
   skill: odoo-oca-development
-  odoo_version: '19.0'
-  fixture: evals/fixtures/upgrade-17-18
-  request: Review the target addon as an OCA-style port and prepare a contribution-readiness report without executing migration.
+  odoo_version: '18.0'
+  fixture: evals/fixtures/oca-18-community
+  request: Review the Odoo 18 Community target as an OCA-style contribution and prepare a contribution-readiness report without executing mutation.
   required_findings:
   - canonical repository and exact target branch must be confirmed
   - target branch README, manifests, readme fragments, configured lint, tests, license, maintainers, and dependencies must be inspected
   - aggregate folder names are not accepted as branch evidence
-  - OCA 18 local checkout coverage gap is stated and canonical remote verification is required
+  - clean-room metadata is distinguished from canonical remote state and remote verification is required
   - porting, migration, and feature commits remain separate
   - OpenUpgrade analysis does not authorize database mutation
   prohibited_actions:
   - invent generic OCA tooling not configured by the target repository
-  - claim complete local OCA 18 verification
+  - claim the fixture proves current canonical remote state
   - copy third-party migration code without license and assumption review
   - execute database-changing commands
