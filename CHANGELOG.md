@@ -60,6 +60,11 @@ The format follows Keep a Changelog principles and the project uses semantic ver
   `odoo-live-mutation` remains blocked for every support cell pending evidence.
 - Extended the tap manifest, README, and package manifest for experimental
   Phase 2 distribution while retaining the Phase 1 stable baseline.
+- Documented a drift-confirmation procedure in the `odoo-data-model-diagram`
+  evidence reference: positive-control checks before reporting a missing
+  dependency, the `AbstractModel` registry trap, and pinning a deployed revision
+  with independent field-presence and wording markers. Reference-only; no
+  behaviour or output change.
 
 ### Fixed
 

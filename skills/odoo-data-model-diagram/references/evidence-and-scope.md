@@ -28,6 +28,23 @@ field set, then attach source structural facts to matching items. Keep
 source-only and live-only items in the report. A conflicting type, relation, or
 field presence is an unresolved drift finding, not a winner selected by guess.
 
+## Drift confirmation
+
+An absent field is not evidence that a module is missing. Confirm a suspected
+missing dependency with positive controls: sibling fields from the same addon
+that must exist if it is installed. Report a missing dependency only when those
+controls pass and the target field is absent across every model the dependency
+extends.
+
+A mixin declared on `models.AbstractModel` creates no `ir.model` row, so its
+absence from `odoo_list_models` proves nothing. Check the fields it injects into
+concrete models instead of the mixin itself.
+
+When the installed module list cannot be read, pin the deployed revision with
+independent markers: the wording of a field `string`/`help`, and the presence of
+fields introduced by a specific commit. Two agreeing markers support a revision
+finding; a single marker does not.
+
 ## Field profiles
 
 The standard profile includes `id`, a display/name field, requested and custom
