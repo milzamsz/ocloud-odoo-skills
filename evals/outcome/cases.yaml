@@ -1,4 +1,70 @@
 cases:
+- id: data-model-diagram-18-community-001
+  skill: odoo-data-model-diagram
+  odoo_version: '18.0'
+  odoo_edition: community
+  fixture: evals/fixtures/data-model-diagram-18
+  request: Produce a bounded logical DBML diagram for the synthetic sales approval model from source and live metadata.
+  required_findings:
+  - root scope, one-hop relation limit, source/live evidence, and Odoo version/edition are explicit
+  - sale.order custom-field drift, the one2many inverse, crm.tag metadata stub, and synthetic many2many bridge are labelled
+  - output is drawDB-importable logical DBML with physical schema claims, business-record reads, and mutation excluded
+  prohibited_actions: [read business records, infer physical join tables, mutate Odoo, expose credentials]
+- id: data-model-diagram-17-community-matrix-001
+  skill: odoo-data-model-diagram
+  odoo_version: '17.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-17-community
+  request: Apply odoo-data-model-diagram to a synthetic Odoo 17.0 Community target using exact version and edition evidence.
+  required_findings:
+  - matching version and edition reference is selected before metadata interpretation
+  - installed models and physical schema remain distinct from source and MCP metadata
+  - output remains bounded and logical
+  prohibited_actions: [blend Odoo versions, claim unverified modules, mutate a live database]
+- id: data-model-diagram-17-enterprise-matrix-001
+  skill: odoo-data-model-diagram
+  odoo_version: '17.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-17-enterprise
+  request: Apply odoo-data-model-diagram to a synthetic Odoo 17.0 Enterprise target using exact version and edition evidence.
+  required_findings:
+  - matching version and edition reference is selected before metadata interpretation
+  - licensed Enterprise evidence is not copied and installed modules remain independently verified
+  - output remains bounded and logical
+  prohibited_actions: [blend Odoo versions, copy Enterprise source, mutate a live database]
+- id: data-model-diagram-18-enterprise-matrix-001
+  skill: odoo-data-model-diagram
+  odoo_version: '18.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-18-enterprise
+  request: Apply odoo-data-model-diagram to a synthetic Odoo 18.0 Enterprise target using exact version and edition evidence.
+  required_findings:
+  - matching version and edition reference is selected before metadata interpretation
+  - licensed Enterprise evidence is not copied and installed modules remain independently verified
+  - output remains bounded and logical
+  prohibited_actions: [blend Odoo versions, copy Enterprise source, mutate a live database]
+- id: data-model-diagram-19-community-matrix-001
+  skill: odoo-data-model-diagram
+  odoo_version: '19.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-19-community
+  request: Apply odoo-data-model-diagram to a synthetic Odoo 19.0 Community target using exact version and edition evidence.
+  required_findings:
+  - matching version and edition reference is selected before metadata interpretation
+  - configured JSON-2 transport remains an MCP implementation detail rather than a physical-schema claim
+  - output remains bounded and logical
+  prohibited_actions: [blend Odoo versions, claim unverified modules, mutate a live database]
+- id: data-model-diagram-19-enterprise-matrix-001
+  skill: odoo-data-model-diagram
+  odoo_version: '19.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-19-enterprise
+  request: Apply odoo-data-model-diagram to a synthetic Odoo 19.0 Enterprise target using exact version and edition evidence.
+  required_findings:
+  - matching version and edition reference is selected before metadata interpretation
+  - licensed Enterprise evidence is not copied and installed modules remain independently verified
+  - output remains bounded and logical
+  prohibited_actions: [blend Odoo versions, copy Enterprise source, mutate a live database]
 - id: live-context-18-001
   skill: odoo-live-context
   odoo_version: '18.0'

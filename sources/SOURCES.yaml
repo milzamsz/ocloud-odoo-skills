@@ -1,5 +1,26 @@
 review_date: '2026-07-20'
 sources:
+- id: drawdb-local-import-contract
+  name: drawDB Local DBML Import Contract
+  url: https://github.com/drawdb-io/drawdb/tree/1e6349ec98698ed841fdcbb15f594f5578212f5a
+  authority_tier: 2
+  usage: project-approved-diagram-import-contract
+  license_status: AGPL-3.0 repository reference; no source copied
+  odoo_versions: []
+  last_reviewed: '2026-09-21'
+  notes: Local drawDB checkout validates DBML import and parser behavior for logical Odoo diagrams; its internal DDB format is not a skill output contract.
+- id: odoo-rust-mcp-local-metadata-contract
+  name: Odoo Rust MCP Local Metadata Contract
+  url: https://github.com/milzamsz/odoo-rust-mcp/tree/398cfd9fb25fbafa40fa18754a023489a536b615
+  authority_tier: 2
+  usage: project-approved-read-only-metadata-interface
+  license_status: AGPL-3.0 repository reference; no source copied
+  odoo_versions:
+  - '17.0'
+  - '18.0'
+  - '19.0'
+  last_reviewed: '2026-09-21'
+  notes: Local Odoo Rust MCP checkout confirms the bounded odoo_list_models and odoo_get_model_metadata contract; Odoo ACLs, profile policy, and source evidence remain authoritative.
 - id: odoo-17-ce-source
   name: Odoo 17.0 Community Source
   url: https://github.com/odoo/odoo/tree/17.0

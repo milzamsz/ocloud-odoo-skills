@@ -1,6 +1,6 @@
-# Phase 2 Skill Boundaries and Output Contracts
+# Phase 2 Domain and Technical Skill Boundaries
 
-Phase 2 skills produce domain decision and runbook artifacts. They compose the
+Phase 2 skills produce domain, technical-decision, and runbook artifacts. They compose the
 Phase 1 workflows in `PHASE-1-SKILL-BOUNDARIES.md`; they do not replace
 discovery, solution selection, implementation, testing, review, security, OCA,
 or upgrade procedures.
@@ -17,6 +17,7 @@ or upgrade procedures.
 | `odoo-functional-pos` | POS session, payment, offline, and stock process design | `assets/pos-process-design.md` | Delegates accounting policy and implementation. |
 | `odoo-functional-manufacturing` | BoM-to-production process design | `assets/manufacturing-process-design.md` | Delegates warehouse route depth to inventory. |
 | `odoo-deployment-operations` | Read-only-first deployment and recovery runbook | `assets/operations-runbook.md` | Does not authorize production mutation or perform major-version migration. |
+| `odoo-data-model-diagram` | Bounded logical Odoo ORM diagram | DBML plus `assets/data-model-diagram-report.md` | Does not claim a physical PostgreSQL schema, read business records, or modify drawDB/MCP. |
 
 ## Composition rules
 

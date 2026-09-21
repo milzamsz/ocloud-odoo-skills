@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Create a drawDB ERD for our Odoo 18 sale.order custom fields and related models.",
+    "should_trigger": true,
+    "notes": "Direct Odoo diagram request."
+  },
+  {
+    "query": "Generate DBML from the live Odoo metadata for stock.picking and one relation hop.",
+    "should_trigger": true,
+    "notes": "Bounded MCP metadata diagram."
+  },
+  {
+    "query": "Compare _inherit fields in this addon with the running Odoo model and document the drift.",
+    "should_trigger": true,
+    "notes": "Source and live metadata comparison."
+  },
+  {
+    "query": "Map the many2one and many2many relations around account.move into a logical Odoo ERD.",
+    "should_trigger": true,
+    "notes": "ORM relationship model."
+  },
+  {
+    "query": "I need a DBML handoff for our Odoo CRM customization, not a physical database schema.",
+    "should_trigger": true,
+    "notes": "Logical-model boundary is explicit."
+  },
+  {
+    "query": "Draw the Odoo model dependencies for our custom approval addon from source code.",
+    "should_trigger": true,
+    "notes": "Source-based data-model request."
+  },
+  {
+    "query": "Produce a bounded drawDB diagram for product.template, product.product, and their direct relations.",
+    "should_trigger": true,
+    "notes": "Explicit root and bounded scope."
+  },
+  {
+    "query": "Turn fields_get output for sale.order into a documented logical model diagram.",
+    "should_trigger": true,
+    "notes": "MCP metadata input."
+  },
+  {
+    "query": "Reverse engineer every PostgreSQL table, index, and join table in this Odoo database.",
+    "should_trigger": false,
+    "notes": "Physical-schema reverse engineering is excluded."
+  },
+  {
+    "query": "Export all customer and invoice records from production into a spreadsheet.",
+    "should_trigger": false,
+    "notes": "Business record extraction belongs to live read."
+  },
+  {
+    "query": "Implement the approval_code field and form view in our sales addon.",
+    "should_trigger": false,
+    "notes": "Addon implementation boundary."
+  },
+  {
+    "query": "Draw a BPMN flow for quotation approval, delivery, and invoicing.",
+    "should_trigger": false,
+    "notes": "Business process modeling is not a data-model ERD."
+  },
+  {
+    "query": "Add a batch DBML export tool to odoo-rust-mcp.",
+    "should_trigger": false,
+    "notes": "MCP implementation is out of scope."
+  },
+  {
+    "query": "Add Odoo model import support directly to the drawDB application.",
+    "should_trigger": false,
+    "notes": "drawDB implementation is out of scope."
+  },
+  {
+    "query": "Audit these record rules and sudo calls for cross-company leaks.",
+    "should_trigger": false,
+    "notes": "Security audit boundary."
+  },
+  {
+    "query": "Plan an Odoo 17 to 18 database migration and reconcile accounting balances.",
+    "should_trigger": false,
+    "notes": "Version upgrade boundary."
+  }
+]

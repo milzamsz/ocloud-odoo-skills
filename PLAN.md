@@ -155,6 +155,7 @@ Priority order:
 8. `odoo-functional-pos`
 9. `odoo-functional-manufacturing`
 10. `odoo-deployment-operations`
+11. `odoo-data-model-diagram`
 
 Each domain skill must use foundation skills rather than duplicating their workflows.
 

@@ -1,0 +1,18 @@
+{
+  "models": [
+    {
+      "model": {
+        "name": "sale.order",
+        "description": "Sales Order",
+        "fields": {
+          "id": {"type": "integer", "string": "ID", "readonly": true},
+          "name": {"type": "char", "string": "Order Reference", "required": true},
+          "partner_id": {"type": "many2one", "string": "Customer", "relation": "res.partner", "required": true},
+          "company_id": {"type": "many2one", "string": "Company", "relation": "res.company", "required": true},
+          "tag_ids": {"type": "many2many", "string": "Tags", "relation": "crm.tag"},
+          "state": {"type": "selection", "string": "Status", "selection": [["draft", "Quotation"], ["sale", "Sales Order"]]}
+        }
+      }
+    }
+  ]
+}

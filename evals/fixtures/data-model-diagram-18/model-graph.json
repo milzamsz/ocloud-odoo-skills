@@ -1,0 +1,55 @@
+{
+  "title": "Sales approval model",
+  "roots": ["sale.order"],
+  "models": [
+    {
+      "name": "sale.order",
+      "label": "Sales Order",
+      "module": "sale",
+      "auto": true,
+      "inherits": ["mail.thread"],
+      "evidence": ["source", "live"],
+      "fields": [
+        {"name": "id", "type": "integer", "label": "ID", "readonly": true, "evidence": ["live"]},
+        {"name": "name", "type": "char", "label": "Order Reference", "required": true, "evidence": ["live"]},
+        {"name": "partner_id", "type": "many2one", "label": "Customer", "relation": "res.partner", "required": true, "index": true, "evidence": ["source", "live"]},
+        {"name": "company_id", "type": "many2one", "label": "Company", "relation": "res.company", "required": true, "evidence": ["live"]},
+        {"name": "order_line", "type": "one2many", "label": "Order Lines", "relation": "sale.order.line", "inverse": "order_id", "evidence": ["source"]},
+        {"name": "tag_ids", "type": "many2many", "label": "Tags", "relation": "crm.tag", "evidence": ["live"]},
+        {"name": "state", "type": "selection", "label": "Status", "selection": ["draft", "sale"], "evidence": ["live"]},
+        {"name": "x_approval_code", "type": "char", "label": "Approval Code", "store": true, "evidence": ["source"]}
+      ]
+    },
+    {
+      "name": "sale.order.line",
+      "label": "Sales Order Line",
+      "module": "sale",
+      "evidence": ["live"],
+      "fields": [
+        {"name": "id", "type": "integer", "evidence": ["live"]},
+        {"name": "order_id", "type": "many2one", "label": "Order", "relation": "sale.order", "required": true, "evidence": ["live"]},
+        {"name": "name", "type": "text", "label": "Description", "evidence": ["live"]}
+      ]
+    },
+    {
+      "name": "res.partner",
+      "label": "Contact",
+      "module": "base",
+      "evidence": ["live"],
+      "fields": [
+        {"name": "id", "type": "integer", "evidence": ["live"]},
+        {"name": "name", "type": "char", "label": "Name", "required": true, "evidence": ["live"]}
+      ]
+    },
+    {
+      "name": "res.company",
+      "label": "Company",
+      "module": "base",
+      "evidence": ["live"],
+      "fields": [
+        {"name": "id", "type": "integer", "evidence": ["live"]},
+        {"name": "name", "type": "char", "label": "Company Name", "required": true, "evidence": ["live"]}
+      ]
+    }
+  ]
+}

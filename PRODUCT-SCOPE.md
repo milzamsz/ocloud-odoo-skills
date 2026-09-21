@@ -103,6 +103,7 @@ Create OCloud's trusted Odoo procedural layer so that AI agents behave like cont
 - Integration and API design.
 - Reporting and QWeb.
 - Deployment and operations.
+- Technical data-model visualization from source and read-only metadata.
 
 ### 7.3 Phase 3 in scope
 

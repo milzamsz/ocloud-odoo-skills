@@ -1,0 +1,62 @@
+Project "Sales approval model" {
+}
+
+Table "crm.tag" {
+	"id" BIGINT [ pk ]
+	Note: 'stub: related model metadata unavailable'
+}
+
+Table "res.company" {
+	"id" BIGINT [ pk, note: 'evidence=live' ]
+	"name" VARCHAR [ note: 'Company Name; required=true; evidence=live' ]
+	Note: 'Company; module=base; evidence=live'
+}
+
+Table "res.partner" {
+	"id" BIGINT [ pk, note: 'evidence=live' ]
+	"name" VARCHAR [ note: 'Name; required=true; evidence=live' ]
+	Note: 'Contact; module=base; evidence=live'
+}
+
+Table "sale.order" {
+	"id" BIGINT [ pk, note: 'ID; readonly=true; evidence=live' ]
+	"company_id" BIGINT [ note: 'Company; required=true; evidence=live' ]
+	"name" VARCHAR [ note: 'Order Reference; required=true; evidence=live' ]
+	"partner_id" BIGINT [ note: 'Customer; required=true; index=true; evidence=source,live' ]
+	"state" VARCHAR [ note: 'Status; selection=draft, sale; evidence=live' ]
+	"x_approval_code" VARCHAR [ note: 'Approval Code; store=true; evidence=source' ]
+	Note: 'Sales Order; module=sale; auto=True; inherits=mail.thread; evidence=source,live; one2many=order_line'
+}
+
+Table "sale.order.line" {
+	"id" BIGINT [ pk, note: 'evidence=live' ]
+	"name" TEXT [ note: 'Description; evidence=live' ]
+	"order_id" BIGINT [ note: 'Order; required=true; evidence=live' ]
+	Note: 'Sales Order Line; module=sale; evidence=live'
+}
+
+Table "logical_m2m__sale_order__tag_ids" {
+	"sale_order_id" BIGINT [note: 'logical many2many source']
+	"crm_tag_id" BIGINT [note: 'logical many2many target']
+	Note: 'synthetic logical bridge for sale.order.tag_ids; not a physical join-table claim'
+}
+
+Ref {
+	"sale.order"."company_id" > "res.company"."id" [delete: no action, update: no action]
+}
+
+Ref {
+	"sale.order"."partner_id" > "res.partner"."id" [delete: no action, update: no action]
+}
+
+Ref {
+	"sale.order.line"."order_id" > "sale.order"."id" [delete: no action, update: no action]
+}
+
+Ref {
+	"logical_m2m__sale_order__tag_ids"."sale_order_id" > "sale.order"."id" [delete: no action, update: no action]
+}
+
+Ref {
+	"logical_m2m__sale_order__tag_ids"."crm_tag_id" > "crm.tag"."id" [delete: no action, update: no action]
+}

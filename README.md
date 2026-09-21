@@ -6,7 +6,7 @@ The repository teaches agents how to analyze, design, implement, review, test, s
 
 ## Project status
 
-- Stage: Phase 1 stable; Phase 2 domain skills experimental; Phase 3 controlled
+- Stage: Phase 1 stable; Phase 2 domain and technical skills experimental; Phase 3 controlled
   live integration in progress
 - Stable target: Odoo 18.0 Community
 - Verified-experimental targets: Odoo 17.0 Community/Enterprise, Odoo 18.0
@@ -48,7 +48,7 @@ OCloud Odoo Skills creates a controlled layer that is:
 | `odoo-oca-development` | Apply OCA-oriented module structure, tooling, documentation, and contribution conventions. |
 | `odoo-version-upgrade` | Plan and verify module and database migration between major Odoo versions. |
 
-## Phase 2 domain skills
+## Phase 2 domain and technical skills
 
 | Skill | Purpose |
 |---|---|
@@ -62,6 +62,7 @@ OCloud Odoo Skills creates a controlled layer that is:
 | `odoo-functional-pos` | Design POS sessions, payments, offline recovery, and stock handoff. |
 | `odoo-functional-manufacturing` | Design BoM-to-production processes, exceptions, and inventory handoff. |
 | `odoo-deployment-operations` | Produce read-only-first deployment, backup, rollback, and monitoring runbooks. |
+| `odoo-data-model-diagram` | Produce bounded logical Odoo ORM DBML diagrams from source and read-only metadata. |
 
 These skills are experimental. They use a stable Odoo 18 Community baseline
 and verified-experimental source/module evidence for the other five 17/18/19
