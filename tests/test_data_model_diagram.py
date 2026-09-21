@@ -1,13 +1,17 @@
 import json
+import shutil
 import subprocess
 import sys
 from pathlib import Path
+
+import pytest
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "skills" / "odoo-data-model-diagram" / "scripts" / "model_graph_to_dbml.py"
 FIXTURE = ROOT / "evals" / "fixtures" / "data-model-diagram-18"
 SKILL = ROOT / "skills" / "odoo-data-model-diagram" / "SKILL.md"
+DRAWDB_DIR = Path("/home/milzam/Workspace/tools/drawdb")
 
 
 def test_model_graph_converter_generates_stable_logical_dbml(tmp_path):
@@ -84,3 +88,27 @@ def test_converter_renders_relation_stub_and_skips_one2many_column(tmp_path):
     assert "logical_m2m__x_parent__tag_ids" in dbml
     assert '"child_ids"' not in dbml
     assert "one2many=child_ids" in dbml
+
+
+@pytest.mark.skipif(
+    shutil.which("node") is None or not (DRAWDB_DIR / "node_modules" / "@dbml" / "core").is_dir(),
+    reason="local drawDB checkout with @dbml/core is required for DBML parser verification",
+)
+def test_expected_dbml_parses_in_drawdb():
+    script = (
+        "const fs=require('fs');const {Parser}=require('@dbml/core');"
+        f"const src=fs.readFileSync({str(FIXTURE / 'expected.dbml')!r},'utf8');"
+        "const schema=new Parser().parse(src,'dbmlv2').schemas[0];"
+        "if(schema.tables.length!==6||schema.refs.length!==5)process.exit(1);"
+        "console.log('tables='+schema.tables.length+' refs='+schema.refs.length);"
+    )
+    result = subprocess.run(
+        ["node", "-e", script],
+        capture_output=True,
+        text=True,
+        check=False,
+        cwd=DRAWDB_DIR,
+    )
+
+    assert result.returncode == 0, result.stderr
+    assert result.stdout.strip() == "tables=6 refs=5"

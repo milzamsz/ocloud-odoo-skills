@@ -8,6 +8,18 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Added
 
+- Added experimental `odoo-data-model-diagram` with bounded source/live model
+  evidence, logical DBML generation, drawDB parser verification, clean-room
+  fixtures, six-cell version coverage, and no physical-schema or live-write claims.
+  Its live workflow names an explicit `odoo-rust-mcp` metadata allowlist
+  (`odoo_list_models`, `odoo_get_model_metadata`, `odoo_check_access` with
+  `operation=read`) and an explicit denylist that excludes record reads, counts,
+  generic execution, reports, workflow, cleanup, and mutation tools.
+- Froze the four-repository mutation-alignment baseline, manifest hashes, existing
+  owner changes, test gates, and exact supported/blocked starting posture.
+- Added capability-local mutation references for CRM lead, quotation, vendor-bill
+  draft, atomic allowed-field update, and bank suspense import plus a cross-repo
+  capability contract validator and shared five-capability evaluation fixture.
 - Added a six-cell Odoo 17/18/19 Community/Enterprise support matrix,
   licensed-source-safe evidence registry, 121 exact version/edition skill
   references, six matrix fixtures, and 102 matrix outcome scenarios.
@@ -37,9 +49,15 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Changed
 
+- Replaced the draft-update blocker with an atomic Odoo-side conditional update and recorded development/staging matrix evidence for all six Odoo 17/18/19 Community/Enterprise cells; production remains read-only.
+- Bound final mutation execution to the signed `odoo_execute_capability`
+  runtime envelope.
+- Updated `odoo-live-mutation` to `0.2.0`, removed its unsupported Odoo 18
+  Community metadata claim, required exact support-cell/schema/evidence/review
+  gates, normalized receipts, and accounting-suspense classification.
 - Expanded all Phase 1 and Phase 2 skills plus Phase 3 live context/read to
   Odoo 17/18/19 Community and Enterprise verified-experimental coverage.
-  `odoo-live-mutation` remains explicitly Odoo 18 Community only.
+  `odoo-live-mutation` remains blocked for every support cell pending evidence.
 - Extended the tap manifest, README, and package manifest for experimental
   Phase 2 distribution while retaining the Phase 1 stable baseline.
 
