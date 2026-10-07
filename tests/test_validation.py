@@ -52,3 +52,51 @@ def test_skill_version_claims_have_complete_evidence():
     skill_dirs = sorted(path for path in (ROOT / "skills").iterdir() if path.is_dir())
     errors = validate_version_claims(skill_dirs)
     assert not errors, "\n".join(errors)
+
+
+def test_editions_by_version_can_claim_community_without_enterprise_for_new_release():
+    from scripts.validate_repository import iter_version_edition_pairs
+
+    metadata = {
+        "versions": ["17.0", "18.0", "20.0"],
+        "editions": ["community", "enterprise"],
+        "editions_by_version": {
+            "17.0": ["community", "enterprise"],
+            "18.0": ["community", "enterprise"],
+            "20.0": ["community"],
+        },
+    }
+
+    assert list(iter_version_edition_pairs(metadata)) == [
+        ("17.0", "community"),
+        ("17.0", "enterprise"),
+        ("18.0", "community"),
+        ("18.0", "enterprise"),
+        ("20.0", "community"),
+    ]
+
+
+def test_edition_claims_without_version_map_keep_legacy_cross_product():
+    from scripts.validate_repository import iter_version_edition_pairs
+
+    metadata = {"versions": ["18.0", "19.0"], "editions": ["community", "enterprise"]}
+
+    assert list(iter_version_edition_pairs(metadata)) == [
+        ("18.0", "community"),
+        ("18.0", "enterprise"),
+        ("19.0", "community"),
+        ("19.0", "enterprise"),
+    ]
+
+
+def test_editions_by_version_omits_unlisted_edition_pairs():
+    from scripts.validate_repository import iter_version_edition_pairs
+
+    metadata = {
+        "versions": ["20.0"],
+        "editions": ["community", "enterprise"],
+        "editions_by_version": {"20.0": ["community"]},
+    }
+
+    assert list(iter_version_edition_pairs(metadata)) == [("20.0", "community")]
+    assert ("20.0", "enterprise") not in list(iter_version_edition_pairs(metadata))

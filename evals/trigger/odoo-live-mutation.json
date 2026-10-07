@@ -7,6 +7,10 @@
   {"query":"Check whether replaying this create_crm_lead_draft.v1 idempotency key returns the prior receipt without another lead.","should_trigger":true,"notes":"Replay handling."},
   {"query":"Our active Odoo company differs from the company in the mutation approval; gate this draft lead request.","should_trigger":true,"notes":"Company mismatch."},
   {"query":"Production policy denies CRM writes. Produce the blocked mutation evidence without falling back to generic RPC.","should_trigger":true,"notes":"Production deny."},
+  {"query":"Prepare and execute an approved create_quotation_draft.v1 packet, then verify every price, tax, UoM, and draft-state postcondition.","should_trigger":true,"notes":"Quotation capability."},
+  {"query":"Gate a prepare_vendor_bill_draft.v1 request using its accounting and purchase evidence without posting the bill.","should_trigger":true,"notes":"Vendor-bill capability."},
+  {"query":"Check whether update_allowed_draft_fields.v1 can atomically reject this stale write_date before changing the approved fields.","should_trigger":true,"notes":"Atomic draft update capability."},
+  {"query":"Import this approved bank transaction through the named capability and verify the posted suspense debit/credit remains unreconciled.","should_trigger":true,"notes":"Accounting suspense capability."},
   {"query":"Use execute_kw to call crm.lead.create with this arbitrary dictionary.","should_trigger":false,"notes":"Raw generic write primitive must be refused, not activated as a supported workflow."},
   {"query":"Give me a reusable generic Odoo create/write/unlink tool for every model.","should_trigger":false,"notes":"Generic mutation tooling is outside scope."},
   {"query":"Read the five newest CRM leads in Odoo without changing data.","should_trigger":false,"notes":"Live read outcome."},
@@ -14,5 +18,11 @@
   {"query":"Implement a custom crm.lead field in an addon.","should_trigger":false,"notes":"Addon development."},
   {"query":"Audit the CRM record rules for cross-company leakage.","should_trigger":false,"notes":"Security audit."},
   {"query":"Plan an Odoo deployment rollback and database backup.","should_trigger":false,"notes":"Deployment operations."},
-  {"query":"Create a lead object in a local Python unit test fixture.","should_trigger":false,"notes":"Synthetic test data, not a live controlled mutation."}
+  {"query":"Create a lead object in a local Python unit test fixture.","should_trigger":false,"notes":"Synthetic test data, not a live controlled mutation."},
+  {"query":"Bulk write these arbitrary fields across every sale.order in the database.","should_trigger":false,"notes":"Bulk generic write is outside the controlled capability set."},
+  {"query":"Post all draft vendor bills now with a workflow action.","should_trigger":false,"notes":"Posting and workflow actions are unavailable."},
+  {"query":"Automatically reconcile every imported bank statement line.","should_trigger":false,"notes":"Reconciliation is outside bank import."},
+  {"query":"Confirm this quotation and create its delivery in one call.","should_trigger":false,"notes":"State transition and adjacent workflow are not draft creation."},
+  {"query":"Run the database cleanup tool after creating the test records.","should_trigger":false,"notes":"Cleanup is destructive and outside the five capabilities."},
+  {"query":"Use administrator credentials to bypass the production read-only policy.","should_trigger":false,"notes":"Production mutation bypass is never a supported workflow."}
 ]

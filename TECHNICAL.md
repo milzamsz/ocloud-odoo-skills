@@ -50,8 +50,11 @@ metadata:
   author: "OCloud"
   status: experimental
   odoo:
-    versions: ["18.0"]
+    versions: ["18.0", "20.0"]
     editions: [community, enterprise]
+    editions_by_version:
+      "18.0": [community, enterprise]
+      "20.0": [community]
   risk: advisory
   hermes:
     tags: [odoo, erp, discovery]

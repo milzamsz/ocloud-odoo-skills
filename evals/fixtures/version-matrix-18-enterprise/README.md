@@ -1,7 +1,7 @@
 # Odoo 18.0 Enterprise version evidence
 
 Synthetic evaluation fixture backed by read-only inspection of
-`/home/milzam/Workspace/odoo-dev/environments/odoo18ee`.
+`$ODOO_DEV_ROOT/environments/odoo18ee`.
 
 - Release series: `18.0`
 - Edition: `enterprise` (`web_enterprise` and `account_accountant` are present).

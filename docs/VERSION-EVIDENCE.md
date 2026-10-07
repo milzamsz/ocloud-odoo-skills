@@ -1,10 +1,10 @@
 # Version and Edition Evidence
 
-Date: 2026-07-20
+Date: 2026-10-07
 
-This document records source-level evidence for the six supported target
-cells. It contains no credentials, database data, client data, or proprietary
-Enterprise source.
+This document records source-level evidence for the supported target cells. It
+contains no credentials, database data, client data, or proprietary Enterprise
+source.
 
 | Cell | Read-only environment | Registered sources | Status |
 |---|---|---|---|
@@ -14,14 +14,15 @@ Enterprise source.
 | 18.0 Enterprise | `environments/odoo18ee` | `odoo-18-ce-source`, `odoo-18-ee-local-evidence` | verified-experimental |
 | 19.0 Community | `environments/odoo19ce` | `odoo-19-ce-source` | verified-experimental |
 | 19.0 Enterprise | `environments/odoo19ee` | `odoo-19-ce-source`, `odoo-19-ee-local-evidence` | verified-experimental |
+| 20.0 Community | `environments/odoo20ce` | `odoo-20-ce-source`, `odoo-20-developer`, `odoo-20-applications` | verified-experimental |
 
 ## Observed source facts
 
-- Release metadata matches each environment's configured major version.
-- The observed trees include `base`, `sale_crm`, `sale_stock`,
-  `purchase_stock`, `stock_account`, `mrp_account`, and `l10n_id`.
-- Community trees do not include `web_enterprise` or `account_accountant`.
-- Enterprise trees include `web_enterprise` and `account_accountant`.
+- Release metadata matches each inspected environment's configured major version.
+- The inspected Odoo 20.0 Community tree reports `(20, 0, 0, FINAL, 0, '')` in `odoo/odoo/release.py` and contains the modules enumerated in `evals/fixtures/version-matrix-20-community/README.md`.
+- The Odoo 20.0 environment tree has no Git metadata; that fixture records SHA-256 hashes of the release file and selected manifests. These hashes identify the snapshot but do not establish its upstream origin.
+- In the inspected Odoo 20.0 Community tree, `addons/web_enterprise` and `addons/account_accountant` are absent. This is a local source-tree observation only.
+- Existing Enterprise rows rely on their separate licensed local evidence; the Odoo 20.0 Community observation provides no Enterprise evidence.
 
 These facts establish a source baseline only. They do not prove that a module
 is installed, configured, licensed for a particular user, accessible through

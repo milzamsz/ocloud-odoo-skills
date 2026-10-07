@@ -7,7 +7,8 @@ the plugin guard, Odoo ACLs/record rules, and this procedural gate.
 |---|---|---|---|---|
 | `read` | search, read, count, read-group, model metadata, access check | allow by profile | allow by profile | allow by read-only profile |
 | `draft_write` | versioned draft-record capability | deny unless capability-approved | deny unless capability-approved | deny |
-| `posting` | confirm/post/reconcile/workflow actions with ledger or stock effect | deny | deny | deny |
+| `accounting_suspense_write` | bank transaction import that posts an unreconciled suspense move | deny unless capability and accounting review approve | deny unless capability and accounting review approve | deny |
+| `state_transition` | confirm/post/reconcile/workflow actions with ledger or stock effect | deny | deny | deny |
 | `destructive` | delete, cleanup, restore, broad SQL, irreversible workflow | deny | deny | deny |
 
 ## Read tools
@@ -30,11 +31,13 @@ Generic `odoo_create`, `odoo_update`, `odoo_delete`, `odoo_execute`,
 `odoo_workflow_action`, copy, batch, and cleanup primitives are not
 agent-selectable write interfaces. Expose a closed named capability instead.
 
-The initial candidate is `create_crm_lead_draft.v1`, classified
-`draft_write`. Its runtime remains blocked until approval storage, reviewer
-authorization, idempotency/replay controls, MCP binding, returned-record
-verification, audit-failure denial, Odoo company/access negatives, and staging
-rollback evidence pass.
+The controlled set is `create_crm_lead_draft.v1`,
+`create_quotation_draft.v1`, `prepare_vendor_bill_draft.v1`,
+`update_allowed_draft_fields.v1`, and `import_bank_transaction_draft.v1`.
+The first four are `draft_write`. Bank import is
+`accounting_suspense_write`: Odoo posts the suspense move immediately and the
+capability must verify it remains unreconciled with a named correction owner.
+Every exact target cell remains blocked until its runtime evidence and reviews pass.
 
 ## Escalation
 

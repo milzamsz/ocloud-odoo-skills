@@ -51,14 +51,21 @@ metadata:
   status: experimental
   risk: advisory
   odoo:
-    versions: ["18.0"]
+    versions: ["18.0", "20.0"]
     editions: [community, enterprise]
+    editions_by_version:
+      "18.0": [community, enterprise]
+      "20.0": [community]
   hermes:
     tags: [odoo, example]
 ---
 ```
 
-Custom metadata is informational. Do not assume every client enforces it.
+When a skill supports different editions by release, include
+`editions_by_version` so `versions` × `editions` does not accidentally claim an
+unsupported cell. The validator retains the legacy cross-product behavior when
+this field is absent. Custom metadata is informational. Do not assume every
+client enforces it.
 
 ## 4. Description rules
 

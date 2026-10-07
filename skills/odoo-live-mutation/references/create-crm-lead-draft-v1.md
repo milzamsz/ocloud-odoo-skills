@@ -1,8 +1,8 @@
 # `create_crm_lead_draft.v1` contract
 
-Load this reference only after confirming Odoo 18.0 Community and selecting
-the runtime-advertised `create_crm_lead_draft.v1` capability. The runtime
-contract is authoritative; any mismatch blocks execution.
+Load this reference only after the shared contract approves the exact target
+cell for `create_crm_lead_draft.v1`. The runtime contract is authoritative;
+all current target cells remain blocked.
 
 ## Outcome
 
@@ -43,9 +43,8 @@ server-action or method names, and values added or normalized after approval.
 The capability implementation, not this skill, must enforce schema validation,
 ACLs and record rules, company scope, environment policy, approval binding,
 idempotency, and audit logging. It must return a structured receipt containing
-the capability/version, target/company, payload digest, idempotency key,
-execution status, resulting model and record identifier when created, actor,
-timestamp, and audit identifier.
+the shared normalized receipt fields, including target cell, `draft_write`,
+verification, and compensation status.
 
 Reusing an idempotency key with an identical request may return the original
 receipt but must not create another lead. Reuse with any changed binding is

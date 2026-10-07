@@ -1,7 +1,7 @@
 # Odoo 18.0 Community version evidence
 
 Synthetic evaluation fixture backed by read-only inspection of
-`/home/milzam/Workspace/odoo-dev/environments/odoo18ce`.
+`$ODOO_DEV_ROOT/environments/odoo18ce`.
 
 - Release series: `18.0`
 - Edition: `community` (`web_enterprise` and `account_accountant` are absent).

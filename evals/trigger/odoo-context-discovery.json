@@ -78,5 +78,15 @@
     "query": "Design whether vendor bill ingestion should use standard Odoo, OCA, custom code, or middleware; the environment is already confirmed.",
     "should_trigger": false,
     "notes": "Solution selection, not discovery."
+  },
+  {
+    "query": "This environment is named odoo20ce. Verify its exact Odoo release, edition, source tree, addons paths, and whether it is a Git checkout before recommending Odoo 20-specific commands.",
+    "should_trigger": true,
+    "notes": "Version and edition require evidence rather than a path-name assumption."
+  },
+  {
+    "query": "Implement this approved Odoo 20.0 Community field; source revision, addons paths, database target, and test command are already verified in the current context.",
+    "should_trigger": false,
+    "notes": "Complete fresh context delegates implementation rather than re-running discovery."
   }
 ]

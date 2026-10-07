@@ -9,8 +9,13 @@ metadata:
   status: stable
   risk: read-only
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
+    versions: ["17.0", "18.0", "19.0", "20.0"]
     editions: [community, enterprise]
+    editions_by_version:
+      "17.0": [community, enterprise]
+      "18.0": [community, enterprise]
+      "19.0": [community, enterprise]
+      "20.0": [community]
   hermes:
     tags: [odoo, discovery, repository, environment]
 ---
@@ -151,7 +156,7 @@ Before completing, confirm:
 
 ## References to load
 
-Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
+Read exactly one version/edition reference after the target version and edition are confirmed. References exist for Odoo 17, 18, and 19 Community/Enterprise, plus Odoo 20 Community only; do not imply Odoo 20 Enterprise support.
 
 - Read `references/evidence-priority.md` when version or edition evidence conflicts.
 - Read `references/repository-markers.md` when repository structure is unfamiliar.

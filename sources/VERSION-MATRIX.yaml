@@ -64,3 +64,13 @@ cells:
   fixture: evals/fixtures/version-matrix-19-enterprise
   notes: Source/module evidence verified; stable promotion still requires named human
     review and clean-profile regression.
+- id: 20.0-community
+  version: '20.0'
+  edition: community
+  status: verified-experimental
+  source_ids:
+  - odoo-20-ce-source
+  - odoo-20-developer
+  - odoo-20-applications
+  fixture: evals/fixtures/version-matrix-20-community
+  notes: Local Community release and selected module manifests fingerprinted; official documentation indexes consulted. No Enterprise, OCA 20, runtime database, or behavioral compatibility claim.

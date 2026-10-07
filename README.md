@@ -10,7 +10,9 @@ The repository teaches agents how to analyze, design, implement, review, test, s
   live integration in progress
 - Stable target: Odoo 18.0 Community
 - Verified-experimental targets: Odoo 17.0 Community/Enterprise, Odoo 18.0
-  Enterprise, and Odoo 19.0 Community/Enterprise
+  Enterprise, Odoo 19.0 Community/Enterprise, and Odoo 20.0 Community (source-level
+  evidence only; per-skill claims remain gated by complete evidence). Odoo 20.0
+  Enterprise and OCA 20.0 compatibility are not verified.
 - Runtime priority: Hermes Agent
 - Format: Agent Skills (`SKILL.md`)
 - Distribution: Hermes custom skill tap and external skill directory

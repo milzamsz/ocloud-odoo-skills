@@ -107,7 +107,10 @@ flowchart LR
 
 - Primary stable cell: Odoo 18.0 Community.
 - Verified-experimental cells: Odoo 17.0 Community/Enterprise, Odoo 18.0
-  Enterprise, and Odoo 19.0 Community/Enterprise.
+  Enterprise, Odoo 19.0 Community/Enterprise, and Odoo 20.0 Community.
+- Odoo 20.0 Enterprise and OCA 20.0 compatibility are unverified and must not
+  be advertised. Odoo 20.0 Community status is source-evidence only until each
+  skill passes its own reference/outcome evidence gates.
 - Tier 3: Odoo 16.0, primarily for migration context.
 
 The machine-readable status is authoritative in

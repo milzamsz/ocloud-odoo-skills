@@ -128,6 +128,96 @@ sources:
   - '18.0'
   last_reviewed: '2026-07-19'
   notes: Standard vendor bill, purchase matching, posting, and payment workflow evidence.
+- id: odoo-20-accounting-apps
+  name: Odoo 20 Accounting and Invoicing Documentation
+  url: https://www.odoo.com/documentation/20.0/applications/finance/accounting.html
+  authority_tier: 3
+  usage: authoritative-odoo-functional-documentation
+  license_status: documentation-reference
+  odoo_versions:
+  - '20.0'
+  notes: Landing page consulted for accounting app boundaries, double-entry, multi-company, multi-currency, branches, and report overview; specific procedural pages must be inspected before detailed claims.
+- id: odoo-20-fiscal-localizations
+  name: Odoo 20 Fiscal Localizations Documentation
+  url: https://www.odoo.com/documentation/20.0/applications/finance/fiscal_localizations.html
+  authority_tier: 3
+  usage: authoritative-odoo-functional-documentation
+  license_status: documentation-reference
+  odoo_versions:
+  - '20.0'
+  notes: Landing page consulted for localization installation and configuration boundaries; not legal or tax advice.
+- id: odoo-20-crm-apps
+  name: Odoo 20 CRM Documentation
+  url: https://www.odoo.com/documentation/20.0/applications/sales/crm.html
+  authority_tier: 3
+  usage: authoritative-odoo-functional-documentation
+  license_status: documentation-reference
+  odoo_versions:
+  - '20.0'
+  notes: CRM landing page consulted for pipeline, lead, and opportunity workflow scope; no target behavior inferred.
+- id: odoo-20-sales-apps
+  name: Odoo 20 Sales Documentation
+  url: https://www.odoo.com/documentation/20.0/applications/sales/sales.html
+  authority_tier: 3
+  usage: authoritative-odoo-functional-documentation
+  license_status: documentation-reference
+  odoo_versions:
+  - '20.0'
+  notes: Sales landing page consulted for quotation, order, delivery, invoicing, and invoicing-policy topics.
+- id: odoo-20-purchase-apps
+  name: Odoo 20 Purchase Documentation
+  url: https://www.odoo.com/documentation/20.0/applications/inventory_and_mrp/purchase.html
+  authority_tier: 3
+  usage: authoritative-odoo-functional-documentation
+  license_status: documentation-reference
+  odoo_versions:
+  - '20.0'
+  notes: Purchase landing page consulted for purchase agreement, quotation, and order scope; detailed controls require specific page evidence.
+- id: odoo-20-inventory-apps
+  name: Odoo 20 Inventory Documentation
+  url: https://www.odoo.com/documentation/20.0/applications/inventory_and_mrp/inventory.html
+  authority_tier: 3
+  usage: authoritative-odoo-functional-documentation
+  license_status: documentation-reference
+  odoo_versions:
+  - '20.0'
+  notes: Inventory landing page consulted for warehouse, routes, replenishment, and movement/report topics; target configuration remains separate.
+- id: odoo-20-manufacturing-apps
+  name: Odoo 20 Manufacturing Documentation
+  url: https://www.odoo.com/documentation/20.0/applications/inventory_and_mrp/manufacturing.html
+  authority_tier: 3
+  usage: authoritative-odoo-functional-documentation
+  license_status: documentation-reference
+  odoo_versions:
+  - '20.0'
+  notes: Manufacturing landing page consulted for BoM, manufacturing/work orders, costing, and work-center topic scope.
+- id: odoo-20-pos-apps
+  name: Odoo 20 Point of Sale Documentation
+  url: https://www.odoo.com/documentation/20.0/applications/sales/point_of_sale.html
+  authority_tier: 3
+  usage: authoritative-odoo-functional-documentation
+  license_status: documentation-reference
+  odoo_versions:
+  - '20.0'
+  notes: POS landing page consulted for browser/offline overview, retail/restaurant workflows, payment methods, and reporting topics.
+- id: odoo-20-security-docs
+  name: Odoo 20 Security Developer Documentation
+  url: https://www.odoo.com/documentation/20.0/developer/reference/backend/security.html
+  authority_tier: 3
+  usage: authoritative-odoo
+  license_status: documentation-reference
+  odoo_versions:
+  - '20.0'
+  notes: Security documentation consulted for SQL injection and escaped HTML/QWeb output guidance; verify exact APIs against 20.0 source.
+- id: odoo-20-orm-docs
+  name: Odoo 20 ORM Developer Documentation
+  url: https://www.odoo.com/documentation/20.0/developer/reference/backend/orm.html
+  authority_tier: 3
+  usage: authoritative-odoo
+  license_status: documentation-reference
+  odoo_versions:
+  - '20.0'
+  notes: ORM reference consulted; it links 20.0 source paths and describes fields, environment, decorators, and ORM APIs.
 - id: oca-github
   name: Odoo Community Association GitHub Organization
   url: https://github.com/OCA
@@ -239,6 +329,33 @@ sources:
   odoo_versions:
   - '19.0'
   notes: Secondary target; do not backport guidance without verification.
+- id: odoo-20-developer
+  name: Odoo 20 Developer Documentation
+  url: https://www.odoo.com/documentation/20.0/developer.html
+  authority_tier: 3
+  usage: authoritative-odoo
+  license_status: documentation-reference
+  odoo_versions:
+  - '20.0'
+  notes: Developer documentation index consulted; cite only specific pages actually checked and verify claims against the target source/runtime.
+- id: odoo-20-applications
+  name: Odoo 20 Applications Documentation
+  url: https://www.odoo.com/documentation/20.0/applications.html
+  authority_tier: 3
+  usage: authoritative-odoo-functional-documentation
+  license_status: documentation-reference
+  odoo_versions:
+  - '20.0'
+  notes: Applications documentation index consulted; individual business-process pages must be inspected before workflow-specific claims.
+- id: odoo-20-ce-source
+  name: Odoo 20 Community Source
+  url: https://github.com/odoo/odoo/tree/20.0
+  authority_tier: 3
+  usage: authoritative-odoo-source-reference
+  license_status: LGPL-3.0 repository reference; no source copied
+  odoo_versions:
+  - '20.0'
+  notes: Local Community source at /home/milzam/Workspace/odoo-dev/environments/odoo20ce/odoo reports release 20.0; local tree has no Git metadata, so record a source fingerprint and do not claim an upstream commit unless independently established.
 - id: oca-openupgrade
   name: OCA OpenUpgrade
   url: https://github.com/OCA/OpenUpgrade

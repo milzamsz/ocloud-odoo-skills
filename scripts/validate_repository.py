@@ -38,6 +38,24 @@ def parse_skill(path: Path) -> tuple[dict[str, Any], str]:
     return data, text[match.end():]
 
 
+def iter_version_edition_pairs(odoo: dict[str, Any]):
+    """Yield exact supported version/edition pairs, with legacy cross-product fallback."""
+    versions = odoo.get("versions") or []
+    editions_by_version = odoo.get("editions_by_version")
+    if editions_by_version is None:
+        for version in versions:
+            for edition in odoo.get("editions") or []:
+                yield version, edition
+        return
+    if not isinstance(editions_by_version, dict):
+        return
+    for version in versions:
+        editions = editions_by_version.get(version) or []
+        if isinstance(editions, list):
+            for edition in editions:
+                yield version, edition
+
+
 def validate_links(skill_dir: Path, body: str) -> list[str]:
     errors: list[str] = []
     for target in LINK_RE.findall(body):
@@ -115,32 +133,33 @@ def validate_version_claims(skill_dirs: list[Path]) -> list[str]:
     for skill_dir in skill_dirs:
         meta, _ = parse_skill(skill_dir / "SKILL.md")
         odoo = (meta.get("metadata") or {}).get("odoo") or {}
-        versions = odoo.get("versions") or []
-        editions = odoo.get("editions") or []
-        for version in versions:
-            for edition in editions:
-                cell = cells.get((version, edition))
-                label = f"{skill_dir.name}: {version}-{edition}"
-                if not cell or cell.get("status") not in allowed:
-                    errors.append(f"{label}: matrix cell is not claimable")
-                    continue
-                for source_id in cell.get("source_ids", []):
-                    if source_id not in source_ids:
-                        errors.append(f"{label}: missing registered source {source_id}")
-                fixture = ROOT / str(cell.get("fixture", ""))
-                if not fixture.exists():
-                    errors.append(f"{label}: missing matrix fixture {fixture.relative_to(ROOT)}")
-                ref = skill_dir / "references" / f"odoo-{version.split('.')[0]}-{edition}.md"
-                if not ref.exists():
-                    errors.append(f"{label}: missing reference {ref.relative_to(ROOT)}")
-                covered = any(
-                    case.get("skill") == skill_dir.name
-                    and str(case.get("odoo_version")) == version
-                    and case.get("odoo_edition", "community") == edition
-                    for case in cases
-                )
-                if not covered:
-                    errors.append(f"{label}: missing outcome evidence")
+        edition_map = odoo.get("editions_by_version")
+        if edition_map is not None and not isinstance(edition_map, dict):
+            errors.append(f"{skill_dir.name}: editions_by_version must be a mapping")
+            continue
+        for version, edition in iter_version_edition_pairs(odoo):
+            cell = cells.get((version, edition))
+            label = f"{skill_dir.name}: {version}-{edition}"
+            if not cell or cell.get("status") not in allowed:
+                errors.append(f"{label}: matrix cell is not claimable")
+                continue
+            for source_id in cell.get("source_ids", []):
+                if source_id not in source_ids:
+                    errors.append(f"{label}: missing registered source {source_id}")
+            fixture = ROOT / str(cell.get("fixture", ""))
+            if not fixture.exists():
+                errors.append(f"{label}: missing matrix fixture {fixture.relative_to(ROOT)}")
+            ref = skill_dir / "references" / f"odoo-{version.split('.')[0]}-{edition}.md"
+            if not ref.exists():
+                errors.append(f"{label}: missing reference {ref.relative_to(ROOT)}")
+            covered = any(
+                case.get("skill") == skill_dir.name
+                and str(case.get("odoo_version")) == version
+                and case.get("odoo_edition", "community") == edition
+                for case in cases
+            )
+            if not covered:
+                errors.append(f"{label}: missing outcome evidence")
     return errors
 
 

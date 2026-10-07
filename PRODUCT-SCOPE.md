@@ -172,7 +172,7 @@ Every recommendation produced by a design skill must classify components as:
 ## 11. Assumptions
 
 - OCloud controls the Git repository and release process.
-- Odoo 18.0 is the initial production baseline.
+- Odoo 18.0 Community is the stable baseline. Odoo 20.0 Community is source-evidence-only experimental until every specific skill claim passes its evidence and evaluation gates; no Odoo 20 Enterprise or OCA 20 compatibility is assumed.
 - Hermes remains the primary consumer, but portability is valuable.
 - `odoo-rust-mcp-agent` is responsible for precise Odoo integration operations.
 - Human approval remains required for high-risk changes.

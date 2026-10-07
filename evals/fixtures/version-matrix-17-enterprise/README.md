@@ -1,7 +1,7 @@
 # Odoo 17.0 Enterprise version evidence
 
 Synthetic evaluation fixture backed by read-only inspection of
-`/home/milzam/Workspace/odoo-dev/environments/odoo17ee`.
+`$ODOO_DEV_ROOT/environments/odoo17ee`.
 
 - Release series: `17.0`
 - Edition: `enterprise` (`web_enterprise` and `account_accountant` are present).

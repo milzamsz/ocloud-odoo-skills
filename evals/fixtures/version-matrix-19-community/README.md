@@ -1,7 +1,7 @@
 # Odoo 19.0 Community version evidence
 
 Synthetic evaluation fixture backed by read-only inspection of
-`/home/milzam/Workspace/odoo-dev/environments/odoo19ce`.
+`$ODOO_DEV_ROOT/environments/odoo19ce`.
 
 - Release series: `19.0`
 - Edition: `community` (`web_enterprise` and `account_accountant` are absent).

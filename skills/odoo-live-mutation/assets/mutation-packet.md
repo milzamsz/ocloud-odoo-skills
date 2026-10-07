@@ -6,7 +6,10 @@
 
 ## Live target
 - Odoo version / edition:
+- Protocol / auth mode:
 - Instance / database / environment:
+- Registry / manifest revision:
+- Required modules / model fingerprint:
 - Environment policy:
 - Authenticated actor:
 - Active company / allowed companies:
@@ -14,6 +17,9 @@
 
 ## Named capability
 - Capability and version:
+- Operation / risk class:
+- Exact support-cell decision:
+- Input / output / receipt schema hashes:
 - Runtime contract advertised:
 - Business outcome:
 - Explicitly excluded side effects:
@@ -34,6 +40,8 @@
 
 ## Capability gates
 - [ ] Exact capability/version available
+- [ ] Exact version/edition/protocol/auth/environment cell approved
+- [ ] Required modules, schema hashes, and model fingerprint match
 - [ ] Environment policy permits invocation
 - [ ] Actor and approver policy passes
 - [ ] Exact unexpired approval binding matches
@@ -48,9 +56,12 @@ Runtime is blocked until every box is checked.
 - Invocation attempted:
 - Receipt / audit identifier:
 - Receipt capability / target / company:
+- Receipt target cell / operation class / actor / approval reference:
 - Receipt payload SHA-256 / idempotency key:
+- Correlation / audit identifier:
 - Result model / record identifier:
-- Timestamp / actor / status:
+- Verification / compensation status and owner:
+- Timestamp / status:
 
 ## Read-only verification
 - Bounded verification query:
