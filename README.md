@@ -65,6 +65,9 @@ OCloud Odoo Skills creates a controlled layer that is:
 | `odoo-functional-manufacturing` | Design BoM-to-production processes, exceptions, and inventory handoff. |
 | `odoo-deployment-operations` | Produce read-only-first deployment, backup, rollback, and monitoring runbooks. |
 | `odoo-data-model-diagram` | Produce bounded logical Odoo ORM DBML diagrams from source and read-only metadata. |
+| `odoo-code-tracing` | Trace a bounded Odoo execution path and report source-evidenced side effects and security boundaries (18/19/20 Community; experimental). |
+
+Third-party skill inventory and scope decisions: [mart337i/odoo-skills coverage review](docs/MART337I-COVERAGE.md).
 
 These skills are experimental. They use a stable Odoo 18 Community baseline
 and verified-experimental source/module evidence for the other five 17/18/19

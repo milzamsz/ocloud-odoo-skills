@@ -8,6 +8,8 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Added
 
+- Added experimental `odoo-code-tracing` for evidence-bounded call-chain tracing across Odoo 18/19/20 Community, with version-specific references, synthetic outcome fixtures, and an upstream skills coverage review; 19/20 claims remain experimental and no upstream content was copied.
+
 - Added experimental `odoo-data-model-diagram` with bounded source/live model
   evidence, logical DBML generation, drawDB parser verification, clean-room
   fixtures, six-cell version coverage, and no physical-schema or live-write claims.
