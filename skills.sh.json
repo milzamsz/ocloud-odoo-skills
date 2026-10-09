@@ -16,7 +16,8 @@
         "odoo-addon-development",
         "odoo-testing",
         "odoo-oca-development",
-        "odoo-data-model-diagram"
+        "odoo-data-model-diagram",
+        "odoo-code-tracing"
       ]
     },
     {

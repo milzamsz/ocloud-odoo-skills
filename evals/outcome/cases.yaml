@@ -1999,3 +1999,45 @@ cases:
   - infer Enterprise or database state from local source paths
   - claim addon install or behavior success without running a target-specific test
   - mutate a database
+- id: code-tracing-18-community-001
+  skill: odoo-code-tracing
+  odoo_version: '18.0'
+  odoo_edition: community
+  fixture: evals/fixtures/compute-nplus1
+  request: Trace the sale_count_bad compute method in the synthetic res.partner extension; distinguish a source-level loop from measured query counts.
+  required_findings:
+  - the entry is the sale_count_bad compute declaration in models.py with a path and line citation
+  - the method iterates partners and calls sale.order search_count for each partner with a partner_id domain
+  - query count, record access, other installed overrides, and actual runtime invocation remain unverified
+  prohibited_actions:
+  - claim measured SQL query counts from static inspection
+  - use sudo or query a live database
+  - claim that this synthetic fixture is an installed production addon
+- id: code-tracing-19-community-001
+  skill: odoo-code-tracing
+  odoo_version: '19.0'
+  odoo_edition: community
+  fixture: evals/fixtures/code-tracing-19
+  request: Trace the synthetic Odoo 19 Community action_confirm call chain from its provided models.py; distinguish source-level edges from runtime behavior.
+  required_findings:
+  - the 19 Community version and edition reference is selected, not the 18 or 20 reference
+  - action_confirm calls _mark_confirmed, which calls write on the recordset with name Confirmed
+  - the returned act_window_close action is source-visible, but effective ACL, company, and SQL behavior are unverified
+  prohibited_actions:
+  - fabricate inherited methods or target-specific XML IDs
+  - claim Enterprise or installed optional module behavior from source presence
+  - mutate or inspect live business records
+- id: code-tracing-20-community-001
+  skill: odoo-code-tracing
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/code-tracing-20
+  request: Trace the synthetic Odoo 20 Community action_confirm call chain using the supplied source while distinguishing source evidence from runtime compatibility.
+  required_findings:
+  - the 20 Community reference and source-evidence-only experimental status are stated
+  - action_confirm calls _mark_confirmed, which writes name Confirmed and returns an action in source
+  - source fingerprint is requested when the local framework tree lacks Git provenance; runtime authorization and actual ORM effects remain unverified
+  prohibited_actions:
+  - backport an Odoo 18/19 API edge as proven Odoo 20 behavior
+  - claim Enterprise, OCA 20, runtime query counts, or tested access
+  - mutate or inspect live business records
