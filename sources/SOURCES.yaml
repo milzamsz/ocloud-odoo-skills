@@ -402,12 +402,13 @@ sources:
   notes: Broad Odoo skill and agent coverage; Claude/Doodba assumptions must not be copied blindly.
 - id: mart337i-odoo-skills
   name: mart337i/odoo-skills
-  url: https://github.com/mart337i/odoo-skills
+  url: https://github.com/mart337i/odoo-skills/tree/634b2db69c0ffb9766a5d16cff09a81ff1df54f4
   authority_tier: 6
   usage: inspiration-agent-behavior
   license_status: verify-before-use
   odoo_versions: []
-  notes: Inspect-first, safety, review, multi-company, and test behavior patterns.
+  last_reviewed: '2026-10-09'
+  notes: Pinned inventory for conceptual coverage review only; no content or scripts copied. GitHub license metadata was null and no root LICENSE appeared in the inspected tree. Verify license/permission before reuse; Odoo APIs require official-version confirmation.
 - id: fhidalgo-odoo-skill
   name: fhidalgodev/odoo-development-skill
   url: https://github.com/fhidalgodev/odoo-development-skill
