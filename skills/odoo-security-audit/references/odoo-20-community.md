@@ -53,6 +53,7 @@ behavior.
 
 ## Skill-specific evidence
 
+- Executed: a user limited to company B cannot search or read a company A sale order and gets `AccessError`, on fresh 20 CE and EE databases (`domain-eval-20`).
 - Executed: portal user denied on another partner's record through an `ir.access` domain row; `/json/2/` refused without a bearer key (`domain-eval-20`).
 - `/json/1/<path>` is `auth='bearer'` with `bearer_scope='rpc'` and read-only; audit API-key scope, rotation, and whether a custom route widens it.
 - Public routes run through `odoo/http/dispatcher.py`; verify `auth`, CSRF, and `readonly` flags per route in the target source.

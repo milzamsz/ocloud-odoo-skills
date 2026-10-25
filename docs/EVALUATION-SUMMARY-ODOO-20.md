@@ -108,7 +108,8 @@ same conditions as the rest. Both records are kept.
   `human_review.result` of every record is `pending`, so this run does not by
   itself satisfy the stable-promotion gate.
 - Each case covers one representative flow per skill domain with default
-  configuration. The evaluation sessions had no MCP instance; the live skills'
+  configuration, plus one multi-company and one multi-currency variant added
+  after the evaluation and executed on fresh databases of both editions. The evaluation sessions had no MCP instance; the live skills'
   transport was exercised separately against disposable Odoo 20 CE and EE
   servers over JSON-2 (see the `domain-eval-20` fixture README, "Live JSON-2
   runs"), not through `odoo-rust-mcp`.

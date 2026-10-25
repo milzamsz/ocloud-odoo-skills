@@ -53,6 +53,7 @@ behavior.
 
 ## Skill-specific evidence
 
+- Executed: a USD invoice against the company currency at rate 2.0 posts with `amount_currency` 100 and `balance` 50 on the receivable line, on fresh 20 CE and EE databases (`domain-eval-20`).
 - Executed: receivable line, `account.payment.register` wizard, `payment_state` (`domain-eval-20`).
 - `account` and `account.move.line.reconcile` are present in Community; `account_accountant` and `account_reports` are Enterprise-only, so bank reconciliation widgets and dynamic reports depend on the confirmed edition.
 

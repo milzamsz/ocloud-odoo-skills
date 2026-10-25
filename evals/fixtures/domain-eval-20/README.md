@@ -37,6 +37,22 @@ Both databases were then neutralized: `odoo-bin neutralize` left 1 active cron o
 | `test_json2_requires_bearer_and_reads` (HttpCase) | integration-design, live-context, live-read, security-audit | `/json/2/res.partner/search_read` is 401/403 without a bearer key and returns one record with an `rpc`-scoped API key (route lives in the auto-installed `rpc` addon) |
 | `test_portal_home_for_portal_user` (HttpCase) | website-portal | portal login, `/my` returns 200, unknown note id is not served |
 
+## Multi-company and multi-currency run (2026-10-25, fresh databases)
+
+`TestMultiCompanyCurrency` adds a company-B user who cannot search or read a
+company-A sale order (record rule plus `AccessError`) but can create an order
+in company B, and a USD invoice on the company currency at rate 2.0 whose
+receivable line carries `amount_currency` 100 and `balance` 50. Installed from
+scratch and run with the whole suite on fresh disposable databases, then dropped:
+
+| Cell | Install | Result |
+|---|---|---|
+| 20.0 Community | `-i ocloud_domain_eval_20` | `0 failed, 0 error(s) of 19 tests` |
+| 20.0 Enterprise | `-i ocloud_domain_eval_20,web_enterprise,account_accountant` (markers logged installed) | `0 failed, 0 error(s) of 19 tests` |
+
+This run also supersedes the earlier `-u` reruns: the whole suite passed on a
+first install of a fresh database on both editions.
+
 ## Odoo 20 facts the runs surfaced (now in the skill references)
 
 - `read_group` and `_read_group` take `(domain, groupby, aggregates)`; the
@@ -61,9 +77,8 @@ Both databases were then neutralized: `odoo-bin neutralize` left 1 active cron o
 ## Limits
 
 One representative flow per domain, default configuration, no demo data,
-no multi-company or multi-currency variants, no PDF rendering (HTML only),
-no OCA module. The `-u` rerun reused the database created by the first
-install; the first install itself succeeded on both editions.
+one multi-company and one multi-currency variant, no PDF rendering (HTML
+only), no OCA module.
 
 ## Live JSON-2 runs (2026-10-25)
 

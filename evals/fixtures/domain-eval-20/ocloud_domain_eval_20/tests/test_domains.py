@@ -222,3 +222,55 @@ def fields_today(env):
     from odoo import fields
 
     return fields.Date.context_today(env["res.partner"])
+
+
+class TestMultiCompanyCurrency(TransactionCase):
+    """odoo-security-audit, odoo-functional-accounting, odoo-functional-sales: company and currency boundaries."""
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.company_a = cls.env.company
+        cls.company_b = cls.env["res.company"].create({"name": "Eval Company B"})
+        cls.user_b = new_test_user(
+            cls.env, login="eval_user_b", groups="base.group_user,sales_team.group_sale_salesman",
+            company_id=cls.company_b.id, company_ids=[(6, 0, [cls.company_b.id])],
+        )
+        cls.partner = cls.env["res.partner"].create({"name": "Eval MC Partner"})
+        cls.product = cls.env["product.product"].create({"name": "Eval MC Product", "type": "consu", "list_price": 10.0})
+
+    def test_company_record_rule_isolates_sale_orders(self):
+        so_a = self.env["sale.order"].create({"partner_id": self.partner.id, "company_id": self.company_a.id})
+        visible = self.env["sale.order"].with_user(self.user_b).search([("id", "=", so_a.id)])
+        self.assertFalse(visible, "a user limited to company B must not see company A orders")
+        with self.assertRaises(AccessError):
+            so_a.with_user(self.user_b).read(["name"])
+        so_b = self.env["sale.order"].with_user(self.user_b).with_company(self.company_b).create(
+            {"partner_id": self.partner.id}
+        )
+        self.assertEqual(so_b.company_id, self.company_b)
+
+    def test_foreign_currency_invoice_converts_to_company_currency(self):
+        usd = self.env.ref("base.USD")
+        company_currency = self.company_a.currency_id
+        if usd == company_currency:
+            usd = self.env.ref("base.EUR")
+        usd.active = True
+        self.env["res.currency.rate"].create(
+            {"currency_id": usd.id, "company_id": self.company_a.id, "rate": 2.0, "name": fields_today(self.env)}
+        )
+        invoice = self.env["account.move"].create(
+            {
+                "move_type": "out_invoice",
+                "partner_id": self.partner.id,
+                "currency_id": usd.id,
+                "invoice_date": fields_today(self.env),
+                "invoice_line_ids": [(0, 0, {"product_id": self.product.id, "quantity": 1, "price_unit": 100.0, "tax_ids": [(5, 0, 0)]})],
+            }
+        )
+        invoice.action_post()
+        self.assertEqual(invoice.currency_id, usd)
+        self.assertAlmostEqual(invoice.amount_total, 100.0)
+        receivable = invoice.line_ids.filtered(lambda line: line.account_id.account_type == "asset_receivable")
+        self.assertAlmostEqual(receivable.amount_currency, 100.0)
+        self.assertAlmostEqual(receivable.balance, 50.0, msg="rate 2.0 converts 100 USD to 50 in company currency")

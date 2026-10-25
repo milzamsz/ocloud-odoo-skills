@@ -53,6 +53,7 @@ behavior.
 
 ## Skill-specific evidence
 
+- Executed: company-scoped order creation with `with_company` for a single-company user, isolated from the other company's orders (`domain-eval-20`).
 - Executed: order confirm creates one delivery; pick, validate, invoice and post (`domain-eval-20`).
 - `sale`, `sale_crm`, `sale_stock`, `website_sale`, and `account` are present; `sale_subscription` is Enterprise-only in the inspected archive.
 
