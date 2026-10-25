@@ -83,6 +83,34 @@ same conditions as the rest. Both records are kept.
 | `website-portal-20-community-domain-001` | odoo-website-portal | 1 | 3/3 | 0 | 97.4 | pass |
 | `website-portal-20-enterprise-domain-001` | odoo-website-portal | 1 | 3/3 | 0 | 96.4 | pass |
 
+## Independent second grading pass (2026-10-25)
+
+A second, independent grader (Claude Opus, four fresh sessions, no access to
+the first pass's records) regraded all 46 artifacts strictly against the case
+definitions and additionally checked one factual claim per artifact against
+the fixture source files, not only the README.
+
+- Result: 46 of 46 pass; both passes agree on every case; no prohibited
+  action observed by either grader.
+- Fact checks: 43 hold. Three do not, all for the same reason: the artifacts
+  were produced before the multi-company and multi-currency tests were added
+  to the fixture, so their test counts and "no multi-company run" statements
+  describe the earlier fixture state. One further note: the `live-context`
+  Enterprise artifact's test creates a sale order on the disposable database
+  within its own test; the grader counted "no business record is mutated" as
+  met because the claim is scoped to non-disposable data.
+- Minor citation slips the second pass noted (line numbers off by one, a
+  `/json/1/` versus `/json/2/` slip in the live-read artifact that is already
+  corrected in the reference) affect no required finding.
+- Records: `evals/results/unreleased/odoo-20-domain-grades-pass2/` (gitignored).
+
+## OCA 20 (2026-10-25)
+
+OCA 20.0 branches exist upstream; at server-tools commit `56685223` the only
+installable module with tests, `base_view_inheritance_extension`, installs and
+passes its 12 tests on fresh Odoo 20 Community and Enterprise databases (see
+the `domain-eval-20` fixture README). Most OCA 20.0 modules remain unported.
+
 ## What the runs showed about the skills
 
 - Every executor selected the correct Odoo 20 cell reference and kept the
@@ -117,8 +145,9 @@ same conditions as the rest. Both records are kept.
 
 ## Limits
 
-- Grading was automated by a model; the human review above is the
-  maintainer's acceptance of the evidence set, not a line-by-line regrade.
+- Grading was automated by two independent model passes that agree on every
+  case; the human review above is the maintainer's acceptance of the evidence
+  set.
 - Each case covers one representative flow per skill domain with default
   configuration, plus one multi-company and one multi-currency variant added
   after the evaluation and executed on fresh databases of both editions. The evaluation sessions had no MCP instance; the live skills'

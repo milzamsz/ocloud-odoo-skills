@@ -91,3 +91,19 @@ server was stopped and the database dropped.
 |---|---|
 | 20.0 Community | `version_info` → 20.0 final; module states readable; `fields_get` works while `ir.model`/`ir.model.fields` reads are denied without the Access Rights group; `check_access` is private (403 remotely); `search_read`/`search_count`/`read_group(groupby, aggregates)` succeed for a salesperson and the own-documents rule hid another user's order; legacy `read_group` kwargs → 422; no key or bad key → 401; live `fields_get` metadata converted to DBML by the skill script. |
 | 20.0 Enterprise | Identical observations on the Enterprise instance (`web_enterprise` and `account_accountant` installed with `OEEL-1` license readable through `ir.module.module`); `version_info` → `20.0+e`, `server_version_info [20,0,0,'final',0,'e']`. |
+
+## OCA 20 module run (2026-10-25)
+
+OCA 20.0 branches exist upstream (checked for server-tools, web,
+account-financial-tools, sale-workflow, purchase-workflow,
+stock-logistics-workflow, mis-builder, queue, partner-contact, server-ux,
+reporting-engine). At server-tools commit `56685223` the only installable
+module with tests is `base_view_inheritance_extension`. It was installed on
+fresh disposable databases and its own suite run, then the databases dropped:
+
+| Cell | Result |
+|---|---|
+| 20.0 Community | `0 failed, 0 error(s) of 12 tests` |
+| 20.0 Enterprise (with `web_enterprise`) | `0 failed, 0 error(s) of 12 tests` |
+
+No OCA code was copied into this repository.

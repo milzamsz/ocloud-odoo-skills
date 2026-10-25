@@ -17,6 +17,14 @@ The format follows Keep a Changelog principles and the project uses semantic ver
   API, Hoot-only tests, `Interaction` public JavaScript, Enterprise module
   markers, absent `l10n_id_efaktur`), and 48 new outcome cases. OCA 20 beyond
   OpenUpgrade and `odoo-live-mutation` remain unclaimed.
+- Regraded all 46 Odoo 20 outcome artifacts with an independent second
+  grader (different model, no access to the first pass) including a per-artifact
+  fact check against fixture source: 46 of 46 pass, both passes agree.
+- Registered the OCA server-tools 20.0 branch (`oca-server-tools-20`), corrected
+  the references that said no OCA 20.0 branches existed, and installed and
+  tested the one installable OCA 20 module with tests
+  (`base_view_inheritance_extension`, 12 tests) on fresh Odoo 20 Community and
+  Enterprise databases.
 - Recorded the maintainer's human review (pass, 2026-10-25) of the Odoo 20
   evidence set and promoted the `20.0-community` and `20.0-enterprise` matrix
   cells to stable.

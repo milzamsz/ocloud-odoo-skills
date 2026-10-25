@@ -53,8 +53,9 @@ behavior.
 
 ## Skill-specific evidence
 
+- Executed: OCA `base_view_inheritance_extension` from server-tools 20.0 (commit `56685223`) installs and passes its own 12 tests on fresh Odoo 20 Community and Enterprise databases (2026-10-25); it is the only installable module with tests in that branch at that commit.
 - Executed: `upgrade_code` rewriters produce the 20 constraint and `ir.access.csv` forms; manifest `license` `MIT` is rejected on update, so OCA-style manifests must use an accepted selection value.
-- Local OCA 20 evidence is limited to the OpenUpgrade snapshot (OCA PR 6046 at commit `10f253d0290cfe9291771113b92c2d64edfa8020`, not a release). Other OCA 20.0 branches must be inspected upstream before a port is declared possible.
+- OCA 20.0 branches exist upstream (server-tools at `56685223`, checked 2026-10-25) but at that commit only `base_view_inheritance_extension` in server-tools is installable with tests; most modules remain unported. The local OpenUpgrade 20 snapshot (OCA PR 6046 at `10f253d0`) is not a release. Inspect each module's manifest before declaring a port possible.
 - OCA module ports to 20 must replace `_sql_constraints` with `models.Constraint` and `type='json'` with `jsonrpc`.
 
 ## Enterprise boundary (verified in the licensed archive)
@@ -72,5 +73,7 @@ on any Enterprise application.
 Apply the version-neutral workflow in `SKILL.md`. Odoo 20 support is
 verified-experimental: source evidence plus two executed fixture addons on
 disposable CE and EE databases (one representative flow per skill domain);
-no OCA 20 coverage beyond the local OpenUpgrade snapshot.
+OCA 20.0 branches exist upstream but are
+mostly unported; one OCA module was installed and tested on both editions (see
+the `odoo-oca-development` references).
 Differences not demonstrated by target evidence remain Unknown.

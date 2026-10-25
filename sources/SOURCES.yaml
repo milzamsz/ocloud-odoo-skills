@@ -94,6 +94,16 @@ sources:
   - '20.0'
   last_reviewed: '2026-10-25'
   notes: Local directory libraries/OCA-modules/20.0/OpenUpgrade-20.0 starts from OCA/OpenUpgrade pull request 6046 at commit 10f253d0290cfe9291771113b92c2d64edfa8020 (2026-09-29), still open upstream, plus local 19-to-20 and experimental 18-to-20 scripts. It is not an upstream release; per-module acceptance is tracked locally and must be re-checked per target.
+- id: oca-server-tools-20
+  name: OCA server-tools 20.0
+  url: https://github.com/OCA/server-tools/tree/56685223a83de918c72711fb1a6d0b98d9c51be8
+  authority_tier: 4
+  usage: oca-module-evidence
+  license_status: AGPL-3.0/LGPL-3.0 upstream; inspected and installed read-only, no code copied
+  odoo_versions:
+  - '20.0'
+  last_reviewed: '2026-10-25'
+  notes: OCA 20.0 branches exist upstream (server-tools, web, account-financial-tools, sale-workflow, purchase-workflow, stock-logistics-workflow, mis-builder, queue, partner-contact, server-ux, reporting-engine checked on 2026-10-25). At this commit only base_view_inheritance_extension is installable with tests; it was installed and its tests run on disposable Odoo 20 Community and Enterprise databases. Most modules are not yet ported.
 - id: odoo-agent-platform-local-contracts
   name: OCloud Odoo Agent Platform Local Contracts
   url: https://github.com/ocloudpro/odoo-rust-mcp-agent

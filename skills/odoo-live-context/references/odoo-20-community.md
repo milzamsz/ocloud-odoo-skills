@@ -68,5 +68,7 @@ the edition marker on the target.
 Apply the version-neutral workflow in `SKILL.md`. Odoo 20 support is
 verified-experimental: source evidence plus two executed fixture addons on
 disposable CE and EE databases (one representative flow per skill domain);
-no OCA 20 coverage beyond the local OpenUpgrade snapshot.
+OCA 20.0 branches exist upstream but are
+mostly unported; one OCA module was installed and tested on both editions (see
+the `odoo-oca-development` references).
 Differences not demonstrated by target evidence remain Unknown.

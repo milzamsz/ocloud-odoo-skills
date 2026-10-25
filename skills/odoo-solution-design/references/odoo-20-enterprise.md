@@ -55,7 +55,7 @@ behavior.
 
 - Executed: code server action, `base.automation` triggers, `mail.template` rendering available on 20 (`domain-eval-20`).
 - Standard-first inputs: `spreadsheet_dashboard` ships in Community; `documents`, `sign`, `helpdesk`, `planning`, and `web_studio` are Enterprise-only in the inspected archive, so low-code and document options depend on the confirmed edition.
-- OCA 20 availability is unverified except the OpenUpgrade snapshot; treat OCA 20 candidates as Unknown until the branch is inspected.
+- OCA 20.0 branches exist upstream (checked 2026-10-25) but most modules are not yet ported; inspect the exact module's manifest before treating an OCA 20 candidate as available.
 
 ## Enterprise boundary (verified in the licensed archive)
 
@@ -72,5 +72,7 @@ on any Enterprise application.
 Apply the version-neutral workflow in `SKILL.md`. Odoo 20 support is
 verified-experimental: source evidence plus two executed fixture addons on
 disposable CE and EE databases (one representative flow per skill domain);
-no OCA 20 coverage beyond the local OpenUpgrade snapshot.
+OCA 20.0 branches exist upstream but are
+mostly unported; one OCA module was installed and tested on both editions (see
+the `odoo-oca-development` references).
 Differences not demonstrated by target evidence remain Unknown.

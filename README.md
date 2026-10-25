@@ -15,7 +15,7 @@ The repository teaches agents how to analyze, design, implement, review, test, s
   tested on disposable CE and EE databases with one executed flow per skill
   domain, and a 46-case skill outcome evaluation with 46 passes recorded in
   `docs/EVALUATION-SUMMARY-ODOO-20.md`, human review passed; per-skill claims
-  remain gated by complete evidence). OCA 20.0 is verified only as a local OpenUpgrade snapshot;
+  remain gated by complete evidence). OCA 20.0 branches exist upstream but are mostly unported; one OCA module was installed and tested on both Odoo 20 editions;
   `odoo-live-mutation` remains blocked for every cell by its capability contract.
 - Runtime priority: Hermes Agent
 - Format: Agent Skills (`SKILL.md`)
