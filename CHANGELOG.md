@@ -17,6 +17,9 @@ The format follows Keep a Changelog principles and the project uses semantic ver
   API, Hoot-only tests, `Interaction` public JavaScript, Enterprise module
   markers, absent `l10n_id_efaktur`), and 48 new outcome cases. OCA 20 beyond
   OpenUpgrade and `odoo-live-mutation` remain unclaimed.
+- Recorded the maintainer's human review (pass, 2026-10-25) of the Odoo 20
+  evidence set and promoted the `20.0-community` and `20.0-enterprise` matrix
+  cells to stable.
 - Added multi-company isolation and multi-currency invoice tests to the
   `domain-eval-20` fixture and ran the whole suite from a fresh install on both
   Odoo 20 editions (19 tests, zero failures each), superseding the earlier

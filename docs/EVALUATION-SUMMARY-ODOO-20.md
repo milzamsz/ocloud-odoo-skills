@@ -102,11 +102,23 @@ same conditions as the rest. Both records are kept.
   "exactly one" files; `test-seams.md` and `model-and-orm.md` are labelled as
   Odoo 18 evidence and were used as general guidance only.
 
+## Human review
+
+- Reviewer: milzamsz (repository maintainer), 2026-10-25.
+- Result: pass. The reviewer approved the Odoo 20 Community and Enterprise
+  evidence set: fixture suites from fresh installs, the 46-case skill outcome
+  evaluation, the live JSON-2 runs, and the multi-company and multi-currency
+  variants. Every evaluation record's `human_review` was set to `pass` with
+  this reviewer and date.
+- Consequence: the `20.0-community` and `20.0-enterprise` cells in
+  `sources/VERSION-MATRIX.yaml` are promoted to `stable`. OCA 20 remains
+  unclaimed beyond the local OpenUpgrade snapshot, and `odoo-live-mutation`
+  remains blocked by its capability contract.
+
 ## Limits
 
-- Grading was automated by a model, not by a human Odoo reviewer; the
-  `human_review.result` of every record is `pending`, so this run does not by
-  itself satisfy the stable-promotion gate.
+- Grading was automated by a model; the human review above is the
+  maintainer's acceptance of the evidence set, not a line-by-line regrade.
 - Each case covers one representative flow per skill domain with default
   configuration, plus one multi-company and one multi-currency variant added
   after the evaluation and executed on fresh databases of both editions. The evaluation sessions had no MCP instance; the live skills'
