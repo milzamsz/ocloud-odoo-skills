@@ -40,9 +40,20 @@ behavior.
 - Executed evidence: the repository fixture `minimal-addon-20` installs and
   its tests pass on disposable Odoo 20 Community and Enterprise databases
   (see that fixture's README for the run record).
+- Executed domain evidence: the repository fixture `domain-eval-20` installs
+  and passes on disposable Odoo 20 Community and Enterprise databases, with
+  one test per skill domain (its README maps tests to skills).
+- `read_group`/`_read_group` take `(domain, groupby, aggregates)`; the old
+  `(domain, fields, groupby)` order raises a granularity error.
+- Manifest `license` must be an `ir.module.module` selection value; `MIT`
+  installs but breaks module update, so declare `Other OSI approved licence`.
+- JSON-2 `/json/2/<model>/<method>` is served by the auto-installed `rpc`
+  addon (`auth='bearer'`, `bearer_scope='rpc'`, per-method read-only); the
+  `web` addon's `/json/1/` route is the view-oriented variant.
 
 ## Skill-specific evidence
 
+- Executed: order confirm creates one delivery; pick, validate, invoice and post (`domain-eval-20`).
 - `sale`, `sale_crm`, `sale_stock`, `website_sale`, and `account` are present; `sale_subscription` is Enterprise-only in the inspected archive.
 
 ## Community boundary
@@ -54,7 +65,7 @@ the edition marker on the target.
 ## Application rule
 
 Apply the version-neutral workflow in `SKILL.md`. Odoo 20 support is
-verified-experimental: source evidence plus one executed fixture addon on
-disposable databases; no business-application suite and no OCA 20 coverage
-beyond the local OpenUpgrade snapshot.
+verified-experimental: source evidence plus two executed fixture addons on
+disposable CE and EE databases (one representative flow per skill domain);
+no OCA 20 coverage beyond the local OpenUpgrade snapshot.
 Differences not demonstrated by target evidence remain Unknown.

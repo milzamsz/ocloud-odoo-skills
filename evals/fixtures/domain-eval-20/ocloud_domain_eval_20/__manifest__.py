@@ -1,0 +1,27 @@
+{
+    "name": "OCloud Domain Evaluation 20",
+    "version": "20.0.1.0.0",
+    "category": "Technical",
+    "summary": "Executable Odoo 20 evidence for the OCloud skill domains",
+    # MIT content; Odoo 20 rejects "MIT" on module update, so use the accepted selection value.
+    "license": "Other OSI approved licence",
+    "author": "OCloud",
+    "depends": [
+        "sale_management",
+        "purchase",
+        "stock",
+        "account",
+        "mrp",
+        "point_of_sale",
+        "l10n_id",
+        "website",
+        "portal",
+        "project",
+        "hr_timesheet",
+        "base_automation",
+        "mail",
+    ],
+    "data": ["security/ir.access.csv"],
+    "installable": True,
+    "application": False,
+}

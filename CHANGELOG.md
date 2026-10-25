@@ -17,6 +17,15 @@ The format follows Keep a Changelog principles and the project uses semantic ver
   API, Hoot-only tests, `Interaction` public JavaScript, Enterprise module
   markers, absent `l10n_id_efaktur`), and 48 new outcome cases. OCA 20 beyond
   OpenUpgrade and `odoo-live-mutation` remain unclaimed.
+- Added the installable `domain-eval-20` fixture whose Odoo tests exercise one
+  flow per skill domain (sales, purchase, inventory, accounting, Indonesian
+  chart, POS, manufacturing, report rendering, portal, access control, metadata
+  reads, automation, JSON-2 bearer API over HTTP) and executed it on disposable
+  Odoo 20 Community and Enterprise databases, then neutralized and dropped them.
+  Recorded the surfaced facts (`read_group` argument order, `MIT` rejected as a
+  manifest license on update, JSON-2 served by the `rpc` addon, `upgrade_code`
+  rewriter behavior) in every Odoo 20 reference with per-skill executed lines,
+  and added 46 executable outcome cases.
 - Added the installable `minimal-addon-20` fixture (`ir.access.csv`,
   `models.Constraint`) and executed it with its tests on disposable Odoo 20
   Community and Enterprise databases; recorded that `ir.model.access` is

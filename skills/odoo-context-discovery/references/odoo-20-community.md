@@ -55,3 +55,7 @@ Only the documentation landing/index pages were inspected for this baseline.
 Use relevant version-pinned pages and local Odoo 20 source before asserting a
 feature-specific API or business workflow. No Odoo 20 Enterprise, OCA 20,
 production runtime, or migration-path support is established here.
+
+## Executed evidence
+
+- Executed: `release.version_info` and `ir.module.module` edition markers read on live 20 CE and EE databases (`domain-eval-20`).
