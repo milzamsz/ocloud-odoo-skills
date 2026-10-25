@@ -40,6 +40,7 @@ and Enterprise. Every skill's output template is in its `assets/` folder.
 | `odoo-data-model-diagram` | Logical ORM diagram as DBML, with a converter script | experimental | read-only | 17–20 CE/EE | platform |
 | `odoo-code-tracing` | Source-evidenced call chain and side-effect map | experimental | advisory | 18 CE, 19 CE, 20 CE/EE | review |
 | `odoo-website-portal` | Website, portal, and public-route design | experimental | advisory | 17–20 CE/EE | platform |
+| `odoo-dynamic-dashboard` | Installable data XML for the NexGen dynamic dashboard addon, with a validator script | experimental | advisory | 20 CE | platform |
 
 ## Phase 3: controlled live integration
 

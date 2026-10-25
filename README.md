@@ -72,6 +72,7 @@ OCloud Odoo Skills creates a controlled layer that is:
 | `odoo-functional-manufacturing` | Design BoM-to-production processes, exceptions, and inventory handoff. |
 | `odoo-deployment-operations` | Produce read-only-first deployment, backup, rollback, and monitoring runbooks. |
 | `odoo-data-model-diagram` | Produce bounded logical Odoo ORM DBML diagrams from source and read-only metadata. |
+| `odoo-dynamic-dashboard` | Generate validated, installable dashboard XML for the NexGen `dynamic_dashboard_ai_nexgen` addon on Odoo 20 Community. |
 | `odoo-code-tracing` | Trace a bounded Odoo execution path and report source-evidenced side effects and security boundaries (18/19 Community, 20 Community/Enterprise; experimental). |
 | `odoo-website-portal` | Design website pages, portal documents, and public routes with verified access, template, and asset boundaries (17 to 20; experimental). |
 

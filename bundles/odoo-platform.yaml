@@ -8,6 +8,7 @@ skills:
 - odoo-website-portal
 - odoo-integration-design
 - odoo-reporting
+- odoo-dynamic-dashboard
 - odoo-deployment-operations
 instruction: Define logical-model and trust boundaries, access controls, failure
   recovery, and completion evidence. Require exact authorization before live mutation.

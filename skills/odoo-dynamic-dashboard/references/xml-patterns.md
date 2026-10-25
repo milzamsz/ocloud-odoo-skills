@@ -1,0 +1,172 @@
+# XML patterns
+
+Data XML for the owning custom addon, e.g. `data/dashboard_<topic>.xml`. Replace
+model and field names only with names verified in source or metadata.
+
+## Manifest
+
+```python
+'depends': ['dynamic_dashboard_ai_nexgen', 'account'],  # plus every module whose models are read
+'data': [..., 'data/dashboard_invoicing.xml'],
+```
+
+## File skeleton
+
+`noupdate="1"` keeps user edits on module update; change the XML id to ship a new version.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="dashboard_invoicing" model="dynamic.dashboard">
+        <field name="name">Invoicing Overview</field>
+        <field name="category">Finance</field>
+        <field name="default_date_filter">this_year</field>
+        <field name="group_ids" eval="[(6, 0, [ref('account.group_account_invoice')])]"/>
+    </record>
+    <!-- items follow -->
+</odoo>
+```
+
+## ORM tile (sum with period comparison)
+
+Every item carries `context="{'dd_skip_auto_layout': True}"`, otherwise the grid is replaced.
+
+```xml
+<record id="item_invoiced_amount" model="dynamic.dashboard.item" context="{'dd_skip_auto_layout': True}">
+    <field name="dashboard_id" ref="dashboard_invoicing"/>
+    <field name="name">Invoiced (untaxed)</field>
+    <field name="item_type">tile</field>
+    <field name="tile_icon">fa-money</field>
+    <field name="model_id" search="[('model', '=', 'account.move')]"/>
+    <field name="domain">[('move_type', '=', 'out_invoice'), ('state', '=', 'posted')]</field>
+    <field name="data_type">sum</field>
+    <field name="measure_field_ids" search="[('model', '=', 'account.move'), ('name', '=', 'amount_untaxed_signed')]"/>
+    <field name="date_filter_field_id" search="[('model', '=', 'account.move'), ('name', '=', 'invoice_date')]"/>
+    <field name="date_filter_selection">this_year</field>
+    <field name="compare_previous_period" eval="True"/>
+    <field name="grid_x">0</field><field name="grid_y">0</field>
+    <field name="grid_w">3</field><field name="grid_h">2</field>
+</record>
+```
+
+A Many2many `search=` field links every record the domain matches; keep the domain
+to exactly one field per measure.
+
+## ORM chart (date grouping)
+
+```xml
+<record id="item_invoiced_by_month" model="dynamic.dashboard.item" context="{'dd_skip_auto_layout': True}">
+    <field name="dashboard_id" ref="dashboard_invoicing"/>
+    <field name="name">Invoiced per Month</field>
+    <field name="item_type">bar</field>
+    <field name="model_id" search="[('model', '=', 'account.move')]"/>
+    <field name="domain">[('move_type', '=', 'out_invoice'), ('state', '=', 'posted')]</field>
+    <field name="data_type">sum</field>
+    <field name="measure_field_ids" search="[('model', '=', 'account.move'), ('name', '=', 'amount_untaxed_signed')]"/>
+    <field name="group_by_field_id" search="[('model', '=', 'account.move'), ('name', '=', 'invoice_date')]"/>
+    <field name="group_by_date_type">month</field>
+    <field name="date_filter_field_id" search="[('model', '=', 'account.move'), ('name', '=', 'invoice_date')]"/>
+    <field name="date_filter_selection">this_year</field>
+    <field name="grid_x">0</field><field name="grid_y">2</field>
+    <field name="grid_w">6</field><field name="grid_h">4</field>
+</record>
+```
+
+Count by a many2one, top 10: `data_type` `count`, `group_by_field_id` the many2one,
+`sort_by_field_id` unset, `sort_order` `desc`, `record_limit` `10`.
+
+List: `item_type` `list`, `list_view_field_ids` with a domain matching several
+fields, e.g. `[('model', '=', 'account.move'), ('name', 'in', ['name', 'partner_id', 'amount_total'])]`.
+
+## Amount against a target (tile with target lines)
+
+Use this for money and quantities with a target. A sum KPI does not work on Odoo 20
+with addon 20.0.1.0.15.
+
+```xml
+<!-- on the tile record: -->
+    <field name="enable_target" eval="True"/>
+    <field name="target_view">progress_bar</field>
+<!-- one record per period: -->
+<record id="target_invoiced_2026" model="dynamic.dashboard.target.line">
+    <field name="item_id" ref="item_invoiced_amount"/>
+    <field name="date_start">2026-01-01</field>
+    <field name="date_end">2026-12-31</field>
+    <field name="target_value">1000000</field>
+</record>
+```
+
+## KPI tree and its tile (count KPIs)
+
+```xml
+<record id="kpi_invoices_posted" model="dynamic.dashboard.kpi">
+    <field name="name">Posted Invoices</field>
+    <field name="computation_mode">model</field>
+    <field name="model_id" search="[('model', '=', 'account.move')]"/>
+    <field name="aggregation">count</field>
+    <field name="domain">[('move_type', '=', 'out_invoice'), ('state', '=', 'posted')]</field>
+</record>
+<record id="kpi_invoices_posted_target_2026" model="dynamic.dashboard.kpi.target">
+    <field name="kpi_id" ref="kpi_invoices_posted"/>
+    <field name="period_start">2026-01-01</field>
+    <field name="period_end">2026-12-31</field>
+    <field name="target_value">500</field>
+</record>
+<record id="item_kpi_invoices" model="dynamic.dashboard.item" context="{'dd_skip_auto_layout': True}">
+    <field name="dashboard_id" ref="dashboard_invoicing"/>
+    <field name="name">Invoices vs Target</field>
+    <field name="item_type">kpi</field>
+    <field name="tile_icon">fa-trophy</field>
+    <field name="kpi_id" ref="kpi_invoices_posted"/>
+    <field name="grid_x">3</field><field name="grid_y">0</field>
+    <field name="grid_w">3</field><field name="grid_h">2</field>
+</record>
+```
+
+Child KPIs set `parent_id`; a parent with `computation_mode` `formula` uses child
+names, e.g. `{Won} - {Lost}`; `children` sums them. Target values are business
+inputs: take them from the user, never invent them.
+
+## SQL item
+
+Read `sql-items.md` first.
+
+```xml
+<record id="item_sql_example" model="dynamic.dashboard.item" context="{'dd_skip_auto_layout': True}">
+    <field name="dashboard_id" ref="dashboard_invoicing"/>
+    <field name="name">Receivable per Partner (SQL)</field>
+    <field name="item_type">horizontalBar</field>
+    <field name="data_calculation_type">sql</field>
+    <field name="query"><![CDATA[
+SELECT p.name AS label, SUM(l.amount_residual) AS value
+FROM account_move_line l
+JOIN res_partner p ON p.id = l.partner_id
+JOIN account_account a ON a.id = l.account_id
+WHERE a.account_type = 'asset_receivable' AND l.parent_state = 'posted'
+  AND l.company_id = {company_id} AND NOT l.reconciled
+GROUP BY p.name ORDER BY value DESC LIMIT 10
+]]></field>
+    <field name="sql_label_column">label</field>
+    <field name="allowed_group_ids" eval="[(6, 0, [ref('account.group_account_manager')])]"/>
+    <field name="grid_x">6</field><field name="grid_y">2</field>
+    <field name="grid_w">6</field><field name="grid_h">4</field>
+</record>
+```
+
+## Global filter and segment colours
+
+```xml
+<record id="filter_customer" model="dynamic.dashboard.filter">
+    <field name="dashboard_id" ref="dashboard_invoicing"/>
+    <field name="name">Customer</field>
+    <field name="model_id" search="[('model', '=', 'account.move')]"/>
+    <field name="widget_type">many2one</field>
+    <field name="filter_field_id" search="[('model', '=', 'account.move'), ('name', '=', 'partner_id')]"/>
+    <field name="domain">[]</field>
+</record>
+<record id="item_by_state_color_posted" model="dynamic.dashboard.item.color">
+    <field name="item_id" ref="item_invoices_by_state"/>
+    <field name="segment_name">Posted</field>
+    <field name="color">#2E7D32</field>
+</record>
+```

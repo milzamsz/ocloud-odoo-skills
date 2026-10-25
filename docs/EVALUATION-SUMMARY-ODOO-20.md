@@ -252,6 +252,19 @@ milzamsz/odoo-rust-mcp-agent#1 together with a receipt preflight and a
   unclaimed beyond the local OpenUpgrade snapshot, and `odoo-live-mutation`
   remains blocked by its capability contract.
 
+## odoo-dynamic-dashboard install check (2026-10-26)
+
+- The `evals/fixtures/dynamic-dashboard-20` XML was installed in a throwaway addon
+  on a disposable Odoo 20.0 Community database with `dynamic_dashboard_ai_nexgen`
+  20.0.1.0.15 and `account`. The board, six items, a filter, a segment colour, a
+  count KPI with target, and a tile target line loaded; every `grid_*` value was
+  kept, and every item's preview computed without error, including the SQL item.
+- A first run with a sum KPI failed in the addon's `read_group` call (pre-Odoo-20
+  argument order). The skill now forbids sum/average KPIs on this addon version and
+  uses tiles with target lines instead.
+- Not covered: Enterprise, other addon versions, browser rendering of the charts,
+  and access checks with non-manager users.
+
 ## Limits
 
 - Grading was automated by two independent model passes that agree on every

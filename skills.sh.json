@@ -43,6 +43,7 @@
         "odoo-indonesia-accounting",
         "odoo-integration-design",
         "odoo-reporting",
+        "odoo-dynamic-dashboard",
         "odoo-functional-pos",
         "odoo-functional-manufacturing",
         "odoo-deployment-operations",

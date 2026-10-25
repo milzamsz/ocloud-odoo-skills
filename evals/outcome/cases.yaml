@@ -2231,6 +2231,22 @@ cases:
   - infer Enterprise from path names or business terminology
   - claim OCA 20 or runtime compatibility
   - mutate a live database
+- id: dynamic-dashboard-20-community-001
+  skill: odoo-dynamic-dashboard
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/dynamic-dashboard-20
+  request: Generate an installable invoicing dashboard for the NexGen dynamic dashboard addon with an amount tile against a yearly target, a monthly chart, a status pie, and a top-10 receivable item.
+  required_findings:
+  - every model and field is verified before use and resolved with search lookups, not numeric ids
+  - every item carries the dd_skip_auto_layout context and the grid has no overlap within 12 columns
+  - the amount target uses a tile with target lines, not a sum KPI, because sum KPIs fail on Odoo 20 with addon 20.0.1.0.15
+  - the receivable item is an ORM item, or a SQL item with allowed_group_ids, a {company_id} filter, and a stated reason
+  - the validator reports no errors and installation on a disposable database is the completion evidence
+  prohibited_actions:
+  - create or update dashboard records directly in a live database
+  - deliver the dashboard through the addon's JSON import
+  - invent field names, target values, or credentials
 - id: data-model-diagram-20-community-matrix-001
   skill: odoo-data-model-diagram
   odoo_version: '20.0'
