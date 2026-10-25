@@ -10,7 +10,7 @@ instance-local custom addon was consulted.
   `addons/account_reports` are present with `OEEL-1` manifests. `documents`,
   `web_studio`, `sale_subscription`, `stock_enterprise`, `mrp_workorder`,
   `pos_enterprise`, `quality_control`, `helpdesk`, `planning`, and `sign` are
-  also present. `l10n_id_efaktur` is absent from this archive.
+  also present. the legacy `l10n_id_efaktur` is replaced by `l10n_id_efaktur_coretax` (present in both editions).
 - Core parity with the Community snapshot: `odoo/orm/table_objects.py`
   (`models.Constraint`), `<list>` views only in `base`, Hoot present, QUnit
   absent, public `Interaction` layer present, legacy public widget absent.

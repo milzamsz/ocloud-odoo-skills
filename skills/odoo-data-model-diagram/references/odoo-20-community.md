@@ -16,9 +16,12 @@ behavior.
   `models.Constraint` objects instead.
 - `odoo/http/` is a package (`dispatcher.py`, `routing_map.py`). Route type
   `json` is rewritten to `jsonrpc` by `odoo/upgrade_code/18.1-02-route-jsonrpc.py`.
-- The JSON-2 web API lives in `addons/web/controllers/json.py`: `/json/<path>`
-  (`auth='user'`) and `/json/1/<path>` (`auth='bearer'`, `bearer_scope='rpc'`,
-  read-only). API keys are the bearer credential.
+- The JSON-2 model-method API is `/json/2/<model>/<method>` in the
+  auto-installed `rpc` addon (`addons/rpc/controllers/json2.py`): `POST`,
+  `auth='bearer'`, `bearer_scope='rpc'`, read-only detected per method. API keys
+  are the bearer credential. The `web` addon's `/json/<path>` (`auth='user'`)
+  and `/json/1/<path>` routes (`addons/web/controllers/json.py`) are the
+  view-oriented variant, not the integration API.
 - `base` views use `<list>` only; no `<tree>` architecture remains.
 - Tests: `odoo/tests/form.py` and `Form` exported from `odoo.tests`, `tagged`,
   `HttpCase`. Hoot is the browser test library; QUnit is absent.
@@ -53,6 +56,7 @@ behavior.
 
 ## Skill-specific evidence
 
+- Procurement groups are gone: there is no `procurement.group` model and no `group_id` on `stock.picking`/`stock.move` or `procurement_group_id` on `sale.order`; documents link through `stock.reference` (`addons/stock/models/stock_reference.py`) and the many2many `reference_ids`. Queries or code using the old fields fail (observed as HTTP 500 on live Odoo 20 reads).
 - Live run (2026-10-25, disposable Odoo 20 server over JSON-2): relation metadata for `sale.order` was read with `fields_get` (`partner_id`→`res.partner`, `order_line`→`sale.order.line`, `company_id`→`res.company`, `user_id`→`res.users`) because `ir.model.fields` reads need the Access Rights group; the bounded graph converted to DBML with the skill's script (exit 0, related models stubbed as metadata-unavailable).
 - Executed: `ir.model.fields` relation metadata for `sale.order` read on a live 20 database (`domain-eval-20`).
 - Constraints are `models.Constraint` objects in `odoo/orm/table_objects.py`; a diagram must not read `_sql_constraints`, which is ignored. Field classes are split across `odoo/orm/fields_*.py`.
@@ -69,6 +73,6 @@ Apply the version-neutral workflow in `SKILL.md`. Odoo 20 support is
 verified-experimental: source evidence plus two executed fixture addons on
 disposable CE and EE databases (one representative flow per skill domain);
 OCA 20.0 branches exist upstream but are
-mostly unported; one OCA module was installed and tested on both editions (see
-the `odoo-oca-development` references).
+mostly unported; all six installable OCA 20 modules with tests pass on both
+editions (see the `odoo-oca-development` references).
 Differences not demonstrated by target evidence remain Unknown.

@@ -16,9 +16,12 @@ behavior.
   `models.Constraint` objects instead.
 - `odoo/http/` is a package (`dispatcher.py`, `routing_map.py`). Route type
   `json` is rewritten to `jsonrpc` by `odoo/upgrade_code/18.1-02-route-jsonrpc.py`.
-- The JSON-2 web API lives in `addons/web/controllers/json.py`: `/json/<path>`
-  (`auth='user'`) and `/json/1/<path>` (`auth='bearer'`, `bearer_scope='rpc'`,
-  read-only). API keys are the bearer credential.
+- The JSON-2 model-method API is `/json/2/<model>/<method>` in the
+  auto-installed `rpc` addon (`addons/rpc/controllers/json2.py`): `POST`,
+  `auth='bearer'`, `bearer_scope='rpc'`, read-only detected per method. API keys
+  are the bearer credential. The `web` addon's `/json/<path>` (`auth='user'`)
+  and `/json/1/<path>` routes (`addons/web/controllers/json.py`) are the
+  view-oriented variant, not the integration API.
 - `base` views use `<list>` only; no `<tree>` architecture remains.
 - Tests: `odoo/tests/form.py` and `Form` exported from `odoo.tests`, `tagged`,
   `HttpCase`. Hoot is the browser test library; QUnit is absent.
@@ -53,9 +56,11 @@ behavior.
 
 ## Skill-specific evidence
 
+- Procurement groups are gone: there is no `procurement.group` model and no `group_id` on `stock.picking`/`stock.move` or `procurement_group_id` on `sale.order`; documents link through `stock.reference` (`addons/stock/models/stock_reference.py`) and the many2many `reference_ids`. Queries or code using the old fields fail (observed as HTTP 500 on live Odoo 20 reads).
+- `purchase.order.line.taxes_id` is renamed `tax_ids`, and the purchase lead-time setting `po_lead` no longer exists (observed as invalid-field errors on live Odoo 20 reads).
 - Executed: review markers confirmed on a live 20 database: `ir.model.access` absent from the registry, `read_group` argument order, `MIT` license rejected on update (`domain-eval-20`).
 - Flag `_sql_constraints` (silently ignored), `type='json'` routes, `<tree>` views, QUnit suites, and legacy public widgets as 20 incompatibilities with source citations.
-- Review bearer-scoped `/json/1/` usage for read-only intent and API-key handling.
+- Review `/json/2/<model>/<method>` calls (bearer, `rpc` scope) for read-only intent and API-key handling; `/json/1/` is the view-oriented route, not the integration API.
 
 ## Community boundary
 
@@ -69,6 +74,6 @@ Apply the version-neutral workflow in `SKILL.md`. Odoo 20 support is
 verified-experimental: source evidence plus two executed fixture addons on
 disposable CE and EE databases (one representative flow per skill domain);
 OCA 20.0 branches exist upstream but are
-mostly unported; one OCA module was installed and tested on both editions (see
-the `odoo-oca-development` references).
+mostly unported; all six installable OCA 20 modules with tests pass on both
+editions (see the `odoo-oca-development` references).
 Differences not demonstrated by target evidence remain Unknown.

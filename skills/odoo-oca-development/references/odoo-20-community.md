@@ -16,9 +16,12 @@ behavior.
   `models.Constraint` objects instead.
 - `odoo/http/` is a package (`dispatcher.py`, `routing_map.py`). Route type
   `json` is rewritten to `jsonrpc` by `odoo/upgrade_code/18.1-02-route-jsonrpc.py`.
-- The JSON-2 web API lives in `addons/web/controllers/json.py`: `/json/<path>`
-  (`auth='user'`) and `/json/1/<path>` (`auth='bearer'`, `bearer_scope='rpc'`,
-  read-only). API keys are the bearer credential.
+- The JSON-2 model-method API is `/json/2/<model>/<method>` in the
+  auto-installed `rpc` addon (`addons/rpc/controllers/json2.py`): `POST`,
+  `auth='bearer'`, `bearer_scope='rpc'`, read-only detected per method. API keys
+  are the bearer credential. The `web` addon's `/json/<path>` (`auth='user'`)
+  and `/json/1/<path>` routes (`addons/web/controllers/json.py`) are the
+  view-oriented variant, not the integration API.
 - `base` views use `<list>` only; no `<tree>` architecture remains.
 - Tests: `odoo/tests/form.py` and `Form` exported from `odoo.tests`, `tagged`,
   `HttpCase`. Hoot is the browser test library; QUnit is absent.
@@ -53,7 +56,7 @@ behavior.
 
 ## Skill-specific evidence
 
-- Executed: OCA `base_view_inheritance_extension` from server-tools 20.0 (commit `56685223`) installs and passes its own 12 tests on fresh Odoo 20 Community and Enterprise databases (2026-10-25); it is the only installable module with tests in that branch at that commit.
+- Executed: every OCA 20.0 module that is installable and ships tests across eleven OCA repositories (six modules: `base_view_inheritance_extension`, `web_environment_ribbon`, `web_m2x_options`, `account_usability`, `sale_order_type`, `date_range`) installs together and passes 60 tests on fresh Odoo 20 Community and Enterprise databases (2026-10-25). The other repositories have no installable 20.0 module yet.
 - Executed: `upgrade_code` rewriters produce the 20 constraint and `ir.access.csv` forms; manifest `license` `MIT` is rejected on update, so OCA-style manifests must use an accepted selection value.
 - OCA 20.0 branches exist upstream (server-tools at `56685223`, checked 2026-10-25) but at that commit only `base_view_inheritance_extension` in server-tools is installable with tests; most modules remain unported. The local OpenUpgrade 20 snapshot (OCA PR 6046 at `10f253d0`) is not a release. Inspect each module's manifest before declaring a port possible.
 - OCA module ports to 20 must replace `_sql_constraints` with `models.Constraint` and `type='json'` with `jsonrpc`.
@@ -70,6 +73,6 @@ Apply the version-neutral workflow in `SKILL.md`. Odoo 20 support is
 verified-experimental: source evidence plus two executed fixture addons on
 disposable CE and EE databases (one representative flow per skill domain);
 OCA 20.0 branches exist upstream but are
-mostly unported; one OCA module was installed and tested on both editions (see
-the `odoo-oca-development` references).
+mostly unported; all six installable OCA 20 modules with tests pass on both
+editions (see the `odoo-oca-development` references).
 Differences not demonstrated by target evidence remain Unknown.

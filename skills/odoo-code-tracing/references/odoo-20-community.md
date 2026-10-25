@@ -9,3 +9,7 @@ Supported cell: 20.0 Community (source-evidence-only experimental). Consult `odo
 ## Executed evidence
 
 - Executed: `sale.order.action_confirm` traced to exactly one created `stock.picking` on a live 20 database (`domain-eval-20`).
+
+## Skill-specific evidence
+
+- Procurement groups are gone: there is no `procurement.group` model and no `group_id` on `stock.picking`/`stock.move` or `procurement_group_id` on `sale.order`; documents link through `stock.reference` (`addons/stock/models/stock_reference.py`) and the many2many `reference_ids`. Queries or code using the old fields fail (observed as HTTP 500 on live Odoo 20 reads).

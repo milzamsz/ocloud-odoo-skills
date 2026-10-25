@@ -16,9 +16,12 @@ behavior.
   `models.Constraint` objects instead.
 - `odoo/http/` is a package (`dispatcher.py`, `routing_map.py`). Route type
   `json` is rewritten to `jsonrpc` by `odoo/upgrade_code/18.1-02-route-jsonrpc.py`.
-- The JSON-2 web API lives in `addons/web/controllers/json.py`: `/json/<path>`
-  (`auth='user'`) and `/json/1/<path>` (`auth='bearer'`, `bearer_scope='rpc'`,
-  read-only). API keys are the bearer credential.
+- The JSON-2 model-method API is `/json/2/<model>/<method>` in the
+  auto-installed `rpc` addon (`addons/rpc/controllers/json2.py`): `POST`,
+  `auth='bearer'`, `bearer_scope='rpc'`, read-only detected per method. API keys
+  are the bearer credential. The `web` addon's `/json/<path>` (`auth='user'`)
+  and `/json/1/<path>` routes (`addons/web/controllers/json.py`) are the
+  view-oriented variant, not the integration API.
 - `base` views use `<list>` only; no `<tree>` architecture remains.
 - Tests: `odoo/tests/form.py` and `Form` exported from `odoo.tests`, `tagged`,
   `HttpCase`. Hoot is the browser test library; QUnit is absent.
@@ -53,6 +56,7 @@ behavior.
 
 ## Skill-specific evidence
 
+- A non-admin internal user is denied (403) on `ir.model`, `ir.model.fields`, `ir.access`, `ir.ui.view`, `website.page`, `ir.cron`, `ir.mail_server`, `ir.config_parameter`, `base.automation`, and `ir.actions.server` on Odoo 20 (observed on the live evaluation servers). Use `fields_get` and bounded business reads for metadata and access probes, and record configuration reads as needing an administrator.
 - Live run (2026-10-25, disposable Odoo 20 server over JSON-2 with an `rpc`-scoped key): `sale.order/search_read` with `limit`, `search_count`, and `read_group` with `groupby` and `aggregates` succeed for a user in the salesperson group; the own-documents record rule hid another user's order (count 0), which is the expected least-data boundary; the legacy `read_group` body with `fields` answers 422 `unexpected keyword argument 'fields'`; unauthenticated calls answer 401.
 - Executed: bounded `search_read` and `_read_group(domain, groupby, aggregates)` on `sale.order` (`domain-eval-20`).
 - Bounded reads over JSON-2 go through `/json/2/<model>/<method>` in the auto-installed `rpc` addon (`auth='bearer'`, `bearer_scope='rpc'`, per-method read-only); `/json/1/<path>` in `web` is the view-oriented variant. A key without the `rpc` scope must fail the read, not be widened.
@@ -62,8 +66,8 @@ behavior.
 `web_enterprise`, `account_accountant`, `account_reports`, `documents`,
 `web_studio`, `sale_subscription`, `stock_enterprise`, `mrp_workorder`,
 `pos_enterprise`, `quality_control`, `helpdesk`, `planning`, and `sign` are
-present with `OEEL-1` manifests. `l10n_id_efaktur` is absent from this
-archive. Enterprise evidence is licensed and read-only; never redistribute
+present with `OEEL-1` manifests. `l10n_id_efaktur` is replaced by `l10n_id_efaktur_coretax`, which
+ships in both editions. Enterprise evidence is licensed and read-only; never redistribute
 proprietary source, and confirm installed modules on the target before relying
 on any Enterprise application.
 
@@ -73,6 +77,6 @@ Apply the version-neutral workflow in `SKILL.md`. Odoo 20 support is
 verified-experimental: source evidence plus two executed fixture addons on
 disposable CE and EE databases (one representative flow per skill domain);
 OCA 20.0 branches exist upstream but are
-mostly unported; one OCA module was installed and tested on both editions (see
-the `odoo-oca-development` references).
+mostly unported; all six installable OCA 20 modules with tests pass on both
+editions (see the `odoo-oca-development` references).
 Differences not demonstrated by target evidence remain Unknown.

@@ -83,7 +83,7 @@ sources:
   odoo_versions:
   - '20.0'
   last_reviewed: '2026-10-25'
-  notes: Read-only licensed archive at libraries/odoo-enterprise/odoo_20.0+e.20261008 (no Git metadata; release.py and manifest SHA-256 fingerprints recorded in the version-matrix-20-enterprise fixture) confirms edition markers web_enterprise, account_accountant, account_reports, documents, web_studio and core parity with the Community snapshot. l10n_id_efaktur is absent from this archive. Source presence is not proof of installation, licensing state, or runtime behavior.
+  notes: Read-only licensed archive at libraries/odoo-enterprise/odoo_20.0+e.20261008 (no Git metadata; release.py and manifest SHA-256 fingerprints recorded in the version-matrix-20-enterprise fixture) confirms edition markers web_enterprise, account_accountant, account_reports, documents, web_studio and core parity with the Community snapshot. the legacy l10n_id_efaktur is replaced by l10n_id_efaktur_coretax, present in both editions. Source presence is not proof of installation, licensing state, or runtime behavior.
 - id: openupgrade-20-local-snapshot
   name: OCA OpenUpgrade 20.0 local snapshot
   url: https://github.com/OCA/OpenUpgrade/pull/6046
@@ -103,7 +103,7 @@ sources:
   odoo_versions:
   - '20.0'
   last_reviewed: '2026-10-25'
-  notes: OCA 20.0 branches exist upstream (server-tools, web, account-financial-tools, sale-workflow, purchase-workflow, stock-logistics-workflow, mis-builder, queue, partner-contact, server-ux, reporting-engine checked on 2026-10-25). At this commit only base_view_inheritance_extension is installable with tests; it was installed and its tests run on disposable Odoo 20 Community and Enterprise databases. Most modules are not yet ported.
+  notes: OCA 20.0 branches exist upstream (server-tools, web, account-financial-tools, sale-workflow, purchase-workflow, stock-logistics-workflow, mis-builder, queue, partner-contact, server-ux, reporting-engine checked on 2026-10-25). Across those repositories six modules are installable with tests (server-tools, web, account-financial-tools, sale-workflow, server-ux); all six were installed and their 60 tests passed on disposable Odoo 20 Community and Enterprise databases. Most modules are not yet ported.
 - id: odoo-agent-platform-local-contracts
   name: OCloud Odoo Agent Platform Local Contracts
   url: https://github.com/ocloudpro/odoo-rust-mcp-agent

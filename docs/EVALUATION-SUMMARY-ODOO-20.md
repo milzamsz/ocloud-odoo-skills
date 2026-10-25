@@ -107,10 +107,106 @@ the fixture source files, not only the README.
 
 ## OCA 20 (2026-10-25)
 
-OCA 20.0 branches exist upstream; at server-tools commit `56685223` the only
-installable module with tests, `base_view_inheritance_extension`, installs and
-passes its 12 tests on fresh Odoo 20 Community and Enterprise databases (see
-the `domain-eval-20` fixture README). Most OCA 20.0 modules remain unported.
+OCA 20.0 branches exist upstream for all eleven repositories checked. Every
+module that is installable and ships tests (six modules across five
+repositories) installs together and passes 60 tests on fresh Odoo 20 Community
+and Enterprise databases (see the `domain-eval-20` fixture README). Most OCA
+20.0 modules remain unported.
+
+## Live per-skill evaluation against running Odoo 20 servers (2026-10-25)
+
+Every version-claiming skill was executed again on a new
+`*-20-{community,enterprise}-live-001` case (46 cases) against running Odoo 20
+Community and Enterprise servers instead of recorded runs.
+
+- Targets: fresh databases with the `domain-eval-20` fixture and seeded
+  business data (delivered and invoiced sale order, draft order, confirmed
+  purchase and manufacturing orders, POS config, a second company on the
+  Indonesian chart, a project), Enterprise with `web_enterprise` and
+  `account_accountant` installed.
+- Access: executors never held a credential. They queried through a read-only
+  JSON-2 proxy (`evals/live/`) that forwards only read methods, logs every call
+  per case, and refuses anything else. A refused call fails the case.
+- Each case adds two required findings to its domain findings: at least two
+  version- or edition-sensitive claims grounded in live queries, and every
+  cited live query present in the proxy log. Graders (Claude Opus) checked
+  findings against the artifact and cited queries against the log.
+
+Result: 46 of 46 pass, 481 logged live calls, zero refused calls in the counted
+runs. Eight cases needed a second run, each archived with its first run:
+
+- `functional-sales` and `functional-inventory` (Community) each attempted one
+  non-read method in run 1; the proxy refused and the grader failed them. The
+  brief was sharpened and both passed with read methods only.
+- `data-model-diagram` and `live-context` (both editions) failed run 1 because
+  `ir.model.fields` is denied to a non-admin user, so the required
+  `ir.model.fields` read could not happen; the skills correctly fell back to
+  `fields_get` and recorded the denial. Run 2 used an evaluator holding the
+  Access Rights group and met the finding unchanged.
+- `context-discovery` (both editions) failed run 1 on the cross-edition marker
+  finding and, on Enterprise, on the release tuple. A logged read-only version
+  call was added to the proxy and the other edition's executed fixture run was
+  cited as fixture evidence; both passed.
+
+Facts the live runs established and folded into the references: the JSON-2
+model-method route is `/json/2/<model>/<method>` in the `rpc` addon (the
+earlier `/json/1/` wording was wrong and is corrected), `procurement.group` is
+replaced by `stock.reference`, `purchase.order.line.taxes_id` is `tax_ids`,
+`po_lead` is gone, `l10n_id_efaktur` is replaced by `l10n_id_efaktur_coretax`
+in both editions, non-admin users are denied on configuration models, the
+Enterprise release tuple ends in `'e'` only at runtime (`web_enterprise/version.py`),
+and the DBML converter's fixed `no action` relation marker is not derived from
+Odoo `ondelete` (reference corrected).
+
+| Case | Skill | Run | Live calls | Refused | Result |
+|---|---|---|---|---|---|
+| `addon-development-20-community-live-001` | odoo-addon-development | 1 | 7 | 0 | pass |
+| `addon-development-20-enterprise-live-001` | odoo-addon-development | 1 | 7 | 0 | pass |
+| `code-review-20-community-live-001` | odoo-code-review | 1 | 9 | 0 | pass |
+| `code-review-20-enterprise-live-001` | odoo-code-review | 1 | 11 | 0 | pass |
+| `code-tracing-20-community-live-001` | odoo-code-tracing | 1 | 11 | 0 | pass |
+| `code-tracing-20-enterprise-live-001` | odoo-code-tracing | 1 | 11 | 0 | pass |
+| `context-discovery-20-community-live-001` | odoo-context-discovery | 2 | 9 | 0 | pass |
+| `context-discovery-20-enterprise-live-001` | odoo-context-discovery | 2 | 7 | 0 | pass |
+| `data-model-diagram-20-community-live-001` | odoo-data-model-diagram | 2 | 10 | 0 | pass |
+| `data-model-diagram-20-enterprise-live-001` | odoo-data-model-diagram | 2 | 8 | 0 | pass |
+| `deployment-operations-20-community-live-001` | odoo-deployment-operations | 1 | 16 | 0 | pass |
+| `deployment-operations-20-enterprise-live-001` | odoo-deployment-operations | 1 | 9 | 0 | pass |
+| `functional-accounting-20-community-live-001` | odoo-functional-accounting | 1 | 12 | 0 | pass |
+| `functional-accounting-20-enterprise-live-001` | odoo-functional-accounting | 1 | 10 | 0 | pass |
+| `functional-inventory-20-community-live-001` | odoo-functional-inventory | 2 | 13 | 0 | pass |
+| `functional-inventory-20-enterprise-live-001` | odoo-functional-inventory | 1 | 14 | 0 | pass |
+| `functional-manufacturing-20-community-live-001` | odoo-functional-manufacturing | 1 | 12 | 0 | pass |
+| `functional-manufacturing-20-enterprise-live-001` | odoo-functional-manufacturing | 1 | 12 | 0 | pass |
+| `functional-pos-20-community-live-001` | odoo-functional-pos | 1 | 12 | 0 | pass |
+| `functional-pos-20-enterprise-live-001` | odoo-functional-pos | 1 | 11 | 0 | pass |
+| `functional-purchase-20-community-live-001` | odoo-functional-purchase | 1 | 10 | 0 | pass |
+| `functional-purchase-20-enterprise-live-001` | odoo-functional-purchase | 1 | 18 | 0 | pass |
+| `functional-sales-20-community-live-001` | odoo-functional-sales | 2 | 13 | 0 | pass |
+| `functional-sales-20-enterprise-live-001` | odoo-functional-sales | 1 | 16 | 0 | pass |
+| `indonesia-accounting-20-community-live-001` | odoo-indonesia-accounting | 1 | 12 | 0 | pass |
+| `indonesia-accounting-20-enterprise-live-001` | odoo-indonesia-accounting | 1 | 19 | 0 | pass |
+| `integration-design-20-community-live-001` | odoo-integration-design | 1 | 9 | 0 | pass |
+| `integration-design-20-enterprise-live-001` | odoo-integration-design | 1 | 7 | 0 | pass |
+| `live-context-20-community-live-001` | odoo-live-context | 2 | 8 | 0 | pass |
+| `live-context-20-enterprise-live-001` | odoo-live-context | 2 | 12 | 0 | pass |
+| `live-read-20-community-live-001` | odoo-live-read | 1 | 9 | 0 | pass |
+| `live-read-20-enterprise-live-001` | odoo-live-read | 1 | 8 | 0 | pass |
+| `oca-development-20-community-live-001` | odoo-oca-development | 1 | 5 | 0 | pass |
+| `oca-development-20-enterprise-live-001` | odoo-oca-development | 1 | 6 | 0 | pass |
+| `reporting-20-community-live-001` | odoo-reporting | 1 | 8 | 0 | pass |
+| `reporting-20-enterprise-live-001` | odoo-reporting | 1 | 10 | 0 | pass |
+| `security-audit-20-community-live-001` | odoo-security-audit | 1 | 8 | 0 | pass |
+| `security-audit-20-enterprise-live-001` | odoo-security-audit | 1 | 14 | 0 | pass |
+| `solution-design-20-community-live-001` | odoo-solution-design | 1 | 13 | 0 | pass |
+| `solution-design-20-enterprise-live-001` | odoo-solution-design | 1 | 9 | 0 | pass |
+| `testing-20-community-live-001` | odoo-testing | 1 | 7 | 0 | pass |
+| `testing-20-enterprise-live-001` | odoo-testing | 1 | 7 | 0 | pass |
+| `version-upgrade-20-community-live-001` | odoo-version-upgrade | 1 | 11 | 0 | pass |
+| `version-upgrade-20-enterprise-live-001` | odoo-version-upgrade | 1 | 10 | 0 | pass |
+| `website-portal-20-community-live-001` | odoo-website-portal | 1 | 12 | 0 | pass |
+| `website-portal-20-enterprise-live-001` | odoo-website-portal | 1 | 9 | 0 | pass |
+
 
 ## What the runs showed about the skills
 

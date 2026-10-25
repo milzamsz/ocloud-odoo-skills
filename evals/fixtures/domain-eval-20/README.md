@@ -94,16 +94,20 @@ server was stopped and the database dropped.
 
 ## OCA 20 module run (2026-10-25)
 
-OCA 20.0 branches exist upstream (checked for server-tools, web,
-account-financial-tools, sale-workflow, purchase-workflow,
+OCA 20.0 branches exist upstream for all eleven repositories checked
+(server-tools, web, account-financial-tools, sale-workflow, purchase-workflow,
 stock-logistics-workflow, mis-builder, queue, partner-contact, server-ux,
-reporting-engine). At server-tools commit `56685223` the only installable
-module with tests is `base_view_inheritance_extension`. It was installed on
-fresh disposable databases and its own suite run, then the databases dropped:
+reporting-engine). Across them, six modules are installable and ship tests:
+`base_view_inheritance_extension`, `web_environment_ribbon`, `web_m2x_options`,
+`account_usability`, `sale_order_type`, and `date_range`; the other repositories
+have no installable 20.0 module yet. Commits: server-tools@5668522 web@7d3f2d2 account-financial-tools@fca00f8 sale-workflow@508ce30 server-ux@d952d4d.
+
+All six were installed together on fresh disposable databases and their suites
+run, then the databases dropped:
 
 | Cell | Result |
 |---|---|
-| 20.0 Community | `0 failed, 0 error(s) of 12 tests` |
-| 20.0 Enterprise (with `web_enterprise`) | `0 failed, 0 error(s) of 12 tests` |
+| 20.0 Community | `0 failed, 0 error(s) of 60 tests` |
+| 20.0 Enterprise (with `web_enterprise`) | `0 failed, 0 error(s) of 60 tests` |
 
 No OCA code was copied into this repository.

@@ -16,9 +16,12 @@ behavior.
   `models.Constraint` objects instead.
 - `odoo/http/` is a package (`dispatcher.py`, `routing_map.py`). Route type
   `json` is rewritten to `jsonrpc` by `odoo/upgrade_code/18.1-02-route-jsonrpc.py`.
-- The JSON-2 web API lives in `addons/web/controllers/json.py`: `/json/<path>`
-  (`auth='user'`) and `/json/1/<path>` (`auth='bearer'`, `bearer_scope='rpc'`,
-  read-only). API keys are the bearer credential.
+- The JSON-2 model-method API is `/json/2/<model>/<method>` in the
+  auto-installed `rpc` addon (`addons/rpc/controllers/json2.py`): `POST`,
+  `auth='bearer'`, `bearer_scope='rpc'`, read-only detected per method. API keys
+  are the bearer credential. The `web` addon's `/json/<path>` (`auth='user'`)
+  and `/json/1/<path>` routes (`addons/web/controllers/json.py`) are the
+  view-oriented variant, not the integration API.
 - `base` views use `<list>` only; no `<tree>` architecture remains.
 - Tests: `odoo/tests/form.py` and `Form` exported from `odoo.tests`, `tagged`,
   `HttpCase`. Hoot is the browser test library; QUnit is absent.
@@ -53,6 +56,8 @@ behavior.
 
 ## Skill-specific evidence
 
+- Live edition marker: `/web/webclient/version_info` (or `common.version`) reports `server_version_info` ending in `'e'` and `server_version` `20.0+e` only when Enterprise is loaded, because `web_enterprise/version.py` patches `odoo.release.version_info` at import; Community reports an empty suffix and `20.0`. Observed on both live evaluation servers. The source `release.py` alone always shows the empty suffix.
+- A non-admin internal user is denied (403) on `ir.model`, `ir.model.fields`, `ir.access`, `ir.ui.view`, `website.page`, `ir.cron`, `ir.mail_server`, `ir.config_parameter`, `base.automation`, and `ir.actions.server` on Odoo 20 (observed on the live evaluation servers). Use `fields_get` and bounded business reads for metadata and access probes, and record configuration reads as needing an administrator.
 - Live run (2026-10-25, disposable Odoo 20 server over JSON-2 with an `rpc`-scoped key): `/web/webclient/version_info` reports `server_version_info [20,0,0,'final',0,'']`; `ir.module.module/search_read` returns edition markers; `sale.order/fields_get` is the metadata path for a non-admin user, because `ir.model` and `ir.model.fields` reads are denied without the Access Rights group; `check_access` is private and cannot be called remotely (the server answers 403), so effective access is proven by a bounded read, not by an access-check call; unauthenticated and bad-key calls answer 401.
 - Executed: `ir.model.fields` metadata read and JSON-2 bearer probe (`domain-eval-20`).
 - Metadata reads over JSON-2 use `/json/2/<model>/<method>` in the auto-installed `rpc` addon with an `rpc`-scoped API key (`/json/1/<path>` in `web` is the view-oriented variant); confirm the key scope before trusting a context probe.
@@ -69,6 +74,6 @@ Apply the version-neutral workflow in `SKILL.md`. Odoo 20 support is
 verified-experimental: source evidence plus two executed fixture addons on
 disposable CE and EE databases (one representative flow per skill domain);
 OCA 20.0 branches exist upstream but are
-mostly unported; one OCA module was installed and tested on both editions (see
-the `odoo-oca-development` references).
+mostly unported; all six installable OCA 20 modules with tests pass on both
+editions (see the `odoo-oca-development` references).
 Differences not demonstrated by target evidence remain Unknown.

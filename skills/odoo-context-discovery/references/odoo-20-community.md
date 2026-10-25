@@ -59,3 +59,7 @@ production runtime, or migration-path support is established here.
 ## Executed evidence
 
 - Executed: `release.version_info` and `ir.module.module` edition markers read on live 20 CE and EE databases (`domain-eval-20`).
+
+## Skill-specific evidence
+
+- Live edition marker: `/web/webclient/version_info` (or `common.version`) reports `server_version_info` ending in `'e'` and `server_version` `20.0+e` only when Enterprise is loaded, because `web_enterprise/version.py` patches `odoo.release.version_info` at import; Community reports an empty suffix and `20.0`. Observed on both live evaluation servers. The source `release.py` alone always shows the empty suffix.
