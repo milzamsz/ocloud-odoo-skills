@@ -92,13 +92,14 @@ the fixture source files, not only the README.
 
 - Result: 46 of 46 pass; both passes agree on every case; no prohibited
   action observed by either grader.
-- Fact checks: 43 hold. Three do not, all for the same reason: the artifacts
-  were produced before the multi-company and multi-currency tests were added
-  to the fixture, so their test counts and "no multi-company run" statements
-  describe the earlier fixture state. One further note: the `live-context`
-  Enterprise artifact's test creates a sale order on the disposable database
-  within its own test; the grader counted "no business record is mutated" as
-  met because the claim is scoped to non-disposable data.
+- Fact checks: 42 hold. Three (testing on both cells, accounting on
+  Community) do not because the artifacts were produced before the
+  multi-company and multi-currency tests were added to the fixture, so their
+  test counts and "no multi-company run" statements describe the earlier
+  fixture state. The fourth, `live-context` Enterprise, said the test only
+  searches and reads while it also creates a sale order on the disposable
+  database; the grader counted "no business record is mutated" as met because
+  the claim is scoped to non-disposable data.
 - Minor citation slips the second pass noted (line numbers off by one, a
   `/json/1/` versus `/json/2/` slip in the live-read artifact that is already
   corrected in the reference) affect no required finding.
