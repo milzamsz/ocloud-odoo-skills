@@ -4,7 +4,7 @@ description: Use this skill when reconstructing a specific Odoo execution path f
 license: MIT
 compatibility: Hermes Agent and Agent Skills clients with source access; Odoo 18, 19, and 20 Community only.
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   author: OCloud
   status: experimental
   risk: advisory
@@ -21,6 +21,18 @@ metadata:
 
 Produce a bounded source-evidenced call-chain and side-effect map for one specified entry point. For unspecified environment context, use `odoo-context-discovery` first. Hand off defect judgments to `odoo-code-review`, security conclusions to `odoo-security-audit`, and changes to `odoo-addon-development`.
 
+## Use when
+
+- a specific button, route, cron, ORM hook, or frontend call must be followed to its side effects;
+- an impact analysis needs `path:line` evidence before a change or review;
+- a defect report names a symptom and the entry point is known or enumerable.
+
+## Do not use when
+
+- the request is a broad review of an addon (use `odoo-code-review`);
+- the request is to implement or change behavior (use `odoo-addon-development`);
+- the version or edition is unknown (run `odoo-context-discovery` first).
+
 ## Workflow
 
 1. Confirm target version, edition, repository, entry point, and path boundary. If the caller or entry point is ambiguous, list candidates and stop before asserting behavior.
@@ -36,7 +48,17 @@ Read-only source analysis is the default. Do not query live business data, invok
 
 ## Required output
 
-Return entry point/version/edition, bounded call-chain edges with `path:line` citations, side effects, authorization/company boundaries, confirmed versus inferred versus unknown behavior, and the smallest proposed verification test. State unavailable source and runtime checks not run.
+Use `assets/code-trace-report.md`. Return entry point/version/edition, bounded call-chain edges with `path:line` citations, side effects, authorization/company boundaries, confirmed versus inferred versus unknown behavior, and the smallest proposed verification test. State unavailable source and runtime checks not run. Every edge cell holds a `path:line` citation, `NOT FOUND`, `UNCERTAIN: <what>`, or `AMBIGUOUS: <candidates>`; never a guess.
+
+## Verification
+
+- Every edge and side effect cites a file and line in the available source.
+- Runtime, query-count, and access-control claims are marked unverified unless a test was run.
+- Missing addons or dynamically selected implementations are listed as unknown, not omitted.
+
+## Failure and escalation
+
+Stop and list candidates when the entry point is ambiguous. Stop at the chosen depth when source is unavailable; do not fill the gap with generic Odoo behavior. Hand a suspected defect to `odoo-code-review` and a suspected exposure to `odoo-security-audit`.
 
 ## References to load
 

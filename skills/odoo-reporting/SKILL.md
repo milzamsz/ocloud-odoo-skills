@@ -4,7 +4,7 @@ description: Use this skill when designing an Odoo 17, 18, or 19 Community or En
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients. Odoo 17, 18, or 19 Community or Enterprise is the verified baseline.
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   author: OCloud
   status: experimental
   risk: advisory
@@ -115,8 +115,9 @@ test matrix, acceptance criteria, prohibited actions, and blockers.
 
 Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
-Read `references/odoo-18-community.md` before making version-sensitive report,
-QWeb, PDF, analytics, or edition claims.
+The Odoo 18 Community file carries the executed baseline; verify report, QWeb, PDF, analytics, and edition claims for other cells against target source.
+
+Read `references/report-regression.md` when an existing report must keep rendering identically after a module change, port, or upgrade.
 
 ## Failure and escalation
 

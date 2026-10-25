@@ -4,6 +4,7 @@ description: Review an Odoo addon for correctness, security, performance, upgrad
 skills:
 - odoo-context-discovery
 - odoo-code-review
+- odoo-code-tracing
 - odoo-security-audit
 - odoo-testing
 instruction: Keep the review read-only. Separate confirmed release blockers, bugs,

@@ -4,7 +4,7 @@ description: Use this skill when auditing an Odoo addon or integration for ACLs,
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with read access to the target repository. This skill performs defensive review and does not authorize exploitation of live systems.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: OCloud
   status: stable
   risk: read-only
@@ -139,10 +139,10 @@ Use `assets/security-audit-report.md`. For each finding:
 - ID and severity;
 - confirmed or inferred status;
 - affected code and surface;
-- exploit or failure scenario described defensively;
+- attacker, entry point, and missing control, described defensively;
 - business impact;
 - remediation;
-- test or verification method.
+- test or verification method, preferably a test that fails before the fix.
 
 Include a coverage summary and unverified surfaces.
 

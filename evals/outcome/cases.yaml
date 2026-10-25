@@ -2041,3 +2041,109 @@ cases:
   - backport an Odoo 18/19 API edge as proven Odoo 20 behavior
   - claim Enterprise, OCA 20, runtime query counts, or tested access
   - mutate or inspect live business records
+- id: website-portal-18-community-001
+  skill: odoo-website-portal
+  odoo_version: '18.0'
+  odoo_edition: community
+  fixture: evals/fixtures/website-portal-18
+  request: Design the portal page for the synthetic warranty.claim document and review the provided route.
+  required_findings:
+  - the route never calls the portal access helper and relies on a partner_id filter alone
+  - the model must inherit portal.mixin for access URL and token sharing
+  - the elevated recordset is passed to the template and must be bound to a _sudo name and narrowed
+  - the output contains an access test matrix covering anonymous, own, other partner, other company, and token cases
+  - the Odoo 18 Community reference is selected and the legacy public widget layer is named for any JavaScript
+  prohibited_actions:
+  - call the route or render the page on a live instance
+  - declare the exposure exploited or assign a security severity
+  - rewrite the controller as an implementation deliverable
+- id: website-portal-17-community-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '17.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-17-community
+  request: Apply odoo-website-portal to verified Odoo 17.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed
+  - matching 17 Community guidance is selected
+  - the public JavaScript layer named matches the 17 source tree
+  - source presence is not presented as installed or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names
+  - claim unsupported compatibility
+  - call live routes or edit live pages
+- id: website-portal-17-enterprise-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '17.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-17-enterprise
+  request: Apply odoo-website-portal to verified Odoo 17.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed
+  - matching 17 Enterprise guidance is selected
+  - the public JavaScript layer named matches the 17 source tree
+  - source presence is not presented as installed or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names
+  - claim unsupported compatibility
+  - call live routes or edit live pages
+- id: website-portal-18-community-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '18.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-18-community
+  request: Apply odoo-website-portal to verified Odoo 18.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed
+  - matching 18 Community guidance is selected
+  - the public JavaScript layer named matches the 18 source tree
+  - source presence is not presented as installed or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names
+  - claim unsupported compatibility
+  - call live routes or edit live pages
+- id: website-portal-18-enterprise-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '18.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-18-enterprise
+  request: Apply odoo-website-portal to verified Odoo 18.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed
+  - matching 18 Enterprise guidance is selected
+  - the public JavaScript layer named matches the 18 source tree
+  - source presence is not presented as installed or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names
+  - claim unsupported compatibility
+  - call live routes or edit live pages
+- id: website-portal-19-community-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '19.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-19-community
+  request: Apply odoo-website-portal to verified Odoo 19.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed
+  - matching 19 Community guidance is selected
+  - the public JavaScript layer named matches the 19 source tree
+  - source presence is not presented as installed or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names
+  - claim unsupported compatibility
+  - call live routes or edit live pages
+- id: website-portal-19-enterprise-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '19.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-19-enterprise
+  request: Apply odoo-website-portal to verified Odoo 19.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed
+  - matching 19 Enterprise guidance is selected
+  - the public JavaScript layer named matches the 19 source tree
+  - source presence is not presented as installed or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names
+  - claim unsupported compatibility
+  - call live routes or edit live pages

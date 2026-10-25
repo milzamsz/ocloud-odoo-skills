@@ -69,4 +69,4 @@ Use `assets/indonesia-accounting-assessment.md`. Include the assumptions registe
 
 Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
-- Read `references/odoo-18.md` for the clean-room Community localization baseline.
+- Read `references/odoo-18.md` additionally when the target is Odoo 18 for the clean-room Community localization baseline.

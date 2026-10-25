@@ -4,7 +4,7 @@ description: Use this skill when planning, analyzing, implementing, or validatin
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with source and target code plus a disposable migration environment.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: OCloud
   status: stable
   risk: destructive
@@ -190,4 +190,4 @@ Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file aft
 
 - Read `references/openupgrade-workflow.md` when OpenUpgrade is selected.
 - Read `references/reconciliation.md` for accounting or inventory databases.
-- Read matching source and target version references before code changes.
+- Read `references/odoo-{17,18,19}.md` for both the source and the target major version before code changes.

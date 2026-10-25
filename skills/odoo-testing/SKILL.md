@@ -4,7 +4,7 @@ description: Use this skill when designing, implementing, reviewing, or running 
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with access to a safe Odoo development or test environment.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: OCloud
   status: stable
   risk: controlled-write
@@ -49,7 +49,7 @@ For each behavior define:
 | Form and onchange behavior | Odoo `Form` helper where appropriate. |
 | ACL and record rules | Tests using realistic users, groups, and companies. |
 | Controller | HTTP or route test with authentication and authorization cases. |
-| JavaScript and OWL | QUnit or repository-standard JS tests. |
+| JavaScript and OWL | Hoot on Odoo 18+ (QUnit remains only on 17 to 19 and is gone in 20), or the repository-standard JS runner. |
 | End-to-end UI | Tour or browser test for critical journeys, not every field. |
 | Report | Render and assert meaningful structure or values. |
 | Cron | Direct method invocation, batching, idempotency, and repeated-run behavior. |

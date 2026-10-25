@@ -4,7 +4,7 @@ description: Use this skill when an Odoo task requires discovering the exact ver
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with access to the target repository or environment evidence.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: OCloud
   status: stable
   risk: read-only
@@ -82,7 +82,7 @@ Use this evidence order:
 5. user statement;
 6. inference marked unresolved.
 
-If evidence conflicts, report the conflict instead of choosing whichever version makes the next command convenient.
+There is no default version. If no evidence resolves it, stop and ask for the narrowest missing evidence. If evidence conflicts, report the conflict instead of choosing whichever version makes the next command convenient.
 
 ### 4. Confirm edition
 
@@ -131,7 +131,7 @@ Block or constrain the next step when version, edition, database target, product
 
 ## Required output
 
-Use the template in `assets/context-summary.yaml` and provide:
+Use the template in `assets/context-summary.yaml`. Every evidence cell holds exactly one of: a `path:line` or read-only instance response, `NOT FOUND`, `UNCERTAIN: <what is missing>`, or `AMBIGUOUS: <candidates>`. Downstream skills must not write code or commands for a fact whose cell is not a citation. Provide:
 
 - confirmed facts and evidence paths;
 - inferred or assumed items;
@@ -156,7 +156,7 @@ Before completing, confirm:
 
 ## References to load
 
-Read exactly one version/edition reference after the target version and edition are confirmed. References exist for Odoo 17, 18, and 19 Community/Enterprise, plus Odoo 20 Community only; do not imply Odoo 20 Enterprise support.
+Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file, or `references/odoo-20-community.md`, after the target version and edition are confirmed. Odoo 20 has a Community reference only; do not imply Odoo 20 Enterprise support.
 
 - Read `references/evidence-priority.md` when version or edition evidence conflicts.
 - Read `references/repository-markers.md` when repository structure is unfamiliar.

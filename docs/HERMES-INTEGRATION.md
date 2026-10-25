@@ -27,9 +27,9 @@ Hermes may modify a writable external skill when agent-managed skill actions are
 Recommended for versioned distribution.
 
 ```bash
-hermes skills tap add ocloudpro/ocloud-odoo-skills
+hermes skills tap add milzamsz/ocloud-odoo-skills
 hermes skills search odoo
-hermes skills install ocloudpro/ocloud-odoo-skills/odoo-security-audit
+hermes skills install milzamsz/ocloud-odoo-skills/odoo-security-audit
 ```
 
 A tap uses the repository `skills/` path by default. Each immediate subdirectory must contain `SKILL.md`.
@@ -37,7 +37,7 @@ A tap uses the repository `skills/` path by default. Each immediate subdirectory
 ### 1.3 Direct installation
 
 ```bash
-hermes skills install ocloudpro/ocloud-odoo-skills/skills/odoo-context-discovery
+hermes skills install milzamsz/ocloud-odoo-skills/odoo-context-discovery
 ```
 
 Use direct installation for a single skill without subscribing to the complete tap.

@@ -61,7 +61,7 @@ Copy `assets/pos-process-design.md`. Include process states, role controls, paym
 
 Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
-Read `references/odoo-18-community.md` for the verified CE baseline and inspect target source when a detail affects implementation.
+The Odoo 18 Community file carries the executed baseline; the other cells are source-evidenced only, so inspect target source when a detail affects implementation.
 
 ## Failure and escalation
 

@@ -31,7 +31,7 @@ Verified official paths:
 - `odoo/tests/shell.py` — separate at-install and post-install suites.
 
 Fixture application:
-`evals/fixtures/minimal-addon-18/ocloud_minimal_18/tests/test_minimal_item.py`
+the repository evaluation fixture `minimal-addon-18` (`ocloud_minimal_18/tests/test_minimal_item.py`)
 uses `TransactionCase` for a constraint and realistic user access. A form,
 HTTP, JS, or tour test would add no coverage for that fixture and is therefore
 intentionally absent.

@@ -407,8 +407,35 @@ sources:
   usage: inspiration-agent-behavior
   license_status: verify-before-use
   odoo_versions: []
-  last_reviewed: '2026-10-09'
-  notes: Pinned inventory for conceptual coverage review only; no content or scripts copied. GitHub license metadata was null and no root LICENSE appeared in the inspected tree. Verify license/permission before reuse; Odoo APIs require official-version confirmation.
+  last_reviewed: '2026-10-24'
+  notes: Pinned inventory for conceptual coverage review only; no content or scripts copied. Re-checked 2026-10-24; upstream HEAD unchanged. No root LICENSE (package.json claims MIT); its 17/18/19 version packs are a reworked fork of unclecatvn/agent-skills without that copyright notice. Verify license/permission before reuse; Odoo APIs require official-version confirmation.
+- id: unclecatvn-agent-skills
+  name: unclecatvn/agent-skills
+  url: https://github.com/unclecatvn/agent-skills/tree/82ebbaed8988e9697687612575d437ca0eacec4e
+  authority_tier: 6
+  usage: inspiration-agent-behavior
+  license_status: MIT (LICENSE present); no content or scripts copied
+  odoo_versions: []
+  last_reviewed: '2026-10-24'
+  notes: Studied for the Context Brief closed-cell convention, anti-hallucination trap evaluations, and self-testing CI. Its definition of done creates and drops databases on its own; that behavior is not adopted. Odoo API claims require official-version confirmation.
+- id: atakhadiviom-odoo-skill
+  name: atakhadiviom/odoo-skill
+  url: https://github.com/atakhadiviom/odoo-skill/tree/d2f3629f94c554a85ace9068c13f4bd75a9068d5
+  authority_tier: 6
+  usage: inspiration-agent-behavior
+  license_status: verify-before-use
+  odoo_versions: []
+  last_reviewed: '2026-10-24'
+  notes: No LICENSE file (README says LGPL-3). Studied for the check-the-field-before-writing habit and spec task templates only; its scaffolder contradicts its own version notes and runs eval on user input, so no script or text is reused.
+- id: 19prince-claude-odoo-builder
+  name: 19prince/claude-odoo-builder
+  url: https://github.com/19prince/claude-odoo-builder/tree/e8318dbff5ab6fb55ded207b7af005b9f297defc
+  authority_tier: 6
+  usage: inspiration-agent-behavior
+  license_status: MIT (LICENSE present); no content or scripts copied
+  odoo_versions: []
+  last_reviewed: '2026-10-24'
+  notes: Studied for its snapshot, dry-run, and rollback contract around live website writes. It writes to live instances with session passwords; that posture is not adopted. Website and portal claims require official-version confirmation.
 - id: fhidalgo-odoo-skill
   name: fhidalgodev/odoo-development-skill
   url: https://github.com/fhidalgodev/odoo-development-skill

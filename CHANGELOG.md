@@ -8,6 +8,32 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Added
 
+- Added experimental `odoo-website-portal` (Odoo 17/18/19 Community and Enterprise)
+  with a source-verified portal access pattern, website patterns, per-cell
+  references naming the public JavaScript layer of each tree, a clean-room
+  portal fixture, 8/8 triggers, and seven outcome cases.
+- Added `references/restore-neutralization.md` to `odoo-deployment-operations`,
+  `references/report-regression.md` to `odoo-reporting`, an OpenUpgrade retry
+  discipline section to `odoo-version-upgrade`, and a verified Odoo 19 migration
+  reference (Interaction layer, Hoot, RPC surface).
+- Added a `code-trace-report.md` output template plus use-when, verification,
+  and escalation sections to `odoo-code-tracing`, and placed it in the
+  `odoo-review` bundle.
+- Added closed evidence cells (`path:line`, `NOT FOUND`, `UNCERTAIN`,
+  `AMBIGUOUS`) and a no-default version rule to `odoo-context-discovery`; a
+  `_sudo` binding rule and attacker/entry-point/missing-control finding fields
+  to `odoo-security-audit`.
+- Added validator rules: description must start with "Use this skill when",
+  `metadata.status`/`metadata.risk` enums, brace-expanded backtick reference
+  paths must exist, packaged files never loaded by `SKILL.md` warn, secret
+  literals in skill files fail, and repository paths that break single-skill
+  installs warn. Covered by `tests/test_validator_rules.py`.
+- Added `.claude-plugin/plugin.json` and `marketplace.json` so the checkout
+  installs as a Claude Code plugin; documented the project-level install path.
+- Registered `unclecatvn-agent-skills`, `atakhadiviom-odoo-skill`, and
+  `19prince-claude-odoo-builder` as inspiration-only sources and recorded the
+  four-repository review in `docs/THIRD-PARTY-COVERAGE.md`; no upstream text or
+  scripts were copied.
 - Added experimental `odoo-code-tracing` for evidence-bounded call-chain tracing across Odoo 18/19/20 Community, with version-specific references, synthetic outcome fixtures, and an upstream skills coverage review; 19/20 claims remain experimental and no upstream content was copied.
 
 - Added experimental `odoo-data-model-diagram` with bounded source/live model
@@ -51,6 +77,23 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Changed
 
+- Corrected the Hermes tap identifier to `milzamsz/ocloud-odoo-skills` in the
+  README and Hermes integration guide; refreshed `MANIFEST.md` counts (24
+  skills, 24 trigger datasets, 146 outcome cases, Odoo 20 Community cell).
+- Removed the contradiction between "read exactly one version reference" and
+  an unconditional Odoo 18 Community read in eight skills; the 18 Community
+  file is now described as the executed baseline. Wired the previously
+  unreachable `odoo-{17,18,19}.md` notes into `odoo-addon-development` and
+  `odoo-version-upgrade`; removed the unclaimed Odoo 16 placeholder and the
+  stale `odoo-18-community.md` claim file from `odoo-live-mutation`.
+- Named Hoot as the Odoo 18+ browser test runner in `odoo-testing` and the
+  public JavaScript layer per version in `odoo-addon-development`.
+- Rephrased repository fixture mentions inside skill references so single-skill
+  installs no longer point at paths that are not shipped.
+- Bumped `odoo-context-discovery`, `odoo-addon-development`,
+  `odoo-security-audit`, `odoo-testing`, and `odoo-version-upgrade` to 1.1.0 and
+  `odoo-code-tracing`, `odoo-deployment-operations`, and `odoo-reporting` to
+  0.2.0 for the body changes above.
 - Replaced the draft-update blocker with an atomic Odoo-side conditional update and recorded development/staging matrix evidence for all six Odoo 17/18/19 Community/Enterprise cells; production remains read-only.
 - Bound final mutation execution to the signed `odoo_execute_capability`
   runtime envelope.

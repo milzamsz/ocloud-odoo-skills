@@ -9,6 +9,6 @@ skills:
 - odoo-functional-inventory
 - odoo-functional-pos
 - odoo-functional-manufacturing
-instruction: Confirm Odoo 18 Community context, map operational documents and
+instruction: Confirm the exact Odoo version and edition, map operational documents and
   state transitions, and hand accounting, implementation, and testing to their
   owning skills.

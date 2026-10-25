@@ -113,8 +113,7 @@ prohibited actions.
 
 Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
-Read `references/odoo-18-community.md` for Odoo 17, 18, or 19 Community or Enterprise boundaries before
-making version-sensitive claims.
+The Odoo 18 Community file carries the executed baseline; treat the other cells as source-evidenced only. For Odoo 19 and later, verify the external RPC surface (JSON-2 with API keys versus legacy JSON-RPC) against the target source before designing an integration contract.
 
 ## Failure and escalation
 

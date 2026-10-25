@@ -45,7 +45,8 @@
         "odoo-reporting",
         "odoo-functional-pos",
         "odoo-functional-manufacturing",
-        "odoo-deployment-operations"
+        "odoo-deployment-operations",
+        "odoo-website-portal"
       ]
     },
     {

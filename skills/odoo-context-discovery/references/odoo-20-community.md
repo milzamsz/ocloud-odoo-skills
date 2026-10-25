@@ -12,7 +12,7 @@ a target database.
 - This source tree has no `.git` metadata. Do not report a branch, commit, or
   clean/dirty Git state for it. Its release and selected manifest SHA-256
   fingerprints are recorded in
-  `evals/fixtures/version-matrix-20-community/README.md`.
+  the repository evaluation fixture `version-matrix-20-community`.
 - The inspected Community tree contains modules including `base`, `web`,
   `account`, `sale`, `purchase`, `stock`, `mrp`, `point_of_sale`, `l10n_id`,
   `bus`, and `mail`. Module presence is not evidence that a target database

@@ -1,5 +1,5 @@
-from pathlib import Path
 import sys
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -13,7 +13,6 @@ from scripts.validate_repository import (  # noqa: E402
     validate_trigger_files,
     validate_version_claims,
 )
-
 
 
 def test_all_skill_names_match_directories():
@@ -50,6 +49,7 @@ def test_source_registry_matches_policy():
 
 def test_odoo_code_tracing_pilot_contract():
     import json
+
     import yaml
 
     skill = ROOT / "skills" / "odoo-code-tracing"
@@ -59,18 +59,16 @@ def test_odoo_code_tracing_pilot_contract():
         assert f"references/odoo-{version}-community.md" in body
         assert (skill / "references" / f"odoo-{version}-community.md").exists()
     prompts = json.loads(
-        (ROOT / "evals" / "trigger" / "odoo-code-tracing.json").read_text(
-            encoding="utf-8"
-        )
+        (ROOT / "evals" / "trigger" / "odoo-code-tracing.json").read_text(encoding="utf-8")
     )
     assert sum(row["should_trigger"] is True for row in prompts) >= 8
     assert sum(row["should_trigger"] is False for row in prompts) >= 8
     for version in ("19", "20"):
         fixture = ROOT / "evals" / "fixtures" / f"code-tracing-{version}" / "models.py"
         assert "def action_confirm" in fixture.read_text(encoding="utf-8")
-    cases = yaml.safe_load(
-        (ROOT / "evals" / "outcome" / "cases.yaml").read_text(encoding="utf-8")
-    )["cases"]
+    cases = yaml.safe_load((ROOT / "evals" / "outcome" / "cases.yaml").read_text(encoding="utf-8"))[
+        "cases"
+    ]
     for version in ("18.0", "19.0", "20.0"):
         assert any(
             case.get("skill") == "odoo-code-tracing"

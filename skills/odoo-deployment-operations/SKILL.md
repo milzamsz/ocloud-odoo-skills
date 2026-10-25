@@ -4,7 +4,7 @@ description: Use this skill when producing a read-only-first Odoo deployment, ba
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients. Verified for Odoo 17.0, 18.0, or 19.0 Community or Enterprise.
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   author: OCloud
   status: experimental
   risk: read-only
@@ -67,7 +67,9 @@ Copy `assets/operations-runbook.md`. Record topology, evidence, authorization st
 
 Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
-Read `references/odoo-18-community.md` after confirming the target. Hosting-specific instructions remain authoritative.
+Hosting-specific instructions remain authoritative over any version file.
+
+Read `references/restore-neutralization.md` before planning any restore of a production copy into a non-production environment.
 
 ## Failure and escalation
 

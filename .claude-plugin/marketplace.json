@@ -1,0 +1,11 @@
+{
+  "name": "ocloud-odoo-skills",
+  "owner": { "name": "OCloud" },
+  "plugins": [
+    {
+      "name": "ocloud-odoo-skills",
+      "source": "./",
+      "description": "Version-aware, read-only-by-default Odoo engineering and ERP delivery skills."
+    }
+  ]
+}

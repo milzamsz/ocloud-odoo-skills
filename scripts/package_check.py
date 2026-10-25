@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Check that each tap skill is self-contained for distribution."""
+
 import json
-from pathlib import Path
 import re
 import sys
+from pathlib import Path
 
 import yaml
 
@@ -35,9 +36,7 @@ def main() -> int:
 
     tap = json.loads((ROOT / "skills.sh.json").read_text(encoding="utf-8"))
     tap_names = {
-        name
-        for grouping in tap.get("groupings", [])
-        for name in grouping.get("skills", [])
+        name for grouping in tap.get("groupings", []) for name in grouping.get("skills", [])
     }
     if tap_names != skill_names:
         errors.append(

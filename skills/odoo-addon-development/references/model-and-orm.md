@@ -34,5 +34,5 @@ Verified official source paths in the Odoo 18 CE checkout:
 - `odoo/addons/test_new_api/tests/test_company_checks.py` — company-consistency
   and allowed-company behavior exercised by Odoo's own tests.
 
-See the registered Odoo 18 developer documentation in `sources/SOURCES.yaml`;
+See the registered Odoo 18 developer documentation in the repository source registry (`odoo-18-developer`);
 these notes are OCloud-authored paraphrases, not copied source.
