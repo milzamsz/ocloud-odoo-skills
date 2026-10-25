@@ -20,8 +20,9 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 - Ran the `odoo-live-mutation` five-capability matrix on disposable Odoo 20
   Community and Enterprise databases (JSON-2/API key): capabilities, replay,
   stale-update conflict, boundary suite, and no-sales denial pass in both cells.
-  Fixed the two Odoo 20 blockers on local sibling branches (runtime line-field
-  version check, receipt-schema version list), recorded the addendum in
+  Fixed the two Odoo 20 blockers and the two runtime robustness gaps (receipt
+  preflight before the write, `denied` for Odoo access errors) in sibling pull
+  requests milzamsz/odoo-rust-mcp#15 and milzamsz/odoo-rust-mcp-agent#1, recorded the addendum in
   `docs/CROSS-REPO-MUTATION-BASELINE.md`, and let the capability validator
   accept the Odoo 20 cell pair as an all-or-nothing optional group.
 - Executed every version-claiming skill against running Odoo 20 Community and

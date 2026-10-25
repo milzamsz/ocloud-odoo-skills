@@ -70,21 +70,18 @@ No private updater material was read or copied.
 A disposable Odoo 20.0 Community and Enterprise matrix (JSON-2/API key) passed
 all five capabilities, exact replay at plugin and runtime, stale-update
 conflict on `sale.order` and draft vendor bills, the six-case boundary suite
-before mutation, and no-sales denial, in isolated copies of the three runtime
-repositories. Both databases were dropped. Two defects blocked Odoo 20 and are
-fixed on local, unpushed branches that leave the owners' working trees
-untouched:
+before mutation, and no-sales denial. Both databases were dropped. The changes
+it needed are in pull requests cut from each repository's `main`; the owners'
+uncommitted working trees were not touched:
 
-| Repository | Branch | Change |
+| Repository | Pull request | Change |
 |---|---|---|
-| `odoo-rust-mcp` | `fix/odoo20-capability-line-fields` | `line_commands()` used the literal `"19.0"`, so Odoo 20 lines got pre-19 `tax_id`/`product_uom`; now version-numeric, with a 20.0 unit test. |
-| `odoo-rust-mcp-agent` | `feat/odoo20-mutation-cells` | `receipt.v1.json` accepts `target_cell.version` `20.0`; evidence in `docs/evidence/mutation-matrix-20/`; the `support.yaml` cells and loader test are in `pending-contract-cells.patch`, which applies on the owner's current uncommitted contract, not on HEAD. |
+| `odoo-rust-mcp` | milzamsz/odoo-rust-mcp#15 | Odoo 20 line fields (`line_commands()` was pinned to the literal `"19.0"`); a receipt preflight before the claim and the write, closing the orphan-record path; Odoo `AccessError` on create or guarded update reported as a persisted `denied` receipt instead of `uncertain`. 246 library tests and the capability tests (7, three new) pass; `mcp_registry` (pre-existing compile error) and `mcp_smoke` (environment timeout, reproduces without the change) are noted in the PR. |
+| `odoo-rust-mcp-agent` | milzamsz/odoo-rust-mcp-agent#1 | `odoo20-community` and `odoo20-enterprise` cells approved for development and staging (production denied); receipt `target_cell.version` accepts `20.0`; `replay` added to the output status enum; loader test at eight cells; evidence in `docs/evidence/mutation-matrix-20/`. 69 tests pass. |
 
 The skills-side validator `scripts/validate_mutation_capabilities.py` accepts
-the Odoo 20 pair as an all-or-nothing optional group and passes against both
-the current contract and the patched one. Residual risks recorded by the run:
-the runtime validates its receipt after the Odoo write (an invalid receipt can
-leave an orphan record with an `executing` idempotency claim), an Odoo ACL
-denial on create surfaces as `uncertain` rather than `denied`, `write_date`
-whole-second precision remains an optimistic-lock risk, and the staging
-`prepare-draft-config.sh` marker no longer matches the owners' files.
+the Odoo 20 pair as an all-or-nothing optional group and passes against the
+current contract and the pull-request contract. Remaining residual risk:
+`write_date` whole-second precision is still an optimistic-lock risk for
+sub-second concurrent edits, and the staging `prepare-draft-config.sh` marker
+no longer matches the owners' files.

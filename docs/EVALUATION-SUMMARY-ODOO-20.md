@@ -215,7 +215,9 @@ shared capability contract. Its runtime path was nevertheless exercised on
 disposable Odoo 20 Community and Enterprise databases over JSON-2/API key: all
 five capabilities, exact replay, stale-update conflict, the boundary suite,
 and no-sales denial pass in both cells, after two Odoo 20 fixes in the sibling
-runtime repositories. Details, branches, and residual risks are in
+runtime repositories, now in milzamsz/odoo-rust-mcp#15 and
+milzamsz/odoo-rust-mcp-agent#1 together with a receipt preflight and a
+`denied` outcome for Odoo access errors. Details, branches, and residual risks are in
 `docs/CROSS-REPO-MUTATION-BASELINE.md` (Odoo 20 addendum).
 
 ## What the runs showed about the skills
