@@ -8,6 +8,11 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Added
 
+- Closed the whole-second optimistic-lock gap for `update_allowed_draft_fields.v1`:
+  helper `oc_mcp_mutation` 1.1.0 (milzamsz/odoo-rust-mcp#16) exposes a
+  full-precision `oc_mcp_write_version` token and compares at microsecond
+  precision, tested on Odoo 17 to 20 Community and Enterprise; the skill's
+  capability reference now binds that token.
 - Recorded that the Odoo 20 runtime and contract changes are merged
   (milzamsz/odoo-rust-mcp#15, milzamsz/odoo-rust-mcp-agent#1), including the
   hermetic smoke and HTTP transport tests and the `double_must_use` Clippy
