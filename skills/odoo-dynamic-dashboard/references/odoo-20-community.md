@@ -16,7 +16,9 @@ installed database.
   record rule applies. See `sql-items.md`.
 - On create, an item's `grid_x`, `grid_y`, `grid_w`, `grid_h` are replaced by an
   automatic size and position unless the context has `dd_skip_auto_layout`
-  (source). Writes that change the type or group-by repack the board.
+  (source). Writes that change the type, model, or group-by repack the whole board
+  (runtime); pass the same context on such writes, and remember `noupdate="1"` data is
+  not rewritten by a module update, so fix an installed item with a write.
 - Known defect (runtime): a KPI with `computation_mode` `model` and aggregation
   `sum` or `average` fails, because the addon calls `read_group` with the
   pre-Odoo-20 argument order. Count KPIs, formula and children KPIs over count

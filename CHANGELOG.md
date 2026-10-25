@@ -16,6 +16,9 @@ The format follows Keep a Changelog principles and the project uses semantic ver
   disposable Odoo 20 Community database; every item computed without error. Records
   the addon's sum/average KPI `read_group` defect on Odoo 20 and routes around it.
   Adds source `nexgen-dynamic-dashboard-20`, 20 trigger cases, and one outcome case.
+  0.1.1 adds lessons from building three CoMo dashboards: `record_limit` drops groups,
+  analytic plans beyond the first live in database-specific columns, and model or
+  group-by writes repack the board.
 
 - AI wiki in `docs/wiki/` (index, repository map, skill anatomy, skill catalog,
   version matrix, evaluations, live integration, workflows, glossary, gotchas),

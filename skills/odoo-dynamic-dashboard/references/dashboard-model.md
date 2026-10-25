@@ -50,7 +50,7 @@ Grid rules: `grid_x >= 0`, `grid_y >= 0`, `grid_w` 1 to 12 with `grid_x + grid_w
 | `measure_field_2_ids` | Second measure set (e.g. bar + line). |
 | `group_by_field_id`, `sub_group_by_field_id` | Stored fields; for date fields set `group_by_date_type`. |
 | `group_by_date_type`, `sub_group_by_date_type` | `minute, hour, day, week, month, quarter, year`. |
-| `sort_by_field_id`, `sort_order` (`asc`, `desc`), `record_limit` | Top-N charts. |
+| `sort_by_field_id`, `sort_order` (`asc`, `desc`), `record_limit` | Top-N charts. `record_limit` silently drops the remaining groups: for "per hub" or "per partner" charts that must show every group, set it above the expected group count. |
 | `list_view_field_ids` | Columns for `list` items. |
 | `date_filter_field_id` | Stored date or datetime field the period applies to. |
 | `date_filter_selection` | `none, today, yesterday, tomorrow, this_week, this_month, this_quarter, this_year, next_week, next_month, next_quarter, next_year, week_to_date, month_to_date, year_to_date, last_7_days, last_30_days, last_90_days, last_week, last_month, last_quarter, last_year, past_until_now, future_starting_now, custom, user_defined`. `custom` needs `item_start_date` and `item_end_date`. |
@@ -58,6 +58,11 @@ Grid rules: `grid_x >= 0`, `grid_y >= 0`, `grid_w` 1 to 12 with `grid_x + grid_w
 | `kpi_id` | Show a `dynamic.dashboard.kpi`; the KPI then drives the value. |
 | `query` | SQL items only; see `sql-items.md`. |
 | `allowed_group_ids` | Restrict who sees this item. Required for SQL items. |
+
+Analytic data: from Odoo 17, `account.analytic.line.account_id` holds only the first
+analytic plan; other plans live in database-specific columns (`x_plan<N>_id`). Do not
+group or filter on them in reusable XML; group the source records by their own field
+(for example a stored `hub_id` on the document line) instead.
 
 ### Presentation
 

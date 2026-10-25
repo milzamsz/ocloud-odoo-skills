@@ -4,7 +4,7 @@ description: Use this skill when an AI agent must generate an installable dashbo
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients. Requires the dynamic_dashboard_ai_nexgen addon source or an installed instance on Odoo 20.0 Community; the bundled validator requires Python 3.11+.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   author: OCloud
   status: experimental
   risk: advisory
