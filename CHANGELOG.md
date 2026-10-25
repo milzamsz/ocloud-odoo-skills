@@ -8,6 +8,11 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Added
 
+- AI wiki in `docs/wiki/` (index, repository map, skill anatomy, skill catalog,
+  version matrix, evaluations, live integration, workflows, glossary, gotchas),
+  with `llms.txt` and `CLAUDE.md` entry points. `make validate` now fails on a
+  broken wiki or `llms.txt` link and on a skill missing from the wiki catalog.
+
 - Closed the whole-second optimistic-lock gap for `update_allowed_draft_fields.v1`:
   helper `oc_mcp_mutation` 1.1.0 (milzamsz/odoo-rust-mcp#16) exposes a
   full-precision `oc_mcp_write_version` token and compares at microsecond
@@ -189,6 +194,8 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Fixed
 
+- `docs/VERSION-EVIDENCE.md` named `/json/1/` as the Odoo 20 JSON-2 API; it is
+  `/json/2/<model>/<method>` in the `rpc` addon.
 - Phase 3 review: aligned `create_crm_lead_draft.v1` skill/fixture field names
   with the closed runtime schema; clarified metadata vs business-read ownership
   in risk classification; narrowed plugin-local CRM routing notes.

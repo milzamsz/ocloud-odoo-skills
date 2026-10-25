@@ -20,6 +20,7 @@ Do not replace observed repository facts with generic knowledge.
 
 ## Required workflow
 
+0. Start with the AI wiki at `docs/wiki/index.md`; it routes each task to the files that hold the rules.
 1. Read `PRODUCT-SCOPE.md`, `ARCHITECTURE.md`, `TECHNICAL.md`, and `DESIGN.md` before structural changes.
 2. Inspect existing skill scope and adjacent skills before adding or expanding one.
 3. Confirm target Odoo versions and editions.

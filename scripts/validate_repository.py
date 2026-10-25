@@ -352,6 +352,28 @@ def validate_bundles(skill_names: set[str]) -> list[str]:
     return errors
 
 
+def validate_wiki(skill_names: set[str], root: Path = ROOT) -> list[str]:
+    """Wiki and llms.txt links must resolve, and the catalog must name every skill."""
+    errors: list[str] = []
+    wiki = root / "docs" / "wiki"
+    for path in [*sorted(wiki.glob("*.md")), root / "llms.txt"]:
+        rel = path.relative_to(root)
+        if not path.is_file():
+            errors.append(f"{rel}: missing")
+            continue
+        for target in LINK_RE.findall(path.read_text(encoding="utf-8")):
+            clean = target.split("#", 1)[0]
+            if clean and not clean.startswith(("http://", "https://", "mailto:")):
+                if not (path.parent / clean).exists():
+                    errors.append(f"{rel}: broken link {target}")
+    catalog = wiki / "skill-catalog.md"
+    text = catalog.read_text(encoding="utf-8") if catalog.is_file() else ""
+    missing = sorted(name for name in skill_names if f"`{name}`" not in text)
+    if missing:
+        errors.append(f"docs/wiki/skill-catalog.md: skills without a row: {missing}")
+    return errors
+
+
 def main() -> int:
     all_errors: list[str] = []
     all_warnings: list[str] = []
@@ -368,6 +390,7 @@ def main() -> int:
     all_errors.extend(validate_version_claims(skill_dirs))
     all_errors.extend(validate_sources())
     all_errors.extend(validate_bundles(names))
+    all_errors.extend(validate_wiki(names))
     for item in all_warnings:
         print(f"WARNING: {item}")
     for item in all_errors:

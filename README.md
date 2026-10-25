@@ -172,6 +172,7 @@ Bundles are installed separately under `~/.hermes/skill-bundles/` because a bund
 
 ## Documentation map
 
+- [AI wiki](docs/wiki/index.md): the fastest way for an agent (or a person) to learn this repository; also indexed by `llms.txt`
 - [Product scope](PRODUCT-SCOPE.md)
 - [Domain model](DOMAIN-MODEL.md)
 - [Architecture](ARCHITECTURE.md)

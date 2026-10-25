@@ -2,8 +2,9 @@
 
 This development package contains:
 
-- 12 root product, architecture, engineering, governance, and security documents;
-- 24 development, evaluation, and release documents plus 5 architecture decision records;
+- 14 root product, architecture, engineering, governance, security, and agent-entry documents, plus `llms.txt`;
+- 25 development, evaluation, and release documents plus 5 architecture decision records;
+- a 10-page AI wiki in `docs/wiki/` checked by `make validate`;
 - 8 stable Phase 1 Agent Skills, 13 experimental Phase 2 domain and technical skills, and 3
   experimental Phase 3 live skills with skill-local references and assets;
 - 8 Hermes skill bundles and a Claude Code plugin manifest;

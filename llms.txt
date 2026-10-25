@@ -1,0 +1,31 @@
+# OCloud Odoo Skills
+
+> Version-aware Odoo skills (Agent Skills `SKILL.md` format) for Hermes Agent and Claude Code. They cover discovery, solution design, addon development, review, security, testing, OCA, upgrades, functional domains, and controlled live Odoo integration for Odoo 17 to 20, Community and Enterprise. Skills are procedures only: credentials and database writes live in sibling repositories. Read-only is the default for live systems.
+
+Start with the AI wiki index, then AGENTS.md. Validate every change with `make validate`, `make lint`, `make test`, and `make package-check`.
+
+## AI wiki
+
+- [Index](docs/wiki/index.md): reading order and routing by task
+- [Repository map](docs/wiki/repo-map.md): directories, current versus historical documents
+- [Skill anatomy](docs/wiki/skill-anatomy.md): SKILL.md frontmatter, layout, validator rules
+- [Skill catalog](docs/wiki/skill-catalog.md): every skill with status, risk, cells, bundles
+- [Version matrix](docs/wiki/version-matrix.md): claiming Odoo versions and editions, verified Odoo 20 differences
+- [Evaluations](docs/wiki/evaluations.md): trigger datasets, outcome cases, fixtures, live and manual runs
+- [Live integration](docs/wiki/live-integration.md): Phase 3 reads, named mutation capabilities, repository ownership
+- [Workflows](docs/wiki/workflows.md): add a skill, add a version cell, register a source, release
+- [Glossary](docs/wiki/glossary.md): repository vocabulary
+- [Gotchas](docs/wiki/gotchas.md): known traps
+
+## Rules and design
+
+- [AGENTS.md](AGENTS.md): mission, safety rules, completion report
+- [ARCHITECTURE.md](ARCHITECTURE.md): system context and boundaries
+- [TECHNICAL.md](TECHNICAL.md): metadata convention, validation, versioning
+- [DESIGN.md](DESIGN.md): skill design system and body pattern
+- [PRODUCT-SCOPE.md](PRODUCT-SCOPE.md): scope and non-goals
+
+## Optional
+
+- [CHANGELOG.md](CHANGELOG.md): change history
+- [docs/EVALUATION-SUMMARY-ODOO-20.md](docs/EVALUATION-SUMMARY-ODOO-20.md): evidence behind the stable Odoo 20 cells
