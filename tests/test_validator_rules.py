@@ -12,6 +12,7 @@ from scripts.validate_repository import (  # noqa: E402
     scan_skill_files,
     validate_local_paths,
     validate_skill,
+    validate_wiki,
 )
 
 FRONTMATTER = textwrap.dedent(
@@ -94,4 +95,17 @@ def test_secret_literals_are_errors_and_repo_paths_warn(tmp_path):
     assert errors == ["references/odoo-18-community.md: possible hardcoded password"]
     assert warnings == [
         "references/odoo-18-community.md: repository path not shipped with the skill: evals/fixtures/x"
+    ]
+
+
+def test_wiki_flags_broken_links_and_missing_catalog_rows(tmp_path):
+    wiki = tmp_path / "docs" / "wiki"
+    wiki.mkdir(parents=True)
+    (wiki / "index.md").write_text("[ok](skill-catalog.md) [web](https://x.org) [bad](gone.md)\n")
+    (wiki / "skill-catalog.md").write_text("| `odoo-a` | outcome |\n")
+    (tmp_path / "llms.txt").write_text("- [Index](docs/wiki/index.md#top)\n")
+    errors = validate_wiki({"odoo-a", "odoo-b"}, root=tmp_path)
+    assert errors == [
+        "docs/wiki/index.md: broken link gone.md",
+        "docs/wiki/skill-catalog.md: skills without a row: ['odoo-b']",
     ]
