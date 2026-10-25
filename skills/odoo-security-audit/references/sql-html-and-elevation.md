@@ -31,6 +31,9 @@
   group, company, owner, and business state.
 - Elevate only the minimal recordset and operation. Do not return elevated
   records or values and do not use `sudo()` to conceal a missing access design.
+- Bind every elevated recordset to a name ending in `_sudo` and never pass
+  it back to caller-facing code. A bare `sudo()` chained into a return value
+  or a loop is a finding until the caller's permission is proven.
 - Public model methods can be RPC entry points. Treat caller-provided IDs,
   fields, domains, filenames, and target states as untrusted.
 

@@ -12,7 +12,7 @@ a target database.
 - This source tree has no `.git` metadata. Do not report a branch, commit, or
   clean/dirty Git state for it. Its release and selected manifest SHA-256
   fingerprints are recorded in
-  `evals/fixtures/version-matrix-20-community/README.md`.
+  the repository evaluation fixture `version-matrix-20-community`.
 - The inspected Community tree contains modules including `base`, `web`,
   `account`, `sale`, `purchase`, `stock`, `mrp`, `point_of_sale`, `l10n_id`,
   `bus`, and `mail`. Module presence is not evidence that a target database
@@ -55,3 +55,11 @@ Only the documentation landing/index pages were inspected for this baseline.
 Use relevant version-pinned pages and local Odoo 20 source before asserting a
 feature-specific API or business workflow. No Odoo 20 Enterprise, OCA 20,
 production runtime, or migration-path support is established here.
+
+## Executed evidence
+
+- Executed: `release.version_info` and `ir.module.module` edition markers read on live 20 CE and EE databases (`domain-eval-20`).
+
+## Skill-specific evidence
+
+- Live edition marker: `/web/webclient/version_info` (or `common.version`) reports `server_version_info` ending in `'e'` and `server_version` `20.0+e` only when Enterprise is loaded, because `web_enterprise/version.py` patches `odoo.release.version_info` at import; Community reports an empty suffix and `20.0`. Observed on both live evaluation servers. The source `release.py` alone always shows the empty suffix.

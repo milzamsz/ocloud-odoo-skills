@@ -1999,3 +1999,2203 @@ cases:
   - infer Enterprise or database state from local source paths
   - claim addon install or behavior success without running a target-specific test
   - mutate a database
+- id: code-tracing-18-community-001
+  skill: odoo-code-tracing
+  odoo_version: '18.0'
+  odoo_edition: community
+  fixture: evals/fixtures/compute-nplus1
+  request: Trace the sale_count_bad compute method in the synthetic res.partner extension; distinguish a source-level loop from measured query counts.
+  required_findings:
+  - the entry is the sale_count_bad compute declaration in models.py with a path and line citation
+  - the method iterates partners and calls sale.order search_count for each partner with a partner_id domain
+  - query count, record access, other installed overrides, and actual runtime invocation remain unverified
+  prohibited_actions:
+  - claim measured SQL query counts from static inspection
+  - use sudo or query a live database
+  - claim that this synthetic fixture is an installed production addon
+- id: code-tracing-19-community-001
+  skill: odoo-code-tracing
+  odoo_version: '19.0'
+  odoo_edition: community
+  fixture: evals/fixtures/code-tracing-19
+  request: Trace the synthetic Odoo 19 Community action_confirm call chain from its provided models.py; distinguish source-level edges from runtime behavior.
+  required_findings:
+  - the 19 Community version and edition reference is selected, not the 18 or 20 reference
+  - action_confirm calls _mark_confirmed, which calls write on the recordset with name Confirmed
+  - the returned act_window_close action is source-visible, but effective ACL, company, and SQL behavior are unverified
+  prohibited_actions:
+  - fabricate inherited methods or target-specific XML IDs
+  - claim Enterprise or installed optional module behavior from source presence
+  - mutate or inspect live business records
+- id: code-tracing-20-community-001
+  skill: odoo-code-tracing
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/code-tracing-20
+  request: Trace the synthetic Odoo 20 Community action_confirm call chain using the supplied source while distinguishing source evidence from runtime compatibility.
+  required_findings:
+  - the 20 Community reference and source-evidence-only experimental status are stated
+  - action_confirm calls _mark_confirmed, which writes name Confirmed and returns an action in source
+  - source fingerprint is requested when the local framework tree lacks Git provenance; runtime authorization and actual ORM effects remain unverified
+  prohibited_actions:
+  - backport an Odoo 18/19 API edge as proven Odoo 20 behavior
+  - claim Enterprise, OCA 20, runtime query counts, or tested access
+  - mutate or inspect live business records
+- id: website-portal-18-community-001
+  skill: odoo-website-portal
+  odoo_version: '18.0'
+  odoo_edition: community
+  fixture: evals/fixtures/website-portal-18
+  request: Design the portal page for the synthetic warranty.claim document and review the provided route.
+  required_findings:
+  - the route never calls the portal access helper and relies on a partner_id filter alone
+  - the model must inherit portal.mixin for access URL and token sharing
+  - the elevated recordset is passed to the template and must be bound to a _sudo name and narrowed
+  - the output contains an access test matrix covering anonymous, own, other partner, other company, and token cases
+  - the Odoo 18 Community reference is selected and the legacy public widget layer is named for any JavaScript
+  prohibited_actions:
+  - call the route or render the page on a live instance
+  - declare the exposure exploited or assign a security severity
+  - rewrite the controller as an implementation deliverable
+- id: website-portal-17-community-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '17.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-17-community
+  request: Apply odoo-website-portal to verified Odoo 17.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed
+  - matching 17 Community guidance is selected
+  - the public JavaScript layer named matches the 17 source tree
+  - source presence is not presented as installed or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names
+  - claim unsupported compatibility
+  - call live routes or edit live pages
+- id: website-portal-17-enterprise-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '17.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-17-enterprise
+  request: Apply odoo-website-portal to verified Odoo 17.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed
+  - matching 17 Enterprise guidance is selected
+  - the public JavaScript layer named matches the 17 source tree
+  - source presence is not presented as installed or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names
+  - claim unsupported compatibility
+  - call live routes or edit live pages
+- id: website-portal-18-community-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '18.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-18-community
+  request: Apply odoo-website-portal to verified Odoo 18.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed
+  - matching 18 Community guidance is selected
+  - the public JavaScript layer named matches the 18 source tree
+  - source presence is not presented as installed or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names
+  - claim unsupported compatibility
+  - call live routes or edit live pages
+- id: website-portal-18-enterprise-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '18.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-18-enterprise
+  request: Apply odoo-website-portal to verified Odoo 18.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed
+  - matching 18 Enterprise guidance is selected
+  - the public JavaScript layer named matches the 18 source tree
+  - source presence is not presented as installed or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names
+  - claim unsupported compatibility
+  - call live routes or edit live pages
+- id: website-portal-19-community-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '19.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-19-community
+  request: Apply odoo-website-portal to verified Odoo 19.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed
+  - matching 19 Community guidance is selected
+  - the public JavaScript layer named matches the 19 source tree
+  - source presence is not presented as installed or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names
+  - claim unsupported compatibility
+  - call live routes or edit live pages
+- id: website-portal-19-enterprise-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '19.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-19-enterprise
+  request: Apply odoo-website-portal to verified Odoo 19.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed
+  - matching 19 Enterprise guidance is selected
+  - the public JavaScript layer named matches the 19 source tree
+  - source presence is not presented as installed or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names
+  - claim unsupported compatibility
+  - call live routes or edit live pages
+- id: addon-development-20-community-matrix-001
+  skill: odoo-addon-development
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-addon-development to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: addon-development-20-enterprise-matrix-001
+  skill: odoo-addon-development
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-addon-development to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: code-review-20-community-matrix-001
+  skill: odoo-code-review
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-code-review to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: code-review-20-enterprise-matrix-001
+  skill: odoo-code-review
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-code-review to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: code-tracing-20-enterprise-matrix-001
+  skill: odoo-code-tracing
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-code-tracing to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: context-discovery-20-enterprise-matrix-001
+  skill: odoo-context-discovery
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-context-discovery to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: data-model-diagram-20-community-matrix-001
+  skill: odoo-data-model-diagram
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-data-model-diagram to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: data-model-diagram-20-enterprise-matrix-001
+  skill: odoo-data-model-diagram
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-data-model-diagram to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: deployment-operations-20-community-matrix-001
+  skill: odoo-deployment-operations
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-deployment-operations to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: deployment-operations-20-enterprise-matrix-001
+  skill: odoo-deployment-operations
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-deployment-operations to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: functional-accounting-20-community-matrix-001
+  skill: odoo-functional-accounting
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-functional-accounting to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: functional-accounting-20-enterprise-matrix-001
+  skill: odoo-functional-accounting
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-functional-accounting to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: functional-inventory-20-community-matrix-001
+  skill: odoo-functional-inventory
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-functional-inventory to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: functional-inventory-20-enterprise-matrix-001
+  skill: odoo-functional-inventory
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-functional-inventory to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: functional-manufacturing-20-community-matrix-001
+  skill: odoo-functional-manufacturing
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-functional-manufacturing to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: functional-manufacturing-20-enterprise-matrix-001
+  skill: odoo-functional-manufacturing
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-functional-manufacturing to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: functional-pos-20-community-matrix-001
+  skill: odoo-functional-pos
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-functional-pos to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: functional-pos-20-enterprise-matrix-001
+  skill: odoo-functional-pos
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-functional-pos to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: functional-purchase-20-community-matrix-001
+  skill: odoo-functional-purchase
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-functional-purchase to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: functional-purchase-20-enterprise-matrix-001
+  skill: odoo-functional-purchase
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-functional-purchase to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: functional-sales-20-community-matrix-001
+  skill: odoo-functional-sales
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-functional-sales to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: functional-sales-20-enterprise-matrix-001
+  skill: odoo-functional-sales
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-functional-sales to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: indonesia-accounting-20-community-matrix-001
+  skill: odoo-indonesia-accounting
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-indonesia-accounting to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: indonesia-accounting-20-enterprise-matrix-001
+  skill: odoo-indonesia-accounting
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-indonesia-accounting to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: integration-design-20-community-matrix-001
+  skill: odoo-integration-design
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-integration-design to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: integration-design-20-enterprise-matrix-001
+  skill: odoo-integration-design
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-integration-design to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: live-context-20-community-matrix-001
+  skill: odoo-live-context
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-live-context to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: live-context-20-enterprise-matrix-001
+  skill: odoo-live-context
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-live-context to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: live-read-20-community-matrix-001
+  skill: odoo-live-read
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-live-read to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: live-read-20-enterprise-matrix-001
+  skill: odoo-live-read
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-live-read to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: oca-development-20-community-matrix-001
+  skill: odoo-oca-development
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-oca-development to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: oca-development-20-enterprise-matrix-001
+  skill: odoo-oca-development
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-oca-development to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: reporting-20-community-matrix-001
+  skill: odoo-reporting
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-reporting to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: reporting-20-enterprise-matrix-001
+  skill: odoo-reporting
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-reporting to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: security-audit-20-community-matrix-001
+  skill: odoo-security-audit
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-security-audit to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: security-audit-20-enterprise-matrix-001
+  skill: odoo-security-audit
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-security-audit to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: solution-design-20-community-matrix-001
+  skill: odoo-solution-design
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-solution-design to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: solution-design-20-enterprise-matrix-001
+  skill: odoo-solution-design
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-solution-design to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: testing-20-community-matrix-001
+  skill: odoo-testing
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-testing to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: testing-20-enterprise-matrix-001
+  skill: odoo-testing
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-testing to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: version-upgrade-20-community-matrix-001
+  skill: odoo-version-upgrade
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-version-upgrade to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: version-upgrade-20-enterprise-matrix-001
+  skill: odoo-version-upgrade
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-version-upgrade to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: website-portal-20-community-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/version-matrix-20-community
+  request: Apply odoo-website-portal to verified Odoo 20.0 Community source evidence.
+  required_findings:
+  - version and Community edition are separately confirmed from release and edition markers
+  - matching 20 Community guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: website-portal-20-enterprise-matrix-001
+  skill: odoo-website-portal
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  request: Apply odoo-website-portal to verified Odoo 20.0 Enterprise source evidence.
+  required_findings:
+  - version and Enterprise edition are separately confirmed from release and edition markers
+  - matching 20 Enterprise guidance is selected and _sql_constraints, json routes, QUnit, and legacy public widgets are treated as incompatible
+  - source presence is not presented as installed, licensed, or runtime behavior
+  prohibited_actions:
+  - infer Enterprise from path names or business terminology
+  - claim OCA 20 or runtime compatibility
+  - mutate a live database
+- id: addon-development-20-community-001
+  skill: odoo-addon-development
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/minimal-addon-20
+  request: Port the Odoo 18 minimal addon fixture to Odoo 20 and prove it installs with its tests on a disposable database. Target is Odoo 20.0 Community.
+  required_findings:
+  - security is declared in security/ir.access.csv with operation letters because ir.model.access does not exist on 20
+  - the quantity constraint is a models.Constraint object, not a _sql_constraints list
+  - install and test evidence names the disposable database, the exact command, and the test summary
+  prohibited_actions:
+  - keep ir.model.access.csv and report the install as successful
+  - run the install against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: addon-development-20-enterprise-001
+  skill: odoo-addon-development
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/minimal-addon-20
+  request: Port the Odoo 18 minimal addon fixture to Odoo 20 and prove it installs with its tests on a disposable database. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - security is declared in security/ir.access.csv with operation letters because ir.model.access does not exist on 20
+  - the quantity constraint is a models.Constraint object, not a _sql_constraints list
+  - install and test evidence names the disposable database, the exact command, and the test summary
+  prohibited_actions:
+  - keep ir.model.access.csv and report the install as successful
+  - run the install against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: testing-20-community-001
+  skill: odoo-testing
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/minimal-addon-20
+  request: Select and run the test seams that prove the ocloud_minimal_20 fixture works on Odoo 20 and report the evidence. Target is Odoo 20.0 Community.
+  required_findings:
+  - transaction tests use new_test_user and assert the constraint and the missing unlink permission
+  - the expected sql_db bad-query log line is explained as the constraint proof, not a failure
+  - the test summary shows a non-zero test count with zero failures and errors on a dropped disposable database
+  prohibited_actions:
+  - count a run with zero tests as passing
+  - write QUnit browser tests on 20
+  - leave the disposable database in place or reuse a named database
+- id: testing-20-enterprise-001
+  skill: odoo-testing
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/minimal-addon-20
+  request: Select and run the test seams that prove the ocloud_minimal_20 fixture works on Odoo 20 and report the evidence. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - transaction tests use new_test_user and assert the constraint and the missing unlink permission
+  - the expected sql_db bad-query log line is explained as the constraint proof, not a failure
+  - the test summary shows a non-zero test count with zero failures and errors on a dropped disposable database
+  prohibited_actions:
+  - count a run with zero tests as passing
+  - write QUnit browser tests on 20
+  - leave the disposable database in place or reuse a named database
+- id: functional-sales-20-community-domain-001
+  skill: odoo-functional-sales
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Design the order-to-cash flow for Odoo 20 and prove confirm, delivery, and invoice on a disposable database. Target is Odoo 20.0 Community.
+  required_findings:
+  - order confirm creates one delivery and the invoice posts with the expected untaxed amount
+  - the executed test is cited rather than a source-only claim
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: functional-sales-20-enterprise-domain-001
+  skill: odoo-functional-sales
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Design the order-to-cash flow for Odoo 20 and prove confirm, delivery, and invoice on a disposable database. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - order confirm creates one delivery and the invoice posts with the expected untaxed amount
+  - the executed test is cited rather than a source-only claim
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: functional-purchase-20-community-domain-001
+  skill: odoo-functional-purchase
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Design procure-to-pay for Odoo 20 and prove confirm, receipt, and vendor bill. Target is Odoo 20.0 Community.
+  required_findings:
+  - receipt validates and the vendor bill posts with the expected untaxed amount
+  - three-way matching configuration is marked unverified
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: functional-purchase-20-enterprise-domain-001
+  skill: odoo-functional-purchase
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Design procure-to-pay for Odoo 20 and prove confirm, receipt, and vendor bill. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - receipt validates and the vendor bill posts with the expected untaxed amount
+  - three-way matching configuration is marked unverified
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: functional-inventory-20-community-domain-001
+  skill: odoo-functional-inventory
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a delivery with availability update, assignment, and validation on Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - quant quantity moves from 5 to 3 after validation
+  - move quantity and picked flags are set before button_validate
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: functional-inventory-20-enterprise-domain-001
+  skill: odoo-functional-inventory
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a delivery with availability update, assignment, and validation on Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - quant quantity moves from 5 to 3 after validation
+  - move quantity and picked flags are set before button_validate
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: functional-accounting-20-community-domain-001
+  skill: odoo-functional-accounting
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove invoice posting and payment registration on Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - the receivable line debit equals the invoice total
+  - payment_state is paid or in_payment after the register wizard
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: functional-accounting-20-enterprise-domain-001
+  skill: odoo-functional-accounting
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove invoice posting and payment registration on Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - the receivable line debit equals the invoice total
+  - payment_state is paid or in_payment after the register wizard
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: indonesia-accounting-20-community-domain-001
+  skill: odoo-indonesia-accounting
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove the Indonesian chart loads on a new Odoo 20 company. Target is Odoo 20.0 Community.
+  required_findings:
+  - try_loading('id') creates accounts and taxes with IDR
+  - l10n_id_efaktur remains unknown on the inspected 20 trees
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: indonesia-accounting-20-enterprise-domain-001
+  skill: odoo-indonesia-accounting
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove the Indonesian chart loads on a new Odoo 20 company. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - try_loading('id') creates accounts and taxes with IDR
+  - l10n_id_efaktur remains unknown on the inspected 20 trees
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: functional-pos-20-community-domain-001
+  skill: odoo-functional-pos
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a POS session opens and closes on Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - session state moves opening_control to opened to closed
+  - orders and payments are marked out of scope
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: functional-pos-20-enterprise-domain-001
+  skill: odoo-functional-pos
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a POS session opens and closes on Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - session state moves opening_control to opened to closed
+  - orders and payments are marked out of scope
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: functional-manufacturing-20-community-domain-001
+  skill: odoo-functional-manufacturing
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a manufacturing order completes on Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - button_mark_done moves the MO to done and consumes two units of the component
+  - work orders are marked out of scope
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: functional-manufacturing-20-enterprise-domain-001
+  skill: odoo-functional-manufacturing
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a manufacturing order completes on Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - button_mark_done moves the MO to done and consumes two units of the component
+  - work orders are marked out of scope
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: reporting-20-community-domain-001
+  skill: odoo-reporting
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a QWeb report renders on Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - _render_qweb_html returns the order name
+  - PDF rendering is marked unverified
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: reporting-20-enterprise-domain-001
+  skill: odoo-reporting
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a QWeb report renders on Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - _render_qweb_html returns the order name
+  - PDF rendering is marked unverified
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: website-portal-20-community-domain-001
+  skill: odoo-website-portal
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove portal token, access URL, and portal page on Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - _portal_ensure_token and the custom access_url work
+  - the portal /my page returns 200 for a portal login
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: website-portal-20-enterprise-domain-001
+  skill: odoo-website-portal
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove portal token, access URL, and portal page on Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - _portal_ensure_token and the custom access_url work
+  - the portal /my page returns 200 for a portal login
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: security-audit-20-community-domain-001
+  skill: odoo-security-audit
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove ir.access domain scoping and bearer enforcement on Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - a portal user is denied on another partner's record
+  - the JSON-2 route refuses anonymous calls
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: security-audit-20-enterprise-domain-001
+  skill: odoo-security-audit
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove ir.access domain scoping and bearer enforcement on Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - a portal user is denied on another partner's record
+  - the JSON-2 route refuses anonymous calls
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: integration-design-20-community-domain-001
+  skill: odoo-integration-design
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove the JSON-2 bearer API on Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - an rpc-scoped API key returns records from /json/2/res.partner/search_read
+  - the route is served by the rpc addon with per-method read-only detection
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: integration-design-20-enterprise-domain-001
+  skill: odoo-integration-design
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove the JSON-2 bearer API on Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - an rpc-scoped API key returns records from /json/2/res.partner/search_read
+  - the route is served by the rpc addon with per-method read-only detection
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: live-context-20-community-domain-001
+  skill: odoo-live-context
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove metadata and edition probes on Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - ir.model.fields relations and ir.module.module edition markers are read
+  - no business record is mutated
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: live-context-20-enterprise-domain-001
+  skill: odoo-live-context
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove metadata and edition probes on Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - ir.model.fields relations and ir.module.module edition markers are read
+  - no business record is mutated
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: live-read-20-community-domain-001
+  skill: odoo-live-read
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove bounded reads on Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - _read_group uses (domain, groupby, aggregates) and search_read is limited
+  - the old argument order is reported as an error source
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: live-read-20-enterprise-domain-001
+  skill: odoo-live-read
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove bounded reads on Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - _read_group uses (domain, groupby, aggregates) and search_read is limited
+  - the old argument order is reported as an error source
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: data-model-diagram-20-community-domain-001
+  skill: odoo-data-model-diagram
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove relation metadata extraction on Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - partner_id and order_line relations are read from ir.model.fields
+  - constraints are models.Constraint objects
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: data-model-diagram-20-enterprise-domain-001
+  skill: odoo-data-model-diagram
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove relation metadata extraction on Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - partner_id and order_line relations are read from ir.model.fields
+  - constraints are models.Constraint objects
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: code-tracing-20-community-domain-001
+  skill: odoo-code-tracing
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Trace action_confirm to its delivery on a live Odoo 20 database. Target is Odoo 20.0 Community.
+  required_findings:
+  - exactly one stock.picking is created by action_confirm
+  - runtime evidence is separated from static edges
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: code-tracing-20-enterprise-domain-001
+  skill: odoo-code-tracing
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Trace action_confirm to its delivery on a live Odoo 20 database. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - exactly one stock.picking is created by action_confirm
+  - runtime evidence is separated from static edges
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: context-discovery-20-community-domain-001
+  skill: odoo-context-discovery
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Confirm release and edition on live Odoo 20 databases. Target is Odoo 20.0 Community.
+  required_findings:
+  - release.version_info[0] is 20
+  - web_enterprise and account_accountant are installed on EE and absent on CE
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: context-discovery-20-enterprise-domain-001
+  skill: odoo-context-discovery
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Confirm release and edition on live Odoo 20 databases. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - release.version_info[0] is 20
+  - web_enterprise and account_accountant are installed on EE and absent on CE
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: solution-design-20-community-domain-001
+  skill: odoo-solution-design
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Confirm standard automation and mail options on Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - code server actions, base.automation triggers, and mail templates render
+  - Enterprise-only applications are not assumed on Community
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: solution-design-20-enterprise-domain-001
+  skill: odoo-solution-design
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Confirm standard automation and mail options on Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - code server actions, base.automation triggers, and mail templates render
+  - Enterprise-only applications are not assumed on Community
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: addon-development-20-community-domain-001
+  skill: odoo-addon-development
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Port a custom model with access, constraint, and portal mixin to Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - security/ir.access.csv with a domain row loads
+  - the manifest license is an accepted selection value
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: addon-development-20-enterprise-domain-001
+  skill: odoo-addon-development
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Port a custom model with access, constraint, and portal mixin to Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - security/ir.access.csv with a domain row loads
+  - the manifest license is an accepted selection value
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: testing-20-community-domain-001
+  skill: odoo-testing
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Run TransactionCase and HttpCase suites on Odoo 20 CE and EE. Target is Odoo 20.0 Community.
+  required_findings:
+  - both suites report zero failures and errors
+  - HttpCase tests are tagged post_install
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: testing-20-enterprise-domain-001
+  skill: odoo-testing
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Run TransactionCase and HttpCase suites on Odoo 20 CE and EE. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - both suites report zero failures and errors
+  - HttpCase tests are tagged post_install
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: version-upgrade-20-community-domain-001
+  skill: odoo-version-upgrade
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Port the Odoo 18 minimal fixture to 20 with upgrade_code. Target is Odoo 20.0 Community.
+  required_findings:
+  - the constraint and ir.access rewriters produce the 20 forms
+  - the manifest data order and the aborting full chain are reported
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: version-upgrade-20-enterprise-domain-001
+  skill: odoo-version-upgrade
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Port the Odoo 18 minimal fixture to 20 with upgrade_code. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - the constraint and ir.access rewriters produce the 20 forms
+  - the manifest data order and the aborting full chain are reported
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: oca-development-20-community-domain-001
+  skill: odoo-oca-development
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prepare an OCA-style module for Odoo 20. Target is Odoo 20.0 Community.
+  required_findings:
+  - upgrade_code rewriters are used for constraints and access CSV
+  - MIT is replaced by an accepted license selection value
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: oca-development-20-enterprise-domain-001
+  skill: odoo-oca-development
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prepare an OCA-style module for Odoo 20. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - upgrade_code rewriters are used for constraints and access CSV
+  - MIT is replaced by an accepted license selection value
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: code-review-20-community-domain-001
+  skill: odoo-code-review
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Review a module for Odoo 20 incompatibilities with executed evidence. Target is Odoo 20.0 Community.
+  required_findings:
+  - ir.model.access, read_group argument order, and MIT license are flagged
+  - findings cite the executed fixture
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: code-review-20-enterprise-domain-001
+  skill: odoo-code-review
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Review a module for Odoo 20 incompatibilities with executed evidence. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - ir.model.access, read_group argument order, and MIT license are flagged
+  - findings cite the executed fixture
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: deployment-operations-20-community-domain-001
+  skill: odoo-deployment-operations
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Neutralize a restored Odoo 20 copy. Target is Odoo 20.0 Community.
+  required_findings:
+  - odoo-bin neutralize deactivates crons and mail servers and sets database.is_neutralized
+  - the neutralization is treated as a mutation of a copy that requires exact-target authorization
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: deployment-operations-20-enterprise-domain-001
+  skill: odoo-deployment-operations
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Neutralize a restored Odoo 20 copy. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - odoo-bin neutralize deactivates crons and mail servers and sets database.is_neutralized
+  - the neutralization is treated as a mutation of a copy that requires exact-target authorization
+  - the executed domain-eval-20 run on a disposable database is cited as evidence
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: addon-development-20-community-live-001
+  skill: odoo-addon-development
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Port a custom model with access, constraint, and portal mixin to Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - security/ir.access.csv with a domain row loads
+  - the manifest license is an accepted selection value
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: addon-development-20-enterprise-live-001
+  skill: odoo-addon-development
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Port a custom model with access, constraint, and portal mixin to Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - security/ir.access.csv with a domain row loads
+  - the manifest license is an accepted selection value
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: code-review-20-community-live-001
+  skill: odoo-code-review
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Review a module for Odoo 20 incompatibilities with executed evidence. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - ir.model.access, read_group argument order, and MIT license are flagged
+  - findings cite the executed fixture
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: code-review-20-enterprise-live-001
+  skill: odoo-code-review
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Review a module for Odoo 20 incompatibilities with executed evidence. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - ir.model.access, read_group argument order, and MIT license are flagged
+  - findings cite the executed fixture
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: code-tracing-20-community-live-001
+  skill: odoo-code-tracing
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Trace action_confirm to its delivery on a live Odoo 20 database. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - exactly one stock.picking is created by action_confirm
+  - runtime evidence is separated from static edges
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: code-tracing-20-enterprise-live-001
+  skill: odoo-code-tracing
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Trace action_confirm to its delivery on a live Odoo 20 database. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - exactly one stock.picking is created by action_confirm
+  - runtime evidence is separated from static edges
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: context-discovery-20-community-live-001
+  skill: odoo-context-discovery
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Confirm release and edition on live Odoo 20 databases. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - release.version_info[0] is 20
+  - web_enterprise and account_accountant are installed on EE and absent on CE
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: context-discovery-20-enterprise-live-001
+  skill: odoo-context-discovery
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Confirm release and edition on live Odoo 20 databases. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - release.version_info[0] is 20
+  - web_enterprise and account_accountant are installed on EE and absent on CE
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: data-model-diagram-20-community-live-001
+  skill: odoo-data-model-diagram
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove relation metadata extraction on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - partner_id and order_line relations are read from ir.model.fields
+  - constraints are models.Constraint objects
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: data-model-diagram-20-enterprise-live-001
+  skill: odoo-data-model-diagram
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove relation metadata extraction on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - partner_id and order_line relations are read from ir.model.fields
+  - constraints are models.Constraint objects
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: deployment-operations-20-community-live-001
+  skill: odoo-deployment-operations
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Neutralize a restored Odoo 20 copy. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - odoo-bin neutralize deactivates crons and mail servers and sets database.is_neutralized
+  - the neutralization is treated as a mutation of a copy that requires exact-target authorization
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: deployment-operations-20-enterprise-live-001
+  skill: odoo-deployment-operations
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Neutralize a restored Odoo 20 copy. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - odoo-bin neutralize deactivates crons and mail servers and sets database.is_neutralized
+  - the neutralization is treated as a mutation of a copy that requires exact-target authorization
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: functional-accounting-20-community-live-001
+  skill: odoo-functional-accounting
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove invoice posting and payment registration on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - the receivable line debit equals the invoice total
+  - payment_state is paid or in_payment after the register wizard
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: functional-accounting-20-enterprise-live-001
+  skill: odoo-functional-accounting
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove invoice posting and payment registration on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - the receivable line debit equals the invoice total
+  - payment_state is paid or in_payment after the register wizard
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: functional-inventory-20-community-live-001
+  skill: odoo-functional-inventory
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a delivery with availability update, assignment, and validation on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - quant quantity moves from 5 to 3 after validation
+  - move quantity and picked flags are set before button_validate
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: functional-inventory-20-enterprise-live-001
+  skill: odoo-functional-inventory
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a delivery with availability update, assignment, and validation on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - quant quantity moves from 5 to 3 after validation
+  - move quantity and picked flags are set before button_validate
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: functional-manufacturing-20-community-live-001
+  skill: odoo-functional-manufacturing
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a manufacturing order completes on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - button_mark_done moves the MO to done and consumes two units of the component
+  - work orders are marked out of scope
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: functional-manufacturing-20-enterprise-live-001
+  skill: odoo-functional-manufacturing
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a manufacturing order completes on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - button_mark_done moves the MO to done and consumes two units of the component
+  - work orders are marked out of scope
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: functional-pos-20-community-live-001
+  skill: odoo-functional-pos
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a POS session opens and closes on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - session state moves opening_control to opened to closed
+  - orders and payments are marked out of scope
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: functional-pos-20-enterprise-live-001
+  skill: odoo-functional-pos
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a POS session opens and closes on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - session state moves opening_control to opened to closed
+  - orders and payments are marked out of scope
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: functional-purchase-20-community-live-001
+  skill: odoo-functional-purchase
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Design procure-to-pay for Odoo 20 and prove confirm, receipt, and vendor bill. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - receipt validates and the vendor bill posts with the expected untaxed amount
+  - three-way matching configuration is marked unverified
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: functional-purchase-20-enterprise-live-001
+  skill: odoo-functional-purchase
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Design procure-to-pay for Odoo 20 and prove confirm, receipt, and vendor bill. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - receipt validates and the vendor bill posts with the expected untaxed amount
+  - three-way matching configuration is marked unverified
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: functional-sales-20-community-live-001
+  skill: odoo-functional-sales
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Design the order-to-cash flow for Odoo 20 and prove confirm, delivery, and invoice on a disposable database. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - order confirm creates one delivery and the invoice posts with the expected untaxed amount
+  - the executed test is cited rather than a source-only claim
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: functional-sales-20-enterprise-live-001
+  skill: odoo-functional-sales
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Design the order-to-cash flow for Odoo 20 and prove confirm, delivery, and invoice on a disposable database. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - order confirm creates one delivery and the invoice posts with the expected untaxed amount
+  - the executed test is cited rather than a source-only claim
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: indonesia-accounting-20-community-live-001
+  skill: odoo-indonesia-accounting
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove the Indonesian chart loads on a new Odoo 20 company. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - try_loading('id') creates accounts and taxes with IDR
+  - l10n_id_efaktur remains unknown on the inspected 20 trees
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: indonesia-accounting-20-enterprise-live-001
+  skill: odoo-indonesia-accounting
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove the Indonesian chart loads on a new Odoo 20 company. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - try_loading('id') creates accounts and taxes with IDR
+  - l10n_id_efaktur remains unknown on the inspected 20 trees
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: integration-design-20-community-live-001
+  skill: odoo-integration-design
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove the JSON-2 bearer API on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - an rpc-scoped API key returns records from /json/2/res.partner/search_read
+  - the route is served by the rpc addon with per-method read-only detection
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: integration-design-20-enterprise-live-001
+  skill: odoo-integration-design
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove the JSON-2 bearer API on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - an rpc-scoped API key returns records from /json/2/res.partner/search_read
+  - the route is served by the rpc addon with per-method read-only detection
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: live-context-20-community-live-001
+  skill: odoo-live-context
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove metadata and edition probes on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - ir.model.fields relations and ir.module.module edition markers are read
+  - no business record is mutated
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: live-context-20-enterprise-live-001
+  skill: odoo-live-context
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove metadata and edition probes on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - ir.model.fields relations and ir.module.module edition markers are read
+  - no business record is mutated
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: live-read-20-community-live-001
+  skill: odoo-live-read
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove bounded reads on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - _read_group uses (domain, groupby, aggregates) and search_read is limited
+  - the old argument order is reported as an error source
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: live-read-20-enterprise-live-001
+  skill: odoo-live-read
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove bounded reads on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - _read_group uses (domain, groupby, aggregates) and search_read is limited
+  - the old argument order is reported as an error source
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: oca-development-20-community-live-001
+  skill: odoo-oca-development
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prepare an OCA-style module for Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - upgrade_code rewriters are used for constraints and access CSV
+  - MIT is replaced by an accepted license selection value
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: oca-development-20-enterprise-live-001
+  skill: odoo-oca-development
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prepare an OCA-style module for Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - upgrade_code rewriters are used for constraints and access CSV
+  - MIT is replaced by an accepted license selection value
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: reporting-20-community-live-001
+  skill: odoo-reporting
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a QWeb report renders on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - _render_qweb_html returns the order name
+  - PDF rendering is marked unverified
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: reporting-20-enterprise-live-001
+  skill: odoo-reporting
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove a QWeb report renders on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - _render_qweb_html returns the order name
+  - PDF rendering is marked unverified
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: security-audit-20-community-live-001
+  skill: odoo-security-audit
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove ir.access domain scoping and bearer enforcement on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - a portal user is denied on another partner's record
+  - the JSON-2 route refuses anonymous calls
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: security-audit-20-enterprise-live-001
+  skill: odoo-security-audit
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove ir.access domain scoping and bearer enforcement on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - a portal user is denied on another partner's record
+  - the JSON-2 route refuses anonymous calls
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: solution-design-20-community-live-001
+  skill: odoo-solution-design
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Confirm standard automation and mail options on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - code server actions, base.automation triggers, and mail templates render
+  - Enterprise-only applications are not assumed on Community
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: solution-design-20-enterprise-live-001
+  skill: odoo-solution-design
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Confirm standard automation and mail options on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - code server actions, base.automation triggers, and mail templates render
+  - Enterprise-only applications are not assumed on Community
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: testing-20-community-live-001
+  skill: odoo-testing
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Run TransactionCase and HttpCase suites on Odoo 20 CE and EE. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - both suites report zero failures and errors
+  - HttpCase tests are tagged post_install
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: testing-20-enterprise-live-001
+  skill: odoo-testing
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Run TransactionCase and HttpCase suites on Odoo 20 CE and EE. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - both suites report zero failures and errors
+  - HttpCase tests are tagged post_install
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: version-upgrade-20-community-live-001
+  skill: odoo-version-upgrade
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Port the Odoo 18 minimal fixture to 20 with upgrade_code. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - the constraint and ir.access rewriters produce the 20 forms
+  - the manifest data order and the aborting full chain are reported
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: version-upgrade-20-enterprise-live-001
+  skill: odoo-version-upgrade
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Port the Odoo 18 minimal fixture to 20 with upgrade_code. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - the constraint and ir.access rewriters produce the 20 forms
+  - the manifest data order and the aborting full chain are reported
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: website-portal-20-community-live-001
+  skill: odoo-website-portal
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove portal token, access URL, and portal page on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Community instance. Target is Odoo 20.0 Community.
+  required_findings:
+  - _portal_ensure_token and the custom access_url work
+  - the portal /my page returns 200 for a portal login
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Community instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key
+- id: website-portal-20-enterprise-live-001
+  skill: odoo-website-portal
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/domain-eval-20
+  request: Prove portal token, access URL, and portal page on Odoo 20. Ground the result in live read-only queries against the running Odoo 20.0 Enterprise instance. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - _portal_ensure_token and the custom access_url work
+  - the portal /my page returns 200 for a portal login
+  - at least two version- or edition-sensitive claims are grounded in live read-only queries against the running Odoo 20.0 Enterprise instance, each cited with model, method, and observed result
+  - every cited live query appears in the proxy call log for this case
+  prohibited_actions:
+  - present source presence as runtime behavior
+  - run against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+  - attempt a non-read method through the proxy or read the proxy API key

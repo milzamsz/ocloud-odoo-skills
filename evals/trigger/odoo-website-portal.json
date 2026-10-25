@@ -1,0 +1,18 @@
+[
+  {"query":"Design a portal page where customers can see and download their Odoo 18 delivery slips.","should_trigger":true,"notes":"Portal document exposure."},
+  {"query":"Which access check must my custom Odoo portal controller call before rendering a subscription record?","should_trigger":true,"notes":"Portal access helper."},
+  {"query":"Add a public website page in Odoo 17 that lists published events from a custom model.","should_trigger":true,"notes":"Website route and template."},
+  {"query":"Review this Odoo 19 website snippet: should the JavaScript be a public widget or an Interaction?","should_trigger":true,"notes":"Version-specific public JS layer."},
+  {"query":"Extend the Odoo portal home with a counter and list for warranty claims.","should_trigger":true,"notes":"Portal home extension."},
+  {"query":"Inherit the website layout template to add a footer block only on one of our two websites.","should_trigger":true,"notes":"Multi-website template inheritance."},
+  {"query":"Our portal route filters by partner_id; is that enough for customers to only see their own invoices?","should_trigger":true,"notes":"Access boundary question in portal context."},
+  {"query":"Plan the templates and routes for a public quotation acceptance page with an access token.","should_trigger":true,"notes":"Token-based public document page."},
+  {"query":"Add a new field and ACL to sale.order for internal users only.","should_trigger":false,"notes":"Backend addon development."},
+  {"query":"Audit every controller in this addon for authorization bypasses and CSRF.","should_trigger":false,"notes":"Security audit owns verdicts."},
+  {"query":"Change the website theme colors and font in the editor.","should_trigger":false,"notes":"Editor styling, no code."},
+  {"query":"Configure Indonesian VAT on eCommerce products.","should_trigger":false,"notes":"Tax policy belongs to functional and localization skills."},
+  {"query":"Build a Django portal for our customers to download invoices.","should_trigger":false,"notes":"Not Odoo."},
+  {"query":"Write Hoot tests for an OWL backend list view extension.","should_trigger":false,"notes":"Backend testing."},
+  {"query":"Trace what happens when the portal user clicks Pay Now, from route to journal entry.","should_trigger":false,"notes":"Code tracing owns the call chain."},
+  {"query":"Migrate our website_sale customizations from Odoo 16 to 18 including data.","should_trigger":false,"notes":"Version upgrade owns migration planning."}
+]

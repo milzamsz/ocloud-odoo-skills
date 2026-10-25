@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_ocloud_eval_note_user,ocloud.eval.note user,ocloud.eval.note,base.group_user,crud,
+access_ocloud_eval_note_portal,ocloud.eval.note portal own,ocloud.eval.note,base.group_portal,r,"[('partner_id', '=', user.partner_id.id)]"

@@ -16,7 +16,8 @@
         "odoo-addon-development",
         "odoo-testing",
         "odoo-oca-development",
-        "odoo-data-model-diagram"
+        "odoo-data-model-diagram",
+        "odoo-code-tracing"
       ]
     },
     {
@@ -44,7 +45,8 @@
         "odoo-reporting",
         "odoo-functional-pos",
         "odoo-functional-manufacturing",
-        "odoo-deployment-operations"
+        "odoo-deployment-operations",
+        "odoo-website-portal"
       ]
     },
     {

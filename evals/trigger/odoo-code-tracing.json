@@ -1,0 +1,18 @@
+[
+  {"query":"Trace the Odoo 18 button from XML action to model write and returned view.","should_trigger":true,"notes":"Bounded button entry."},
+  {"query":"Which Odoo 19 Community cron invokes this method and what records can it change?","should_trigger":true,"notes":"19.0 cron entry and side effects."},
+  {"query":"Map this public route to ORM calls and identify authorization boundaries.","should_trigger":true,"notes":"Controller trust boundary."},
+  {"query":"Follow the super chain for this sale.order write override.","should_trigger":true,"notes":"Inheritance path."},
+  {"query":"Trace the Odoo 20 Community computed field's declaration, callers, and possible queries without assuming Odoo 18 APIs.","should_trigger":true,"notes":"20.0 source-bounded compute path."},
+  {"query":"From the OWL click handler, locate the backend endpoint and business method.","should_trigger":true,"notes":"Frontend/backend edge."},
+  {"query":"What effects follow this scheduled invoice generation method?","should_trigger":true,"notes":"Explicit entry and effects."},
+  {"query":"Show path:line evidence from this Odoo webhook to the queue enqueue call.","should_trigger":true,"notes":"Integration call-chain."},
+  {"query":"Review this entire addon for security, correctness and performance defects.","should_trigger":false,"notes":"Code review owns general assessment."},
+  {"query":"Implement a new sale.order approval feature.","should_trigger":false,"notes":"Addon implementation."},
+  {"query":"Which Odoo edition and addons path does this repository use?","should_trigger":false,"notes":"Context discovery."},
+  {"query":"Write tests for this existing purchase order constraint.","should_trigger":false,"notes":"Testing."},
+  {"query":"Design an Odoo invoice PDF report.","should_trigger":false,"notes":"Reporting design."},
+  {"query":"Audit all sudo calls for cross-company leaks.","should_trigger":false,"notes":"Security audit."},
+  {"query":"Port this OCA module from 17.0 to 18.0.","should_trigger":false,"notes":"OCA development."},
+  {"query":"Investigate a failing PostgreSQL backup command.","should_trigger":false,"notes":"Not Odoo call tracing."}
+]

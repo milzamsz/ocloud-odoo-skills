@@ -34,4 +34,4 @@ Verified official source paths in
 - `odoo/addons/base/views/*.xml`
 
 The installable clean-room example is
-`evals/fixtures/minimal-addon-18/ocloud_minimal_18`.
+the repository evaluation fixture `minimal-addon-18` (module `ocloud_minimal_18`).

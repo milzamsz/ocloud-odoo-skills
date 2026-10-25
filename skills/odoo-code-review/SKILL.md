@@ -9,7 +9,7 @@ metadata:
   status: stable
   risk: read-only
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
+    versions: ["17.0", "18.0", "19.0", "20.0"]
     editions: [community, enterprise]
   hermes:
     tags: [odoo, review, quality, production-readiness]
@@ -144,7 +144,7 @@ If no material issue is found, state what was reviewed and what could not be ver
 
 ## References to load
 
-Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
+Read exactly one `references/odoo-{17,18,19,20}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 - Read `references/review-checklist.md` for broad addon reviews.
 - Read `references/performance-review.md` when query volume or scheduled processing is relevant.

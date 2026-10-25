@@ -4,12 +4,12 @@ description: Use this skill when implementing or modifying an Odoo addon, includ
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with repository and development environment access. Version-sensitive implementation requires confirmed Odoo context.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: OCloud
   status: stable
   risk: controlled-write
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
+    versions: ["17.0", "18.0", "19.0", "20.0"]
     editions: [community, enterprise]
   hermes:
     tags: [odoo, addon, development, python, xml]
@@ -167,9 +167,9 @@ Code creation is not completion. Completion requires executable evidence aligned
 
 ## References to load
 
-Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
+Read exactly one `references/odoo-{17,18,19,20}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 - Read `references/model-and-orm.md` for model-heavy changes.
 - Read `references/views-and-assets.md` for XML, OWL, or asset changes.
 - Read `references/controllers-and-integrations.md` for external interfaces.
-- Read the matching version reference after context discovery.
+- Read `references/odoo-{17,18,19,20}.md` for the verified addon-shape and syntax notes of the confirmed major version.

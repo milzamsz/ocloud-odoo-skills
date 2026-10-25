@@ -14,7 +14,8 @@ source.
 | 18.0 Enterprise | `environments/odoo18ee` | `odoo-18-ce-source`, `odoo-18-ee-local-evidence` | verified-experimental |
 | 19.0 Community | `environments/odoo19ce` | `odoo-19-ce-source` | verified-experimental |
 | 19.0 Enterprise | `environments/odoo19ee` | `odoo-19-ce-source`, `odoo-19-ee-local-evidence` | verified-experimental |
-| 20.0 Community | `environments/odoo20ce` | `odoo-20-ce-source`, `odoo-20-developer`, `odoo-20-applications` | verified-experimental |
+| 20.0 Community | `environments/odoo20ce` | `odoo-20-ce-source`, `odoo-20-developer`, `odoo-20-applications` | stable |
+| 20.0 Enterprise | `libraries/odoo-enterprise/odoo_20.0+e.20261008` (licensed archive) | `odoo-20-ce-source`, `odoo-20-ee-local-evidence` | stable |
 
 ## Observed source facts
 
@@ -22,7 +23,15 @@ source.
 - The inspected Odoo 20.0 Community tree reports `(20, 0, 0, FINAL, 0, '')` in `odoo/odoo/release.py` and contains the modules enumerated in `evals/fixtures/version-matrix-20-community/README.md`.
 - The Odoo 20.0 environment tree has no Git metadata; that fixture records SHA-256 hashes of the release file and selected manifests. These hashes identify the snapshot but do not establish its upstream origin.
 - In the inspected Odoo 20.0 Community tree, `addons/web_enterprise` and `addons/account_accountant` are absent. This is a local source-tree observation only.
-- Existing Enterprise rows rely on their separate licensed local evidence; the Odoo 20.0 Community observation provides no Enterprise evidence.
+- The Odoo 20.0 Enterprise archive reports the same release tuple, carries `web_enterprise`, `account_accountant`, and `account_reports` with `OEEL-1` manifests, and replaces `l10n_id_efaktur` with `l10n_id_efaktur_coretax` (also in Community); `evals/fixtures/version-matrix-20-enterprise/README.md` records its SHA-256 fingerprints. Only the archive was used as evidence.
+- Across both Odoo 20 trees: the ORM is the `odoo/orm/` package and `_sql_constraints` is ignored with a warning, `odoo/http/` is a package with JSON routes typed `jsonrpc`, the JSON-2 API is `/json/1/<path>` with bearer API keys, Hoot replaces QUnit, and the public `Interaction` layer replaces the legacy public widget registry.
+- Executed evidence for Odoo 20: the clean-room fixture `evals/fixtures/minimal-addon-20` was installed with its tests on fresh disposable databases on both the Community snapshot and the Enterprise instance (addons path including the licensed archive) on 2026-10-25, and the databases were dropped afterwards; its README records the commands and summaries. The run also established that `ir.model.access` no longer exists on 20 and is replaced by `ir.access` with `security/ir.access.csv`.
+- Executed domain evidence for Odoo 20: `evals/fixtures/domain-eval-20` (one test per skill domain: sales, purchase, inventory, accounting, Indonesian chart, POS, manufacturing, report rendering, portal, access control, metadata reads, automation, JSON-2 bearer API over HTTP) installed and passed on disposable Community (132 modules) and Enterprise (220 modules, `web_enterprise` and `account_accountant` installed) databases on 2026-10-25; both were neutralized and dropped. The runs surfaced the `read_group` argument order, the rejected `MIT` manifest license on update, and the `rpc` addon hosting JSON-2. `odoo-bin upgrade_code` rewriters were executed on a scratch copy of the 18 fixture.
+- Skill-level Odoo 20 evidence: each of the 23 version-claiming skills was executed on its Community and Enterprise outcome case by a fresh agent session and graded by a separate session against required findings and prohibited actions; 46 of 46 pass (`docs/EVALUATION-SUMMARY-ODOO-20.md`); human review passed (milzamsz, 2026-10-25).
+- Live per-skill Odoo 20 evidence: each of the 23 version-claiming skills was executed on a live case against running Odoo 20 Community and Enterprise servers through a logging read-only JSON-2 proxy (481 calls, zero refused in counted runs); 46 of 46 pass (`docs/EVALUATION-SUMMARY-ODOO-20.md`).
+- Mutation runtime on Odoo 20: the five named capabilities pass the disposable Odoo 20 Community and Enterprise matrix over JSON-2/API key after a runtime line-field fix and a receipt-schema version fix (milzamsz/odoo-rust-mcp#15 and milzamsz/odoo-rust-mcp-agent#1); the contract pull request approves the Odoo 20 development and staging cells.
+- OCA 20.0 branches exist upstream (eleven repositories checked on 2026-10-25, `oca-server-tools-20`); across them six modules are installable and ship tests (server-tools, web, account-financial-tools, sale-workflow, server-ux), and all six install together and pass 60 tests on fresh Odoo 20 Community and Enterprise databases. Most OCA 20.0 modules remain unported.
+- The local OpenUpgrade 20 snapshot remains of OCA pull request 6046 (`openupgrade-20-local-snapshot`), which is not an upstream release.
 
 These facts establish a source baseline only. They do not prove that a module
 is installed, configured, licensed for a particular user, accessible through

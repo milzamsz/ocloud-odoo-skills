@@ -4,12 +4,12 @@ description: Use this skill when auditing an Odoo addon or integration for ACLs,
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with read access to the target repository. This skill performs defensive review and does not authorize exploitation of live systems.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: OCloud
   status: stable
   risk: read-only
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
+    versions: ["17.0", "18.0", "19.0", "20.0"]
     editions: [community, enterprise]
   hermes:
     tags: [odoo, security, acl, record-rules, controllers]
@@ -139,10 +139,10 @@ Use `assets/security-audit-report.md`. For each finding:
 - ID and severity;
 - confirmed or inferred status;
 - affected code and surface;
-- exploit or failure scenario described defensively;
+- attacker, entry point, and missing control, described defensively;
 - business impact;
 - remediation;
-- test or verification method.
+- test or verification method, preferably a test that fails before the fix.
 
 Include a coverage summary and unverified surfaces.
 
@@ -160,7 +160,7 @@ Treat as release blockers when confirmed:
 
 ## References to load
 
-Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
+Read exactly one `references/odoo-{17,18,19,20}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 - Read `references/acl-and-record-rules.md` for permission-heavy modules.
 - Read `references/controllers.md` for HTTP, portal, website, or API modules.

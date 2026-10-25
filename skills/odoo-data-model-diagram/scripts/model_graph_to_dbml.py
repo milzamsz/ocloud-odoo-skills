@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Convert a bounded logical Odoo model graph into drawDB-importable DBML."""
+
 from __future__ import annotations
 
 import argparse
@@ -7,7 +8,6 @@ import json
 import sys
 from pathlib import Path
 from typing import Any
-
 
 TYPE_MAP = {
     "binary": "BLOB",
@@ -116,7 +116,9 @@ def model_note(model: dict[str, Any], stub: bool = False) -> str:
         parts.append("inherits=" + ", ".join(inherits))
     delegates = model.get("delegates")
     if isinstance(delegates, dict) and delegates:
-        parts.append("delegates=" + ", ".join(f"{key}->{value}" for key, value in delegates.items()))
+        parts.append(
+            "delegates=" + ", ".join(f"{key}->{value}" for key, value in delegates.items())
+        )
     evidence = list_of_strings(model.get("evidence"), "model evidence")
     if evidence:
         parts.append("evidence=" + ",".join(evidence))
@@ -139,7 +141,9 @@ def column_name(model_name: str, suffix: str) -> str:
 
 def render(data: Any) -> str:
     title, input_models = validate_graph(data)
-    models = {model["name"]: {**model, "fields": list(model.get("fields", []))} for model in input_models}
+    models = {
+        model["name"]: {**model, "fields": list(model.get("fields", []))} for model in input_models
+    }
     stubs: set[str] = set()
 
     for model in list(models.values()):
@@ -147,7 +151,10 @@ def render(data: Any) -> str:
             if str(field["type"]).lower() in {"many2one", "many2many"}:
                 relation = field.get("relation")
                 if isinstance(relation, str) and relation and relation not in models:
-                    models[relation] = {"name": relation, "fields": [{"name": "id", "type": "integer"}]}
+                    models[relation] = {
+                        "name": relation,
+                        "fields": [{"name": "id", "type": "integer"}],
+                    }
                     stubs.add(relation)
 
     blocks = [f"Project {quote(title)} {{\n}}"]
@@ -169,7 +176,9 @@ def render(data: Any) -> str:
             if kind == "many2many":
                 relation = field.get("relation")
                 if isinstance(relation, str) and relation:
-                    bridges.append({"source": model_name, "field": field["name"], "target": relation})
+                    bridges.append(
+                        {"source": model_name, "field": field["name"], "target": relation}
+                    )
                 continue
             settings: list[str] = []
             if field["name"] == "id":
@@ -186,7 +195,9 @@ def render(data: Any) -> str:
                 )
         annotation = model_note(model, model_name in stubs)
         if one_to_many:
-            annotation = "; ".join(part for part in (annotation, "one2many=" + ", ".join(one_to_many)) if part)
+            annotation = "; ".join(
+                part for part in (annotation, "one2many=" + ", ".join(one_to_many)) if part
+            )
         if annotation:
             lines.append(f"\tNote: {note(annotation)}")
         blocks.append(f"Table {quote(model_name)} {{\n" + "\n".join(lines) + "\n}")

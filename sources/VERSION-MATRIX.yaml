@@ -67,10 +67,19 @@ cells:
 - id: 20.0-community
   version: '20.0'
   edition: community
-  status: verified-experimental
+  status: stable
   source_ids:
   - odoo-20-ce-source
   - odoo-20-developer
   - odoo-20-applications
   fixture: evals/fixtures/version-matrix-20-community
-  notes: Local Community release and selected module manifests fingerprinted; official documentation indexes consulted. No Enterprise, OCA 20, runtime database, or behavioral compatibility claim.
+  notes: Local Community release and selected module manifests fingerprinted; official documentation indexes consulted. The minimal-addon-20 and domain-eval-20 fixtures install and pass on disposable databases (2026-10-25), one flow per skill domain; 46-case skill evaluation and live JSON-2 runs pass; human review milzamsz 2026-10-25. OCA 20 evidence is all six installable OCA 20 modules with tests (60 tests pass); most OCA 20.0 modules remain unported.
+- id: 20.0-enterprise
+  version: '20.0'
+  edition: enterprise
+  status: stable
+  source_ids:
+  - odoo-20-ce-source
+  - odoo-20-ee-local-evidence
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  notes: Licensed local Enterprise archive fingerprinted (web_enterprise, account_accountant, account_reports present; l10n_id_efaktur replaced by l10n_id_efaktur_coretax). The minimal-addon-20 and domain-eval-20 fixtures install and pass on disposable databases with the Enterprise addons path and markers installed (2026-10-25), one flow per skill domain; 46-case skill evaluation and live JSON-2 runs pass; human review milzamsz 2026-10-25. OCA 20 evidence is all six installable OCA 20 modules with tests (60 tests pass); most OCA 20.0 modules remain unported.

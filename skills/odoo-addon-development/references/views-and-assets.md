@@ -15,6 +15,11 @@
   record rules, and server-side checks.
 - Put frontend files in the manifest `assets` mapping under the exact target
   bundle. Do not add an asset bundle when the change has no frontend code.
+- Backend UI code is OWL; register components in the target bundle and do
+  not add new legacy `Widget` code. Public website JavaScript uses the legacy
+  public widget registry on 17 and 18 and the `Interaction` layer from 19
+  (`web/static/src/public/interaction.js`); the legacy registry is removed in
+  20, so check the target source before choosing.
 - Validate XML by installing the module on a clean disposable database; parsing
   alone does not prove referenced models, fields, groups, actions, or XML IDs.
 
@@ -27,5 +32,5 @@ Verified official Odoo 18 CE source paths:
 - `odoo/addons/base/models/ir_ui_view.py` — view loading, inheritance, and
   validation behavior.
 
-Odoo 18 fixture application: `evals/fixtures/minimal-addon-18/` contains an
+Odoo 18 fixture application: the repository evaluation fixture `minimal-addon-18` contains an
 OCloud-authored list/form/action/menu chain with security loaded first.

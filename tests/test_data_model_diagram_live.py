@@ -155,7 +155,8 @@ def build_graph(client: McpClient) -> dict:
                     "evidence": ["live"],
                 }
                 for name, spec in sorted(fields.items())
-                if spec.get("type") in {"many2one", "char", "boolean", "integer", "selection", "date"}
+                if spec.get("type")
+                in {"many2one", "char", "boolean", "integer", "selection", "date"}
             ],
         }
         graph["models"].append(entry)
@@ -205,7 +206,10 @@ def test_live_metadata_generates_drawdb_parseable_dbml(tmp_path):
     for model in ROOTS:
         assert f'Table "{model}"' in dbml
 
-    if shutil.which("node") is None or not (DRAWDB_DIR / "node_modules" / "@dbml" / "core").is_dir():
+    if (
+        shutil.which("node") is None
+        or not (DRAWDB_DIR / "node_modules" / "@dbml" / "core").is_dir()
+    ):
         pytest.skip("local drawDB checkout with @dbml/core is required for parser verification")
 
     script = (

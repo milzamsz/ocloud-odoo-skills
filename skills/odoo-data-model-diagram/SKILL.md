@@ -9,7 +9,7 @@ metadata:
   status: experimental
   risk: read-only
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
+    versions: ["17.0", "18.0", "19.0", "20.0"]
     editions: [community, enterprise]
   hermes:
     tags: [odoo, data-model, erd, dbml, drawdb]
@@ -78,7 +78,7 @@ instance details in a diagram request.
 ## Workflow
 
 1. Confirm target Odoo version and edition. Read exactly one matching
-   `references/odoo-{17,18,19}-{community,enterprise}.md` file.
+   `references/odoo-{17,18,19,20}-{community,enterprise}.md` file.
 2. Ask for explicit root models. If names are uncertain, use one bounded
    `odoo_list_models` query to find candidates; do not enumerate the instance.
 3. Include each root and one relation hop, with at most 30 models. Split a

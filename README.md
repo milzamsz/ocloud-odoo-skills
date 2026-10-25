@@ -8,11 +8,18 @@ The repository teaches agents how to analyze, design, implement, review, test, s
 
 - Stage: Phase 1 stable; Phase 2 domain and technical skills experimental; Phase 3 controlled
   live integration in progress
-- Stable target: Odoo 18.0 Community
-- Verified-experimental targets: Odoo 17.0 Community/Enterprise, Odoo 18.0
-  Enterprise, Odoo 19.0 Community/Enterprise, and Odoo 20.0 Community (source-level
-  evidence only; per-skill claims remain gated by complete evidence). Odoo 20.0
-  Enterprise and OCA 20.0 compatibility are not verified.
+- Stable targets: Odoo 18.0 Community; Odoo 20.0 Community and Enterprise
+  (human-reviewed evidence set, 2026-10-25, see `docs/EVALUATION-SUMMARY-ODOO-20.md`)
+- Verified-experimental targets: Odoo 17.0 Community/Enterprise, 18.0 Enterprise,
+  and 19.0 Community/Enterprise (source-level evidence; for Odoo 20, two fixture addons installed and
+  tested on disposable CE and EE databases with one executed flow per skill
+  domain, and a 46-case skill outcome evaluation with 46 passes recorded in
+  `docs/EVALUATION-SUMMARY-ODOO-20.md`, human review passed; per-skill claims
+  remain gated by complete evidence). OCA 20.0 branches exist upstream but are mostly unported; all six installable OCA 20 modules with tests pass on both Odoo 20 editions;
+  `odoo-live-mutation` support is decided by the shared capability contract; its
+  five capabilities pass the disposable Odoo 20 CE and EE mutation matrix, and the
+  Odoo 20 development and staging cells are approved in the contract pull request
+  (production stays denied).
 - Runtime priority: Hermes Agent
 - Format: Agent Skills (`SKILL.md`)
 - Distribution: Hermes custom skill tap and external skill directory
@@ -65,6 +72,10 @@ OCloud Odoo Skills creates a controlled layer that is:
 | `odoo-functional-manufacturing` | Design BoM-to-production processes, exceptions, and inventory handoff. |
 | `odoo-deployment-operations` | Produce read-only-first deployment, backup, rollback, and monitoring runbooks. |
 | `odoo-data-model-diagram` | Produce bounded logical Odoo ORM DBML diagrams from source and read-only metadata. |
+| `odoo-code-tracing` | Trace a bounded Odoo execution path and report source-evidenced side effects and security boundaries (18/19 Community, 20 Community/Enterprise; experimental). |
+| `odoo-website-portal` | Design website pages, portal documents, and public routes with verified access, template, and asset boundaries (17 to 20; experimental). |
+
+Third-party skill inventory and scope decisions: [third-party coverage review](docs/THIRD-PARTY-COVERAGE.md) and the earlier [mart337i/odoo-skills review](docs/MART337I-COVERAGE.md).
 
 These skills are experimental. They use a stable Odoo 18 Community baseline
 and verified-experimental source/module evidence for the other five 17/18/19
@@ -102,6 +113,8 @@ and [interface contract](docs/PHASE-3-INTERFACE-CONTRACT.md).
 ├── DESIGN.md
 ├── PLAN.md
 ├── AGENTS.md
+├── CHANGELOG.md
+├── MANIFEST.md
 ├── CONTRIBUTING.md
 ├── SECURITY.md
 ├── Makefile
@@ -115,7 +128,8 @@ and [interface contract](docs/PHASE-3-INTERFACE-CONTRACT.md).
 ├── scripts/
 ├── skills/
 ├── sources/
-└── templates/
+├── templates/
+└── tests/
 ```
 
 ## Local development
@@ -140,14 +154,18 @@ skills:
 
 Then reload or restart Hermes. Files under an external directory may still be modified by Hermes when the process has write permission. Use filesystem permissions and review gates when the repository must be immutable.
 
+## Use with Claude Code
+
+The repository is a Claude Code plugin: `.claude-plugin/plugin.json` points at `skills/`, and `.claude-plugin/marketplace.json` lets you add the checkout as a local marketplace. For a project-level install, symlink or copy the skills you need into the project's `.claude/skills/` or `.agents/skills/` directory; each skill is self-contained.
+
 ## Use as a Hermes skill tap
 
 After publishing the repository:
 
 ```bash
-hermes skills tap add ocloudpro/ocloud-odoo-skills
+hermes skills tap add milzamsz/ocloud-odoo-skills
 hermes skills search odoo
-hermes skills install ocloudpro/ocloud-odoo-skills/odoo-context-discovery
+hermes skills install milzamsz/ocloud-odoo-skills/odoo-context-discovery
 ```
 
 Bundles are installed separately under `~/.hermes/skill-bundles/` because a bundle groups already installed skills; it does not install them.

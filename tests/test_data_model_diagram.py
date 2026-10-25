@@ -6,7 +6,6 @@ from pathlib import Path
 
 import pytest
 
-
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "skills" / "odoo-data-model-diagram" / "scripts" / "model_graph_to_dbml.py"
 FIXTURE = ROOT / "evals" / "fixtures" / "data-model-diagram-18"
@@ -17,17 +16,28 @@ DRAWDB_DIR = Path("/home/milzam/Workspace/tools/drawdb")
 def test_model_graph_converter_generates_stable_logical_dbml(tmp_path):
     output = tmp_path / "diagram.dbml"
     result = subprocess.run(
-        [sys.executable, str(SCRIPT), "--input", str(FIXTURE / "model-graph.json"), "--output", str(output)],
+        [
+            sys.executable,
+            str(SCRIPT),
+            "--input",
+            str(FIXTURE / "model-graph.json"),
+            "--output",
+            str(output),
+        ],
         capture_output=True,
         text=True,
         check=False,
     )
 
     assert result.returncode == 0, result.stderr
-    assert output.read_text(encoding="utf-8") == (FIXTURE / "expected.dbml").read_text(encoding="utf-8")
+    assert output.read_text(encoding="utf-8") == (FIXTURE / "expected.dbml").read_text(
+        encoding="utf-8"
+    )
 
     invalid = tmp_path / "invalid.json"
-    invalid.write_text('{"title": "bad", "models": [{"name": "x", "fields": [{"name": "id"}]}]}', encoding="utf-8")
+    invalid.write_text(
+        '{"title": "bad", "models": [{"name": "x", "fields": [{"name": "id"}]}]}', encoding="utf-8"
+    )
     failure = subprocess.run(
         [sys.executable, str(SCRIPT), "--input", str(invalid), "--output", str(output)],
         capture_output=True,
@@ -64,7 +74,12 @@ def test_converter_renders_relation_stub_and_skips_one2many_column(tmp_path):
                 "name": "x.parent",
                 "fields": [
                     {"name": "id", "type": "integer"},
-                    {"name": "child_ids", "type": "one2many", "relation": "x.child", "inverse": "parent_id"},
+                    {
+                        "name": "child_ids",
+                        "type": "one2many",
+                        "relation": "x.child",
+                        "inverse": "parent_id",
+                    },
                     {"name": "tag_ids", "type": "many2many", "relation": "x.tag"},
                 ],
             },

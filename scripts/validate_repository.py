@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Validate OCloud Odoo Skills repository structure and metadata."""
+
 from __future__ import annotations
 
 import json
@@ -19,6 +20,21 @@ MIN_TRIGGER_CASES_PER_CLASS = 8
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
+BACKTICK_PATH_RE = re.compile(r"`((?:references|assets|scripts)/[^`\s]+)`")
+BRACE_RE = re.compile(r"\{([^{}]+)\}")
+REPO_PATH_RE = re.compile(r"`((?:evals|sources|docs|bundles|schemas|templates)/[^`\s]+)`")
+ALLOWED_STATUS = {"draft", "experimental", "stable", "deprecated"}
+ALLOWED_RISK = {"read-only", "advisory", "controlled-write", "destructive"}
+SECRET_PATTERNS = {
+    "hardcoded password": re.compile(
+        r"(?i)\b(?:password|passwd|admin_passwd)\s*[=:]\s*['\"][^'\"\s]{4,}['\"]"
+    ),
+    "api key or token literal": re.compile(
+        r"(?i)\b(?:api[_-]?key|token|secret)\s*[=:]\s*['\"][A-Za-z0-9_\-]{16,}['\"]"
+    ),
+    "AWS access key": re.compile(r"\bAKIA[0-9A-Z]{16}\b"),
+    "private key block": re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----"),
+}
 DANGEROUS_PATTERNS = {
     "broad recursive deletion": re.compile(r"rm\s+-rf\s+/(?:\s|$)"),
     "curl piped to shell": re.compile(r"curl[^\n|]*\|\s*(?:ba)?sh"),
@@ -35,7 +51,7 @@ def parse_skill(path: Path) -> tuple[dict[str, Any], str]:
     data = yaml.safe_load(match.group(1)) or {}
     if not isinstance(data, dict):
         raise ValueError("frontmatter must be a mapping")
-    return data, text[match.end():]
+    return data, text[match.end() :]
 
 
 def iter_version_edition_pairs(odoo: dict[str, Any]):
@@ -54,6 +70,71 @@ def iter_version_edition_pairs(odoo: dict[str, Any]):
         if isinstance(editions, list):
             for edition in editions:
                 yield version, edition
+
+
+def expand_braces(path: str) -> list[str]:
+    """Expand `odoo-{17,18}-{community}.md` style patterns into concrete paths."""
+    match = BRACE_RE.search(path)
+    if not match:
+        return [path]
+    head, tail = path[: match.start()], path[match.end() :]
+    results: list[str] = []
+    for option in match.group(1).split(","):
+        results.extend(expand_braces(f"{head}{option.strip()}{tail}"))
+    return results
+
+
+def mentioned_local_paths(body: str) -> set[str]:
+    """Collect skill-local paths named in backticks or markdown links, brace-expanded."""
+    found: set[str] = set()
+    for raw in BACKTICK_PATH_RE.findall(body) + LINK_RE.findall(body):
+        if raw.startswith(("http://", "https://", "#", "mailto:")):
+            continue
+        clean = raw.split("#", 1)[0]
+        if clean:
+            found.update(expand_braces(clean))
+    return found
+
+
+def validate_local_paths(skill_dir: Path, body: str) -> tuple[list[str], list[str]]:
+    """Backtick paths must exist; packaged files should be reachable from SKILL.md."""
+    errors: list[str] = []
+    warnings: list[str] = []
+    mentioned = mentioned_local_paths(body)
+    for rel in sorted(mentioned):
+        if not (skill_dir / rel).exists():
+            errors.append(f"missing referenced file: {rel}")
+    for folder in ("references", "assets"):
+        for file in sorted((skill_dir / folder).glob("*")):
+            if file.is_file() and file.name != "README.md":
+                rel = f"{folder}/{file.name}"
+                if rel not in mentioned:
+                    warnings.append(f"packaged file never loaded by SKILL.md: {rel}")
+    return errors, warnings
+
+
+def scan_skill_files(skill_dir: Path) -> tuple[list[str], list[str]]:
+    """Secret literals are errors; repository paths that break single-skill installs warn."""
+    errors: list[str] = []
+    warnings: list[str] = []
+    for file in sorted(skill_dir.rglob("*")):
+        if not file.is_file() or file.suffix not in {
+            ".md",
+            ".yaml",
+            ".yml",
+            ".py",
+            ".json",
+            ".txt",
+        }:
+            continue
+        text = file.read_text(encoding="utf-8", errors="replace")
+        rel = file.relative_to(skill_dir)
+        for label, pattern in SECRET_PATTERNS.items():
+            if pattern.search(text):
+                errors.append(f"{rel}: possible {label}")
+        for raw in REPO_PATH_RE.findall(text):
+            warnings.append(f"{rel}: repository path not shipped with the skill: {raw}")
+    return errors, warnings
 
 
 def validate_links(skill_dir: Path, body: str) -> list[str]:
@@ -95,8 +176,15 @@ def validate_skill(skill_dir: Path) -> tuple[list[str], list[str]]:
         errors.append("missing description")
     elif len(description) > 1024:
         errors.append("description exceeds 1024 characters")
-    elif "Use this skill when" not in description:
-        warnings.append("description should state 'Use this skill when'")
+    elif not description.startswith("Use this skill when"):
+        errors.append("description must start with 'Use this skill when'")
+    metadata = meta.get("metadata") or {}
+    status = metadata.get("status")
+    if status not in ALLOWED_STATUS:
+        errors.append(f"metadata.status must be one of {sorted(ALLOWED_STATUS)}, got {status!r}")
+    risk = metadata.get("risk")
+    if risk not in ALLOWED_RISK:
+        errors.append(f"metadata.risk must be one of {sorted(ALLOWED_RISK)}, got {risk!r}")
     lines = body.count("\n") + 1
     words = len(body.split())
     if lines > 500:
@@ -104,6 +192,12 @@ def validate_skill(skill_dir: Path) -> tuple[list[str], list[str]]:
     if words > 7000:
         warnings.append(f"SKILL.md body has {words} words; inspect token budget")
     errors.extend(validate_links(skill_dir, body))
+    path_errors, path_warnings = validate_local_paths(skill_dir, body)
+    errors.extend(path_errors)
+    warnings.extend(path_warnings)
+    scan_errors, scan_warnings = scan_skill_files(skill_dir)
+    errors.extend(scan_errors)
+    warnings.extend(scan_warnings)
     for label, pattern in DANGEROUS_PATTERNS.items():
         if pattern.search(path.read_text(encoding="utf-8")):
             warnings.append(f"dangerous pattern requires review: {label}")
@@ -118,9 +212,7 @@ def validate_version_claims(skill_dirs: list[Path]) -> list[str]:
     errors: list[str] = []
     matrix = yaml.safe_load(VERSION_MATRIX.read_text(encoding="utf-8")) or {}
     cases_data = yaml.safe_load(OUTCOME_CASES.read_text(encoding="utf-8")) or {}
-    registry = yaml.safe_load(
-        (ROOT / "sources" / "SOURCES.yaml").read_text(encoding="utf-8")
-    ) or {}
+    registry = yaml.safe_load((ROOT / "sources" / "SOURCES.yaml").read_text(encoding="utf-8")) or {}
     source_ids = {item.get("id") for item in registry.get("sources", [])}
     cells = {
         (cell.get("version"), cell.get("edition")): cell
@@ -263,7 +355,9 @@ def validate_bundles(skill_names: set[str]) -> list[str]:
 def main() -> int:
     all_errors: list[str] = []
     all_warnings: list[str] = []
-    skill_dirs = sorted(p for p in SKILLS_DIR.iterdir() if p.is_dir() and not p.name.startswith((".", "_")))
+    skill_dirs = sorted(
+        p for p in SKILLS_DIR.iterdir() if p.is_dir() and not p.name.startswith((".", "_"))
+    )
     names = {p.name for p in skill_dirs}
     for skill_dir in skill_dirs:
         errors, warnings = validate_skill(skill_dir)
@@ -278,7 +372,9 @@ def main() -> int:
         print(f"WARNING: {item}")
     for item in all_errors:
         print(f"ERROR: {item}")
-    print(f"Validated {len(skill_dirs)} skills, {len(all_warnings)} warnings, {len(all_errors)} errors.")
+    print(
+        f"Validated {len(skill_dirs)} skills, {len(all_warnings)} warnings, {len(all_errors)} errors."
+    )
     return 1 if all_errors else 0
 
 

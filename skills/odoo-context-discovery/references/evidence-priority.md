@@ -25,6 +25,10 @@ Use this order:
 6. user statement;
 7. inference, kept unresolved.
 
+There is no fallback default. When none of the sources above yields a value,
+record `UNCERTAIN: version` and ask; do not assume the newest release or the
+one the local tooling happens to run.
+
 An active database, repository source tree, and deploy target can legitimately
 have different versions. Do not collapse them into one field when they differ.
 

@@ -59,4 +59,7 @@ them. `evidence` values are `source`, `live`, or both.
 | `reference`, `many2one_reference` | `VARCHAR`, no fixed reference |
 
 The converter uses notes for Odoo-only behavior. It does not emit DBML `not
-null`, unique, index, or foreign-key delete semantics from ORM metadata alone.
+null`, unique, or index settings from ORM metadata alone. Every `Ref` carries
+the same fixed `[delete: no action, update: no action]` annotation; it is not
+derived from the field's Odoo `ondelete` value and must not be read as the
+physical foreign-key behavior.

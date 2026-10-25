@@ -18,6 +18,8 @@ or upgrade procedures.
 | `odoo-functional-manufacturing` | BoM-to-production process design | `assets/manufacturing-process-design.md` | Delegates warehouse route depth to inventory. |
 | `odoo-deployment-operations` | Read-only-first deployment and recovery runbook | `assets/operations-runbook.md` | Does not authorize production mutation or perform major-version migration. |
 | `odoo-data-model-diagram` | Bounded logical Odoo ORM diagram | DBML plus `assets/data-model-diagram-report.md` | Does not claim a physical PostgreSQL schema, read business records, or modify drawDB/MCP. |
+| `odoo-code-tracing` | Bounded source-evidenced call-chain and side-effect map | `assets/code-trace-report.md` | Stops before defect judgement, security conclusions, or changes; static evidence only. |
+| `odoo-website-portal` | Website, portal, and public-route design with access and asset boundaries | `assets/website-portal-design.md` | Stops before generic addon implementation, security audit conclusions, or eCommerce pricing/tax policy. |
 
 ## Composition rules
 

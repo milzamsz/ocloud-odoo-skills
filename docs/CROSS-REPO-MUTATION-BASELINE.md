@@ -64,3 +64,24 @@ No private updater material was read or copied.
   that stale label.
 - The current runtime still exposes generic primitives and does not enforce the
   named-capability contract at its final execution boundary.
+
+## Odoo 20 addendum (2026-10-25)
+
+A disposable Odoo 20.0 Community and Enterprise matrix (JSON-2/API key) passed
+all five capabilities, exact replay at plugin and runtime, stale-update
+conflict on `sale.order` and draft vendor bills, the six-case boundary suite
+before mutation, and no-sales denial. Both databases were dropped. The changes
+it needed are in pull requests cut from each repository's `main`; the owners'
+uncommitted working trees were not touched:
+
+| Repository | Pull request | Change |
+|---|---|---|
+| `odoo-rust-mcp` | milzamsz/odoo-rust-mcp#15 | Odoo 20 line fields (`line_commands()` was pinned to the literal `"19.0"`); a receipt preflight before the claim and the write, closing the orphan-record path; Odoo `AccessError` on create or guarded update reported as a persisted `denied` receipt instead of `uncertain`. 246 library tests and the capability tests (7, three new) pass; `mcp_registry` (pre-existing compile error) and `mcp_smoke` (environment timeout, reproduces without the change) are noted in the PR. |
+| `odoo-rust-mcp-agent` | milzamsz/odoo-rust-mcp-agent#1 | `odoo20-community` and `odoo20-enterprise` cells approved for development and staging (production denied); receipt `target_cell.version` accepts `20.0`; `replay` added to the output status enum; loader test at eight cells; evidence in `docs/evidence/mutation-matrix-20/`. 69 tests pass. |
+
+The skills-side validator `scripts/validate_mutation_capabilities.py` accepts
+the Odoo 20 pair as an all-or-nothing optional group and passes against the
+current contract and the pull-request contract. Remaining residual risk:
+`write_date` whole-second precision is still an optimistic-lock risk for
+sub-second concurrent edits, and the staging `prepare-draft-config.sh` marker
+no longer matches the owners' files.
