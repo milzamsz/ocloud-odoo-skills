@@ -64,3 +64,15 @@ One representative flow per domain, default configuration, no demo data,
 no multi-company or multi-currency variants, no PDF rendering (HTML only),
 no OCA module. The `-u` rerun reused the database created by the first
 install; the first install itself succeeded on both editions.
+
+## Live JSON-2 runs (2026-10-25)
+
+For the live skills, the fixture database was also served by a disposable
+Odoo 20 server (`--workers=0`, dedicated port, `--db-filter`) and queried over
+the JSON-2 API with an `rpc`-scoped API key for a non-admin user, then the
+server was stopped and the database dropped.
+
+| Cell | Observations |
+|---|---|
+| 20.0 Community | `version_info` → 20.0 final; module states readable; `fields_get` works while `ir.model`/`ir.model.fields` reads are denied without the Access Rights group; `check_access` is private (403 remotely); `search_read`/`search_count`/`read_group(groupby, aggregates)` succeed for a salesperson and the own-documents rule hid another user's order; legacy `read_group` kwargs → 422; no key or bad key → 401; live `fields_get` metadata converted to DBML by the skill script. |
+| 20.0 Enterprise | Identical observations on the Enterprise instance (`web_enterprise` and `account_accountant` installed with `OEEL-1` license readable through `ir.module.module`); `version_info` → `20.0+e`, `server_version_info [20,0,0,'final',0,'e']`. |

@@ -53,6 +53,7 @@ behavior.
 
 ## Skill-specific evidence
 
+- Live run (2026-10-25, disposable Odoo 20 server over JSON-2 with an `rpc`-scoped key): `/web/webclient/version_info` reports `server_version_info [20,0,0,'final',0,'']`; `ir.module.module/search_read` returns edition markers; `sale.order/fields_get` is the metadata path for a non-admin user, because `ir.model` and `ir.model.fields` reads are denied without the Access Rights group; `check_access` is private and cannot be called remotely (the server answers 403), so effective access is proven by a bounded read, not by an access-check call; unauthenticated and bad-key calls answer 401.
 - Executed: `ir.model.fields` metadata read and JSON-2 bearer probe (`domain-eval-20`).
 - Metadata reads over JSON-2 use `/json/2/<model>/<method>` in the auto-installed `rpc` addon with an `rpc`-scoped API key (`/json/1/<path>` in `web` is the view-oriented variant); confirm the key scope before trusting a context probe.
 

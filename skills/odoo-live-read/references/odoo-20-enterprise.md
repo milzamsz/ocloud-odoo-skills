@@ -53,6 +53,7 @@ behavior.
 
 ## Skill-specific evidence
 
+- Live run (2026-10-25, disposable Odoo 20 server over JSON-2 with an `rpc`-scoped key): `sale.order/search_read` with `limit`, `search_count`, and `read_group` with `groupby` and `aggregates` succeed for a user in the salesperson group; the own-documents record rule hid another user's order (count 0), which is the expected least-data boundary; the legacy `read_group` body with `fields` answers 422 `unexpected keyword argument 'fields'`; unauthenticated calls answer 401.
 - Executed: bounded `search_read` and `_read_group(domain, groupby, aggregates)` on `sale.order` (`domain-eval-20`).
 - Bounded reads over JSON-2 go through `/json/2/<model>/<method>` in the auto-installed `rpc` addon (`auth='bearer'`, `bearer_scope='rpc'`, per-method read-only); `/json/1/<path>` in `web` is the view-oriented variant. A key without the `rpc` scope must fail the read, not be widened.
 

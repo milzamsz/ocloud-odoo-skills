@@ -53,6 +53,7 @@ behavior.
 
 ## Skill-specific evidence
 
+- Live run (2026-10-25, disposable Odoo 20 server over JSON-2): relation metadata for `sale.order` was read with `fields_get` (`partner_id`→`res.partner`, `order_line`→`sale.order.line`, `company_id`→`res.company`, `user_id`→`res.users`) because `ir.model.fields` reads need the Access Rights group; the bounded graph converted to DBML with the skill's script (exit 0, related models stubbed as metadata-unavailable).
 - Executed: `ir.model.fields` relation metadata for `sale.order` read on a live 20 database (`domain-eval-20`).
 - Constraints are `models.Constraint` objects in `odoo/orm/table_objects.py`; a diagram must not read `_sql_constraints`, which is ignored. Field classes are split across `odoo/orm/fields_*.py`.
 

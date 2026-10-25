@@ -17,6 +17,13 @@ The format follows Keep a Changelog principles and the project uses semantic ver
   API, Hoot-only tests, `Interaction` public JavaScript, Enterprise module
   markers, absent `l10n_id_efaktur`), and 48 new outcome cases. OCA 20 beyond
   OpenUpgrade and `odoo-live-mutation` remain unclaimed.
+- Served the fixture database from disposable Odoo 20 Community and
+  Enterprise servers and exercised the live skills over the JSON-2 API with an
+  `rpc`-scoped key: version and edition probes, `fields_get` metadata, bounded
+  reads, record-rule scoping, 401 without a key, and DBML conversion of live
+  metadata. Recorded in the live skills' Odoo 20 references that `ir.model` and
+  `ir.model.fields` reads need the Access Rights group, `check_access` is
+  private remotely, and legacy `read_group` kwargs are rejected.
 - Ran the repository outcome evaluation for every version-claiming skill on
   both Odoo 20 cells (46 cases, fresh executor sessions, separate graders):
   46 of 46 pass, recorded in `docs/EVALUATION-SUMMARY-ODOO-20.md`; human review
