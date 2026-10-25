@@ -208,6 +208,16 @@ Odoo `ondelete` (reference corrected).
 | `website-portal-20-enterprise-live-001` | odoo-website-portal | 1 | 9 | 0 | pass |
 
 
+## Live mutation matrix on Odoo 20 (2026-10-25)
+
+`odoo-live-mutation` claims no version cell because support is decided by the
+shared capability contract. Its runtime path was nevertheless exercised on
+disposable Odoo 20 Community and Enterprise databases over JSON-2/API key: all
+five capabilities, exact replay, stale-update conflict, the boundary suite,
+and no-sales denial pass in both cells, after two Odoo 20 fixes in the sibling
+runtime repositories. Details, branches, and residual risks are in
+`docs/CROSS-REPO-MUTATION-BASELINE.md` (Odoo 20 addendum).
+
 ## What the runs showed about the skills
 
 - Every executor selected the correct Odoo 20 cell reference and kept the

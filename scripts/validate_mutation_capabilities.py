@@ -15,6 +15,24 @@ EXPECTED_CELLS = {
     for version in (17, 18, 19)
     for edition in ("community", "enterprise")
 }
+# Odoo 20 cells are optional while they land in the shared contract, but both editions together.
+OPTIONAL_CELL_GROUPS = ({"odoo20-community", "odoo20-enterprise"},)
+
+
+def cell_set_errors(cells: set[str]) -> list[str]:
+    """The baseline cells are required; each optional group is all-or-nothing."""
+    errors: list[str] = []
+    allowed = EXPECTED_CELLS.union(*OPTIONAL_CELL_GROUPS)
+    if not EXPECTED_CELLS <= cells or not cells <= allowed:
+        errors.append(
+            f"cells must include {sorted(EXPECTED_CELLS)} and only optional {sorted(allowed - EXPECTED_CELLS)}"
+        )
+    for group in OPTIONAL_CELL_GROUPS:
+        if cells & group and not group <= cells:
+            errors.append(f"optional cells must be declared together: {sorted(group)}")
+    return errors
+
+
 EXPECTED_CAPABILITIES = {
     "create_crm_lead_draft.v1",
     "create_quotation_draft.v1",
@@ -34,8 +52,7 @@ def main() -> int:
     cells = contract.get("cells", {})
     capabilities = contract.get("capabilities", {})
 
-    if set(cells) != EXPECTED_CELLS:
-        errors.append(f"cells must be exactly {sorted(EXPECTED_CELLS)}")
+    errors.extend(cell_set_errors(set(cells)))
     if set(capabilities) != EXPECTED_CAPABILITIES:
         errors.append(f"capabilities must be exactly {sorted(EXPECTED_CAPABILITIES)}")
 
@@ -92,8 +109,8 @@ def main() -> int:
             errors.append(f"{capability_id}: public reference is missing")
         if not any(capability_id in str(case.get("request", "")) for case in outcomes):
             errors.append(f"{capability_id}: outcome case is missing")
-        if set(capability.get("support", {})) != EXPECTED_CELLS:
-            errors.append(f"{capability_id}: every exact support cell is required")
+        if set(capability.get("support", {})) != set(cells):
+            errors.append(f"{capability_id}: every declared contract cell needs a support decision")
 
         for kind in ("input", "output"):
             schema = (contract_path.parent / capability.get(f"{kind}_schema", "")).resolve()

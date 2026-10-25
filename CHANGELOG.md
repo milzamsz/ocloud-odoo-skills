@@ -17,6 +17,13 @@ The format follows Keep a Changelog principles and the project uses semantic ver
   API, Hoot-only tests, `Interaction` public JavaScript, Enterprise module
   markers, `l10n_id_efaktur` replaced by `l10n_id_efaktur_coretax`), and 48 new outcome cases. OCA 20 beyond
   OpenUpgrade and `odoo-live-mutation` remain unclaimed.
+- Ran the `odoo-live-mutation` five-capability matrix on disposable Odoo 20
+  Community and Enterprise databases (JSON-2/API key): capabilities, replay,
+  stale-update conflict, boundary suite, and no-sales denial pass in both cells.
+  Fixed the two Odoo 20 blockers on local sibling branches (runtime line-field
+  version check, receipt-schema version list), recorded the addendum in
+  `docs/CROSS-REPO-MUTATION-BASELINE.md`, and let the capability validator
+  accept the Odoo 20 cell pair as an all-or-nothing optional group.
 - Executed every version-claiming skill against running Odoo 20 Community and
   Enterprise servers (46 live cases, read-only logging JSON-2 proxy in
   `evals/live/`): 46 of 46 pass. Corrected the facts the live runs surfaced:

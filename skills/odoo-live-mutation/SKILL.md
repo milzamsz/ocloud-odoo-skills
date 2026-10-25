@@ -2,7 +2,7 @@
 name: odoo-live-mutation
 description: Use this skill when preparing, approving, executing, or verifying one contract-approved named Odoo mutation capability for CRM leads, quotations, vendor-bill drafts, allowed draft-field updates, or bank transaction imports in development or staging. Do not use it for raw CRUD, bulk writes, posting, reconciliation, workflow actions, cleanup, production mutation, or read-only work.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Runtime support is decided per capability and exact Odoo version/edition/protocol/environment cell; no target mutation cell is currently approved.
+compatibility: Hermes Agent and Agent Skills compatible clients. Runtime support is decided per capability and exact Odoo version/edition/protocol/environment cell by the shared contract, never by this skill. Odoo 20.0 Community and Enterprise (JSON-2/API key) pass the disposable five-capability matrix in development and staging; their contract cells are pending landing. Production is always denied.
 metadata:
   version: "0.2.0"
   author: OCloud

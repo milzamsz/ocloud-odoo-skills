@@ -64,3 +64,27 @@ No private updater material was read or copied.
   that stale label.
 - The current runtime still exposes generic primitives and does not enforce the
   named-capability contract at its final execution boundary.
+
+## Odoo 20 addendum (2026-10-25)
+
+A disposable Odoo 20.0 Community and Enterprise matrix (JSON-2/API key) passed
+all five capabilities, exact replay at plugin and runtime, stale-update
+conflict on `sale.order` and draft vendor bills, the six-case boundary suite
+before mutation, and no-sales denial, in isolated copies of the three runtime
+repositories. Both databases were dropped. Two defects blocked Odoo 20 and are
+fixed on local, unpushed branches that leave the owners' working trees
+untouched:
+
+| Repository | Branch | Change |
+|---|---|---|
+| `odoo-rust-mcp` | `fix/odoo20-capability-line-fields` | `line_commands()` used the literal `"19.0"`, so Odoo 20 lines got pre-19 `tax_id`/`product_uom`; now version-numeric, with a 20.0 unit test. |
+| `odoo-rust-mcp-agent` | `feat/odoo20-mutation-cells` | `receipt.v1.json` accepts `target_cell.version` `20.0`; evidence in `docs/evidence/mutation-matrix-20/`; the `support.yaml` cells and loader test are in `pending-contract-cells.patch`, which applies on the owner's current uncommitted contract, not on HEAD. |
+
+The skills-side validator `scripts/validate_mutation_capabilities.py` accepts
+the Odoo 20 pair as an all-or-nothing optional group and passes against both
+the current contract and the patched one. Residual risks recorded by the run:
+the runtime validates its receipt after the Odoo write (an invalid receipt can
+leave an orphan record with an `executing` idempotency claim), an Odoo ACL
+denial on create surfaces as `uncertain` rather than `denied`, `write_date`
+whole-second precision remains an optimistic-lock risk, and the staging
+`prepare-draft-config.sh` marker no longer matches the owners' files.
