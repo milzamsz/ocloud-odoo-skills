@@ -82,11 +82,12 @@ were not touched:
 
 The skills-side validator `scripts/validate_mutation_capabilities.py` accepts
 the Odoo 20 pair as an all-or-nothing optional group and passes against the
-current contract and the pull-request contract. Remaining residual risk, unchanged from 17/18/19 and outside the Odoo 20
-work: Odoo serializes `write_date` to whole seconds over its APIs, so the
-allowed-field update cannot detect a second edit inside the same second as the
-preview; closing it needs a full-precision version token across the add-on,
-plugin, and contract schema. The staging `prepare-draft-config.sh` marker no
+current contract and the pull-request contract. The whole-second optimistic-lock gap is closed by helper `oc_mcp_mutation`
+1.1.0 (milzamsz/odoo-rust-mcp#16): a computed `oc_mcp_write_version` field
+exposes `write_date` with microseconds for the preview read, and the guarded
+update compares at full precision when given that token, which its tests prove
+on Odoo 17, 18, 19, and 20 Community and Enterprise. Whole-second tokens still
+work with the old blind spot. Remaining residual risk: the staging `prepare-draft-config.sh` marker no
 longer matches the owners' files. Owners pulling `main` must commit or set aside
 their local `support.yaml` and loader-test edits first, because the merged
 Odoo 20 entries touch the same files.
