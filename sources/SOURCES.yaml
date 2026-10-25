@@ -9,6 +9,16 @@ sources:
   odoo_versions: []
   last_reviewed: '2026-09-21'
   notes: Local drawDB checkout validates DBML import and parser behavior for logical Odoo diagrams; its internal DDB format is not a skill output contract.
+- id: nexgen-dynamic-dashboard-20
+  name: NexGen AI Dynamic Dashboard & KPI Builder (dynamic_dashboard_ai_nexgen 20.0.1.0.15)
+  url: https://nexgensolutions.odoo.com
+  authority_tier: 5
+  usage: vendor-addon-behavioral-evidence
+  license_status: OPL-1 vendor addon; facts paraphrased from local source and runtime checks, no source copied
+  odoo_versions:
+  - '20.0'
+  last_reviewed: '2026-10-26'
+  notes: Local vendored copy read for models, fields, selections, grid sizes, SQL validation, and import/export behavior; a synthetic fixture was installed on a disposable Odoo 20 Community database. The sum/average KPI read_group defect was observed at runtime.
 - id: odoo-rust-mcp-local-metadata-contract
   name: Odoo Rust MCP Local Metadata Contract
   url: https://github.com/milzamsz/odoo-rust-mcp/tree/398cfd9fb25fbafa40fa18754a023489a536b615

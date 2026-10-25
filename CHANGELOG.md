@@ -8,6 +8,15 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Added
 
+- New experimental skill `odoo-dynamic-dashboard` (0.1.0, advisory, Odoo 20.0 Community):
+  turns a business question into reviewed data XML for the NexGen
+  `dynamic_dashboard_ai_nexgen` addon (ORM, SQL, and count-KPI items on a fixed
+  12-column grid), with references, an output template, and the deterministic
+  `validate_dashboard_xml.py` validator and tests. A synthetic fixture installed on a
+  disposable Odoo 20 Community database; every item computed without error. Records
+  the addon's sum/average KPI `read_group` defect on Odoo 20 and routes around it.
+  Adds source `nexgen-dynamic-dashboard-20`, 20 trigger cases, and one outcome case.
+
 - AI wiki in `docs/wiki/` (index, repository map, skill anatomy, skill catalog,
   version matrix, evaluations, live integration, workflows, glossary, gotchas),
   with `llms.txt` and `CLAUDE.md` entry points. `make validate` now fails on a

@@ -1,0 +1,22 @@
+[
+  {"query": "Generate a dynamic dashboard with the NexGen dashboard addon showing invoiced amount per month and open receivables for our finance team.", "should_trigger": true, "notes": "Direct dashboard generation with the addon."},
+  {"query": "Create dashboard XML for dynamic_dashboard_ai_nexgen in our custom addon with KPI tiles for posted invoices.", "should_trigger": true, "notes": "Explicit addon and XML output."},
+  {"query": "Our Odoo 20 has the AI Dynamic Dashboard app; build a rider settlement board per hub that we can deploy with the module.", "should_trigger": true, "notes": "Business dashboard delivered through an addon."},
+  {"query": "Add three new charts and a SQL top-10 receivable item to the existing dynamic.dashboard XML file.", "should_trigger": true, "notes": "Extending an existing dashboard definition."},
+  {"query": "Turn this list of sales KPIs into dynamic.dashboard.item records with a fixed 12-column grid layout.", "should_trigger": true, "notes": "Item records and layout."},
+  {"query": "Design a KPI hierarchy with targets in the dynamic dashboard addon for the operations manager.", "should_trigger": true, "notes": "KPI definitions with targets."},
+  {"query": "Validate this AI-generated dashboard XML for the NexGen dynamic dashboard module before we install it.", "should_trigger": true, "notes": "Validator use."},
+  {"query": "I want the agent to generate an Odoo dashboard of EV fleet status and mitra count per hub using dynamic_dashboard_ai_nexgen.", "should_trigger": true, "notes": "Agent-generated dashboard on a specific dataset."},
+  {"query": "Make a dynamic dashboard item with a SQL query on account_move_line, restricted to accounting managers.", "should_trigger": true, "notes": "SQL item with access restriction."},
+  {"query": "Why do the grid positions in my dynamic dashboard XML get reset on install, and how do I generate a layout that sticks?", "should_trigger": true, "notes": "Auto-layout context rule."},
+  {"query": "Should our monthly sales report be a pivot view, a QWeb PDF, or an external BI tool?", "should_trigger": false, "notes": "Mechanism choice belongs to odoo-reporting."},
+  {"query": "Write a QWeb PDF template for the delivery slip with our logo.", "should_trigger": false, "notes": "QWeb document, not a dashboard."},
+  {"query": "Create the sales dashboard records directly in the production database right now.", "should_trigger": false, "notes": "Live mutation, owned by odoo-live-mutation."},
+  {"query": "Add a graph and pivot view to my custom model's action.", "should_trigger": false, "notes": "Standard views in addon development."},
+  {"query": "Configure the OpenAI API key for the dashboard AI wizard in Settings.", "should_trigger": false, "notes": "Addon configuration, not dashboard generation."},
+  {"query": "Build a Metabase dashboard on top of the Odoo PostgreSQL database.", "should_trigger": false, "notes": "External analytics, not this addon."},
+  {"query": "Port dynamic_dashboard_ai_nexgen from Odoo 19 to Odoo 20.", "should_trigger": false, "notes": "Module migration belongs to odoo-version-upgrade."},
+  {"query": "Audit the SQL execution and sudo usage in the dynamic dashboard addon for security issues.", "should_trigger": false, "notes": "Security audit of the addon code."},
+  {"query": "Draw an ERD of the dynamic.dashboard and dynamic.dashboard.item models.", "should_trigger": false, "notes": "Data model diagram skill."},
+  {"query": "Build an Odoo 17 spreadsheet dashboard in Enterprise Documents.", "should_trigger": false, "notes": "Different product and version."}
+]

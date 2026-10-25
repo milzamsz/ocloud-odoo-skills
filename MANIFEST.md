@@ -5,10 +5,10 @@ This development package contains:
 - 14 root product, architecture, engineering, governance, security, and agent-entry documents, plus `llms.txt`;
 - 25 development, evaluation, and release documents plus 5 architecture decision records;
 - a 10-page AI wiki in `docs/wiki/` checked by `make validate`;
-- 8 stable Phase 1 Agent Skills, 13 experimental Phase 2 domain and technical skills, and 3
+- 8 stable Phase 1 Agent Skills, 14 experimental Phase 2 domain and technical skills, and 3
   experimental Phase 3 live skills with skill-local references and assets;
 - 8 Hermes skill bundles and a Claude Code plugin manifest;
-- 24 trigger evaluation datasets and 286 outcome scenarios;
+- 25 trigger evaluation datasets and 287 outcome scenarios;
 - OCloud-authored defect, requirements, and website-portal fixtures;
 - source provenance, license policy, and Odoo version matrix;
 - JSON schemas, validation scripts, tests, GitHub Actions CI, and packaging checks;
