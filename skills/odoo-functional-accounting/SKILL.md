@@ -49,7 +49,7 @@ Mark missing information **Assumed** or **Unknown**. Load `odoo-context-discover
 - Treat live systems as read-only unless the user explicitly authorizes a precise mutation.
 - Require least privilege and company isolation for posting, reversal, reconciliation, lock dates, and configuration.
 - Do not provide jurisdiction-specific tax or statutory conclusions; hand Indonesian scope to `odoo-indonesia-accounting`.
-- Enterprise capabilities require licensed Odoo 18 source or official evidence and remain advisory.
+- Enterprise capabilities require licensed source evidence for the confirmed target version or official documentation and remain advisory.
 - Escalate unresolved account mapping, tax, cutoff, currency, or legal questions to a qualified accountant before implementation or posting.
 
 ## Required output

@@ -54,7 +54,7 @@ behavior.
 ## Skill-specific evidence
 
 - Executed: bounded `search_read` and `_read_group(domain, groupby, aggregates)` on `sale.order` (`domain-eval-20`).
-- Bounded reads over JSON-2 go through `/json/1/<path>` (`bearer_scope='rpc'`, read-only); a key without that scope must fail the read, not be widened.
+- Bounded reads over JSON-2 go through `/json/2/<model>/<method>` in the auto-installed `rpc` addon (`auth='bearer'`, `bearer_scope='rpc'`, per-method read-only); `/json/1/<path>` in `web` is the view-oriented variant. A key without the `rpc` scope must fail the read, not be widened.
 
 ## Community boundary
 

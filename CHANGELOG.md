@@ -17,6 +17,12 @@ The format follows Keep a Changelog principles and the project uses semantic ver
   API, Hoot-only tests, `Interaction` public JavaScript, Enterprise module
   markers, absent `l10n_id_efaktur`), and 48 new outcome cases. OCA 20 beyond
   OpenUpgrade and `odoo-live-mutation` remain unclaimed.
+- Ran the repository outcome evaluation for every version-claiming skill on
+  both Odoo 20 cells (46 cases, fresh executor sessions, separate graders):
+  46 of 46 pass, recorded in `docs/EVALUATION-SUMMARY-ODOO-20.md`; human review
+  remains pending. Fixed defects the runs surfaced: the live-read and
+  live-context 20 references named `/json/1/` for bounded reads, the accounting
+  skill tied Enterprise evidence to Odoo 18 source, and two case wordings.
 - Added the installable `domain-eval-20` fixture whose Odoo tests exercise one
   flow per skill domain (sales, purchase, inventory, accounting, Indonesian
   chart, POS, manufacturing, report rendering, portal, access control, metadata

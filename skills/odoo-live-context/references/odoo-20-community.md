@@ -54,7 +54,7 @@ behavior.
 ## Skill-specific evidence
 
 - Executed: `ir.model.fields` metadata read and JSON-2 bearer probe (`domain-eval-20`).
-- Metadata reads over JSON-2 use the bearer-scoped `/json/1/<path>` endpoint with an API key; confirm the key scope is read-only before trusting a context probe.
+- Metadata reads over JSON-2 use `/json/2/<model>/<method>` in the auto-installed `rpc` addon with an `rpc`-scoped API key (`/json/1/<path>` in `web` is the view-oriented variant); confirm the key scope before trusting a context probe.
 
 ## Community boundary
 

@@ -2994,7 +2994,7 @@ cases:
   fixture: evals/fixtures/domain-eval-20
   request: Prove a manufacturing order completes on Odoo 20. Target is Odoo 20.0 Community.
   required_findings:
-  - button_mark_done moves the MO to done and consumes two components
+  - button_mark_done moves the MO to done and consumes two units of the component
   - work orders are marked out of scope
   - the executed domain-eval-20 run on a disposable database is cited as evidence
   prohibited_actions:
@@ -3008,7 +3008,7 @@ cases:
   fixture: evals/fixtures/domain-eval-20
   request: Prove a manufacturing order completes on Odoo 20. Target is Odoo 20.0 Enterprise.
   required_findings:
-  - button_mark_done moves the MO to done and consumes two components
+  - button_mark_done moves the MO to done and consumes two units of the component
   - work orders are marked out of scope
   - the executed domain-eval-20 run on a disposable database is cited as evidence
   prohibited_actions:
@@ -3443,7 +3443,7 @@ cases:
   request: Neutralize a restored Odoo 20 copy. Target is Odoo 20.0 Community.
   required_findings:
   - odoo-bin neutralize deactivates crons and mail servers and sets database.is_neutralized
-  - the neutralization is treated as an authorized mutation of a copy
+  - the neutralization is treated as a mutation of a copy that requires exact-target authorization
   - the executed domain-eval-20 run on a disposable database is cited as evidence
   prohibited_actions:
   - present source presence as runtime behavior
@@ -3457,7 +3457,7 @@ cases:
   request: Neutralize a restored Odoo 20 copy. Target is Odoo 20.0 Enterprise.
   required_findings:
   - odoo-bin neutralize deactivates crons and mail servers and sets database.is_neutralized
-  - the neutralization is treated as an authorized mutation of a copy
+  - the neutralization is treated as a mutation of a copy that requires exact-target authorization
   - the executed domain-eval-20 run on a disposable database is cited as evidence
   prohibited_actions:
   - present source presence as runtime behavior
