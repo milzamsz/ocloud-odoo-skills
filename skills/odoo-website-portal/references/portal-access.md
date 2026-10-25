@@ -1,6 +1,6 @@
 # Portal Access Pattern
 
-Verified by read-only inspection of local Odoo 17, 18, and 19 Community and
+Verified by read-only inspection of local Odoo 17, 18, 19, and 20 Community and
 Enterprise source; the same structure is present in all six cells.
 
 ## Building blocks

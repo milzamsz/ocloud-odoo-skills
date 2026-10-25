@@ -2,14 +2,14 @@
 name: odoo-functional-manufacturing
 description: Use this skill when designing an Odoo manufacturing process covering bills of materials, manufacturing orders, component consumption, work centers and operations, by-products, lots or serials, scrap, and backorders. Do not use it for warehouse route depth, accounting policy, maintenance, PLM, or addon implementation.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Verified for Odoo 17.0, 18.0, or 19.0 Community or Enterprise.
+compatibility: Hermes Agent and Agent Skills compatible clients. Verified for Odoo 17.0, 18.0, 19.0, or 20.0 Community or Enterprise.
 metadata:
   version: "0.1.0"
   author: OCloud
   status: experimental
   risk: advisory
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
+    versions: ["17.0", "18.0", "19.0", "20.0"]
     editions: [community, enterprise]
   hermes:
     tags: [odoo, manufacturing, mrp, functional]
@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-Produce an evidence-based Odoo 17, 18, or 19 Community or Enterprise design from bill of materials through production completion, exceptions, and inventory handoff.
+Produce an evidence-based Odoo 17, 18, 19, or 20 Community or Enterprise design from bill of materials through production completion, exceptions, and inventory handoff.
 
 ## Preconditions and composition
 
@@ -56,11 +56,11 @@ Copy `assets/manufacturing-process-design.md`. Include master data, state flow, 
 - BoM-to-completion and partial/backorder paths are complete.
 - Quantity and traceability states are unambiguous.
 - Inventory route depth and accounting policy are delegated.
-- Odoo 17, 18, or 19 Community or Enterprise support is explicit.
+- Odoo 17, 18, 19, or 20 Community or Enterprise support is explicit.
 
 ## Reference to load
 
-Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
+Read exactly one `references/odoo-{17,18,19,20}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 The Odoo 18 Community file carries the executed baseline; the other cells are source-evidenced only, so inspect target source when a detail affects implementation.
 

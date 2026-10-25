@@ -52,12 +52,16 @@ def test_odoo_code_tracing_pilot_contract():
 
     import yaml
 
+    from scripts.validate_repository import mentioned_local_paths
+
     skill = ROOT / "skills" / "odoo-code-tracing"
     body = (skill / "SKILL.md").read_text(encoding="utf-8")
     assert "name: odoo-code-tracing" in body
+    mentioned = mentioned_local_paths(body)
     for version in ("18", "19", "20"):
-        assert f"references/odoo-{version}-community.md" in body
+        assert f"references/odoo-{version}-community.md" in mentioned
         assert (skill / "references" / f"odoo-{version}-community.md").exists()
+    assert "references/odoo-20-enterprise.md" in mentioned
     prompts = json.loads(
         (ROOT / "evals" / "trigger" / "odoo-code-tracing.json").read_text(encoding="utf-8")
     )

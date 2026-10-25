@@ -74,6 +74,26 @@ sources:
   last_reviewed: '2026-07-20'
   notes: Read-only licensed tree at environments/odoo19ee/odoo confirms edition markers and module presence. Target
     installation and configuration remain independently verifiable.
+- id: odoo-20-ee-local-evidence
+  name: Odoo 20.0 Enterprise Licensed Local Evidence
+  url: https://www.odoo.com/documentation/20.0/
+  authority_tier: 3
+  usage: licensed-enterprise-behavioral-evidence
+  license_status: licensed local inspection only (OEEL-1 manifests); no Enterprise source copied or redistributed
+  odoo_versions:
+  - '20.0'
+  last_reviewed: '2026-10-25'
+  notes: Read-only licensed archive at libraries/odoo-enterprise/odoo_20.0+e.20261008 (no Git metadata; release.py and manifest SHA-256 fingerprints recorded in the version-matrix-20-enterprise fixture) confirms edition markers web_enterprise, account_accountant, account_reports, documents, web_studio and core parity with the Community snapshot. l10n_id_efaktur is absent from this archive. Source presence is not proof of installation, licensing state, or runtime behavior.
+- id: openupgrade-20-local-snapshot
+  name: OCA OpenUpgrade 20.0 local snapshot
+  url: https://github.com/OCA/OpenUpgrade/pull/6046
+  authority_tier: 4
+  usage: migration-tooling-evidence
+  license_status: AGPL-3.0 upstream; local snapshot inspected read-only, no scripts copied
+  odoo_versions:
+  - '20.0'
+  last_reviewed: '2026-10-25'
+  notes: Local directory libraries/OCA-modules/20.0/OpenUpgrade-20.0 starts from OCA/OpenUpgrade pull request 6046 at commit 10f253d0290cfe9291771113b92c2d64edfa8020 (2026-09-29), still open upstream, plus local 19-to-20 and experimental 18-to-20 scripts. It is not an upstream release; per-module acceptance is tracked locally and must be re-checked per target.
 - id: odoo-agent-platform-local-contracts
   name: OCloud Odoo Agent Platform Local Contracts
   url: https://github.com/ocloudpro/odoo-rust-mcp-agent

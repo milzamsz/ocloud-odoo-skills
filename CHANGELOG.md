@@ -8,6 +8,15 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Added
 
+- Extended every version-claiming skill (23 of 24) to Odoo 20.0 Community and
+  Enterprise as verified-experimental: a `20.0-enterprise` matrix cell backed by
+  the licensed local archive (`odoo-20-ee-local-evidence`), a fingerprinted
+  Enterprise fixture, an OpenUpgrade 20 snapshot source, per-skill
+  `odoo-20-{community,enterprise}.md` references with source-verified facts
+  (`odoo/orm` package and `models.Constraint`, `jsonrpc` routes, bearer JSON-2
+  API, Hoot-only tests, `Interaction` public JavaScript, Enterprise module
+  markers, absent `l10n_id_efaktur`), and 44 new outcome cases. OCA 20 beyond
+  OpenUpgrade, runtime databases, and `odoo-live-mutation` remain unclaimed.
 - Added experimental `odoo-website-portal` (Odoo 17/18/19 Community and Enterprise)
   with a source-verified portal access pattern, website patterns, per-cell
   references naming the public JavaScript layer of each tree, a clean-room

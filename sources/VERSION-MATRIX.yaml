@@ -74,3 +74,12 @@ cells:
   - odoo-20-applications
   fixture: evals/fixtures/version-matrix-20-community
   notes: Local Community release and selected module manifests fingerprinted; official documentation indexes consulted. No Enterprise, OCA 20, runtime database, or behavioral compatibility claim.
+- id: 20.0-enterprise
+  version: '20.0'
+  edition: enterprise
+  status: verified-experimental
+  source_ids:
+  - odoo-20-ce-source
+  - odoo-20-ee-local-evidence
+  fixture: evals/fixtures/version-matrix-20-enterprise
+  notes: Licensed local Enterprise archive fingerprinted (web_enterprise, account_accountant, account_reports present; l10n_id_efaktur absent). No OCA 20 beyond the OpenUpgrade snapshot, no runtime database, and no behavioral compatibility claim.

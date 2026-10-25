@@ -1,15 +1,15 @@
 ---
 name: odoo-integration-design
-description: Use this skill when designing an Odoo 17, 18, or 19 Community or Enterprise integration with an external system, including API or controller boundaries, authentication, idempotency, retries, queues, webhooks, data ownership, reconciliation, observability, security, and performance. Do not use it for generic API coding, addon implementation, or a security audit alone.
+description: Use this skill when designing an Odoo 17, 18, 19, or 20 Community or Enterprise integration with an external system, including API or controller boundaries, authentication, idempotency, retries, queues, webhooks, data ownership, reconciliation, observability, security, and performance. Do not use it for generic API coding, addon implementation, or a security audit alone.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Odoo 17, 18, or 19 Community or Enterprise is the verified baseline.
+compatibility: Hermes Agent and Agent Skills compatible clients. Odoo 17, 18, 19, or 20 Community or Enterprise is the verified baseline.
 metadata:
   version: "0.1.0"
   author: OCloud
   status: experimental
   risk: advisory
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
+    versions: ["17.0", "18.0", "19.0", "20.0"]
     editions: [community, enterprise]
   hermes:
     tags: [odoo, integration, api, architecture]
@@ -53,7 +53,7 @@ observable, recoverable, and explicit about data ownership.
 
 ## Workflow
 
-1. Confirm Odoo 17, 18, or 19 Community or Enterprise, participating systems, actors, data sensitivity,
+1. Confirm Odoo 17, 18, 19, or 20 Community or Enterprise, participating systems, actors, data sensitivity,
    expected volume, latency, availability, and regulatory constraints.
 2. Define the system of record per entity and field. Map identifiers,
    companies, currencies, time zones, lifecycle states, and deletion policy.
@@ -111,7 +111,7 @@ prohibited actions.
 
 ## Reference to load
 
-Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
+Read exactly one `references/odoo-{17,18,19,20}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 The Odoo 18 Community file carries the executed baseline; treat the other cells as source-evidenced only. For Odoo 19 and later, verify the external RPC surface (JSON-2 with API keys versus legacy JSON-RPC) against the target source before designing an integration contract.
 

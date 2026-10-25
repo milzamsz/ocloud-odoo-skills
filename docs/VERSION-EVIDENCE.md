@@ -15,6 +15,7 @@ source.
 | 19.0 Community | `environments/odoo19ce` | `odoo-19-ce-source` | verified-experimental |
 | 19.0 Enterprise | `environments/odoo19ee` | `odoo-19-ce-source`, `odoo-19-ee-local-evidence` | verified-experimental |
 | 20.0 Community | `environments/odoo20ce` | `odoo-20-ce-source`, `odoo-20-developer`, `odoo-20-applications` | verified-experimental |
+| 20.0 Enterprise | `libraries/odoo-enterprise/odoo_20.0+e.20261008` (licensed archive) | `odoo-20-ce-source`, `odoo-20-ee-local-evidence` | verified-experimental |
 
 ## Observed source facts
 
@@ -22,7 +23,9 @@ source.
 - The inspected Odoo 20.0 Community tree reports `(20, 0, 0, FINAL, 0, '')` in `odoo/odoo/release.py` and contains the modules enumerated in `evals/fixtures/version-matrix-20-community/README.md`.
 - The Odoo 20.0 environment tree has no Git metadata; that fixture records SHA-256 hashes of the release file and selected manifests. These hashes identify the snapshot but do not establish its upstream origin.
 - In the inspected Odoo 20.0 Community tree, `addons/web_enterprise` and `addons/account_accountant` are absent. This is a local source-tree observation only.
-- Existing Enterprise rows rely on their separate licensed local evidence; the Odoo 20.0 Community observation provides no Enterprise evidence.
+- The Odoo 20.0 Enterprise archive reports the same release tuple, carries `web_enterprise`, `account_accountant`, and `account_reports` with `OEEL-1` manifests, and lacks `l10n_id_efaktur`; `evals/fixtures/version-matrix-20-enterprise/README.md` records its SHA-256 fingerprints. Only the archive was used as evidence.
+- Across both Odoo 20 trees: the ORM is the `odoo/orm/` package and `_sql_constraints` is ignored with a warning, `odoo/http/` is a package with JSON routes typed `jsonrpc`, the JSON-2 API is `/json/1/<path>` with bearer API keys, Hoot replaces QUnit, and the public `Interaction` layer replaces the legacy public widget registry.
+- OCA 20.0 evidence is limited to a local OpenUpgrade snapshot of OCA pull request 6046 (`openupgrade-20-local-snapshot`), which is not an upstream release.
 
 These facts establish a source baseline only. They do not prove that a module
 is installed, configured, licensed for a particular user, accessible through

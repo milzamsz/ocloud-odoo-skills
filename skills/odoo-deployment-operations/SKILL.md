@@ -2,14 +2,14 @@
 name: odoo-deployment-operations
 description: Use this skill when producing a read-only-first Odoo deployment, backup, restore, release, monitoring, rollback, or incident-triage runbook for self-hosted operations. Do not use it to authorize production mutation, perform a major-version migration, design business processes, or replace hosting-specific documentation.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients. Verified for Odoo 17.0, 18.0, or 19.0 Community or Enterprise.
+compatibility: Hermes Agent and Agent Skills compatible clients. Verified for Odoo 17.0, 18.0, 19.0, or 20.0 Community or Enterprise.
 metadata:
   version: "0.2.0"
   author: OCloud
   status: experimental
   risk: read-only
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
+    versions: ["17.0", "18.0", "19.0", "20.0"]
     editions: [community, enterprise]
   hermes:
     tags: [odoo, deployment, backup, operations]
@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-Produce a recoverable Odoo 17, 18, or 19 Community or Enterprise operations runbook with evidence, explicit decision gates, and no implicit authorization to change a live system.
+Produce a recoverable Odoo 17, 18, 19, or 20 Community or Enterprise operations runbook with evidence, explicit decision gates, and no implicit authorization to change a live system.
 
 ## Preconditions and composition
 
@@ -61,11 +61,11 @@ Copy `assets/operations-runbook.md`. Record topology, evidence, authorization st
 - The database and matching filestore are covered and an isolated restore test is defined.
 - Every mutation has an exact authorization gate and observable verification.
 - Rollback is executable in principle and preserves database/filestore consistency.
-- Odoo 17, 18, or 19 Community or Enterprise support and hosting assumptions are explicit.
+- Odoo 17, 18, 19, or 20 Community or Enterprise support and hosting assumptions are explicit.
 
 ## Reference to load
 
-Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
+Read exactly one `references/odoo-{17,18,19,20}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 Hosting-specific instructions remain authoritative over any version file.
 

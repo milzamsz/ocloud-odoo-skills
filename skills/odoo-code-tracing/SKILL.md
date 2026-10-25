@@ -2,7 +2,7 @@
 name: odoo-code-tracing
 description: Use this skill when reconstructing a specific Odoo execution path from a controller, button, cron, ORM hook, or frontend call to its verified side effects and security boundaries. Do not use for a broad code review or implementation without a concrete entry point.
 license: MIT
-compatibility: Hermes Agent and Agent Skills clients with source access; Odoo 18, 19, and 20 Community only.
+compatibility: Hermes Agent and Agent Skills clients with source access; Odoo 18 and 19 Community, and Odoo 20 Community and Enterprise.
 metadata:
   version: "0.2.0"
   author: OCloud
@@ -10,7 +10,11 @@ metadata:
   risk: advisory
   odoo:
     versions: ["18.0", "19.0", "20.0"]
-    editions: [community]
+    editions: [community, enterprise]
+    editions_by_version:
+      "18.0": [community]
+      "19.0": [community]
+      "20.0": [community, enterprise]
   hermes:
     tags: [odoo, tracing, call-chain, impact-analysis]
 ---
@@ -44,7 +48,7 @@ Produce a bounded source-evidenced call-chain and side-effect map for one specif
 
 ## Safety and evidence
 
-Read-only source analysis is the default. Do not query live business data, invoke routes, run jobs, install addons, or change a database to complete a trace. Quote only short identifiers and line references; do not reproduce upstream source. Independently verify version-sensitive behavior using exactly one matching Community reference and the target checkout.
+Read-only source analysis is the default. Do not query live business data, invoke routes, run jobs, install addons, or change a database to complete a trace. Quote only short identifiers and line references; do not reproduce upstream source. Independently verify version-sensitive behavior using exactly one matching version reference and the target checkout.
 
 ## Required output
 
@@ -62,10 +66,10 @@ Stop and list candidates when the entry point is ambiguous. Stop at the chosen d
 
 ## References to load
 
-After confirming Odoo version and Community edition, read exactly one matching file:
+After confirming Odoo version and edition, read exactly one matching file:
 
 - Odoo 18: `references/odoo-18-community.md`
 - Odoo 19: `references/odoo-19-community.md`
-- Odoo 20: `references/odoo-20-community.md`
+- Odoo 20: `references/odoo-20-{community,enterprise}.md`
 
-Odoo 20 remains experimental; source-level evidence does not prove runtime behavior. For any other version or Enterprise target, do not claim compatibility; hand off to context discovery and target-version source inspection.
+Odoo 20 remains experimental; source-level evidence does not prove runtime behavior. For any other version, or Enterprise on 18 or 19, do not claim compatibility; hand off to context discovery and target-version source inspection.

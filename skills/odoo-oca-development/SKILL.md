@@ -9,7 +9,7 @@ metadata:
   status: stable
   risk: controlled-write
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
+    versions: ["17.0", "18.0", "19.0", "20.0"]
     editions: [community, enterprise]
   hermes:
     tags: [odoo, oca, community, contribution]
@@ -109,7 +109,7 @@ OCA is not a substitute for verifying the target version and repository. OpenUpg
 
 ## References to load
 
-Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
+Read exactly one `references/odoo-{17,18,19,20}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 - Read `references/oca-repository-checklist.md` before scaffolding or contributing.
 - Read `references/openupgrade-boundary.md` when migration work is involved.

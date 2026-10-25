@@ -9,7 +9,7 @@ metadata:
   status: stable
   risk: destructive
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
+    versions: ["17.0", "18.0", "19.0", "20.0"]
     editions: [community, enterprise]
   hermes:
     tags: [odoo, upgrade, migration, openupgrade]
@@ -186,8 +186,8 @@ A database that starts is not necessarily a successful migration. Completion req
 
 ## References to load
 
-Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
+Read exactly one `references/odoo-{17,18,19,20}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 - Read `references/openupgrade-workflow.md` when OpenUpgrade is selected.
 - Read `references/reconciliation.md` for accounting or inventory databases.
-- Read `references/odoo-{17,18,19}.md` for both the source and the target major version before code changes.
+- Read `references/odoo-{17,18,19,20}.md` for both the source and the target major version before code changes.

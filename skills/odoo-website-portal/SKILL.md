@@ -2,14 +2,14 @@
 name: odoo-website-portal
 description: Use this skill when designing or reviewing Odoo website pages, portal document views, public or portal controller routes, QWeb frontend templates, or public asset bundles, including which access check, template anchor, and JavaScript layer the target version requires. Do not use it for backend addon implementation, a full security audit, eCommerce pricing or tax policy, or theme styling alone.
 license: MIT
-compatibility: Hermes Agent and Agent Skills compatible clients with read access to the target Odoo source tree. Verified for Odoo 17.0, 18.0, and 19.0 Community and Enterprise from local source inspection; runtime behavior still requires target-specific tests.
+compatibility: Hermes Agent and Agent Skills compatible clients with read access to the target Odoo source tree. Verified for Odoo 17.0, 18.0, 19.0, and 20.0 Community and Enterprise from local source inspection; runtime behavior still requires target-specific tests.
 metadata:
   version: "0.1.0"
   author: OCloud
   status: experimental
   risk: advisory
   odoo:
-    versions: ["17.0", "18.0", "19.0"]
+    versions: ["17.0", "18.0", "19.0", "20.0"]
     editions: [community, enterprise]
   hermes:
     tags: [odoo, website, portal, controllers, qweb, frontend]
@@ -71,7 +71,7 @@ Copy `assets/website-portal-design.md`. It must contain the exposure boundary, c
 
 ## References to load
 
-Read exactly one `references/odoo-{17,18,19}-{community,enterprise}.md` file after the target version and edition are confirmed.
+Read exactly one `references/odoo-{17,18,19,20}-{community,enterprise}.md` file after the target version and edition are confirmed.
 
 - Read `references/portal-access.md` when a portal user must see or act on a business document.
 - Read `references/website-patterns.md` when adding pages, menus, snippets, or website-scoped routes.

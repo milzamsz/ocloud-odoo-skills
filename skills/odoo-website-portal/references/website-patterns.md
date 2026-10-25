@@ -1,6 +1,6 @@
 # Website Patterns
 
-Verified by read-only inspection of local Odoo 17, 18, and 19 Community and
+Verified by read-only inspection of local Odoo 17, 18, 19, and 20 Community and
 Enterprise source.
 
 ## Pages, templates, routes
@@ -33,7 +33,7 @@ Enterprise source.
   (`addons/web/static/src/public/interaction.js`,
   `addons/website/static/src/interactions/`) alongside the legacy registry.
   New code should use interactions.
-- Odoo 20 removes the legacy registry; this skill does not claim 20 support.
+- Odoo 20 removes the legacy registry; use `Interaction` classes only.
 - Browser tests: Hoot ships from 18; QUnit still ships in 17 to 19.
 
 ## Assets

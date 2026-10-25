@@ -9,10 +9,10 @@ The repository teaches agents how to analyze, design, implement, review, test, s
 - Stage: Phase 1 stable; Phase 2 domain and technical skills experimental; Phase 3 controlled
   live integration in progress
 - Stable target: Odoo 18.0 Community
-- Verified-experimental targets: Odoo 17.0 Community/Enterprise, Odoo 18.0
-  Enterprise, Odoo 19.0 Community/Enterprise, and Odoo 20.0 Community (source-level
-  evidence only; per-skill claims remain gated by complete evidence). Odoo 20.0
-  Enterprise and OCA 20.0 compatibility are not verified.
+- Verified-experimental targets: Odoo 17.0, 18.0, 19.0, and 20.0 Community and
+  Enterprise (source-level evidence only; per-skill claims remain gated by
+  complete evidence). OCA 20.0 is verified only as a local OpenUpgrade snapshot;
+  `odoo-live-mutation` remains blocked for every cell by its capability contract.
 - Runtime priority: Hermes Agent
 - Format: Agent Skills (`SKILL.md`)
 - Distribution: Hermes custom skill tap and external skill directory
@@ -65,8 +65,8 @@ OCloud Odoo Skills creates a controlled layer that is:
 | `odoo-functional-manufacturing` | Design BoM-to-production processes, exceptions, and inventory handoff. |
 | `odoo-deployment-operations` | Produce read-only-first deployment, backup, rollback, and monitoring runbooks. |
 | `odoo-data-model-diagram` | Produce bounded logical Odoo ORM DBML diagrams from source and read-only metadata. |
-| `odoo-code-tracing` | Trace a bounded Odoo execution path and report source-evidenced side effects and security boundaries (18/19/20 Community; experimental). |
-| `odoo-website-portal` | Design website pages, portal documents, and public routes with verified access, template, and asset boundaries (17/18/19; experimental). |
+| `odoo-code-tracing` | Trace a bounded Odoo execution path and report source-evidenced side effects and security boundaries (18/19 Community, 20 Community/Enterprise; experimental). |
+| `odoo-website-portal` | Design website pages, portal documents, and public routes with verified access, template, and asset boundaries (17 to 20; experimental). |
 
 Third-party skill inventory and scope decisions: [third-party coverage review](docs/THIRD-PARTY-COVERAGE.md) and the earlier [mart337i/odoo-skills review](docs/MART337I-COVERAGE.md).
 
