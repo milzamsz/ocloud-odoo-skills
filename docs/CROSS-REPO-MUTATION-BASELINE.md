@@ -71,17 +71,22 @@ A disposable Odoo 20.0 Community and Enterprise matrix (JSON-2/API key) passed
 all five capabilities, exact replay at plugin and runtime, stale-update
 conflict on `sale.order` and draft vendor bills, the six-case boundary suite
 before mutation, and no-sales denial. Both databases were dropped. The changes
-it needed are in pull requests cut from each repository's `main`; the owners'
-uncommitted working trees were not touched:
+it needed were merged through pull requests cut from each repository's `main`
+(runtime `feceefa`, agent `5237ec8`); the owners' uncommitted working trees
+were not touched:
 
 | Repository | Pull request | Change |
 |---|---|---|
-| `odoo-rust-mcp` | milzamsz/odoo-rust-mcp#15 | Odoo 20 line fields (`line_commands()` was pinned to the literal `"19.0"`); a receipt preflight before the claim and the write, closing the orphan-record path; Odoo `AccessError` on create or guarded update reported as a persisted `denied` receipt instead of `uncertain`. 246 library tests and the capability tests (7, three new) pass; `mcp_registry` (pre-existing compile error) and `mcp_smoke` (environment timeout, reproduces without the change) are noted in the PR. |
+| `odoo-rust-mcp` | milzamsz/odoo-rust-mcp#15 | Odoo 20 line fields (`line_commands()` was pinned to the literal `"19.0"`); a receipt preflight before the claim and the write, closing the orphan-record path; Odoo `AccessError` on create or guarded update reported as a persisted `denied` receipt instead of `uncertain`. 246 library tests and the capability tests (7, three new) pass; The PR also made the smoke and HTTP transport tests hermetic (they had silently loaded the developer's `~/.config/odoo-rust-mcp/instances.json`, including production entries, through the runtime's default-path fallback) and allowed Clippy's new `double_must_use` lint on the `async_trait` client trait; CI passed on Linux, macOS, and Windows before merge. |
 | `odoo-rust-mcp-agent` | milzamsz/odoo-rust-mcp-agent#1 | `odoo20-community` and `odoo20-enterprise` cells approved for development and staging (production denied); receipt `target_cell.version` accepts `20.0`; `replay` added to the output status enum; loader test at eight cells; evidence in `docs/evidence/mutation-matrix-20/`. 69 tests pass. |
 
 The skills-side validator `scripts/validate_mutation_capabilities.py` accepts
 the Odoo 20 pair as an all-or-nothing optional group and passes against the
-current contract and the pull-request contract. Remaining residual risk:
-`write_date` whole-second precision is still an optimistic-lock risk for
-sub-second concurrent edits, and the staging `prepare-draft-config.sh` marker
-no longer matches the owners' files.
+current contract and the pull-request contract. Remaining residual risk, unchanged from 17/18/19 and outside the Odoo 20
+work: Odoo serializes `write_date` to whole seconds over its APIs, so the
+allowed-field update cannot detect a second edit inside the same second as the
+preview; closing it needs a full-precision version token across the add-on,
+plugin, and contract schema. The staging `prepare-draft-config.sh` marker no
+longer matches the owners' files. Owners pulling `main` must commit or set aside
+their local `support.yaml` and loader-test edits first, because the merged
+Odoo 20 entries touch the same files.

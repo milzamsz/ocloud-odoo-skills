@@ -18,7 +18,7 @@ The repository teaches agents how to analyze, design, implement, review, test, s
   remain gated by complete evidence). OCA 20.0 branches exist upstream but are mostly unported; all six installable OCA 20 modules with tests pass on both Odoo 20 editions;
   `odoo-live-mutation` support is decided by the shared capability contract; its
   five capabilities pass the disposable Odoo 20 CE and EE mutation matrix, and the
-  Odoo 20 development and staging cells are approved in the contract pull request
+  Odoo 20 development and staging cells are approved in the merged shared contract
   (production stays denied).
 - Runtime priority: Hermes Agent
 - Format: Agent Skills (`SKILL.md`)

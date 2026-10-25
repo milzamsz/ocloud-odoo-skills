@@ -8,6 +8,10 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Added
 
+- Recorded that the Odoo 20 runtime and contract changes are merged
+  (milzamsz/odoo-rust-mcp#15, milzamsz/odoo-rust-mcp-agent#1), including the
+  hermetic smoke and HTTP transport tests and the `double_must_use` Clippy
+  allowance that let runtime CI pass on all three platforms.
 - Extended every version-claiming skill (23 of 24) to Odoo 20.0 Community and
   Enterprise as verified-experimental: a `20.0-enterprise` matrix cell backed by
   the licensed local archive (`odoo-20-ee-local-evidence`), a fingerprinted
