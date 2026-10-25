@@ -15,8 +15,13 @@ The format follows Keep a Changelog principles and the project uses semantic ver
   `odoo-20-{community,enterprise}.md` references with source-verified facts
   (`odoo/orm` package and `models.Constraint`, `jsonrpc` routes, bearer JSON-2
   API, Hoot-only tests, `Interaction` public JavaScript, Enterprise module
-  markers, absent `l10n_id_efaktur`), and 44 new outcome cases. OCA 20 beyond
-  OpenUpgrade, runtime databases, and `odoo-live-mutation` remain unclaimed.
+  markers, absent `l10n_id_efaktur`), and 48 new outcome cases. OCA 20 beyond
+  OpenUpgrade and `odoo-live-mutation` remain unclaimed.
+- Added the installable `minimal-addon-20` fixture (`ir.access.csv`,
+  `models.Constraint`) and executed it with its tests on disposable Odoo 20
+  Community and Enterprise databases; recorded that `ir.model.access` is
+  replaced by `ir.access` on 20 and that OWL is 3.0.0, in every Odoo 20
+  reference, the security ACL reference, and four executable outcome cases.
 - Added experimental `odoo-website-portal` (Odoo 17/18/19 Community and Enterprise)
   with a source-verified portal access pattern, website patterns, per-cell
   references naming the public JavaScript layer of each tree, a clean-room

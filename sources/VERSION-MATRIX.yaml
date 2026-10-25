@@ -73,7 +73,7 @@ cells:
   - odoo-20-developer
   - odoo-20-applications
   fixture: evals/fixtures/version-matrix-20-community
-  notes: Local Community release and selected module manifests fingerprinted; official documentation indexes consulted. No Enterprise, OCA 20, runtime database, or behavioral compatibility claim.
+  notes: Local Community release and selected module manifests fingerprinted; official documentation indexes consulted. The minimal-addon-20 fixture installs and tests on a disposable database (2026-10-25). No OCA 20 or business-application behavioral claim.
 - id: 20.0-enterprise
   version: '20.0'
   edition: enterprise
@@ -82,4 +82,4 @@ cells:
   - odoo-20-ce-source
   - odoo-20-ee-local-evidence
   fixture: evals/fixtures/version-matrix-20-enterprise
-  notes: Licensed local Enterprise archive fingerprinted (web_enterprise, account_accountant, account_reports present; l10n_id_efaktur absent). No OCA 20 beyond the OpenUpgrade snapshot, no runtime database, and no behavioral compatibility claim.
+  notes: Licensed local Enterprise archive fingerprinted (web_enterprise, account_accountant, account_reports present; l10n_id_efaktur absent). The minimal-addon-20 fixture installs and tests on a disposable database with the Enterprise addons path (2026-10-25). No OCA 20 beyond the OpenUpgrade snapshot and no business-application behavioral claim.

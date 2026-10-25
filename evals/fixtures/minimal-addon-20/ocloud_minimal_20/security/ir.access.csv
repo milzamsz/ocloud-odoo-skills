@@ -1,0 +1,2 @@
+id,name,model_id,group_id/id,operation,domain
+access_ocloud_minimal_item_user,ocloud.minimal.item user,ocloud.minimal.item,base.group_user,cru,

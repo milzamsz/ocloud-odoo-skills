@@ -28,6 +28,18 @@ behavior.
   files; `--workers` remains a server option.
 - Reports: `ir_actions_report.py` keeps `_render_qweb_pdf` with wkhtmltopdf.
 - `mail.template`, `base_automation`, and `ir.cron` are present.
+- Access control: the `ir.model.access` model is gone; `ir.access`
+  (`odoo/addons/base/models/ir_access.py`) is loaded from
+  `security/ir.access.csv` with columns `id,name,model_id,group_id/id,operation,domain`,
+  where `operation` is a subset of `crud` and `domain` optionally scopes the
+  rule. `odoo/upgrade_code/19.4-00-ir-access.py` rewrites old CSVs.
+- OWL is 3.0.0 (`addons/web/static/lib/owl/owl.js`); `odoo/upgrade_code/owl3-migration.py`
+  is the upstream migration script. `18.1-00-sql-constraint.py` and
+  `20.0-00-search-date-filters.py` rewrite constraints and search-view date
+  filters.
+- Executed evidence: the repository fixture `minimal-addon-20` installs and
+  its tests pass on disposable Odoo 20 Community and Enterprise databases
+  (see that fixture's README for the run record).
 
 ## Skill-specific evidence
 

@@ -25,6 +25,7 @@ source.
 - In the inspected Odoo 20.0 Community tree, `addons/web_enterprise` and `addons/account_accountant` are absent. This is a local source-tree observation only.
 - The Odoo 20.0 Enterprise archive reports the same release tuple, carries `web_enterprise`, `account_accountant`, and `account_reports` with `OEEL-1` manifests, and lacks `l10n_id_efaktur`; `evals/fixtures/version-matrix-20-enterprise/README.md` records its SHA-256 fingerprints. Only the archive was used as evidence.
 - Across both Odoo 20 trees: the ORM is the `odoo/orm/` package and `_sql_constraints` is ignored with a warning, `odoo/http/` is a package with JSON routes typed `jsonrpc`, the JSON-2 API is `/json/1/<path>` with bearer API keys, Hoot replaces QUnit, and the public `Interaction` layer replaces the legacy public widget registry.
+- Executed evidence for Odoo 20: the clean-room fixture `evals/fixtures/minimal-addon-20` was installed with its tests on fresh disposable databases on both the Community snapshot and the Enterprise instance (addons path including the licensed archive) on 2026-10-25, and the databases were dropped afterwards; its README records the commands and summaries. The run also established that `ir.model.access` no longer exists on 20 and is replaced by `ir.access` with `security/ir.access.csv`.
 - OCA 20.0 evidence is limited to a local OpenUpgrade snapshot of OCA pull request 6046 (`openupgrade-20-local-snapshot`), which is not an upstream release.
 
 These facts establish a source baseline only. They do not prove that a module

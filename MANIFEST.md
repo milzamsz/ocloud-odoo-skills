@@ -7,7 +7,7 @@ This development package contains:
 - 8 stable Phase 1 Agent Skills, 13 experimental Phase 2 domain and technical skills, and 3
   experimental Phase 3 live skills with skill-local references and assets;
 - 8 Hermes skill bundles and a Claude Code plugin manifest;
-- 24 trigger evaluation datasets and 190 outcome scenarios;
+- 24 trigger evaluation datasets and 194 outcome scenarios;
 - OCloud-authored defect, requirements, and website-portal fixtures;
 - source provenance, license policy, and Odoo version matrix;
 - JSON schemas, validation scripts, tests, GitHub Actions CI, and packaging checks;

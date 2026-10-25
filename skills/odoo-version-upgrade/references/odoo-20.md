@@ -7,6 +7,8 @@ licensed Enterprise archive.
   constraint must become a `models.Constraint` object or it silently disappears.
 - Route `type='json'` becomes `type='jsonrpc'`; `odoo/upgrade_code/18.1-02-route-jsonrpc.py`
   is the upstream rewriter.
+- `ir.model.access` is removed; port `security/ir.model.access.csv` to `security/ir.access.csv` (`operation` letters, optional `domain`); `odoo/upgrade_code/19.4-00-ir-access.py` automates it.
+- OWL 3.0.0; `odoo/upgrade_code/owl3-migration.py` rewrites OWL 2 components and templates.
 - QUnit is removed; browser suites must move to Hoot.
 - The legacy public widget registry is removed; website JavaScript must use
   `Interaction` classes.

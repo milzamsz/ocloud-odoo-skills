@@ -10,8 +10,9 @@ The repository teaches agents how to analyze, design, implement, review, test, s
   live integration in progress
 - Stable target: Odoo 18.0 Community
 - Verified-experimental targets: Odoo 17.0, 18.0, 19.0, and 20.0 Community and
-  Enterprise (source-level evidence only; per-skill claims remain gated by
-  complete evidence). OCA 20.0 is verified only as a local OpenUpgrade snapshot;
+  Enterprise (source-level evidence plus, for Odoo 20, an installed and tested
+  fixture addon on disposable CE and EE databases; per-skill claims remain gated
+  by complete evidence). OCA 20.0 is verified only as a local OpenUpgrade snapshot;
   `odoo-live-mutation` remains blocked for every cell by its capability contract.
 - Runtime priority: Hermes Agent
 - Format: Agent Skills (`SKILL.md`)

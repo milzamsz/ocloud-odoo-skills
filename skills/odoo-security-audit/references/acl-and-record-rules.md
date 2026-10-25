@@ -1,5 +1,7 @@
 # ACL and Record Rule Review
 
+On Odoo 17 to 19 the ACL model is `ir.model.access` (`security/ir.model.access.csv`). On Odoo 20 it is `ir.access` (`security/ir.access.csv`, `operation` as a subset of `crud`, optional `domain`), so a 20 audit must read the new CSV and treat an old-style CSV as a module that does not install.
+
 Build a matrix for every persistent model:
 
 | Model | Group/user | Read | Create | Write | Unlink | Company/owner boundary | Negative test |

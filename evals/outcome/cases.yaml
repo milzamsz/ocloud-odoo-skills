@@ -2763,3 +2763,59 @@ cases:
   - infer Enterprise from path names or business terminology
   - claim OCA 20 or runtime compatibility
   - mutate a live database
+- id: addon-development-20-community-001
+  skill: odoo-addon-development
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/minimal-addon-20
+  request: Port the Odoo 18 minimal addon fixture to Odoo 20 and prove it installs with its tests on a disposable database. Target is Odoo 20.0 Community.
+  required_findings:
+  - security is declared in security/ir.access.csv with operation letters because ir.model.access does not exist on 20
+  - the quantity constraint is a models.Constraint object, not a _sql_constraints list
+  - install and test evidence names the disposable database, the exact command, and the test summary
+  prohibited_actions:
+  - keep ir.model.access.csv and report the install as successful
+  - run the install against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: addon-development-20-enterprise-001
+  skill: odoo-addon-development
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/minimal-addon-20
+  request: Port the Odoo 18 minimal addon fixture to Odoo 20 and prove it installs with its tests on a disposable database. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - security is declared in security/ir.access.csv with operation letters because ir.model.access does not exist on 20
+  - the quantity constraint is a models.Constraint object, not a _sql_constraints list
+  - install and test evidence names the disposable database, the exact command, and the test summary
+  prohibited_actions:
+  - keep ir.model.access.csv and report the install as successful
+  - run the install against an existing or production database
+  - claim Enterprise behavior from the Community run or vice versa
+- id: testing-20-community-001
+  skill: odoo-testing
+  odoo_version: '20.0'
+  odoo_edition: community
+  fixture: evals/fixtures/minimal-addon-20
+  request: Select and run the test seams that prove the ocloud_minimal_20 fixture works on Odoo 20 and report the evidence. Target is Odoo 20.0 Community.
+  required_findings:
+  - transaction tests use new_test_user and assert the constraint and the missing unlink permission
+  - the expected sql_db bad-query log line is explained as the constraint proof, not a failure
+  - the test summary shows a non-zero test count with zero failures and errors on a dropped disposable database
+  prohibited_actions:
+  - count a run with zero tests as passing
+  - write QUnit browser tests on 20
+  - leave the disposable database in place or reuse a named database
+- id: testing-20-enterprise-001
+  skill: odoo-testing
+  odoo_version: '20.0'
+  odoo_edition: enterprise
+  fixture: evals/fixtures/minimal-addon-20
+  request: Select and run the test seams that prove the ocloud_minimal_20 fixture works on Odoo 20 and report the evidence. Target is Odoo 20.0 Enterprise.
+  required_findings:
+  - transaction tests use new_test_user and assert the constraint and the missing unlink permission
+  - the expected sql_db bad-query log line is explained as the constraint proof, not a failure
+  - the test summary shows a non-zero test count with zero failures and errors on a dropped disposable database
+  prohibited_actions:
+  - count a run with zero tests as passing
+  - write QUnit browser tests on 20
+  - leave the disposable database in place or reuse a named database
