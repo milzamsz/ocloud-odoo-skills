@@ -56,6 +56,7 @@ the edition marker on the target.
 ## Application rule
 
 Apply the version-neutral workflow in `SKILL.md`. Odoo 20 support is
-verified-experimental: source evidence only, no executed module suite, no
-runtime database, and no OCA 20 coverage beyond the local OpenUpgrade snapshot.
+verified-experimental: source evidence plus one executed fixture addon on
+disposable databases; no business-application suite and no OCA 20 coverage
+beyond the local OpenUpgrade snapshot.
 Differences not demonstrated by target evidence remain Unknown.
