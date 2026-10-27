@@ -4,7 +4,7 @@ description: Use this skill when designing, implementing, reviewing, or running 
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with access to a safe Odoo development or test environment.
 metadata:
-  version: "1.1.0"
+  version: "1.1.1"
   author: OCloud
   status: stable
   risk: controlled-write

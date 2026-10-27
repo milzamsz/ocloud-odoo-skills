@@ -4,7 +4,7 @@ description: Use this skill when planning, analyzing, implementing, or validatin
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with source and target code plus a disposable migration environment.
 metadata:
-  version: "1.1.0"
+  version: "1.1.1"
   author: OCloud
   status: stable
   risk: destructive

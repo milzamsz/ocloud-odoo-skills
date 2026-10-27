@@ -34,6 +34,9 @@ Traps that earlier changes hit. Check this page before you finish.
 - JSON-2 lives in the `rpc` addon at `/json/2/`, not in `web` at `/json/1/`.
 - Non-admin users get 403 on technical models. Prove access with `fields_get` and a bounded business read.
 - Only the runtime version endpoint shows the Enterprise suffix. The source `release.py` never does.
+- OpenUpgrade 19→20 leaves wire transfer and COD providers without payment methods; checkout hides them. See the `odoo-version-upgrade` Odoo 20 reference.
+- Owl `t-inherit` xpaths fail only in the browser; install, upgrade, and view validation all pass.
+- `request.website`, `ir.config_parameter.get_param`, and raw `bytes` for binary fields are gone. Use `request.env.website`, typed getters, and `BinaryBytes`.
 
 ## Local Odoo environments
 
