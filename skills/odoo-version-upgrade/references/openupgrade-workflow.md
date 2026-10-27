@@ -52,3 +52,17 @@ that has already cost a run.
   next hop starts from a known state.
 - Record each hop's commands, revisions, duration, and blockers; a hop with
   no record cannot be reproduced.
+- Scripts of one module and stage run in basename order across all upgrade-path
+  directories. Name project scripts `pre-0-<project>-*.py`, `end-0-<project>-*.py`
+  so they run before the upstream `*-migration.py` / `end-migrate-*.py`.
+- Run long rehearsals detached from the agent or terminal session
+  (`setsid nohup … &` plus a completion marker in the log); a session restart
+  kills ordinary background jobs halfway through a hop.
+- Drop rehearsal databases with `dropdb --force`: a dev server still connected
+  to a checkpoint makes the next run fail at its first drop.
+- Gate every rehearsal the same way and diff it against the previous run:
+  business snapshot per stage (trial balance, AR/AP, document counts, UoM
+  ratios, group memberships), strict validation of every view, stored selection
+  values against the target selections, static Owl xpath check, and access of
+  service users per model. Two consecutive runs from the same backup must give
+  identical snapshots; explain every difference.

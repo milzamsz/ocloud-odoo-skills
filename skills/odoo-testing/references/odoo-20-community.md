@@ -59,6 +59,8 @@ behavior.
 - Executed: `TransactionCase` and `HttpCase` (bearer API, portal login) suites on 20 CE and EE (`domain-eval-20`).
 - Browser tests use Hoot only; QUnit is absent, so a port must rewrite QUnit suites.
 - `Form`, `tagged`, and `HttpCase` keep their `odoo.tests` entry points.
+- Executed (website theme tests, 2026-10): when the test server hosts several databases, anonymous `url_open` requests are bound to no database and answer a bare 404. Call `self.authenticate(None, None)` in `setUp` for a public session on the test database; to hit a website created in the test, set its `domain` to `self.base_url()`.
+- A product created in a test is not on page 1 of a demo-data `/shop`; request `/shop?search=<code>`.
 
 ## Community boundary
 

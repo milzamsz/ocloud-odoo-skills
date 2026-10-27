@@ -4,7 +4,7 @@ description: Use this skill when designing or reviewing Odoo website pages, port
 license: MIT
 compatibility: Hermes Agent and Agent Skills compatible clients with read access to the target Odoo source tree. Verified for Odoo 17.0, 18.0, 19.0, and 20.0 Community and Enterprise from local source inspection; runtime behavior still requires target-specific tests.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   author: OCloud
   status: experimental
   risk: advisory

@@ -6,6 +6,19 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ## [Unreleased]
 
+### Changed
+
+- Odoo 20 lessons from an 18 Enterprise → 19 → 20 Community upgrade rehearsal and a
+  theme + shop build on the result (reference updates only):
+  `odoo-version-upgrade` 1.1.1 (reserved `studio_customization` name, dropped selection
+  values, provider-owned payment methods lost for wire transfer and COD, source-less module
+  records, browser-only Owl xpath failures, script naming order, detached runs,
+  `dropdb --force`, rehearsal gates); `odoo-website-portal` 0.1.1 (theme copy mechanics,
+  post-copy hook, homepage shadowing, cached domain and assets, libsass limits, native
+  `website_sale` pack units, ask-for-price, tag filter, carrier price and COD flag,
+  payment method deduplication); `odoo-testing` 1.1.1 (`HttpCase` on a multi-database
+  test server). Wiki gotchas updated.
+
 ### Added
 
 - New experimental skill `odoo-dynamic-dashboard` (0.1.0, advisory, Odoo 20.0 Community):

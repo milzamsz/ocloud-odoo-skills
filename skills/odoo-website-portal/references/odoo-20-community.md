@@ -59,6 +59,27 @@ behavior.
 - Executed: `_portal_ensure_token`, custom `access_url`, portal `/my` over HTTP, `ir.access` domain row for portal reads (`domain-eval-20`).
 - `portal.mixin`, `CustomerPortal._document_check_access`, and `website.page` are present; public JavaScript must use `Interaction` because the legacy public widget registry is absent.
 
+## Observed while building a theme + shop on Odoo 20 Community (2026-10)
+
+Executed on an upgraded production copy; each point broke something first.
+
+Themes and multi-website:
+- In a module named `theme_*`, `<template>` and `<asset>` load as `theme.ir.ui.view` / `theme.ir.asset` (`odoo/tools/convert.py`); pages and menus are `theme.website.page` / `theme.website.menu`. They are copied only onto websites whose `theme_id` is the module, so other websites stay untouched. Apply with `ir.module.module.button_choose_theme()` under `website_id` context and a user in `website.group_website_restricted_editor`.
+- Per-website setup belongs in `theme.utils._<theme>_post_copy(mod)` (`website/models/theme_models.py`); `enable_view` / `disable_view` toggle per-website copies.
+- A new website gets its own `/` page that shadows the theme's `/` page; remove it in the post-copy hook. A `theme.website.menu` with `page_id` is cascade-deleted with that page, so give the home menu a URL only.
+- `request.website` is gone in controllers; use `request.env.website`.
+- The running server caches the domain → website lookup and asset bundle versions in memory: change `website.domain` through the ORM (SQL leaves the cache stale) and reload the theme module or restart after editing SCSS.
+- Website SCSS compiles with libsass: modern `rgb(r g b / a)` syntax fails, and `px` values in `$o-website-values-palettes` (e.g. `btn-border-width`, `input-border-radius`) fail with "Incompatible units" — use `rem`.
+- `backdrop-filter` on the header makes it the containing block of the fixed mobile off-canvas menu, which then widens the page on phones.
+
+`website_sale` (native mechanisms that replaced custom code):
+- Selling one stock product in packs: put pack UoMs (relative to the stock UoM) on the product's `uom_ids` and the stock UoM in `website.restricted_uom_ids`; the product page shows them as pills and `_get_main_uom()` picks the first.
+- "Ask for price" products: `website.prevent_sale` with `prevent_sale_for = 'zero_price'` and a fixed price 0 on the website pricelist; the tile and product page then link to `website._get_contact_us_url()`, which can be overridden (e.g. to a WhatsApp link).
+- Filtering by product tags needs the view `website_sale.filter_products_tags` active; only tags with `visible_to_customers` appear.
+- `delivery.carrier.fixed_price` is stored on the carrier's product `list_price`: carriers sharing one delivery product overwrite each other's price. Writing `delivery_type` resets `allow_cash_on_delivery`; set it in a separate write.
+- Checkout lists payment *methods*, deduplicated by `code`, and a provider without an active method is invisible. A custom provider also needs `redirect_form_view_id = payment.generic_redirect_form`. `payment.provider` has no `state` (use `is_live`, `is_published`, `active`); pricelist discount rules use `compute_price = 'discount'` with `price_discount`.
+- Binary fields accept `odoo.tools.binary.BinaryBytes`, not raw bytes; `ir.config_parameter.get_param` is gone (typed getters such as `get_int`).
+
 ## Community boundary
 
 The Community snapshot contains no `web_enterprise`, `account_accountant`, or
