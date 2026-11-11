@@ -1,0 +1,46 @@
+{
+ "title": "Purchase approval map", "kicker": "ODOO PURCHASE", "heading": "Process map", "lang": "en",
+ "footnote": "Example process for the process-flowchart skill",
+ "legend": {"node": "step", "check": "automatic check", "case": "exception", "dash": "loop back"},
+ "labels": {"show": "WHAT YOU SEE", "menu": "ODOO MENU", "watch": "Watch this chapter", "shot": "In Odoo", "map": "Map", "close": "Close (Esc)"},
+ "sections": {"Normal flow": "N1", "Exceptions": "E"},
+ "phases": [["m", "PROBLEM", "red"], ["t", "SIGN IN ODOO", "amber"], ["s", "FIX", "purple-l"], ["h", "RESULT", "green"]],
+ "lanes": [
+  {"id": "req", "name": ["Requester"], "y": 110, "h": 260},
+  {"id": "mgr", "name": ["Manager"], "y": 370, "h": 300},
+  {"id": "odoo", "name": ["Odoo", "automatic"], "y": 670, "h": 330}
+ ],
+ "nodes": [
+  {"id": "1", "x": 320, "y": 240, "lbl": ["Create RFQ"], "sub": ["Purchase → New"]},
+  {"id": "2", "x": 600, "y": 240, "lbl": ["Confirm order"], "sub": ["RFQ → Confirm"]},
+  {"id": "chk", "x": 600, "y": 820, "kind": "diamond", "lbl": ["Over limit?"], "sub": []},
+  {"id": "3", "x": 900, "y": 520, "lbl": ["Approve"], "sub": ["PO → Approve"]},
+  {"id": "4", "x": 1200, "y": 820, "lbl": ["Purchase order"], "sub": ["state: purchase"]},
+  {"id": "hold", "x": 600, "y": 950, "kind": "hold", "lbl": ["Waiting → To Approve"], "sub": [], "w": 260, "h": 50}
+ ],
+ "edges": [
+  {"from": "1", "to": "2", "d": "M420 240 H500"},
+  {"from": "2", "to": "chk", "d": "M600 286 V770"},
+  {"from": "chk", "to": "4", "d": "M685 820 H1100", "lbl": ["no", 880, 808]},
+  {"from": "chk", "to": "hold", "d": "M600 870 V925", "lbl": ["yes", 612, 905]},
+  {"from": "hold", "to": "3", "d": "M730 950 H900 V566", "dash": true},
+  {"from": "3", "to": "4", "d": "M1000 520 H1200 V774"}
+ ],
+ "cases": [{"id": "E1", "at": [[700, 172]]}, {"id": "E2", "at": [[1010, 452]]}],
+ "steps": [
+  {"id": "map", "code": "MAP", "title": "From request to purchase order", "focus": null,
+   "groups": [{"k": "Normal flow", "v": "N1 Create · N2 Approve · N3 Result"}, {"k": "Exceptions", "v": "E1 Wrong vendor · E2 Rejected"}]},
+  {"id": "N1", "section": "Normal flow", "title": "Create and confirm", "role": "Requester", "focus": ["1", "2", "chk"],
+   "show": ["New RFQ with vendor and lines", "Confirm sends it to the limit check"], "menu": "Purchase → Orders → New"},
+  {"id": "N2", "section": "Normal flow", "title": "Manager approval", "role": "Manager", "focus": ["chk", "hold", "3"],
+   "show": ["Orders above the limit wait in To Approve", "Manager approves"], "menu": "Purchase → To Approve"},
+  {"id": "N3", "section": "Normal flow", "title": "Purchase order", "role": "Odoo", "focus": ["4"],
+   "show": ["Order state Purchase", "Receipt created"]},
+  {"id": "E", "section": "Exceptions", "title": "Two exceptions", "focus": [], "allCases": true,
+   "groups": [{"k": "E1", "v": "Wrong vendor on the RFQ"}, {"k": "E2", "v": "Manager rejects"}]},
+  {"id": "E1", "section": "Exceptions", "group": "Requester mistakes", "title": "Wrong vendor", "focus": ["2"],
+   "m": "RFQ confirmed with the wrong vendor.", "t": "Order sits in To Approve with the wrong partner.", "s": "Cancel and set to draft, change vendor.", "h": "New confirmation goes through the check again."},
+  {"id": "E2", "section": "Exceptions", "group": "Manager decisions", "title": "Rejected", "focus": ["3"],
+   "m": "Manager does not approve.", "t": "Order stays To Approve.", "s": "Manager cancels with a note.", "h": "Order Cancelled; requester informed in chatter."}
+ ]
+}

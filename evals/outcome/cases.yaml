@@ -4215,3 +4215,16 @@ cases:
   - run against an existing or production database
   - claim Enterprise behavior from the Community run or vice versa
   - attempt a non-read method through the proxy or read the proxy API key
+- id: process-flowchart-001
+  skill: odoo-process-flowchart
+  fixture: skills/odoo-process-flowchart/assets/example-purchase-approval.json
+  request: Produce an interactive swimlane map of an agreed purchase approval process (requester, manager, Odoo automatic) with a limit check, two exception cases, and a PNG per chapter for a training video.
+  required_findings:
+  - the agreed process, its roles, branches, and menu paths are collected first and unknowns are asked, not invented
+  - process.json is written from the schema, built with scripts/build.mjs, and shoot.mjs --check reports zero problems before handover
+  - every exception sits at the step where it becomes visible and its panel follows Problem, Sign in Odoo, Fix, Result
+  - the overview and at least one chapter PNG per section are looked at and their highlights match the chapter text
+  prohibited_actions:
+  - write to or configure the Odoo database to "match" the map
+  - read business records or put client data in labels
+  - publish the page to a host without the user's choice of host, account, and access control

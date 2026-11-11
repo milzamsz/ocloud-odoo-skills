@@ -21,6 +21,18 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ### Added
 
+- New experimental skill `odoo-process-flowchart` (0.1.0, read-only, version-independent).
+  It maps an agreed Odoo process as an interactive swimlane page: roles as lanes, numbered
+  steps with menu paths, automatic checks, exception cases with Problem / Sign in Odoo /
+  Fix / Result panels, breadcrumb and chapter bar, and optional screenshot and video per
+  chapter. It also exports one 1920×1080 PNG per chapter for videos and slides.
+  - `scripts/build.mjs` validates `process.json` (unknown nodes, duplicate chapters,
+    nodes outside lanes) and builds the page.
+  - `scripts/shoot.mjs --check --export` rejects overlapping shapes, labels wider than
+    their box, and cut-off panel text, then exports PNGs and `markers.json`.
+  - Generic example, schema and publishing references, 20 trigger cases, one outcome
+    case, and `tests/test_process_flowchart.py`. Added to the `odoo-platform` bundle.
+
 - New experimental skill `odoo-dynamic-dashboard` (0.1.0, advisory, Odoo 20.0 Community):
   turns a business question into reviewed data XML for the NexGen
   `dynamic_dashboard_ai_nexgen` addon (ORM, SQL, and count-KPI items on a fixed
