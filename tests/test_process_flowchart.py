@@ -45,3 +45,22 @@ def test_structural_errors_are_rejected(tmp_path, mutate, message):
     assert result.returncode == 1
     assert message in result.stderr
     assert not (tmp_path / "site").exists()
+
+
+TEMPLATE = SKILL / "assets" / "flowchart-template.html"
+SHOOT = SKILL / "scripts" / "shoot.mjs"
+
+
+def test_template_has_light_and_dark_theme():
+    html = TEMPLATE.read_text(encoding="utf-8")
+    assert ':root[data-theme="light"]' in html
+    assert "prefers-color-scheme" in html and 'id="theme"' in html
+    # swatches, arrows and pills use theme variables, not fixed dark hex values
+    for fixed in ('fill="#4a4560"', 'fill="#f59e0b"', "background:#3a2a10", "#16141f;"):
+        assert fixed not in html.split("</style>", 1)[1], fixed
+
+
+def test_shoot_exports_both_themes():
+    js = SHOOT.read_text(encoding="utf-8")
+    assert "--theme=light|dark|both" in js
+    assert 'path.join(site, "png", t' in js

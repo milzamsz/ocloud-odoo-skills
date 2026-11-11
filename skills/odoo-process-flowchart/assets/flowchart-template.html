@@ -3,10 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=1920">
+<meta name="color-scheme" content="dark light">
+<script>
+// theme before first paint: ?theme= > saved choice > OS setting
+(function () {
+  var t = new URLSearchParams(location.search).get("theme"), saved = null;
+  try { saved = localStorage.getItem("pf-theme"); } catch (e) {}
+  if (t !== "light" && t !== "dark") t = saved === "light" || saved === "dark" ? saved : (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  document.documentElement.dataset.theme = t;
+})();
+</script>
 <title>Process map</title>
 <style>
   :root { --bg:#16141f; --panel:#221f2e; --lane:#1c1a27; --purple:#714b67; --purple-l:#a77a9b; --amber:#f59e0b;
-          --text:#f4f2f7; --muted:#b9b3c6; --line:#4a4560; --red:#f87171; --green:#4ade80; }
+          --text:#f4f2f7; --muted:#b9b3c6; --line:#4a4560; --red:#f87171; --green:#4ade80;
+          --case-bg:#3a2a10; --panel-2:#2d2940; --node-on:#2c2433; --border:#3a3550; --on-amber:#16141f; color-scheme: dark; }
+  :root[data-theme="light"] { --bg:#f5f3f8; --panel:#ffffff; --lane:#ebe7f1; --purple:#714b67; --purple-l:#6b4561; --amber:#b45309;
+          --text:#1d1a26; --muted:#5b566b; --line:#7d768d; --red:#c62828; --green:#15803d;
+          --case-bg:#fff7e8; --panel-2:#ece8f3; --node-on:#fff4dc; --border:#cfc8dc; --on-amber:#ffffff; color-scheme: light; }
   * { box-sizing: border-box; margin: 0; }
   html, body { background: var(--bg); }
   body { width: 1920px; height: 1080px; overflow: hidden; color: var(--text); font-family: Lato, "Noto Sans", sans-serif; position: relative; }
@@ -26,18 +40,18 @@
   .edge { fill: none; stroke: var(--line); stroke-width: 2.5; }
   .edge.dash { stroke-dasharray: 7 6; }
   .elbl { font-size: 14px; fill: var(--muted); font-weight: 700; }
-  .case rect { fill: #3a2a10; stroke: var(--amber); stroke-width: 1.5; }
+  .case rect { fill: var(--case-bg); stroke: var(--amber); stroke-width: 1.5; }
   .case text { font-size: 14px; font-weight: 800; fill: var(--amber); }
   .hold rect { stroke: var(--red); stroke-dasharray: 6 5; }
   /* focus mode: everything dims, focused items light up */
   .focus .node, .focus .case, .focus .edge, .focus .elbl { opacity: .22; }
   .focus .on { opacity: 1 !important; }
-  .focus .node.on rect, .focus .node.on polygon { stroke: var(--amber); stroke-width: 4; fill: #2c2433; }
+  .focus .node.on rect, .focus .node.on polygon { stroke: var(--amber); stroke-width: 4; fill: var(--node-on); }
   .focus .edge.on { stroke: var(--amber); }
   .focus .case.on rect { fill: var(--amber); }
-  .focus .case.on text { fill: #16141f; }
+  .focus .case.on text { fill: var(--on-amber); }
   .allcases .case rect { fill: var(--amber); }
-  .allcases .case text { fill: #16141f; }
+  .allcases .case text { fill: var(--on-amber); }
   aside { position: absolute; left: 1460px; top: 110px; width: 440px; height: 890px; background: var(--panel); border-radius: 18px; padding: 30px 30px; }
   aside .code { color: var(--amber); font-size: 26px; font-weight: 800; letter-spacing: 2px; }
   aside h2 { font-size: 34px; line-height: 1.2; margin: 8px 0 10px; }
@@ -45,7 +59,7 @@
   aside h3 { font-size: 16px; letter-spacing: 2px; color: var(--muted); margin: 18px 0 8px; }
   aside ul { padding-left: 22px; }
   aside li { font-size: 20px; line-height: 1.4; margin-bottom: 8px; }
-  aside .menu { font-size: 18px; color: var(--text); background: #2d2940; border-radius: 10px; padding: 10px 14px; line-height: 1.45; }
+  aside .menu { font-size: 18px; color: var(--text); background: var(--panel-2); border-radius: 10px; padding: 10px 14px; line-height: 1.45; }
   .phase { border-left: 5px solid; padding: 4px 0 4px 16px; margin-bottom: 18px; }
   .phase .k { font-size: 15px; font-weight: 800; letter-spacing: 2px; margin-bottom: 4px; }
   .phase .v { font-size: 20px; line-height: 1.38; }
@@ -72,10 +86,10 @@
   #strip { display: none; gap: 6px; align-items: center; }
   .live #strip { display: flex; }
   .live .legend { display: none; }
-  #strip button { font: 700 15px Lato, "Noto Sans", sans-serif; color: var(--muted); background: var(--panel); border: 1.5px solid #3a3550;
+  #strip button { font: 700 15px Lato, "Noto Sans", sans-serif; color: var(--muted); background: var(--panel); border: 1.5px solid var(--border);
                   border-radius: 8px; padding: 6px 9px; cursor: pointer; }
   #strip button:hover { color: var(--text); border-color: var(--purple-l); }
-  #strip button.cur { background: var(--amber); color: #16141f; border-color: var(--amber); }
+  #strip button.cur { background: var(--amber); color: var(--on-amber); border-color: var(--amber); }
   #strip .gap { width: 14px; }
   .pager { display: none; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 16px; }
   .live .pager { display: flex; }
@@ -86,41 +100,46 @@
   .live .phase .v { font-size: 18px; }
   .live aside li { font-size: 18px; margin-bottom: 5px; }
   .live aside h3 { margin: 12px 0 6px; }
-  .pager button { font: 700 18px Lato, "Noto Sans", sans-serif; color: var(--text); background: #2d2940; border: 0; border-radius: 10px;
+  .pager button { font: 700 18px Lato, "Noto Sans", sans-serif; color: var(--text); background: var(--panel-2); border: 0; border-radius: 10px;
                   padding: 10px 16px; cursor: pointer; max-width: 48%; text-align: left; }
   .pager button:hover { background: var(--purple); }
   .pager button:last-child { text-align: right; }
   .pager button[hidden] { visibility: hidden; display: block; }
   .media { display: none; margin-top: 18px; }
   .live .media { display: block; }
-  .media img { width: 100%; height: 190px; object-fit: cover; object-position: top; border-radius: 10px; border: 1.5px solid #3a3550; cursor: zoom-in; display: block; }
+  .media img { width: 100%; height: 190px; object-fit: cover; object-position: top; border-radius: 10px; border: 1.5px solid var(--border); cursor: zoom-in; display: block; }
   .media .cap { font-size: 15px; color: var(--muted); margin: 6px 0 10px; }
   .media { margin-top: 10px; }
-  .media .watch { font: 800 19px Lato, "Noto Sans", sans-serif; background: var(--amber); color: #16141f; border: 0; border-radius: 10px;
+  .media .watch { font: 800 19px Lato, "Noto Sans", sans-serif; background: var(--amber); color: var(--on-amber); border: 0; border-radius: 10px;
                   padding: 11px 18px; cursor: pointer; }
   .media .watch:hover { filter: brightness(1.1); }
-  #modal { position: fixed; inset: 0; background: rgba(10, 9, 15, .92); display: none; align-items: center; justify-content: center;
+  #modal { font-family: Lato, "Noto Sans", sans-serif; position: fixed; inset: 0; background: rgba(10, 9, 15, .92); display: none; align-items: center; justify-content: center;
            flex-direction: column; gap: 14px; z-index: 9; }
   #modal.open { display: flex; }
   #modal video, #modal img { max-width: 92vw; max-height: 82vh; border-radius: 10px; background: #000; }
-  #modal .bar { display: flex; gap: 16px; align-items: center; color: var(--muted); font-size: 16px; }
-  #modal button { font: 700 16px Lato, "Noto Sans", sans-serif; background: #2d2940; color: var(--text); border: 0; border-radius: 8px;
+  #modal .bar { display: flex; gap: 16px; align-items: center; color: #d6d0e2; font-size: 16px; }
+  #modal button { font: 700 16px Lato, "Noto Sans", sans-serif; background: #2d2940; color: #f4f2f7; border: 0; border-radius: 8px;
                   padding: 8px 14px; cursor: pointer; }
+  .hr { display: flex; align-items: center; gap: 18px; }
+  #theme { display: none; font: 700 22px Lato, "Noto Sans", sans-serif; line-height: 1; color: var(--text); background: var(--panel); border: 1.5px solid var(--border);
+           border-radius: 10px; padding: 7px 12px; cursor: pointer; }
+  #theme:hover { border-color: var(--purple-l); }
+  .live #theme { display: block; }
 </style>
 </head>
 <body>
 <header>
   <div class="t" id="kicker"></div>
-  <div class="bab" id="bab"></div>
+  <div class="hr"><div class="bab" id="bab"></div><button id="theme" type="button"></button></div>
 </header>
 <svg id="map" width="1450" height="1080" viewBox="0 0 1450 1080"></svg>
 <aside id="panel"></aside>
 <footer>
   <div id="strip"></div>
-  <span class="legend"><i style="width:22px;height:14px;border:2.5px solid #714b67;border-radius:4px"></i><span data-l="node"></span></span>
-  <span class="legend"><i style="width:16px;height:16px;border:2.5px solid #714b67;transform:rotate(45deg)"></i><span data-l="check"></span></span>
-  <span class="legend"><i style="width:34px;height:16px;border:1.5px solid #f59e0b;border-radius:9px;background:#3a2a10"></i><span data-l="case"></span></span>
-  <span class="legend"><i style="width:30px;border-top:2.5px dashed #4a4560"></i><span data-l="dash"></span></span>
+  <span class="legend"><i style="width:22px;height:14px;border:2.5px solid var(--purple);border-radius:4px"></i><span data-l="node"></span></span>
+  <span class="legend"><i style="width:16px;height:16px;border:2.5px solid var(--purple);transform:rotate(45deg)"></i><span data-l="check"></span></span>
+  <span class="legend"><i style="width:34px;height:16px;border:1.5px solid var(--amber);border-radius:9px;background:var(--case-bg)"></i><span data-l="case"></span></span>
+  <span class="legend"><i style="width:30px;border-top:2.5px dashed var(--line)"></i><span data-l="dash"></span></span>
   <span class="sim" id="footnote"></span>
 </footer>
 <div id="modal"><div id="mbody"></div>
@@ -146,8 +165,8 @@ const textBlock = (g, x, y, lines, cls, gap) => lines.forEach((t, i) => el("text
 
 function draw() {
   el("defs", {}).innerHTML = `
-    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4a4560"/></marker>
-    <marker id="ar-on" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f59e0b"/></marker>`;
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--line)"/></marker>
+    <marker id="ar-on" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--amber)"/></marker>`;
   for (const l of LANES) {
     el("rect", { x: 20, y: l.y + 3, width: 1420, height: l.h - 6, rx: 14, class: "lane-bg" });
     textBlock(el("g", {}), 95, l.y + l.h / 2 - (l.name.length - 1) * 12 + 7, l.name, "lane-name", 24);
@@ -247,6 +266,15 @@ document.documentElement.lang = P.lang || "en";
 document.getElementById("kicker").innerHTML = `${P.kicker || ""} <b>${P.heading}</b>`;
 document.getElementById("footnote").textContent = P.footnote || "";
 document.getElementById("mclose").textContent = L.close;
+const themeBtn = document.getElementById("theme"), root = document.documentElement;
+const paintTheme = () => { const dark = root.dataset.theme === "dark";
+  themeBtn.textContent = dark ? "☀" : "☾"; themeBtn.title = themeBtn.ariaLabel = `${L.theme || "Theme"}: ${dark ? "light" : "dark"}`; };
+themeBtn.onclick = () => { root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+  try { localStorage.setItem("pf-theme", root.dataset.theme); } catch (e) {} paintTheme(); };
+matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {  // follow the OS until a choice is saved
+  let saved = null; try { saved = localStorage.getItem("pf-theme"); } catch (x) {}
+  if (!saved && !Q.has("theme")) { root.dataset.theme = e.matches ? "light" : "dark"; paintTheme(); } });
+paintTheme();
 document.querySelectorAll("[data-l]").forEach((x) => { x.textContent = P.legend?.[x.dataset.l] ?? ""; if (!x.textContent) x.parentElement.remove(); });
 draw();
 let cur = Q.get("step") || FIRST;

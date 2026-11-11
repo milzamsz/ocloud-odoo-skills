@@ -25,7 +25,9 @@ The format follows Keep a Changelog principles and the project uses semantic ver
   It maps an agreed Odoo process as an interactive swimlane page: roles as lanes, numbered
   steps with menu paths, automatic checks, exception cases with Problem / Sign in Odoo /
   Fix / Result panels, breadcrumb and chapter bar, and optional screenshot and video per
-  chapter. It also exports one 1920×1080 PNG per chapter for videos and slides.
+  chapter. The page follows the OS light/dark setting and has a toggle that remembers the
+  choice. It also exports one 1920×1080 PNG per chapter and theme (`png/light`, `png/dark`)
+  for videos and slides.
   - `scripts/build.mjs` validates `process.json` (unknown nodes, duplicate chapters,
     nodes outside lanes) and builds the page.
   - `scripts/shoot.mjs --check --export` rejects overlapping shapes, labels wider than

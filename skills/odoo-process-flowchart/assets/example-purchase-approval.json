@@ -2,7 +2,7 @@
  "title": "Purchase approval map", "kicker": "ODOO PURCHASE", "heading": "Process map", "lang": "en",
  "footnote": "Example process for the process-flowchart skill",
  "legend": {"node": "step", "check": "automatic check", "case": "exception", "dash": "loop back"},
- "labels": {"show": "WHAT YOU SEE", "menu": "ODOO MENU", "watch": "Watch this chapter", "shot": "In Odoo", "map": "Map", "close": "Close (Esc)"},
+ "labels": {"show": "WHAT YOU SEE", "menu": "ODOO MENU", "watch": "Watch this chapter", "shot": "In Odoo", "map": "Map", "close": "Close (Esc)", "theme": "Theme"},
  "sections": {"Normal flow": "N1", "Exceptions": "E"},
  "phases": [["m", "PROBLEM", "red"], ["t", "SIGN IN ODOO", "amber"], ["s", "FIX", "purple-l"], ["h", "RESULT", "green"]],
  "lanes": [

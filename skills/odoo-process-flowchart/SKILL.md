@@ -52,8 +52,9 @@ Unknown roles, branches, or menu paths are questions for the user, not guesses. 
 4. Check and export: `node scripts/shoot.mjs <outDir> --check --export`, run where `playwright` resolves.
    - `--check` fails on overlapping steps or case pills, shapes under the panel, labels wider than their box, and panel text cut off in any chapter.
    - Move coordinates or shorten text until it reports 0 problems.
-5. Open the overview PNG and one chapter per section. Confirm that arrows run the right way and that each highlight sits on the step its chapter describes.
-6. Deliver the folder (`index.html`, `process.js`, `png/`, `markers.json`). Optionally add `media.js` for a screenshot and a video start time per chapter.
+   - `--export` writes both themes: `png/light/<chapter>.png` and `png/dark/<chapter>.png` (`--theme=light|dark|both`, default both). Light is the one to use on light slides and videos.
+5. Open the light overview PNG, one chapter per section, and a few dark ones. Confirm that arrows run the right way and that each highlight sits on the step its chapter describes.
+6. Deliver the folder (`index.html`, `process.js`, `png/light/`, `png/dark/`, `markers.json`). The page has a light/dark button; it follows the OS until the button is used and then remembers the choice (`?theme=light|dark` forces one). Optionally add `media.js` for a screenshot and a video start time per chapter.
 
 ## Decision rules
 
@@ -71,7 +72,7 @@ Unknown roles, branches, or menu paths are questions for the user, not guesses. 
 
 ## Required output
 
-- `process.json`, built `index.html` + `process.js`, `png/<chapter>.png` for every chapter, and `markers.json`.
+- `process.json`, built `index.html` + `process.js`, `png/light/<chapter>.png` and `png/dark/<chapter>.png` for every chapter, and `markers.json`.
 - A short note listing the chapters, open questions about the process, and anything shown as an assumption.
 
 ## Verification

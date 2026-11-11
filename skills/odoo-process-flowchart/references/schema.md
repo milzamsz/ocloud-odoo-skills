@@ -10,7 +10,7 @@ All coordinates are page px on the 1920×1080 canvas. Text is plain (HTML in pan
 | `lang` | string | `lang` attribute, e.g. `id`, `en` |
 | `footnote` | string | Right side of the footer (e.g. "data = simulation") |
 | `legend` | `{node, check, case, dash}` | Legend words; leave one empty to hide it |
-| `labels` | `{show, menu, watch, shot, map, close}` | Panel headings, ▶ button text, screenshot caption prefix, chapter-bar name of the overview, modal close button |
+| `labels` | `{show, menu, watch, shot, map, close, theme}` | Panel headings, ▶ button text, screenshot caption prefix, chapter-bar name of the overview, modal close button, tooltip of the light/dark button (default "Theme") |
 | `sections` | `{ "<name>": "<stepId>" }` | Breadcrumb link target per section |
 | `phases` | `[[key, LABEL, color]]` | Case panel rows in order. `key` is the step field holding the text. `color` is one of `red`, `amber`, `purple-l`, `green`, `muted` |
 | `lanes` | `[{id, name: [lines], y, h}]` | Swimlanes, top to bottom |
