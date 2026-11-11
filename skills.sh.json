@@ -17,6 +17,7 @@
         "odoo-testing",
         "odoo-oca-development",
         "odoo-data-model-diagram",
+        "odoo-process-flowchart",
         "odoo-code-tracing"
       ]
     },
