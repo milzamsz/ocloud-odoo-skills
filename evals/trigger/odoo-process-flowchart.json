@@ -1,0 +1,22 @@
+[
+  {"query": "Make an interactive swimlane flowchart of our Odoo purchase approval process with requester, manager and Odoo lanes.", "should_trigger": true, "notes": "Direct request for a process swimlane map."},
+  {"query": "Buatkan peta proses alur Sales Order sampai Delivery di Odoo, per peran, dengan kasus barang kurang dan harga beda.", "should_trigger": true, "notes": "Indonesian request, positive and exception cases."},
+  {"query": "I need a 'you are here' flowchart card before each chapter of our Odoo training video.", "should_trigger": true, "notes": "Chapter marker PNGs for a video."},
+  {"query": "Create a clickable process map for the manufacturing order flow so trainees can step through each stage and see the Odoo menu for it.", "should_trigger": true, "notes": "Interactive step-through with menu paths."},
+  {"query": "Draw who does what in the Odoo returns process, with the exception cases shown at the step where they happen.", "should_trigger": true, "notes": "Roles plus exceptions on one map."},
+  {"query": "Update the process flowchart HTML: add a new step 'Quality check' between receipt and putaway and a case for failed QC.", "should_trigger": true, "notes": "Maintaining an existing map."},
+  {"query": "Export one 1920x1080 image per chapter of the inventory process map for our slides.", "should_trigger": true, "notes": "PNG export per chapter."},
+  {"query": "We agreed the vendor bill approval flow; now produce a flowchart page for UAT with problem, sign in Odoo, fix and result per exception.", "should_trigger": true, "notes": "Agreed process to UAT map with four-phase cases."},
+  {"query": "Make a training flowchart for the POS closing procedure with cashier, supervisor and Odoo automatic lanes.", "should_trigger": true, "notes": "Swimlane with automatic lane."},
+  {"query": "Turn this list of HR leave approval steps into a swimlane diagram we can open in the browser.", "should_trigger": true, "notes": "Step list to browser swimlane."},
+  {"query": "Generate a DBML diagram of the sale.order and stock.picking models and their relations.", "should_trigger": false, "notes": "Data-model diagram, not a process map."},
+  {"query": "Design how we should handle partial deliveries in Odoo: backorders or not?", "should_trigger": false, "notes": "Process design decision, belongs to functional skills."},
+  {"query": "Build a KPI dashboard for invoiced amount per month in Odoo.", "should_trigger": false, "notes": "Dashboard, not a flowchart."},
+  {"query": "Write a BPMN 2.0 file we can import into Camunda for the purchase flow.", "should_trigger": false, "notes": "Executable BPMN is out of scope."},
+  {"query": "Trace which Python methods run when a purchase order is confirmed.", "should_trigger": false, "notes": "Code tracing."},
+  {"query": "Review my custom addon for security issues in its controllers.", "should_trigger": false, "notes": "Security audit."},
+  {"query": "Create the approval workflow in Odoo so orders above 10 million need manager approval.", "should_trigger": false, "notes": "Configuring or building the workflow, not mapping it."},
+  {"query": "Convert this Mermaid sequence diagram of our API calls into PNG.", "should_trigger": false, "notes": "Generic diagram rendering of an API sequence."},
+  {"query": "Write a QWeb PDF report for the delivery slip.", "should_trigger": false, "notes": "Reporting."},
+  {"query": "Plan the upgrade of our database from Odoo 18 to 20.", "should_trigger": false, "notes": "Version upgrade."}
+]
